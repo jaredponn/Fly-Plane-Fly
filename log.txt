@@ -1,0 +1,2520 @@
+108: Playerpos: V2 50.03 2.00401
+Velocity: 2.053125e-3
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+108: Playerpos: V2 50.059998 2.00401
+Velocity: 2.053125e-3
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+109: Playerpos: V2 50.089996 2.0272887
+Velocity: 5.959375e-3
+dt: 3.90625
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+110: Playerpos: V2 50.119995 2.0272887
+Velocity: 5.959375e-3
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+112: Playerpos: V2 50.149994 2.0427427
+Velocity: 7.9125e-3
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+113: Playerpos: V2 50.179993 2.0620115
+Velocity: 9.865625e-3
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+115: Playerpos: V2 50.20999 2.0620115
+Velocity: 9.865625e-3
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+116: Playerpos: V2 50.23999 2.085095
+Velocity: 1.181875e-2
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+118: Playerpos: V2 50.26999 2.111993
+Velocity: 1.3771875e-2
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+120: Playerpos: V2 50.299988 2.111993
+Velocity: 1.3771875e-2
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+121: Playerpos: V2 50.329987 2.111993
+Velocity: 1.3771875e-2
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+123: Playerpos: V2 50.359985 2.142706
+Velocity: 1.5725e-2
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+124: Playerpos: V2 50.389984 2.1772335
+Velocity: 1.7678125e-2
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+126: Playerpos: V2 50.419983 2.1772335
+Velocity: 1.7678125e-2
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+127: Playerpos: V2 50.44998 2.1772335
+Velocity: 1.7678125e-2
+dt: 0.0
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+129: Playerpos: V2 50.47998 2.2155757
+Velocity: 1.963125e-2
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+130: Playerpos: V2 50.50998 2.2577326
+Velocity: 2.1584375e-2
+dt: 1.953125
+camera: V2 (-50) 0
+kInput: space: False esc: False
+
+132: Playerpos: V2 50.539978 2.2577326
+Velocity: 2.1584375e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+133: Playerpos: V2 50.569977 2.3037043
+Velocity: 2.35375e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+135: Playerpos: V2 50.599976 2.3534906
+Velocity: 2.5490625e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+136: Playerpos: V2 50.629974 2.3534906
+Velocity: 2.5490625e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+138: Playerpos: V2 50.659973 2.3534906
+Velocity: 2.5490625e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+139: Playerpos: V2 50.689972 2.468322
+Velocity: 2.9396875e-2
+dt: 3.90625
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+141: Playerpos: V2 50.71997 2.5295525
+Velocity: 3.135e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+142: Playerpos: V2 50.74997 2.5295525
+Velocity: 3.135e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+144: Playerpos: V2 50.77997 2.5295525
+Velocity: 3.135e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+145: Playerpos: V2 50.809967 2.5945976
+Velocity: 3.3303127e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+147: Playerpos: V2 50.839966 2.5945976
+Velocity: 3.3303127e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+148: Playerpos: V2 50.869965 2.5945976
+Velocity: 3.3303127e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+150: Playerpos: V2 50.899963 2.6634574
+Velocity: 3.525625e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+151: Playerpos: V2 50.929962 2.736132
+Velocity: 3.7209377e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+153: Playerpos: V2 50.95996 2.736132
+Velocity: 3.7209377e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+154: Playerpos: V2 50.98996 2.736132
+Velocity: 3.7209377e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+156: Playerpos: V2 51.01996 2.812621
+Velocity: 3.91625e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+158: Playerpos: V2 51.049957 2.892925
+Velocity: 4.1115627e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+159: Playerpos: V2 51.079956 2.892925
+Velocity: 4.1115627e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+163: Playerpos: V2 51.109955 3.0687916
+Velocity: 4.5021877e-2
+dt: 3.90625
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+164: Playerpos: V2 51.139954 3.1605396
+Velocity: 4.6975e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+165: Playerpos: V2 51.169952 3.1605396
+Velocity: 4.6975e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+166: Playerpos: V2 51.19995 3.3592944
+Velocity: 5.088125e-2
+dt: 3.90625
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+168: Playerpos: V2 51.22995 3.3592944
+Velocity: 5.088125e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+169: Playerpos: V2 51.25995 3.3592944
+Velocity: 5.088125e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+171: Playerpos: V2 51.289948 3.4624865
+Velocity: 5.2834377e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+172: Playerpos: V2 51.319946 3.5694933
+Velocity: 5.47875e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+174: Playerpos: V2 51.349945 3.5694933
+Velocity: 5.47875e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+175: Playerpos: V2 51.379944 3.6803148
+Velocity: 5.6740627e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+177: Playerpos: V2 51.409943 3.794951
+Velocity: 5.869375e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+178: Playerpos: V2 51.43994 3.794951
+Velocity: 5.869375e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+180: Playerpos: V2 51.46994 3.794951
+Velocity: 5.869375e-2
+dt: 0.0
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+181: Playerpos: V2 51.49994 3.9134018
+Velocity: 6.0646877e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+183: Playerpos: V2 51.529938 4.0356674
+Velocity: 6.26e-2
+dt: 1.953125
+camera: V2 (-49) 0
+kInput: space: False esc: False
+
+184: Playerpos: V2 51.559937 4.0356674
+Velocity: 6.26e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+186: Playerpos: V2 51.589935 4.0356674
+Velocity: 6.26e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+187: Playerpos: V2 51.619934 4.161748
+Velocity: 6.455313e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+189: Playerpos: V2 51.649933 4.161748
+Velocity: 6.455313e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+190: Playerpos: V2 51.67993 4.161748
+Velocity: 6.455313e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+192: Playerpos: V2 51.70993 4.291643
+Velocity: 6.650625e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+193: Playerpos: V2 51.73993 4.425353
+Velocity: 6.845938e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+195: Playerpos: V2 51.769928 4.425353
+Velocity: 6.845938e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+196: Playerpos: V2 51.799927 4.425353
+Velocity: 6.845938e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+198: Playerpos: V2 51.829926 4.5628777
+Velocity: 7.04125e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+199: Playerpos: V2 51.859924 4.5628777
+Velocity: 7.04125e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+201: Playerpos: V2 51.889923 4.5628777
+Velocity: 7.04125e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+202: Playerpos: V2 51.91992 4.704217
+Velocity: 7.236563e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+204: Playerpos: V2 51.94992 4.849371
+Velocity: 7.431875e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+205: Playerpos: V2 51.97992 4.849371
+Velocity: 7.431875e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+207: Playerpos: V2 52.00992 4.849371
+Velocity: 7.431875e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+208: Playerpos: V2 52.039917 4.9983397
+Velocity: 7.627188e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+210: Playerpos: V2 52.069916 5.151123
+Velocity: 7.8225e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+211: Playerpos: V2 52.099915 5.151123
+Velocity: 7.8225e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+213: Playerpos: V2 52.129913 5.307721
+Velocity: 8.017813e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+214: Playerpos: V2 52.159912 5.468134
+Velocity: 8.213125e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+216: Playerpos: V2 52.18991 5.468134
+Velocity: 8.213125e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+217: Playerpos: V2 52.21991 5.468134
+Velocity: 8.213125e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+219: Playerpos: V2 52.24991 5.6323614
+Velocity: 8.408438e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+220: Playerpos: V2 52.279907 5.8004036
+Velocity: 8.60375e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+222: Playerpos: V2 52.309906 5.8004036
+Velocity: 8.60375e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+223: Playerpos: V2 52.339905 6.1517463
+Velocity: 8.994375e-2
+dt: 3.90625
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+225: Playerpos: V2 52.369904 6.3312325
+Velocity: 9.189688e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+226: Playerpos: V2 52.399902 6.3312325
+Velocity: 9.189688e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+228: Playerpos: V2 52.4299 6.3312325
+Velocity: 9.189688e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+229: Playerpos: V2 52.4599 6.5145335
+Velocity: 9.385e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+231: Playerpos: V2 52.4899 6.701649
+Velocity: 9.580313e-2
+dt: 1.953125
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+232: Playerpos: V2 52.519897 6.701649
+Velocity: 9.580313e-2
+dt: 0.0
+camera: V2 (-48) 0
+kInput: space: False esc: False
+
+234: Playerpos: V2 52.549896 6.8925796
+Velocity: 9.775625e-2
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+235: Playerpos: V2 52.579895 7.0873246
+Velocity: 9.970938e-2
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+237: Playerpos: V2 52.609894 7.0873246
+Velocity: 9.970938e-2
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+238: Playerpos: V2 52.639893 7.0873246
+Velocity: 9.970938e-2
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+240: Playerpos: V2 52.66989 7.2858844
+Velocity: 0.1016625
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+241: Playerpos: V2 52.69989 7.488259
+Velocity: 0.10361563
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+243: Playerpos: V2 52.72989 7.488259
+Velocity: 0.10361563
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+244: Playerpos: V2 52.759888 7.694448
+Velocity: 0.10556875
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+246: Playerpos: V2 52.789886 7.904452
+Velocity: 0.10752188
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+247: Playerpos: V2 52.819885 7.904452
+Velocity: 0.10752188
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+249: Playerpos: V2 52.849884 7.904452
+Velocity: 0.10752188
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+250: Playerpos: V2 52.879883 8.11827
+Velocity: 0.109475
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+252: Playerpos: V2 52.90988 8.561166
+Velocity: 0.11338125
+dt: 3.90625
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+253: Playerpos: V2 52.93988 8.561166
+Velocity: 0.11338125
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+255: Playerpos: V2 52.96988 8.786428
+Velocity: 0.11533438
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+256: Playerpos: V2 52.999878 9.015506
+Velocity: 0.1172875
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+258: Playerpos: V2 53.029877 9.015506
+Velocity: 0.1172875
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+259: Playerpos: V2 53.059875 9.015506
+Velocity: 0.1172875
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+261: Playerpos: V2 53.089874 9.248398
+Velocity: 0.11924063
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+262: Playerpos: V2 53.119873 9.485105
+Velocity: 0.12119375
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+264: Playerpos: V2 53.14987 9.485105
+Velocity: 0.12119375
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+265: Playerpos: V2 53.17987 9.725626
+Velocity: 0.12314688
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+267: Playerpos: V2 53.20987 9.969962
+Velocity: 0.1251
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+268: Playerpos: V2 53.23987 9.969962
+Velocity: 0.1251
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+270: Playerpos: V2 53.269867 9.969962
+Velocity: 0.1251
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+271: Playerpos: V2 53.299866 10.218113
+Velocity: 0.12705313
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+273: Playerpos: V2 53.329865 10.470078
+Velocity: 0.12900625
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+274: Playerpos: V2 53.359863 10.470078
+Velocity: 0.12900625
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+276: Playerpos: V2 53.389862 10.725859
+Velocity: 0.13095938
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+277: Playerpos: V2 53.41986 10.985454
+Velocity: 0.1329125
+dt: 1.953125
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+279: Playerpos: V2 53.44986 10.985454
+Velocity: 0.1329125
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+280: Playerpos: V2 53.47986 10.985454
+Velocity: 0.1329125
+dt: 0.0
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+282: Playerpos: V2 53.509857 11.519902
+Velocity: 0.13681875
+dt: 3.90625
+camera: V2 (-47) 0
+kInput: space: False esc: False
+
+283: Playerpos: V2 53.539856 11.790941
+Velocity: 0.13877188
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+285: Playerpos: V2 53.569855 11.790941
+Velocity: 0.13877188
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+286: Playerpos: V2 53.599854 12.065795
+Velocity: 0.140725
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+288: Playerpos: V2 53.629852 12.344463
+Velocity: 0.14267813
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+289: Playerpos: V2 53.65985 12.344463
+Velocity: 0.14267813
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+291: Playerpos: V2 53.68985 12.344463
+Velocity: 0.14267813
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+292: Playerpos: V2 53.71985 12.626946
+Velocity: 0.14463125
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+294: Playerpos: V2 53.749847 12.913244
+Velocity: 0.14658438
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+295: Playerpos: V2 53.779846 12.913244
+Velocity: 0.14658438
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+297: Playerpos: V2 53.809845 13.203357
+Velocity: 0.1485375
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+298: Playerpos: V2 53.839844 13.497284
+Velocity: 0.15049063
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+300: Playerpos: V2 53.869843 13.497284
+Velocity: 0.15049063
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+301: Playerpos: V2 53.89984 13.497284
+Velocity: 0.15049063
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+303: Playerpos: V2 53.92984 13.795026
+Velocity: 0.15244375
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+304: Playerpos: V2 53.95984 13.795026
+Velocity: 0.15244375
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+306: Playerpos: V2 53.989838 13.795026
+Velocity: 0.15244375
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+307: Playerpos: V2 54.019836 14.096582
+Velocity: 0.15439688
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+309: Playerpos: V2 54.049835 14.714954
+Velocity: 0.15830313
+dt: 3.90625
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+310: Playerpos: V2 54.079834 14.714954
+Velocity: 0.15830313
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+312: Playerpos: V2 54.109833 14.714954
+Velocity: 0.15830313
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+313: Playerpos: V2 54.13983 15.027955
+Velocity: 0.16025625
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+315: Playerpos: V2 54.16983 15.027955
+Velocity: 0.16025625
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+316: Playerpos: V2 54.19983 15.027955
+Velocity: 0.16025625
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+318: Playerpos: V2 54.229828 15.34477
+Velocity: 0.16220938
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+319: Playerpos: V2 54.259827 15.6654005
+Velocity: 0.1641625
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+321: Playerpos: V2 54.289825 15.6654005
+Velocity: 0.1641625
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+322: Playerpos: V2 54.319824 15.6654005
+Velocity: 0.1641625
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+324: Playerpos: V2 54.349823 15.989845
+Velocity: 0.16611563
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+325: Playerpos: V2 54.37982 15.989845
+Velocity: 0.16611563
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+327: Playerpos: V2 54.40982 15.989845
+Velocity: 0.16611563
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+328: Playerpos: V2 54.43982 16.318104
+Velocity: 0.16806875
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+330: Playerpos: V2 54.46982 16.650177
+Velocity: 0.17002188
+dt: 1.953125
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+331: Playerpos: V2 54.499817 16.650177
+Velocity: 0.17002188
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+333: Playerpos: V2 54.529816 16.650177
+Velocity: 0.17002188
+dt: 0.0
+camera: V2 (-46) 0
+kInput: space: False esc: False
+
+334: Playerpos: V2 54.559814 16.986065
+Velocity: 0.171975
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+336: Playerpos: V2 54.589813 16.986065
+Velocity: 0.171975
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+337: Playerpos: V2 54.619812 16.986065
+Velocity: 0.171975
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+339: Playerpos: V2 54.64981 17.673101
+Velocity: 0.17588125
+dt: 3.90625
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+340: Playerpos: V2 54.67981 18.020433
+Velocity: 0.17783438
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+342: Playerpos: V2 54.70981 18.020433
+Velocity: 0.17783438
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+343: Playerpos: V2 54.739807 18.020433
+Velocity: 0.17783438
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+345: Playerpos: V2 54.769806 18.37158
+Velocity: 0.1797875
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+346: Playerpos: V2 54.799805 18.37158
+Velocity: 0.1797875
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+348: Playerpos: V2 54.829803 18.37158
+Velocity: 0.1797875
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+349: Playerpos: V2 54.859802 18.726542
+Velocity: 0.18174063
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+351: Playerpos: V2 54.8898 19.085318
+Velocity: 0.18369375
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+352: Playerpos: V2 54.9198 19.085318
+Velocity: 0.18369375
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+353: Playerpos: V2 54.9498 19.085318
+Velocity: 0.18369375
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+355: Playerpos: V2 54.979797 19.447908
+Velocity: 0.18564688
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+356: Playerpos: V2 55.009796 19.447908
+Velocity: 0.18564688
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+358: Playerpos: V2 55.039795 19.814314
+Velocity: 0.1876
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+360: Playerpos: V2 55.069794 20.184534
+Velocity: 0.18955313
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+361: Playerpos: V2 55.099792 20.558569
+Velocity: 0.19150625
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+363: Playerpos: V2 55.12979 20.558569
+Velocity: 0.19150625
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+364: Playerpos: V2 55.15979 20.558569
+Velocity: 0.19150625
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+366: Playerpos: V2 55.18979 21.3219
+Velocity: 0.1954125
+dt: 3.90625
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+367: Playerpos: V2 55.219788 21.707378
+Velocity: 0.19736563
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+369: Playerpos: V2 55.249786 21.707378
+Velocity: 0.19736563
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+370: Playerpos: V2 55.279785 22.096672
+Velocity: 0.19931875
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+372: Playerpos: V2 55.309784 22.48978
+Velocity: 0.20127188
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+373: Playerpos: V2 55.339783 22.48978
+Velocity: 0.20127188
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+375: Playerpos: V2 55.36978 22.48978
+Velocity: 0.20127188
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+376: Playerpos: V2 55.39978 22.886703
+Velocity: 0.203225
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+378: Playerpos: V2 55.42978 23.287441
+Velocity: 0.20517813
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+379: Playerpos: V2 55.459778 23.287441
+Velocity: 0.20517813
+dt: 0.0
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+381: Playerpos: V2 55.489777 23.691994
+Velocity: 0.20713125
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+382: Playerpos: V2 55.519775 24.10036
+Velocity: 0.20908438
+dt: 1.953125
+camera: V2 (-45) 0
+kInput: space: False esc: False
+
+384: Playerpos: V2 55.549774 24.10036
+Velocity: 0.20908438
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+385: Playerpos: V2 55.579773 24.10036
+Velocity: 0.20908438
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+387: Playerpos: V2 55.60977 24.512543
+Velocity: 0.2110375
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+388: Playerpos: V2 55.63977 24.92854
+Velocity: 0.21299063
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+390: Playerpos: V2 55.66977 24.92854
+Velocity: 0.21299063
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+391: Playerpos: V2 55.699768 24.92854
+Velocity: 0.21299063
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+393: Playerpos: V2 55.729767 25.34835
+Velocity: 0.21494375
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+394: Playerpos: V2 55.759766 25.34835
+Velocity: 0.21494375
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+396: Playerpos: V2 55.789764 25.34835
+Velocity: 0.21494375
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+397: Playerpos: V2 55.819763 25.771976
+Velocity: 0.21689688
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+399: Playerpos: V2 55.849762 26.199417
+Velocity: 0.21885
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+400: Playerpos: V2 55.87976 26.199417
+Velocity: 0.21885
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+402: Playerpos: V2 55.90976 26.199417
+Velocity: 0.21885
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+403: Playerpos: V2 55.93976 26.630672
+Velocity: 0.22080313
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+405: Playerpos: V2 55.969757 26.630672
+Velocity: 0.22080313
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+406: Playerpos: V2 55.999756 26.630672
+Velocity: 0.22080313
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+408: Playerpos: V2 56.029755 27.065742
+Velocity: 0.22275625
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+409: Playerpos: V2 56.059753 27.504627
+Velocity: 0.22470938
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+411: Playerpos: V2 56.089752 27.504627
+Velocity: 0.22470938
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+412: Playerpos: V2 56.11975 27.504627
+Velocity: 0.22470938
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+414: Playerpos: V2 56.14975 27.947327
+Velocity: 0.2266625
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+415: Playerpos: V2 56.17975 28.39384
+Velocity: 0.22861563
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+417: Playerpos: V2 56.209747 28.39384
+Velocity: 0.22861563
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+418: Playerpos: V2 56.239746 28.84417
+Velocity: 0.23056875
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+420: Playerpos: V2 56.269745 29.298313
+Velocity: 0.23252188
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+421: Playerpos: V2 56.299744 29.298313
+Velocity: 0.23252188
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+423: Playerpos: V2 56.329742 29.298313
+Velocity: 0.23252188
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+425: Playerpos: V2 56.35974 29.756271
+Velocity: 0.234475
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+426: Playerpos: V2 56.38974 30.218044
+Velocity: 0.23642813
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+428: Playerpos: V2 56.41974 30.218044
+Velocity: 0.23642813
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+429: Playerpos: V2 56.449738 30.218044
+Velocity: 0.23642813
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+431: Playerpos: V2 56.479736 30.683632
+Velocity: 0.23838125
+dt: 1.953125
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+432: Playerpos: V2 56.509735 30.683632
+Velocity: 0.23838125
+dt: 0.0
+camera: V2 (-44) 0
+kInput: space: False esc: False
+
+434: Playerpos: V2 56.539734 30.683632
+Velocity: 0.23838125
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+435: Playerpos: V2 56.569733 31.153034
+Velocity: 0.24033438
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+437: Playerpos: V2 56.59973 31.626251
+Velocity: 0.2422875
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+438: Playerpos: V2 56.62973 31.626251
+Velocity: 0.2422875
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+440: Playerpos: V2 56.65973 31.626251
+Velocity: 0.2422875
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+441: Playerpos: V2 56.689728 32.103283
+Velocity: 0.24424063
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+443: Playerpos: V2 56.719727 32.58413
+Velocity: 0.24619375
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+444: Playerpos: V2 56.749725 32.58413
+Velocity: 0.24619375
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+446: Playerpos: V2 56.779724 33.06879
+Velocity: 0.24814688
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+447: Playerpos: V2 56.809723 33.557266
+Velocity: 0.25010002
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+449: Playerpos: V2 56.83972 33.557266
+Velocity: 0.25010002
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+450: Playerpos: V2 56.86972 33.557266
+Velocity: 0.25010002
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+452: Playerpos: V2 56.89972 34.549477
+Velocity: 0.25400627
+dt: 3.90625
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+453: Playerpos: V2 56.929718 35.049397
+Velocity: 0.2559594
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+455: Playerpos: V2 56.959717 35.049397
+Velocity: 0.2559594
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+456: Playerpos: V2 56.989716 35.55313
+Velocity: 0.25791252
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+458: Playerpos: V2 57.019714 36.06068
+Velocity: 0.25986564
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+459: Playerpos: V2 57.049713 36.06068
+Velocity: 0.25986564
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+461: Playerpos: V2 57.079712 36.06068
+Velocity: 0.25986564
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+462: Playerpos: V2 57.10971 36.572044
+Velocity: 0.26181877
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+464: Playerpos: V2 57.13971 37.087223
+Velocity: 0.2637719
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+465: Playerpos: V2 57.16971 37.087223
+Velocity: 0.2637719
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+467: Playerpos: V2 57.199707 37.087223
+Velocity: 0.2637719
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+468: Playerpos: V2 57.229706 37.606216
+Velocity: 0.26572502
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+471: Playerpos: V2 57.259705 38.129025
+Velocity: 0.26767814
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+473: Playerpos: V2 57.289703 38.129025
+Velocity: 0.26767814
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+473: Playerpos: V2 57.319702 38.129025
+Velocity: 0.26767814
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+476: Playerpos: V2 57.3497 38.655647
+Velocity: 0.26963127
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+476: Playerpos: V2 57.3797 38.655647
+Velocity: 0.26963127
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+479: Playerpos: V2 57.4097 39.186085
+Velocity: 0.2715844
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+481: Playerpos: V2 57.439697 39.186085
+Velocity: 0.2715844
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+482: Playerpos: V2 57.469696 39.720337
+Velocity: 0.27353752
+dt: 1.953125
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+483: Playerpos: V2 57.499695 39.720337
+Velocity: 0.27353752
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+485: Playerpos: V2 57.529694 39.720337
+Velocity: 0.27353752
+dt: 0.0
+camera: V2 (-43) 0
+kInput: space: False esc: False
+
+486: Playerpos: V2 57.559692 40.258404
+Velocity: 0.27549064
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+488: Playerpos: V2 57.58969 40.800285
+Velocity: 0.27744377
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+490: Playerpos: V2 57.61969 41.34598
+Velocity: 0.2793969
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+491: Playerpos: V2 57.64969 41.34598
+Velocity: 0.2793969
+dt: 0.0
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+493: Playerpos: V2 57.679688 41.895493
+Velocity: 0.28135002
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+494: Playerpos: V2 57.709686 42.44882
+Velocity: 0.28330314
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+495: Playerpos: V2 57.739685 42.44882
+Velocity: 0.28330314
+dt: 0.0
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+499: Playerpos: V2 57.769684 43.57073
+Velocity: 0.2872094
+dt: 3.90625
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+502: Playerpos: V2 57.799683 44.135498
+Velocity: 0.28916252
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+502: Playerpos: V2 57.82968 44.135498
+Velocity: 0.28916252
+dt: 0.0
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+506: Playerpos: V2 57.85968 45.280296
+Velocity: 0.29306877
+dt: 3.90625
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+509: Playerpos: V2 57.88968 47.03183
+Velocity: 0.29892814
+dt: 5.859375
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+511: Playerpos: V2 57.919678 47.619488
+Velocity: 0.30088127
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+514: Playerpos: V2 57.949677 48.21096
+Velocity: 0.3028344
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+516: Playerpos: V2 57.979675 48.806248
+Velocity: 0.30478752
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+518: Playerpos: V2 58.009674 49.40535
+Velocity: 0.30674064
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+521: Playerpos: V2 58.039673 50.008266
+Velocity: 0.30869377
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+523: Playerpos: V2 58.06967 50.614998
+Velocity: 0.3106469
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+525: Playerpos: V2 58.09967 51.225544
+Velocity: 0.31260002
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+528: Playerpos: V2 58.12967 51.839905
+Velocity: 0.31455314
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+530: Playerpos: V2 58.159668 52.45808
+Velocity: 0.31650627
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+532: Playerpos: V2 58.189667 53.08007
+Velocity: 0.3184594
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+535: Playerpos: V2 58.219666 53.705875
+Velocity: 0.32041252
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+537: Playerpos: V2 58.249664 54.335495
+Velocity: 0.32236564
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+540: Playerpos: V2 58.279663 55.609993
+Velocity: 0.3262719
+dt: 3.90625
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+542: Playerpos: V2 58.30966 56.89975
+Velocity: 0.33017814
+dt: 3.90625
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+545: Playerpos: V2 58.33966 57.548443
+Velocity: 0.33213127
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+547: Playerpos: V2 58.36966 58.20095
+Velocity: 0.3340844
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+550: Playerpos: V2 58.39966 58.857273
+Velocity: 0.33603752
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+552: Playerpos: V2 58.429657 59.51741
+Velocity: 0.33799064
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+554: Playerpos: V2 58.459656 60.181362
+Velocity: 0.33994377
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+557: Playerpos: V2 58.489655 61.524525
+Velocity: 0.34385002
+dt: 3.90625
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+559: Playerpos: V2 58.519653 62.19992
+Velocity: 0.34580314
+dt: 1.953125
+camera: V2 (-42) 0
+kInput: space: False esc: False
+
+562: Playerpos: V2 58.549652 62.87913
+Velocity: 0.34775627
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+564: Playerpos: V2 58.57965 63.562157
+Velocity: 0.3497094
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+567: Playerpos: V2 58.60965 64.94347
+Velocity: 0.35361564
+dt: 3.90625
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+569: Playerpos: V2 58.63965 65.63794
+Velocity: 0.35556877
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+572: Playerpos: V2 58.669647 67.04214
+Velocity: 0.35947502
+dt: 3.90625
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+574: Playerpos: V2 58.699646 67.748055
+Velocity: 0.36142814
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+577: Playerpos: V2 58.729645 68.45779
+Velocity: 0.36338127
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+579: Playerpos: V2 58.759644 69.17133
+Velocity: 0.3653344
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+582: Playerpos: V2 58.789642 69.888695
+Velocity: 0.36728752
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+584: Playerpos: V2 58.81964 70.60987
+Velocity: 0.36924064
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+587: Playerpos: V2 58.84964 71.33486
+Velocity: 0.37119377
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+589: Playerpos: V2 58.87964 72.06367
+Velocity: 0.3731469
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+592: Playerpos: V2 58.909637 72.79629
+Velocity: 0.37510002
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+594: Playerpos: V2 58.939636 73.53272
+Velocity: 0.37705314
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+597: Playerpos: V2 58.969635 74.27297
+Velocity: 0.37900627
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+599: Playerpos: V2 58.999634 75.01704
+Velocity: 0.3809594
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+602: Playerpos: V2 59.029633 75.764915
+Velocity: 0.38291252
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+604: Playerpos: V2 59.05963 76.51661
+Velocity: 0.38486564
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+607: Playerpos: V2 59.08963 77.27212
+Velocity: 0.38681877
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+609: Playerpos: V2 59.11963 78.03144
+Velocity: 0.3887719
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+612: Playerpos: V2 59.149628 78.79458
+Velocity: 0.39072502
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+614: Playerpos: V2 59.179626 79.56153
+Velocity: 0.39267814
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+617: Playerpos: V2 59.209625 80.3323
+Velocity: 0.39463127
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+619: Playerpos: V2 59.239624 81.10688
+Velocity: 0.3965844
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+622: Playerpos: V2 59.269623 81.88528
+Velocity: 0.39853752
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+624: Playerpos: V2 59.29962 82.66749
+Velocity: 0.40049064
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+627: Playerpos: V2 59.32962 83.453514
+Velocity: 0.40244377
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+629: Playerpos: V2 59.35962 84.243355
+Velocity: 0.4043969
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+632: Playerpos: V2 59.389618 85.03701
+Velocity: 0.40635002
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+634: Playerpos: V2 59.419617 85.83448
+Velocity: 0.40830314
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+637: Playerpos: V2 59.449615 86.635765
+Velocity: 0.41025627
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+639: Playerpos: V2 59.479614 87.440865
+Velocity: 0.4122094
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+642: Playerpos: V2 59.509613 88.24978
+Velocity: 0.41416252
+dt: 1.953125
+camera: V2 (-41) 0
+kInput: space: False esc: False
+
+644: Playerpos: V2 59.53961 89.06251
+Velocity: 0.41611564
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+647: Playerpos: V2 59.56961 89.87905
+Velocity: 0.41806877
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+649: Playerpos: V2 59.59961 90.69941
+Velocity: 0.4200219
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+652: Playerpos: V2 59.62961 92.35538
+Velocity: 0.42392814
+dt: 3.90625
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+654: Playerpos: V2 59.659607 93.18718
+Velocity: 0.42588127
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+657: Playerpos: V2 59.689606 94.0228
+Velocity: 0.4278344
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+659: Playerpos: V2 59.719604 94.86223
+Velocity: 0.42978752
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+662: Playerpos: V2 59.749603 95.705475
+Velocity: 0.43174064
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+664: Playerpos: V2 59.779602 96.552536
+Velocity: 0.43369377
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+667: Playerpos: V2 59.8096 97.40341
+Velocity: 0.4356469
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+669: Playerpos: V2 59.8396 98.2581
+Velocity: 0.43760002
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+672: Playerpos: V2 59.8696 99.11661
+Velocity: 0.43955314
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+674: Playerpos: V2 59.899597 100.84887
+Velocity: 0.4434594
+dt: 3.90625
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+677: Playerpos: V2 59.929596 101.71882
+Velocity: 0.44541252
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+679: Playerpos: V2 59.959595 103.47397
+Velocity: 0.44931877
+dt: 3.90625
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+682: Playerpos: V2 59.989594 104.35536
+Velocity: 0.4512719
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+684: Playerpos: V2 60.019592 105.24057
+Velocity: 0.45322502
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+687: Playerpos: V2 60.04959 105.24057
+Velocity: 0.45322502
+dt: 0.0
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+689: Playerpos: V2 60.07959 106.12959
+Velocity: 0.45517814
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+692: Playerpos: V2 60.10959 107.02243
+Velocity: 0.45713127
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+694: Playerpos: V2 60.139587 107.91908
+Velocity: 0.4590844
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+697: Playerpos: V2 60.169586 108.81955
+Velocity: 0.46103752
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+699: Playerpos: V2 60.199585 109.72383
+Velocity: 0.46299064
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+702: Playerpos: V2 60.229584 110.63193
+Velocity: 0.46494377
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+704: Playerpos: V2 60.259583 111.54384
+Velocity: 0.4668969
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+707: Playerpos: V2 60.28958 112.459564
+Velocity: 0.46885002
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+709: Playerpos: V2 60.31958 114.30627
+Velocity: 0.47275627
+dt: 3.90625
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+712: Playerpos: V2 60.34958 115.23344
+Velocity: 0.4747094
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+714: Playerpos: V2 60.379578 117.10303
+Velocity: 0.47861564
+dt: 3.90625
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+717: Playerpos: V2 60.409576 118.04164
+Velocity: 0.48056877
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+719: Playerpos: V2 60.439575 118.98407
+Velocity: 0.4825219
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+722: Playerpos: V2 60.469574 119.93031
+Velocity: 0.48447502
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+724: Playerpos: V2 60.499573 120.88037
+Velocity: 0.48642814
+dt: 1.953125
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+727: Playerpos: V2 60.52957 122.79574
+Velocity: 0.4903344
+dt: 3.90625
+camera: V2 (-40) 0
+kInput: space: False esc: False
+
+729: Playerpos: V2 60.55957 123.75724
+Velocity: 0.49228752
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+732: Playerpos: V2 60.58957 124.72256
+Velocity: 0.49424064
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+734: Playerpos: V2 60.619568 125.69169
+Velocity: 0.49619377
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+737: Playerpos: V2 60.649567 127.6452
+Velocity: 0.5001
+dt: 3.90625
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+739: Playerpos: V2 60.679565 128.62578
+Velocity: 0.50205314
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+742: Playerpos: V2 60.709564 129.61017
+Velocity: 0.50400627
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+745: Playerpos: V2 60.739563 130.59837
+Velocity: 0.5059594
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+747: Playerpos: V2 60.76956 131.5904
+Velocity: 0.5079125
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+749: Playerpos: V2 60.79956 132.58623
+Velocity: 0.50986564
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+752: Playerpos: V2 60.82956 133.58588
+Velocity: 0.51181877
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+754: Playerpos: V2 60.85956 134.58934
+Velocity: 0.5137719
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+757: Playerpos: V2 60.889557 135.59662
+Velocity: 0.515725
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+759: Playerpos: V2 60.919556 136.60771
+Velocity: 0.51767814
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+762: Playerpos: V2 60.949554 137.62262
+Velocity: 0.51963127
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+764: Playerpos: V2 60.979553 138.64134
+Velocity: 0.5215844
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+767: Playerpos: V2 61.009552 139.66388
+Velocity: 0.5235375
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+769: Playerpos: V2 61.03955 140.69023
+Velocity: 0.52549064
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+772: Playerpos: V2 61.06955 141.7204
+Velocity: 0.52744377
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+774: Playerpos: V2 61.09955 142.75438
+Velocity: 0.5293969
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+777: Playerpos: V2 61.129547 143.79218
+Velocity: 0.53135
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+779: Playerpos: V2 61.159546 144.83379
+Velocity: 0.53330314
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+782: Playerpos: V2 61.189545 145.87921
+Velocity: 0.53525627
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+784: Playerpos: V2 61.219543 146.92845
+Velocity: 0.5372094
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+787: Playerpos: V2 61.249542 147.9815
+Velocity: 0.5391625
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+789: Playerpos: V2 61.27954 149.03838
+Velocity: 0.54111564
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+792: Playerpos: V2 61.30954 150.09906
+Velocity: 0.54306877
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+794: Playerpos: V2 61.33954 152.23569
+Velocity: 0.546975
+dt: 3.90625
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+797: Playerpos: V2 61.369537 153.30782
+Velocity: 0.54892814
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+799: Playerpos: V2 61.399536 154.38376
+Velocity: 0.55088127
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+802: Playerpos: V2 61.429535 155.46352
+Velocity: 0.5528344
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+804: Playerpos: V2 61.459534 156.54709
+Velocity: 0.5547875
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+807: Playerpos: V2 61.489532 157.63448
+Velocity: 0.55674064
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+809: Playerpos: V2 61.51953 158.72568
+Velocity: 0.55869377
+dt: 1.953125
+camera: V2 (-39) 0
+kInput: space: False esc: False
+
+812: Playerpos: V2 61.54953 159.8207
+Velocity: 0.5606469
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+814: Playerpos: V2 61.57953 160.91953
+Velocity: 0.5626
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+817: Playerpos: V2 61.609528 162.02217
+Velocity: 0.56455314
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+819: Playerpos: V2 61.639526 163.12863
+Velocity: 0.56650627
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+822: Playerpos: V2 61.669525 165.35681
+Velocity: 0.5704125
+dt: 3.90625
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+824: Playerpos: V2 61.699524 166.47472
+Velocity: 0.57236564
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+827: Playerpos: V2 61.729523 167.59644
+Velocity: 0.57431877
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+829: Playerpos: V2 61.75952 168.72197
+Velocity: 0.5762719
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+832: Playerpos: V2 61.78952 169.85132
+Velocity: 0.578225
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+834: Playerpos: V2 61.81952 170.98448
+Velocity: 0.58017814
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+837: Playerpos: V2 61.849518 172.12146
+Velocity: 0.58213127
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+839: Playerpos: V2 61.879517 173.26225
+Velocity: 0.5840844
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+842: Playerpos: V2 61.909515 174.40686
+Velocity: 0.5860375
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+844: Playerpos: V2 61.939514 175.55528
+Velocity: 0.58799064
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+847: Playerpos: V2 61.969513 176.70752
+Velocity: 0.58994377
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+849: Playerpos: V2 61.99951 177.86357
+Velocity: 0.5918969
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+852: Playerpos: V2 62.02951 180.19093
+Velocity: 0.59580314
+dt: 3.90625
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+855: Playerpos: V2 62.05951 181.35843
+Velocity: 0.59775627
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+857: Playerpos: V2 62.089508 182.52974
+Velocity: 0.5997094
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+860: Playerpos: V2 62.119507 183.70486
+Velocity: 0.6016625
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+862: Playerpos: V2 62.149506 184.8838
+Velocity: 0.60361564
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+865: Playerpos: V2 62.179504 186.06656
+Velocity: 0.60556877
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+867: Playerpos: V2 62.209503 187.25313
+Velocity: 0.6075219
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+870: Playerpos: V2 62.239502 188.44351
+Velocity: 0.609475
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+872: Playerpos: V2 62.2695 189.63771
+Velocity: 0.61142814
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+875: Playerpos: V2 62.2995 190.83572
+Velocity: 0.61338127
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+877: Playerpos: V2 62.3295 192.03755
+Velocity: 0.6153344
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+880: Playerpos: V2 62.359497 194.45647
+Velocity: 0.61924064
+dt: 3.90625
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+882: Playerpos: V2 62.389496 195.66974
+Velocity: 0.62119377
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+885: Playerpos: V2 62.419495 196.88683
+Velocity: 0.6231469
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+887: Playerpos: V2 62.449493 198.10773
+Velocity: 0.6251
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+889: Playerpos: V2 62.479492 199.33244
+Velocity: 0.62705314
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+892: Playerpos: V2 62.50949 200.56097
+Velocity: 0.62900627
+dt: 1.953125
+camera: V2 (-38) 0
+kInput: space: False esc: False
+
+894: Playerpos: V2 62.53949 201.79332
+Velocity: 0.6309594
+dt: 1.953125
+camera: V2 (-37) 0
+kInput: space: False esc: False
+
+897: Playerpos: V2 62.56949 203.02948
+Velocity: 0.6329125
+dt: 1.953125
+camera: V2 (-37) 0
+kInput: space: False esc: False
+
+900: Playerpos: V2 62.599487 204.26945
+Velocity: 0.63486564
+dt: 1.953125
+camera: V2 (-37) 0
+kInput: space: False esc: True
+
