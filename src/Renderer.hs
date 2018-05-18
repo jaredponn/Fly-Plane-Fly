@@ -1,6 +1,7 @@
 module Renderer where
 
 import Foreign.C.Types
+import Walls
 import SDL 
 
 type Time = Float
@@ -9,10 +10,12 @@ class Monad m => Renderer m where
         drawScreen :: m ()
         drawBg :: m ()
         drawPlayer :: m ()
-        drawWall :: m ()
+
+        drawWalls :: m ()
+        wallToSDLRect :: Wall -> m ([Rectangle CInt])
 
         -- wrapper for SDL.present renderer
-        presentwr :: m()
+        presentRenderer :: m()
 
         moveCameraBy :: V2 CInt -> m ()
         setCameraPos :: V2 Float -> m ()

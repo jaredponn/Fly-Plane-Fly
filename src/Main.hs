@@ -9,6 +9,7 @@ import Foreign.C.Types
 import Control.Monad (unless)
 
 import Game
+import Walls
 
 main :: IO ()
 main = do
@@ -17,17 +18,23 @@ main = do
         renderer <- SDL.createRenderer window (-1) SDL.defaultRenderer
         let cfg = Config { cWindow = window
                          , cRenderer = renderer
+                         , cWindowSize = (screenWidth, screenHeight)
 
                          , cGrav = 0.001
-                         , cJumpHeight = (-1)
-                         , cRightVel = 0.03
+                         , cJumpHeight = (-0.5)
+                         , cRightVel = 0.3
                          , cCamOffset = (-100)
-                         , cResources = undefined}
+                         , cResources = undefined
+                         , cWallConf = wallConf}
+
+        wallstream <- createWallStream wallConf
+
         let vars = Vars { playerPos  = V2 50 2
                         , vel = 0.0001
                         , dt = 0
                         , camera = V2 0 0
-                        , kInput = undefined}
+                        , kInput = undefined
+                        , wallStream = wallstream}
         runMahppyBird cfg vars loop
 
         return ()
@@ -36,18 +43,9 @@ screenWidth, screenHeight :: CInt
 screenWidth = 1280
 screenHeight = 720
 
-{- loop :: SDL.Renderer -> IO () -}
-{- loop renderer = do -}
-{-         events <- SDL.pollEvents -}
-{-         let eventIsQPress event =  -}
-{-                     case SDL.eventPayload event of -}
-{-                       SDL.KeyboardEvent keyboardEvent -> -}
-{-                               SDL.keyboardEventKeyMotion keyboardEvent == SDL.Pressed && -}
-{-                               SDL.keysymKeycode (SDL.keyboardEventKeysym keyboardEvent) == SDL.KeycodeQ -}
-{-                       _ -> False -}
-{-         let qPressed = any eventIsQPress events -}
-{-  -}
-{-         SDL.rendererDrawColor renderer $= SDL.V4 0 0 255 255 -}
-{-         SDL.clear renderer -}
-{-         SDL.present renderer -}
-{-         unless qPressed (loop renderer) -}
+wallConf :: WallConfig
+wallConf =  WallConfig { allUppperWallRngBounds = (0, 0.7)
+                           , allGapSize = 0.3
+                           , allWallWidth = 200
+                           , allWallSpacing = 225
+                           , startingPos = 800 }
