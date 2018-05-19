@@ -25,13 +25,15 @@ main = do
                          , cRightVel = 0.3
                          , cCamOffset = (-100)
                          , cResources = undefined
-                         , cWallConf = wallConf}
+                         , cWallConf = wallConf
+                         , cPlayerSize = V2 20 20}
 
         wallstream <- createWallStream wallConf
 
         let vars = Vars { playerPos  = V2 50 2
                         , vel = 0.0001
                         , dt = 0
+                        , score = 0
                         , camera = V2 0 0
                         , kInput = undefined
                         , wallStream = wallstream}
@@ -45,7 +47,8 @@ screenHeight = 720
 
 wallConf :: WallConfig
 wallConf =  WallConfig { allUppperWallRngBounds = (0, 0.7)
-                           , allGapSize = 0.3
-                           , allWallWidth = 200
-                           , allWallSpacing = 225
+                           , allGapSize = 0.25
+                           , allWallWidth = 100
+                           , allWallSpacing = 175
                            , startingPos = 800 }
+

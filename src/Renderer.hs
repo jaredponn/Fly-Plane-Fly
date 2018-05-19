@@ -14,6 +14,9 @@ class Monad m => Renderer m where
         drawWalls :: m ()
         wallToSDLRect :: Wall -> m ([Rectangle CInt])
 
+        -- Just used for debugging
+        drawRect :: (V2 Float, V2 Float) -> m ()
+
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
 

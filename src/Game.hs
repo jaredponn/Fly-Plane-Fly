@@ -37,6 +37,7 @@ import Gravity
 import Movement
 import Walls
 import WallManager
+import PlayerManager
 
 -- ReaderT Environment Monad ReturnedVal
 newtype MahppyBird a = MahppyBird (ReaderT Config (StateT Vars IO) a) 
@@ -53,12 +54,14 @@ data Config = Config { cWindow :: SDL.Window
                      , cJumpHeight :: {-# UNPACK #-} !Float
                      , cCamOffset :: {-# UNPACK #-} !Float
                      , cRightVel :: {-# UNPACK #-} !Float
-                     , cWallConf :: {-# UNPACK #-} !WallConfig}
+                     , cWallConf :: {-# UNPACK #-} !WallConfig
+                     , cPlayerSize :: {-# UNPACK #-} !(V2 Float) }
 
 data Resources = Resources
 
 data Vars = Vars { playerPos :: {-# UNPACK #-} !(V2 Float)
                  , vel :: {-# UNPACK #-} !Float
+                 , score ::{-# UNPACK #-} !Int
                  , dt :: {-# UNPACK #-} !Time
                  , camera :: {-# UNPACK #-} !(V2 CInt)
                  , kInput :: Input 
@@ -85,14 +88,18 @@ loop :: (MonadReader Config m
         , HasInput m
         , HasGravity m
         , HasMovement m
-        , WallManager m) 
+        , WallManager m
+        , PlayerManager m) 
         => m ()
 loop = do
         input <- acquireInput
         renderScreen
         updatePhysics input
-        -- collisions
+
+        collisionTest
         updateWalls
+        updateScore
+
         gameState <- get
         logToFile "/home/jared/Programs/mahppybird/log.txt" . show $ gameState
         unless (isEsc input) loop 
@@ -121,12 +128,35 @@ updatePhysics input = do
         rightVel <- asks cRightVel
         translate $ V2 rightVel 0
 
-updateWalls :: (MonadState Vars m, MonadReader Config m, WallManager m) => m ()
+updateWalls :: (PlayerManager m,  MonadReader Config m, WallManager m) => m ()
 updateWalls = do
-        V2 x _ <- gets playerPos
-        fstWall <- Stream.head <$> gets wallStream
-        if xPos fstWall < x - 400
+        V2 x _ <- getPlayerPos 
+        fstWall <- getFirstWall
+        wallwidth <- wallWidth <$> getFirstWall
+        camoffset <- asks cCamOffset
+        if xPos fstWall <= x - (wallwidth + abs camoffset)
            then popWall
+           else return ()
+
+collisionTest :: (WallManager m, PlayerManager m, Logger m) => m ()
+collisionTest = do
+        playerAabb <- getPlayerAabb
+        entireWallAabb <- getEntireFirstWallAabb
+        gapAabb <- getFirstWallGapAabb
+        if (hitTestX playerAabb entireWallAabb) && (not (hitTest playerAabb gapAabb))
+           then logText "you lose"
+           else return ()
+
+updateScore :: (Logger m, PlayerManager m, WallManager m, MonadState Vars m) => m ()
+updateScore = do
+        V2 xPlayer _ <- getPlayerPos 
+        fstWall <- getFirstWall
+        wallwidth <- wallWidth <$> getFirstWall
+        currscore <- gets score
+        let centerOfWallX = xPos fstWall + wallwidth / 2
+        if (abs (xPlayer - centerOfWallX)) <= 0.15
+           then do modify (\v -> v {score = currscore + 1})
+                   gets score >>= logText . show 
            else return ()
 
 instance Logger MahppyBird where
@@ -175,34 +205,40 @@ instance Renderer MahppyBird where
                 SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255
                 SDL.clear renderer
 
-        drawPlayer :: (Logger m, Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
+        drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => m ()
         drawPlayer = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 255 0 0 255
-                pPos <- gets playerPos >>= toScreenCord
-                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos) (SDL.V2 20 20)
+                (pPos, pSize) <- getPlayerAttributes
+                pPos' <- toScreenCord pPos
+                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos') (SDL.V2 20 20)
 
-        -- TODO
-        drawWalls :: (Logger m, Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
+        drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 0 255 0 255
                 walls <- getWalls >>= mapM wallToSDLRect
                 mapM_ (mapM_ (SDL.fillRect renderer . Just)) walls
 
+        -- Mainly used for debugging
+        drawRect :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => (V2 Float, V2 Float) -> m ()
+        drawRect (pos, transform) = do
+                renderer <- asks cRenderer 
+                SDL.rendererDrawColor renderer $= SDL.V4 0 0 255 255
+                pos' <- toScreenCord pos
+                let transform' = (\(V2 a b) -> (V2 (round a) (round b))) transform
+                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pos') transform'
+                presentRenderer
 
-        -- TODO
-        wallToSDLRect :: (Renderer m, MonadReader Config m, MonadState Vars m) => Wall -> m ([SDL.Rectangle CInt])
+        wallToSDLRect :: (Renderer m, WallManager m) => Wall -> m ([SDL.Rectangle CInt])
         wallToSDLRect wall = do
-                (_, winH) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize
-                xPosScreen <- toScreenCord $ V2 (xPos wall) (0 :: Float)
-                let topPoint = xPosScreen
-                    topHeight = round $ winH * upperWall wall 
-                    botPoint = xPosScreen + (V2 0 (round ((upperWall wall + gap wall) * winH)))
-                    botHeight = round $ winH * lowerWall wall 
-                    wallwidth = round $ wallWidth wall
-                return $ [ SDL.Rectangle (SDL.P topPoint) (SDL.V2 wallwidth topHeight)
-                         , SDL.Rectangle (SDL.P botPoint) (SDL.V2 wallwidth botHeight) ]
+                ((topPoint, topLengths), (botPoint, botLengths)) <- transformToWorldCoord wall
+                topPoint' <- toScreenCord topPoint
+                botPoint' <- toScreenCord botPoint
+                let (topLengths' :: V2 CInt) =  (\(V2 a b) -> (V2 (round a) (round b))) topLengths
+                    (botLengths' :: V2 CInt) =  (\(V2 a b) -> (V2 (round a) (round b))) botLengths
+                return $ [ SDL.Rectangle (SDL.P topPoint') topLengths'
+                         , SDL.Rectangle (SDL.P botPoint') botLengths' ]
 
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()
         presentRenderer = asks cRenderer >>= SDL.present
@@ -256,8 +292,8 @@ instance HasMovement MahppyBird where
                 modify (\v -> v {playerPos = curPos + n})
 
 instance WallManager MahppyBird where
-        transformToWorldCoord :: (MonadReader Config m) => Wall -> m ( (V2 Float, (Float, Float))
-                                                                     , (V2 Float, (Float, Float)))
+        transformToWorldCoord :: (MonadReader Config m) => Wall -> m ( (V2 Float, V2 Float) 
+                                                                     , (V2 Float, V2 Float) )
         transformToWorldCoord wall = do
                 (_, winH) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize
                 let xPosition = V2 (xPos wall) 0
@@ -266,8 +302,8 @@ instance WallManager MahppyBird where
                     botPoint = xPosition + (V2 0 ((upperWall wall + gap wall) * winH))
                     botHeight = winH * lowerWall wall 
                     wallwidth = wallWidth wall
-                return ( (topPoint, (wallwidth, topHeight))
-                       , (botPoint, (wallwidth, botHeight)))
+                return ( (topPoint, V2 wallwidth topHeight)
+                       , (botPoint, V2 wallwidth botHeight))
 
 
         getWalls :: (MonadReader Config m, MonadState Vars m) => m ([Wall])
@@ -280,11 +316,33 @@ instance WallManager MahppyBird where
         getFirstWall :: (MonadState Vars m) => m (Wall)
         getFirstWall = Stream.head <$> gets wallStream 
 
-        getFirstWallAabb :: (MonadState Vars m) => m (Aabb)
-        getFirstWallAabb = undefined
+        getEntireFirstWallAabb :: (WallManager m) => m Aabb
+        getEntireFirstWallAabb = do
+                ((V2 topX topY, _), (V2 botX botY, V2 botwidth botheight)) <- getFirstWall >>= transformToWorldCoord
+                return $ Aabb (V2 topX topY) (V2 (botX + botwidth) (botY + botheight))
+
+        getFirstWallGapAabb :: (WallManager m, Renderer m) => m (Aabb)
+        getFirstWallGapAabb = do 
+                ((V2 topX _, V2 _ topheight), (V2 botX botY, V2 botwidth _))  <- getFirstWall >>= transformToWorldCoord
+                return $ Aabb (V2 topX topheight) (V2 (botwidth + botX) botY )
+
 
         popWall :: MonadState Vars m => m ()
         popWall = do
                 wallstream <- gets wallStream
                 modify (\v -> v { wallStream = Stream.tail wallstream } )
 
+instance PlayerManager MahppyBird where
+        getPlayerPos ::(MonadState Vars m) => m (V2 Float)
+        getPlayerPos = gets playerPos
+
+        getPlayerAttributes ::(MonadState Vars m, MonadReader Config m) => m (V2 Float, V2 Float)
+        getPlayerAttributes = do
+                ppos <- gets playerPos
+                psize <- asks cPlayerSize
+                return (ppos, psize)
+
+        getPlayerAabb :: (PlayerManager m) => m (Aabb)
+        getPlayerAabb = do
+                (V2 x y, V2 wlength hlength) <- getPlayerAttributes
+                return $ Aabb (V2 x y) (V2 (x + wlength) (y + hlength))
