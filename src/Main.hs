@@ -39,7 +39,7 @@ main = do
                         , kInput = undefined
                         , wallStream = wallstream
 
-                         , cGrav = 0.001
+                         , cGrav = 0.002
                          , cJumpHeight = (-0.5)
                          , cRightVel = 0.3
                          , cCamOffset = (-100)

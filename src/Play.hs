@@ -234,17 +234,7 @@ instance Renderer PlayGame where
                 return $ [ SDL.Rectangle (SDL.P topPoint) lengths
                          , SDL.Rectangle (SDL.P botPoint) lengths ]
 
-        {- wallToSDLRect :: (Renderer m, WallManager m) => Wall -> m ([SDL.Rectangle CInt]) -}
-        {- wallToSDLRect wall = do -}
-        {-         ((topPoint, topLengths), (botPoint, botLengths)) <- transformToWorldCoord wall -}
-        {-         topPoint' <- toScreenCord topPoint -}
-        {-         botPoint' <- toScreenCord botPoint -}
-        {-         let (topLengths' :: V2 CInt) =  (\(V2 a b) -> (V2 (round a) (round b))) topLengths -}
-        {-             (botLengths' :: V2 CInt) =  (\(V2 a b) -> (V2 (round a) (round b))) botLengths -}
-        {-         return $ [ SDL.Rectangle (SDL.P topPoint') topLengths' -}
-        {-                  , SDL.Rectangle (SDL.P botPoint') botLengths' ] -}
-
-        -- Mainly used for debugging
+        -- use only for debugging
         drawRect :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => (V2 Float, V2 Float) -> m ()
         drawRect (pos, transform) = do
                 renderer <- asks cRenderer 
@@ -306,32 +296,6 @@ instance HasMovement PlayGame where
                 modify (\v -> v {playerPos = curPos + n})
 
 instance WallManager PlayGame where
-        -- DEPRECATED
-        transformToWorldCoord :: (MonadReader Config m) => Wall -> m ( (V2 Float, V2 Float) 
-                                                                     , (V2 Float, V2 Float) )
-        transformToWorldCoord wall = do
-                (_, winH) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize
-                let xPosition = V2 (xPos wall) 0
-                    topPoint = xPosition
-                    topHeight = winH * upperWall wall 
-                    botPoint = xPosition + (V2 0 ((upperWall wall + gap wall) * winH))
-                    botHeight = winH * lowerWall wall 
-                    wallwidth = wallWidth wall
-                return ( (topPoint, V2 wallwidth topHeight)
-                       , (botPoint, V2 wallwidth botHeight))
-
-        -- DEPRECATED
-        getEntireFirstWallAabb :: (WallManager m) => m Aabb
-        getEntireFirstWallAabb = do
-                ((V2 topX topY, _), (V2 botX botY, V2 botwidth botheight)) <- getFirstWall >>= transformToWorldCoord
-                return $ Aabb (V2 topX topY) (V2 (botX + botwidth) (botY + botheight))
-
-        -- DEPRECATED
-        getFirstWallGapAabb :: (WallManager m, Renderer m) => m (Aabb)
-        getFirstWallGapAabb = do 
-                ((V2 topX _, V2 _ topheight), (V2 botX botY, V2 botwidth _))  <- getFirstWall >>= transformToWorldCoord
-                return $ Aabb (V2 topX topheight) (V2 (botwidth + botX) botY )
-
         transformWallLengthsToWorldVals :: (MonadReader Config m) => Wall -> m Wall
         transformWallLengthsToWorldVals wall = do
                 (_, winH) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize
