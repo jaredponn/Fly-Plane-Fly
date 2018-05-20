@@ -7,7 +7,7 @@ import SDL
 type Time = Float
 
 class Monad m => Renderer m where
-        drawScreen :: m ()
+        drawObjects :: [m ()] -> m ()
         drawBg :: m ()
         drawPlayer :: m ()
 
@@ -24,5 +24,5 @@ class Monad m => Renderer m where
         setCameraPos :: V2 Float -> m ()
         toScreenCord :: V2 Float -> m (V2 CInt)
 
-roundCoord :: V2 Float -> V2 CInt
-roundCoord (V2 a b) = V2 (CInt $ round a) (CInt $ round b)
+roundV2 :: V2 Float -> V2 CInt
+roundV2 (V2 a b) = V2 (CInt $ round a) (CInt $ round b)

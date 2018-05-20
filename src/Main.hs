@@ -39,12 +39,12 @@ main = do
                         , kInput = undefined
                         , wallStream = wallstream
 
-                         , cGrav = 0.002
-                         , cJumpHeight = (-0.5)
+                         , cGrav = 2900
+                         , cJumpHeight = (-700)
                          , cRightVel = 0.3
                          , cCamOffset = (-100)
                          , cWallConf = wallConf
-                         , cPlayerSize = V2 20 20}
+                         , cPlayerSize = V2 30 30}
         runPlayGame cfg vars loop
 
         TTF.quit

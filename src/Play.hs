@@ -102,6 +102,7 @@ loop = do
 
         playState <- get
         logToFile "/home/jared/Programs/mahppybird/log.txt" . show $ playState
+        {- logText . show $ dt playState -}
         unless (isEsc input) loop 
 
 acquireInput :: (Logger m, HasInput m, MonadState Vars m) => m Input
@@ -111,7 +112,7 @@ acquireInput = do
 
 renderScreen :: (Logger m, Renderer m, MonadIO m, MonadState Vars m) => m ()
 renderScreen = do
-        drawScreen
+        drawObjects [drawBg, drawWalls, drawPlayer]
         V2 x _ <- gets playerPos
         camOffset <- gets cCamOffset
         setCameraPos $ V2 (x + camOffset) 0
@@ -138,7 +139,7 @@ updateWalls = do
            then popWall
            else return ()
 
-collisionTest :: (WallManager m, PlayerManager m, Logger m) => m ()
+collisionTest :: (WallManager m, PlayerManager m, Logger m, ScoreManager m) => m ()
 collisionTest = do
         playerAabb <- getPlayerAabb
         upperWallAabb <- floorAabb <$> getFirstUpperWallAabb
@@ -146,6 +147,8 @@ collisionTest = do
         if (hitTestAbove playerAabb upperWallAabb) || (hitTestBelow playerAabb lowerWallAabb)
            then do 
                    logText "you lose"
+                   getScore >>= logText . show 
+                   resetGame
            else return ()
 
 updateScore :: (Logger m, PlayerManager m, WallManager m, ScoreManager m) => m ()
@@ -157,8 +160,14 @@ updateScore = do
         let centerOfWallX = xPos fstWall + wallwidth / 2
         if (abs (xPlayer - centerOfWallX)) <= 0.15
            then do incrementScore
-                   getScore >>= logText . show 
+                   getScore >>= logText . show
            else return ()
+
+resetGame :: (WallManager m, PlayerManager m, ScoreManager m) => m ()
+resetGame = do
+        resetScore
+        resetWalls
+        resetPlayerPos
 
 instance Logger PlayGame where
         logText :: (MonadIO m) => String -> m ()
@@ -188,16 +197,14 @@ instance HasInput PlayGame where
 
 instance Renderer PlayGame where
         -- http://headerphile.com/sdl2/sdl2-part-3-drawing-rectangles/
-        drawScreen :: (Renderer m, MonadIO m, MonadState Vars m) => m ()
-        drawScreen = do
-                t0 <- SDL.time
-                drawBg
-                drawPlayer
-                drawWalls
+        drawObjects :: (Renderer m, MonadIO m, MonadState Vars m) => [m () ] -> m ()
+        drawObjects drawactions = do
+                t0 <- fromIntegral . toInteger <$> SDL.ticks
+                mapM_ id drawactions
                 presentRenderer
                 liftIO $ threadDelay 2000 -- fixes the weird speed ups sometimes
-                t1 <- SDL.time
-                modify (\v -> v { dt = (t1 - t0) * 1000 } )
+                t1 <- fromIntegral . toInteger <$> SDL.ticks
+                modify (\v -> v { dt = (t1 - t0) / 1000 } )
                 return ()
 
         drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
@@ -212,13 +219,13 @@ instance Renderer PlayGame where
                 SDL.rendererDrawColor renderer $= SDL.V4 255 0 0 255
                 (pPos, pSize) <- getPlayerAttributes
                 pPos' <- toScreenCord pPos
-                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos') (SDL.V2 20 20)
+                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos') (roundV2 pSize)
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 0 255 0 255
-                walls <- getWalls >>= mapM wallToSDLRect
+                walls <- getWallsInScreen >>= mapM wallToSDLRect
                 mapM_ (mapM_ (SDL.fillRect renderer . Just)) walls
 
         -- uses the dimensions from the size of the screen and translates it so that it conforms to the specifcation of the Wall
@@ -249,7 +256,7 @@ instance Renderer PlayGame where
 
         toScreenCord :: (MonadState Vars m) => V2 Float -> m (V2 CInt)
         toScreenCord wPos = do
-                let pos = roundCoord wPos
+                let pos = roundV2 wPos
                 (cam :: V2 CInt) <- gets camera 
                 return $ pos - cam
 
@@ -260,7 +267,7 @@ instance Renderer PlayGame where
 
         setCameraPos :: (MonadState Vars m) => V2 Float -> m ()
         setCameraPos cam = do
-                modify (\v -> v { camera  = roundCoord cam } )
+                modify (\v -> v { camera  = roundV2 cam } )
 
 instance HasGravity PlayGame where
         -- converts the gravity into velocity 
@@ -305,12 +312,12 @@ instance WallManager PlayGame where
                             , xPos = xPos wall
                             , wallWidth = wallWidth wall }
 
-        getWalls :: (MonadState Vars m, MonadReader Config m, WallManager m) => m ([Wall])
-        getWalls = do
+        getWallsInScreen :: (MonadState Vars m, MonadReader Config m, WallManager m) => m ([Wall])
+        getWallsInScreen = do
                 (winW, _) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize 
-                wallConf <- gets cWallConf
+                wallconf <- gets cWallConf
                 wallstream <- gets wallStream
-                let wallstorender = Stream.take (ceiling (winW / (allWallWidth wallConf + allWallSpacing wallConf))) wallstream
+                let wallstorender = Stream.take (ceiling (winW / (allWallWidth wallconf + allWallSpacing wallconf))) wallstream
                 mapM transformWallLengthsToWorldVals wallstorender
 
         getFirstWall :: (MonadState Vars m, WallManager m) => m (Wall)
@@ -331,6 +338,12 @@ instance WallManager PlayGame where
                 wallstream <- gets wallStream
                 modify (\v -> v { wallStream = Stream.tail wallstream } )
 
+        resetWalls :: (MonadState Vars m, MonadIO m) => m ()
+        resetWalls = do
+                wallconf <- gets cWallConf
+                wallstream <- liftIO . createWallStream $ wallconf
+                modify (\v -> v { wallStream = wallstream } ) 
+
 instance PlayerManager PlayGame where
         getPlayerPos ::(MonadState Vars m) => m (V2 Float)
         getPlayerPos = gets playerPos
@@ -345,6 +358,9 @@ instance PlayerManager PlayGame where
         getPlayerAabb = do
                 (V2 x y, V2 wlength hlength) <- getPlayerAttributes
                 return $ Aabb (V2 x y) (V2 (x + wlength) (y + hlength))
+
+        resetPlayerPos :: (MonadState Vars m) => m ()
+        resetPlayerPos = modify (\v -> v { playerPos = 0 })
 
 instance ScoreManager PlayGame where
         getScore :: MonadState Vars m => m (Int)
