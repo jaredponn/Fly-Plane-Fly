@@ -19,6 +19,8 @@ import Control.Monad.State.Lazy
 
    |space|
 -}
+
+-- The percents of the sizes will be converted to the actual sizes in the game. The actual sizes depend on the window size, so here, it is abstractly expressed in terms of a percent
 data Wall = Wall { upperWall :: Float -- percent of the size
                  , gap :: Float -- percent of the size
                  , lowerWall :: Float -- percent of the size
