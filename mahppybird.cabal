@@ -17,7 +17,8 @@ executable bird
   hs-source-dirs:      src
   main-is:             Main.hs
   default-language:    Haskell2010
-  other-modules: Game
+  other-modules: Play
+                 , Menu
                  , Logger
                  , Input
                  , Renderer
@@ -26,11 +27,19 @@ executable bird
                  , Walls
                  , WallManager
                  , PlayerManager
+                 , ScoreManager
+                 , TimeManager
                  , Aabb
+                 , Config
+                 , GameStates
+                 , GameVars
   build-depends:       base >= 4.7 && < 5
                        , sdl2
+                       , sdl2-ttf
                        , mtl
                        , StateVar
                        , linear
                        , Stream
                        , random
+                       , clock
+                       , Stack

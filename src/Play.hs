@@ -27,7 +27,10 @@ import Linear.V2
 import Data.List (intercalate)
 import qualified Data.Stream as Stream
 import Data.Stream (Stream (..))
-import Control.Concurrent (threadDelay)
+import qualified Control.Concurrent (threadDelay)
+import qualified System.Clock
+
+import GameVars
 
 import Aabb
 import Walls
@@ -40,6 +43,7 @@ import Walls
 import WallManager
 import PlayerManager
 import ScoreManager
+import TimeManager
 
 import Config
 
@@ -50,21 +54,6 @@ newtype PlayGame a = PlayGame (ReaderT Config (StateT Vars IO) a)
 -- http://lazyfoo.net/tutorials/SDL/30_scrolling/index.php
 -- https://hackage.haskell.org/package/sdl2-2.4.0.1/docs/SDL-Raw-Types.html
 
-
-data Vars = Vars { playerPos :: {-# UNPACK #-} !(V2 Float)
-                 , vel :: {-# UNPACK #-} !Float
-                 , score ::{-# UNPACK #-} !Int
-                 , dt :: {-# UNPACK #-} !Time
-                 , camera :: {-# UNPACK #-} !(V2 CInt)
-                 , kInput :: Input 
-                 , wallStream :: Stream Wall 
-
-                 , cGrav ::{-# UNPACK #-} !Float
-                 , cJumpHeight :: {-# UNPACK #-} !Float
-                 , cCamOffset :: {-# UNPACK #-} !Float
-                 , cRightVel :: {-# UNPACK #-} !Float
-                 , cWallConf :: {-# UNPACK #-} !WallConfig
-                 , cPlayerSize :: {-# UNPACK #-} !(V2 Float) }
 
 instance Show Vars where
         show vars = "Playerpos: " ++ show (playerPos vars) ++ "\n"
@@ -197,15 +186,14 @@ instance HasInput PlayGame where
 
 instance Renderer PlayGame where
         -- http://headerphile.com/sdl2/sdl2-part-3-drawing-rectangles/
-        drawObjects :: (Renderer m, MonadIO m, MonadState Vars m) => [m () ] -> m ()
+        drawObjects :: (Renderer m, TimeManager m) => [m ()] -> m ()
         drawObjects drawactions = do
-                t0 <- fromIntegral . toInteger <$> SDL.ticks
+                t0 <- getRealTime 
                 mapM_ id drawactions
                 presentRenderer
-                liftIO $ threadDelay 2000 -- fixes the weird speed ups sometimes
-                t1 <- fromIntegral . toInteger <$> SDL.ticks
-                modify (\v -> v { dt = (t1 - t0) / 1000 } )
-                return ()
+                threadDelay 2000 -- fixes the weird speed ups sometimes
+                t1 <- getRealTime
+                setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
 
         drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
         drawBg = do
@@ -241,7 +229,7 @@ instance Renderer PlayGame where
                 return $ [ SDL.Rectangle (SDL.P topPoint) lengths
                          , SDL.Rectangle (SDL.P botPoint) lengths ]
 
-        -- use only for debugging
+        -- use only for debugging. 
         drawRect :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => (V2 Float, V2 Float) -> m ()
         drawRect (pos, transform) = do
                 renderer <- asks cRenderer 
@@ -373,3 +361,14 @@ instance ScoreManager PlayGame where
 
         resetScore :: MonadState Vars m => m ()
         resetScore = modify (\v -> v { score = 0} )
+
+instance TimeManager PlayGame where
+        getRealTime :: MonadIO m => m (System.Clock.TimeSpec)
+        getRealTime = liftIO . System.Clock.getTime $ System.Clock.Realtime
+
+        threadDelay :: MonadIO m => Int -> m ()
+        threadDelay = liftIO . Control.Concurrent.threadDelay 
+
+        setdt :: MonadState Vars m => Float -> m ()
+        setdt ndt = modify (\v -> v { dt = ndt } )
+

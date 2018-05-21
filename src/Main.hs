@@ -58,7 +58,7 @@ screenHeight = 720
 
 wallConf :: WallConfig
 wallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.7)
-                           , allGapSize = 0.20
+                           , allGapSize = 0.25
                            , allWallWidth = 100
                            , allWallSpacing = 175
                            , startingPos = 800 }
