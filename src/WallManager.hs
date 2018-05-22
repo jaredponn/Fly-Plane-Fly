@@ -15,6 +15,7 @@ class Monad m => WallManager m where
         getWallsInScreen :: m ([Wall])
 
         getFirstWall :: m Wall
-        popWall :: m ()
+        popWall :: m (Wall)
+        popWall_ :: m ()
 
         resetWalls :: m ()

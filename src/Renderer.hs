@@ -8,20 +8,19 @@ type Time = Float
 
 class Monad m => Renderer m where
         drawObjects :: [m ()] -> m ()
+        drawObjectsWithDt :: [m ()] -> m ()
         drawBg :: m ()
         drawPlayer :: m ()
 
         drawWalls :: m ()
         wallToSDLRect :: Wall -> m ([Rectangle CInt])
 
-        -- Just used for debugging
-        drawRect :: (V2 Float, V2 Float) -> m ()
+        -- "ToScreen" functions are unaffected by camera position
+        drawRectToScreen :: (V2 Float, V2 Float) -> m ()
 
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
 
-        moveCameraBy :: V2 CInt -> m ()
-        setCameraPos :: V2 Float -> m ()
         toScreenCord :: V2 Float -> m (V2 CInt)
 
 roundV2 :: V2 Float -> V2 CInt

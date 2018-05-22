@@ -1,10 +1,13 @@
 module Input where
 
 import SDL
+import Foreign.C.Types
 import Control.Monad.IO.Class (MonadIO(..))
 
 data Input = Input { isSpace :: Bool 
-                   , isEsc :: Bool}
+                   , isEsc :: Bool
+                   , mousePos :: V2 CInt
+                   , mousePress :: Bool }
 
 instance Show Input where
         show a = "space: " ++ (show . isSpace $ a) ++ " esc: " ++ (show . isEsc $ a)

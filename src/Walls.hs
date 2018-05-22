@@ -73,6 +73,7 @@ createWallStream :: WallConfig
 createWallStream conf = do
         seed <- getStdGen
         let firstWall = createWall conf (startingPos conf) seed
+        setStdGen . snd $ firstWall -- sets a new global rng generator so each new wall stream created will be unique
         return . Stream.map fst $ Stream.iterate (createNextWall conf) firstWall 
 
 
