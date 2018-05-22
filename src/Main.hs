@@ -11,7 +11,6 @@ import Control.Monad (unless)
 import Data.Stack
 
 import MahppyBird
-import Config
 import Walls
 import GameVars
 
@@ -45,7 +44,7 @@ main = do
 
                         , cGrav = 2900
                         , cJumpHeight = (-700)
-                        , cRightVel = 0.3
+                        , cRightVel = 125
                         , cCamOffset = (-100)
                         , cWallConf = wallConf
                         , cPlayerSize = V2 30 30 }

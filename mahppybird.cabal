@@ -22,8 +22,7 @@ executable bird
                  , Logger
                  , Input
                  , Renderer
-                 , Gravity
-                 , Movement
+                 , Physics
                  , Walls
                  , WallManager
                  , PlayerManager
@@ -32,8 +31,8 @@ executable bird
                  , GameStateManager
                  , CameraManager
                  , Aabb
-                 , Config
                  , GameVars
+                 , Util
   build-depends:       base >= 4.7 && < 5
                        , sdl2
                        , sdl2-ttf
