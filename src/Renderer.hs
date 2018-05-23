@@ -88,13 +88,14 @@ instance Renderer MahppyBird where
                 return $ [ SDL.Rectangle (SDL.P topPoint) lengths
                          , SDL.Rectangle (SDL.P botPoint) lengths ]
 
+        -- draws it directly to the screen irregardless of th ecamera coordinate
         drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => Rectangle -> m ()
         drawRectToScreen (pos, lengths) = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 0 0 255 255
                 {- let pos' = roundV2 pos -}
-                pos'<- toScreenCord pos
-                let lengths' = roundV2 lengths
+                let pos' = roundV2 pos
+                    lengths' = roundV2 lengths
                 SDL.fillRect renderer . Just $ SDL.Rectangle (SDL.P pos') lengths'
 
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()

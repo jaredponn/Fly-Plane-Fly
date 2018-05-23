@@ -3,6 +3,7 @@
 {-# LANGUAGE FlexibleContexts #-} 
 module ButtonTransforms where
 
+import Control.Monad.State.Lazy
 import Control.Monad.Reader
 import Linear.V2
 
@@ -11,48 +12,53 @@ import GameVars
 import Logger
 import Util
 
+data ButtonAttr = ButtonAttr { rect :: {-#UNPACK#-} !Rectangle
+                             , aabb :: {-#UNPACK#-} !Aabb }
 
-data Button m = Button { rect :: {-#UNPACK#-} !Rectangle
-                       , aabb :: {-#UNPACK#-} !Aabb
-                       , effect :: ( Button m -> m () ) }
+type Button m = ReaderT (ButtonAttr) m ()
+
+
+
+createButtonAttrFromAabb :: Aabb -> ButtonAttr
+createButtonAttrFromAabb aabb = ButtonAttr { rect = aabbToRectangle aabb
+                                    , aabb = aabb }
+
+createButtonAttrFromRectangle :: Rectangle -> ButtonAttr
+createButtonAttrFromRectangle nrect = ButtonAttr { rect = nrect 
+                                         , aabb = rectangleToAabb nrect }
+
+createXCenteredButtonAttr :: (ButtonTransforms m) => Float  -- y position
+                          -> V2 Float -- lengths.  Width, height
+                          -> m ButtonAttr
+createXCenteredButtonAttr ypos lengths = do
+        let tmpbtnattr = ButtonAttr { rect = (V2 0 ypos, lengths)
+                                    , aabb = Aabb (V2 0 0) (V2 0 0)}
+        xCenterButton tmpbtnattr 
 
 class Monad m => ButtonTransforms m where
-        xCenterButton :: Button m -> m (Button m)
-        yCenterButton :: Button m -> m (Button m)
-
-
-createButtonFromAabb :: (Monad m) => Aabb -> Button m
-createButtonFromAabb aabb = Button { rect = aabbToRectangle aabb
-                                    , aabb = aabb
-                                    , effect = undefined}
-
-createButtonFromRectangle :: Monad m => Rectangle -> Button m
-createButtonFromRectangle nrect = Button { rect = nrect 
-                                         , aabb = rectangleToAabb nrect
-                                         , effect = undefined}
+        xCenterButton :: ButtonAttr -> m (ButtonAttr)
+        yCenterButton :: ButtonAttr -> m (ButtonAttr)
 
 
 instance ButtonTransforms MahppyBird where
-        xCenterButton :: (Logger m, MonadReader Config m) => Button m -> m (Button m)
+        xCenterButton :: (Logger m, MonadReader Config m) => ButtonAttr -> m (ButtonAttr)
         xCenterButton button = do
                 (winW, winH) <- (\(a, b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize
                 let V2 width height = snd . rect $ button
                     V2 _ y = fst . rect $ button
                     topleftpt = V2 (((winW) / 2) - (width / 2)) y
                     nrect = (topleftpt, V2 width height )
-                return Button { rect = nrect
-                              , aabb = rectangleToAabb nrect
-                              , effect = undefined }
+                return ButtonAttr { rect = nrect
+                              , aabb = rectangleToAabb nrect }
 
-        {- yCenterButton :: MonadReader Config m => Button -> m (Button) -}
-        {- yCenterButton ((_, V2 width height), (Aabb (V2 x y) _)) = do -}
-        {-         (winW, winH) <- asks cWindowSize -}
-        {-         let topleftpt = V2 x (((fromIntegral winH) / 2) - (height / 2))  -}
-        {-             rect = (topleftpt, V2 width height ) -}
-        {-         return (rect, rectangleToAabb rect) -}
+        yCenterButton :: MonadReader Config m => ButtonAttr -> m (ButtonAttr)
+        yCenterButton button = do
+                (winW, winH) <- asks cWindowSize
+                let V2 width height = snd . rect $ button
+                    V2 x _ = fst . rect $ button
+                    topleftpt = V2 x (((fromIntegral winH) / 2) - (height / 2))
+                    nrect = (topleftpt, V2 width height )
+                return ButtonAttr { rect = nrect
+                              , aabb = rectangleToAabb nrect }
 
 
-        {- xCenterButton ((V2 x y, V2 width height), _) = do -}
-        {-         (winW, winH) <- (\(a, b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize -}
-        {-         let topleftpt = V2 (((winW) / 2) - (width / 2)) y -}
-        {-             rect = (topleftpt, V2 width height ) -}
