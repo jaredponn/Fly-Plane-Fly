@@ -36,6 +36,7 @@ import Input
 import Renderer
 import Physics
 import Walls
+import ButtonTransforms
 import WallManager
 import PlayerManager
 import ScoreManager
@@ -65,6 +66,7 @@ loop :: ( Logger m
         , CameraManager m
         , MonadState Vars m
         , TimeManager m
+        , ButtonTransforms m 
         , GameStateManager m ) => m ()
 loop = do
         input <- acquireInput
@@ -77,6 +79,16 @@ loop = do
 
         unless (curgamestate == Quit) loop 
 
+woot :: ( GameStateManager m
+  , HasInput m) => Button m
+                      -> m ()
+woot btn = do
+        mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
+        mousepress <- mousePress <$> getInput
+
+        if pointHitTest mousepos (aabb btn) && mousepress
+          then pushGameState Play
+          else return () 
 
 runScene :: ( Logger m
             , Renderer m
@@ -87,22 +99,29 @@ runScene :: ( Logger m
             , ScoreManager m
             , CameraManager m
             , TimeManager m
+            , ButtonTransforms m 
             , GameStateManager m ) => Input -> GameState -> m ()
 runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
         mousepress <- mousePress <$> getInput
 
-        let playbtn = Aabb (V2 100 100) (V2 200 200)
-        let quitbtn = Aabb (V2 300 400) (V2 400 500)
-        drawObjects [drawBg, drawRectToScreen (aabbToDrawRect playbtn), drawRectToScreen (aabbToDrawRect quitbtn)]
+        {- logText . show $ mousepos -}
 
-        if pointHitTest mousepos playbtn && mousepress
-           then pushGameState Play
-           else return () 
+        playbtn <- xCenterButton . createButtonFromRectangle $ ((V2 100 100), (V2 500 200))
+        {- quitbtn <- xCenterButton . createButtonFromAabb $ Aabb (V2 300 600) (V2 200 200) -}
+        {- let (playbtn' :: Button MahppyBird) = playbtn { effect = woot } -}
+        let playbtn' = playbtn { effect = woot }
 
-        if pointHitTest mousepos quitbtn && mousepress
-           then pushGameState Quit
-           else return ()
+        drawObjects [drawBg, drawRectToScreen (rect playbtn), drawRectToScreen ((V2 640 500), (V2 500 10)){-, drawRectToScreen (fst quitbtn) -}]
+        (effect playbtn') playbtn'
+
+        {- if pointHitTest mousepos (aabb playbtn) && mousepress -}
+        {-    then pushGameState Play -}
+        {-    else return ()  -}
+        {- return () -}
+        {- if pointHitTest mousepos (snd quitbtn) && mousepress -}
+        {-    then pushGameState Quit -}
+        {-    else return () -}
 
 runScene input Play = do
         renderScreen
@@ -204,7 +223,7 @@ runScene input GameOver = do
                              -> Aabb
                              -> m ()
                 renderScreen btn0 btn1= do
-                        renderGame $ map (drawRectToScreen . aabbToDrawRect) [btn0, btn1]
+                        renderGame $ map (drawRectToScreen . aabbToRectangle) [btn0, btn1]
 
                 updatePhysics :: (Physics m) => m ()
                 updatePhysics = do

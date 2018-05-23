@@ -1,6 +1,7 @@
 module Aabb ( Aabb (..)
             , hitTest 
-            , aabbToDrawRect
+            , aabbToRectangle
+            , rectangleToAabb
             , pointHitTest
             , hitTestAbove
             , hitTestBelow
@@ -9,6 +10,8 @@ module Aabb ( Aabb (..)
             ) where
 
 import Linear.V2
+
+type Rectangle = (V2 Float, V2 Float) -- (x y of top left corner, width height)
 
 data Aabb = Aabb { pMin :: {-# UNPACK #-} !(V2 Float)
                  , pMax :: {-# UNPACK #-} !(V2 Float) }
@@ -26,8 +29,12 @@ pointHitTest (V2 x y) (Aabb (V2 xmin1 ymin1) (V2 xmax1 ymax1)) =
         (x >= xmin1 && x <= xmax1) &&
         (y >= ymin1 && y <= ymax1)
 
-aabbToDrawRect :: Aabb -> (V2 Float, V2 Float)
-aabbToDrawRect (Aabb (V2 xmin ymin) (V2 xmax ymax))= (V2 xmin ymin, V2 (xmax - xmin) (ymax - ymin))
+aabbToRectangle :: Aabb -> Rectangle
+aabbToRectangle (Aabb (V2 xmin ymin) (V2 xmax ymax)) = (V2 xmin ymin, V2 (xmax - xmin) (ymax - ymin))
+
+rectangleToAabb :: Rectangle -> Aabb
+rectangleToAabb (V2 x y, V2 width height) = Aabb { pMin = V2 x y
+                                                 , pMax = V2 (x + width) (y + height) }
 
 {-  hitTestAbove would return true for the following scenario:
     _
