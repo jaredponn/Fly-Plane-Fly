@@ -4,6 +4,7 @@
 module PlayerManager where
 
 import Linear.V2
+import SDL
 import Control.Monad.Reader
 import Control.Monad.State
 
@@ -11,12 +12,12 @@ import Aabb
 import GameVars
 
 class Monad m => PlayerManager m where
-        getPlayerPos :: m (V2 Float)
-        getPlayerAttributes :: m (V2 Float, V2 Float) -- position, V2 width height
+        getPlayerPos :: m (Point V2 Float)
+        getPlayer :: m (Rectangle Float)
         getPlayerYVel :: m (Float)
         getPlayerXVel :: m (Float)
 
-        setPlayerPos :: V2 Float -> m ()
+        setPlayerPos :: Point V2 Float -> m ()
         setPlayerYVel :: Float -> m ()
         translatePlayer:: V2 Float -> m ()
 
@@ -26,24 +27,25 @@ class Monad m => PlayerManager m where
         resetPlayerPos :: m ()
 
 instance PlayerManager MahppyBird where
-        getPlayerPos ::(MonadState Vars m) => m (V2 Float)
-        getPlayerPos = playerPos <$> gets vPlayVars
+        getPlayerPos ::(MonadState Vars m) => m (Point V2 Float)
+        getPlayerPos = do
+                Rectangle pos _  <- player <$> gets vPlayVars
+                return pos
 
-        getPlayerAttributes ::(MonadState Vars m, MonadReader Config m) => m (V2 Float, V2 Float)
-        getPlayerAttributes = do
-                ppos <- playerPos <$> gets vPlayVars
-                psize <- gets cPlayerSize
-                return (ppos, psize)
+        getPlayer ::(MonadState Vars m, MonadReader Config m) => m (Rectangle Float)
+        getPlayer = do
+                player <$> gets vPlayVars
 
         getPlayerAabb :: PlayerManager m => m (Aabb)
         getPlayerAabb = do
-                (V2 x y, V2 wlength hlength) <- getPlayerAttributes
-                return $ Aabb (V2 x y) (V2 (x + wlength) (y + hlength))
+                player <- getPlayer
+                return $ rectangleToAabb player
 
-        resetPlayerPos :: MonadState Vars m => m ()
+        resetPlayerPos :: (MonadState Vars m, PlayerManager m) => m ()
         resetPlayerPos = do
                 playvars <- gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { playerPos = 0 }  })
+                Rectangle _ lengths <- getPlayer
+                modify (\v -> v { vPlayVars = playvars { player = Rectangle (P (V2 0 0)) lengths }})
 
         getPlayerYVel :: MonadState Vars m => m (Float)
         getPlayerYVel = vel <$> gets vPlayVars
@@ -51,10 +53,11 @@ instance PlayerManager MahppyBird where
         getPlayerXVel :: MonadState Vars m => m (Float)
         getPlayerXVel = gets cRightVel
 
-        setPlayerPos :: MonadState Vars m => V2 Float -> m ()
+        setPlayerPos :: (MonadState Vars m, PlayerManager m) => Point V2 Float -> m ()
         setPlayerPos npos = do
                 playvars <- gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { playerPos = npos }  })
+                Rectangle _ lengths <- getPlayer
+                modify (\v -> v { vPlayVars = playvars { player = Rectangle npos lengths }  })
 
         setPlayerYVel :: MonadState Vars m => Float -> m ()
         setPlayerYVel nvel = do
@@ -66,6 +69,6 @@ instance PlayerManager MahppyBird where
 
         translatePlayer :: PlayerManager m => V2 Float -> m ()
         translatePlayer transform = do
-                curpos <- getPlayerPos
-                setPlayerPos $ transform + curpos
+                P curpos <- getPlayerPos
+                setPlayerPos . P $ transform + curpos
 

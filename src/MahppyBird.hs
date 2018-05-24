@@ -13,7 +13,6 @@ module MahppyBird (MahppyBird (..)
             ) where
 
 import qualified SDL
-import SDL (V2 (..))
 import qualified SDL.Font as Font
 
 import Data.StateVar (($=))
@@ -142,7 +141,7 @@ runScene input Play = do
 
                 updateWalls :: (PlayerManager m, WallManager m, CameraManager m) => m ()
                 updateWalls = do
-                        V2 x _ <- getPlayerPos 
+                        SDL.P (V2 x _ )<- getPlayerPos 
                         fstWall <- getFirstWall
                         wallwidth <- wallWidth <$> getFirstWall
                         V2 xcamoffset _ <- getCameraOffset
@@ -152,7 +151,7 @@ runScene input Play = do
 
                 updateScore :: (Logger m, PlayerManager m, WallManager m, ScoreManager m) => m ()
                 updateScore = do
-                        V2 xPlayer _ <- getPlayerPos 
+                        SDL.P (V2 xPlayer _) <- getPlayerPos 
                         fstWall <- getFirstWall
                         wallwidth <- wallWidth <$> getFirstWall
                         currscore <- getScore
@@ -225,7 +224,7 @@ runScene input Quit = return ()
 
 renderGame :: (Logger m, Renderer m, PlayerManager m, CameraManager m) => [m ()] ->m ()
 renderGame renderactions = do
-        V2 x _ <- getPlayerPos
+        SDL.P (V2 x _) <- getPlayerPos
         camoffset <- getCameraOffset
         setCameraPos $ (V2 x 0) + camoffset
         drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer] ++ renderactions

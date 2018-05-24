@@ -32,7 +32,7 @@ class Monad m => Renderer m where
         wallToSDLRect :: Wall -> m ([SDL.Rectangle CInt])
 
         -- "ToScreen" functions are unaffected by camera position
-        drawRectToScreen :: Rectangle -> m ()
+        drawRectToScreen :: SDL.Rectangle Float -> m ()
 
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
@@ -64,9 +64,9 @@ instance Renderer MahppyBird where
         drawPlayer = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 255 0 0 255
-                (pPos, pSize) <- getPlayerAttributes
-                pPos' <- toScreenCord pPos
-                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos') (roundV2 pSize)
+                SDL.Rectangle (SDL.P ppos) plengths <- getPlayer
+                pPos' <- toScreenCord ppos
+                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos') (roundV2 plengths)
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
@@ -89,8 +89,8 @@ instance Renderer MahppyBird where
                          , SDL.Rectangle (SDL.P botPoint) lengths ]
 
         -- draws it directly to the screen irregardless of th ecamera coordinate
-        drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => Rectangle -> m ()
-        drawRectToScreen (pos, lengths) = do
+        drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => SDL.Rectangle Float -> m ()
+        drawRectToScreen (SDL.Rectangle (SDL.P pos) lengths) = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 0 0 255 255
                 {- let pos' = roundV2 pos -}

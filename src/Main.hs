@@ -4,11 +4,14 @@ module Main where
 
 import qualified SDL
 import SDL (($=)
-           , V2 (..))
+           , V2 (..)
+           , Point (..))
 import qualified SDL.Font as TTF
+import qualified SDL.Image as Image
 import Foreign.C.Types
 import Control.Monad (unless)
 import Data.Stack
+import System.FilePath
 
 import MahppyBird
 import Walls
@@ -22,17 +25,23 @@ main = do
         window <- SDL.createWindow "Mahppy Bird" SDL.defaultWindow { SDL.windowInitialSize = V2 screenWidth screenHeight }
         renderer <- SDL.createRenderer window (-1) SDL.defaultRenderer
 
-        font <- TTF.load fontPath 15
+        font <- TTF.load (resourcePath </> "GreatVibes-Regular.otf") 15
+        playerpic <- Image.load (resourcePath </> "player.png") >>= SDL.createTextureFromSurface renderer 
+        botwallpic <- Image.load (resourcePath </> "botwall.jpeg") >>= SDL.createTextureFromSurface renderer 
+        topwallpic <- Image.load (resourcePath </> "topwall.jpg") >>= SDL.createTextureFromSurface renderer 
 
         let cfg = Config { cWindow = window
                          , cRenderer = renderer
                          , cWindowSize = (screenWidth, screenHeight)
-                         , cResources = Resources { cFont = font } }
+                         , cResources = Resources { cFont = font
+                                                  , playerTexture =  playerpic
+                                                  , botWallTexture = botwallpic
+                                                  , topWallTexture = topwallpic} }
 
 
         wallstream <- createWallStream wallConf
 
-        let pvars = PlayVars { playerPos  = V2 50 2
+        let pvars = PlayVars { player  = SDL.Rectangle (SDL.P (V2 50 2)) (V2 30 30)
                                , vel = 0.0001
                                , wallStream = wallstream }
             vars = Vars { vGameStateStack = stackPush stackNew Menu
@@ -46,11 +55,17 @@ main = do
                         , cJumpHeight = (-700)
                         , cRightVel = 125
                         , cCamOffset = (-100)
-                        , cWallConf = wallConf
-                        , cPlayerSize = V2 30 30 }
+                        , cWallConf = wallConf }
+                        {- , cPlayerSize = V2 30 30 } -}
 
         runMahppyBird cfg vars loop
 
+        {- destroyTexture texture -}
+        {- freeSurface image -}
+        {- destroyRenderer renderer -}
+        {- destroyWindow window -}
+
+        Image.quit
         TTF.quit
         SDL.quit
 
@@ -67,5 +82,5 @@ wallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.58)
                            , allWallSpacing = 175
                            , startingPos = 200 }
 
-fontPath :: FilePath
-fontPath = "/home/jared/Programs/mahppybird/Resources/GreatVibes-Regular.otf" 
+resourcePath :: FilePath
+resourcePath = "/home/jared/Programs/mahppybird/Resources" 

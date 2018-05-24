@@ -1,7 +1,6 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-} 
 module GameVars where
 
-
 import Data.Stream
 import Walls
 import Linear.V2
@@ -9,8 +8,10 @@ import Foreign.C.Types
 import Data.Stack
 import qualified SDL
 import qualified SDL.Font as TTF
-import Control.Monad.Reader
-import Control.Monad.State
+import Control.Monad.Reader (MonadReader (..)
+                            , ReaderT (..))
+import Control.Monad.State (MonadState (..)
+                           , StateT (..))
 import Control.Monad.IO.Class (MonadIO(..))
 
 -- ReaderT Environment Monad ReturnedVal
@@ -24,7 +25,10 @@ data Config = Config { cWindow :: SDL.Window
                      , cWindowSize :: {-# UNPACK #-} !(CInt,CInt) --width, height
                      }
 
-data Resources = Resources { cFont :: TTF.Font }
+data Resources = Resources { cFont :: TTF.Font
+                           , playerTexture :: SDL.Texture
+                           , botWallTexture :: SDL.Texture
+                           , topWallTexture :: SDL.Texture }
 
 data Vars = Vars { vGameStateStack :: GameStack
 
@@ -32,7 +36,7 @@ data Vars = Vars { vGameStateStack :: GameStack
 
                  , score ::{-# UNPACK #-} !Int
 
-                 , dt :: {-# UNPACK #-} !Float -- time it took for the frame to rendej
+                 , dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
                  , camera :: {-# UNPACK #-} !(V2 CInt) -- camera position
                  , kInput :: Input 
 
@@ -40,8 +44,7 @@ data Vars = Vars { vGameStateStack :: GameStack
                  , cJumpHeight :: {-# UNPACK #-} !Float
                  , cCamOffset :: {-# UNPACK #-} !(V2 Float)
                  , cRightVel :: {-# UNPACK #-} !Float
-                 , cWallConf :: {-# UNPACK #-} !WallConfig
-                 , cPlayerSize :: {-# UNPACK #-} !(V2 Float) }
+                 , cWallConf :: {-# UNPACK #-} !WallConfig }
 
 
 data Input = Input { isSpace :: Bool 
@@ -64,7 +67,7 @@ instance Show Vars where
                 ++ "kInput: " ++ show (kInput vars) ++ "\n"
 
 
-data PlayVars = PlayVars { playerPos :: {-# UNPACK #-} !(V2 Float)
+data PlayVars = PlayVars { player :: SDL.Rectangle Float
                          , vel :: {-# UNPACK #-} !Float
                          , wallStream :: Stream Wall }
 
@@ -77,4 +80,3 @@ data GameState = Menu
                 deriving Eq
 
 type GameStack = Stack GameState
-
