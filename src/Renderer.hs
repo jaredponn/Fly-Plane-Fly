@@ -19,6 +19,7 @@ import PlayerManager
 import RectangleTransforms
 import Logger
 import TimeManager
+import ScoreManager
 import CameraManager
 import GameVars
 import WallManager
@@ -29,8 +30,10 @@ import Walls
 class Monad m => Renderer m where
         drawObjects :: [m ()] -> m ()
         drawObjectsWithDt :: [m ()] -> m ()
+
         drawBg :: m ()
         drawPlayer :: m ()
+        drawScore :: m ()
 
         drawWalls :: m ()
         wallToSDLRect :: Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
@@ -107,12 +110,19 @@ instance Renderer MahppyBird where
                 return $ ( SDL.Rectangle topPoint lengths
                          , SDL.Rectangle botPoint lengths )
 
+        drawScore :: (ScoreManager m, Renderer m, RectangleTransforms m) => m ()
+        drawScore = do
+                score <- getScore
+                drawTextToScreen (T.pack . show $ score) (SDL.P (V2 0 0)) f
+                where
+                        f :: (RectangleTransforms m) => SDL.Rectangle Float -> m (SDL.Rectangle Float)
+                        f rect = xCenterRectangle rect >>= yCenterRectangle 
+
         -- draws it directly to the screen irregardless of the camera coordinate
         drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => SDL.Rectangle Float -> m ()
         drawRectToScreen (SDL.Rectangle (SDL.P pos) lengths) = do
                 renderer <- asks cRenderer 
                 SDL.rendererDrawColor renderer $= SDL.V4 0 0 255 255
-                {- let pos' = roundV2 pos -}
                 let pos' = roundV2 pos
                     lengths' = roundV2 lengths
                 SDL.fillRect renderer . Just $ SDL.Rectangle (SDL.P pos') lengths'
@@ -145,4 +155,3 @@ instance Renderer MahppyBird where
                 pos' <- toScreenCord pos
                 let lengths' = roundV2 lengths
                 return $ SDL.Rectangle pos' lengths'
-

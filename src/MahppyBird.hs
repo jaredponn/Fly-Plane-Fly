@@ -162,7 +162,8 @@ runScene input Play = do
                         wallwidth <- wallWidth <$> getFirstWall
                         currscore <- getScore
                         let centerOfWallX = xPos fstWall + wallwidth / 2
-                        if (abs (xPlayer - centerOfWallX)) <= 0.15
+                            -- TODO the score increment is definetly a hacky solution and NEEDS to be changed 
+                        if (abs (xPlayer - centerOfWallX)) <= 0.2
                            then do incrementScore
                                    getScore >>= logText . show
                            else return ()
@@ -233,7 +234,7 @@ renderGame renderactions = do
         SDL.P (V2 x _) <- getPlayerPos
         camoffset <- getCameraOffset
         setCameraPos . SDL.P $ (V2 x 0) + camoffset
-        drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer] ++ renderactions
+        drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer, drawScore] ++ renderactions
 
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m) => m ()
 resetGame = do

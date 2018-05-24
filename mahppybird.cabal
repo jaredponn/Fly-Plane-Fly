@@ -18,7 +18,6 @@ executable bird
   main-is:             Main.hs
   default-language:    Haskell2010
   other-modules: MahppyBird
-                 , Menu
                  , Logger
                  , Input
                  , Renderer
