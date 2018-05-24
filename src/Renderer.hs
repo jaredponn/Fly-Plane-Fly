@@ -29,7 +29,7 @@ class Monad m => Renderer m where
         drawPlayer :: m ()
 
         drawWalls :: m ()
-        wallToSDLRect :: Wall -> m ([SDL.Rectangle CInt])
+        wallToSDLRect :: Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
 
         -- "ToScreen" functions are unaffected by camera position
         drawRectToScreen :: SDL.Rectangle Float -> m ()
@@ -37,7 +37,8 @@ class Monad m => Renderer m where
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
 
-        toScreenCord :: V2 Float -> m (V2 CInt)
+        toScreenCord :: SDL.Point V2 Float -> m (SDL.Point V2 CInt)
+        toScreenRect :: SDL.Rectangle Float -> m (SDL.Rectangle CInt)
 
 
 instance Renderer MahppyBird where
@@ -57,36 +58,45 @@ instance Renderer MahppyBird where
         drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
         drawBg = do
                 renderer <- asks cRenderer 
-                SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255
-                SDL.clear renderer
+                bgtexture <- bgTexture <$> asks cResources
+                SDL.copy renderer bgtexture Nothing Nothing
+                {- SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255 -}
+                {- SDL.clear renderer -}
 
-        drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => m ()
+        drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m) => m ()
         drawPlayer = do
                 renderer <- asks cRenderer 
-                SDL.rendererDrawColor renderer $= SDL.V4 255 0 0 255
-                SDL.Rectangle (SDL.P ppos) plengths <- getPlayer
-                pPos' <- toScreenCord ppos
-                SDL.fillRect renderer $ Just $ SDL.Rectangle (SDL.P pPos') (roundV2 plengths)
+                playertexture <- playerTexture <$> asks cResources
+                player <- getPlayer
+                player' <- toScreenRect player
+                SDL.copy renderer playertexture Nothing (Just player') -- TODO
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
                 renderer <- asks cRenderer 
-                SDL.rendererDrawColor renderer $= SDL.V4 0 255 0 255
+                topwalltexture <- topWallTexture <$> asks cResources
+                botwalltexture <- botWallTexture <$> asks cResources
                 walls <- getWallsInScreen >>= mapM wallToSDLRect
-                mapM_ (mapM_ (SDL.fillRect renderer . Just)) walls
+                mapM_ (f renderer topwalltexture botwalltexture) walls
+                where
+                        f :: (MonadIO m) => SDL.Renderer -> SDL.Texture -> SDL.Texture -> (SDL.Rectangle CInt,  SDL.Rectangle CInt) -> m ()
+                        f renderer topwalltexture botwalltexture (top, bot)= do
+                                SDL.copy renderer topwalltexture Nothing $ Just top
+                                SDL.copy renderer botwalltexture Nothing $ Just bot
+                                return ()
 
         -- uses the dimensions from the size of the screen and translates it so that it conforms to the specifcation of the Wall
-        wallToSDLRect :: (Renderer m, WallManager m, MonadReader Config m, PlayerManager m) => Wall -> m ([SDL.Rectangle CInt])
+        wallToSDLRect :: (Renderer m, WallManager m, MonadReader Config m, PlayerManager m) => Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
         wallToSDLRect wall = do
                 let wallwidth = wallWidth wall -- width of the wall
                 (_, wallheight) <- asks cWindowSize -- height of the wall
                 let lengths = V2 (round wallwidth) wallheight
 
-                topPoint <- toScreenCord $ V2 (xPos wall) (0 - (gap wall + lowerWall wall))
-                botPoint <- toScreenCord $ V2 (xPos wall) (upperWall wall + gap wall)
+                topPoint <- toScreenCord . SDL.P $ V2 (xPos wall) (0 - (gap wall + lowerWall wall))
+                botPoint <- toScreenCord . SDL.P $ V2 (xPos wall) (upperWall wall + gap wall)
 
-                return $ [ SDL.Rectangle (SDL.P topPoint) lengths
-                         , SDL.Rectangle (SDL.P botPoint) lengths ]
+                return $ ( SDL.Rectangle topPoint lengths
+                         , SDL.Rectangle botPoint lengths )
 
         -- draws it directly to the screen irregardless of th ecamera coordinate
         drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => SDL.Rectangle Float -> m ()
@@ -101,8 +111,15 @@ instance Renderer MahppyBird where
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()
         presentRenderer = asks cRenderer >>= SDL.present
 
-        toScreenCord :: (CameraManager m) => V2 Float -> m (V2 CInt)
-        toScreenCord wPos = do
-                let pos = roundV2 wPos
-                cam <- getCamera
-                return $ pos - cam
+        toScreenCord :: (CameraManager m) => SDL.Point V2 Float -> m (SDL.Point V2 CInt)
+        toScreenCord (SDL.P pos) = do
+                let pos' = roundV2 pos
+                SDL.P cam <- getCamera
+                return . SDL.P $ pos' - cam
+
+        toScreenRect :: (Renderer m) => SDL.Rectangle Float -> m (SDL.Rectangle CInt)
+        toScreenRect (SDL.Rectangle pos lengths) = do
+                pos' <- toScreenCord pos
+                let lengths' = roundV2 lengths
+                return $ SDL.Rectangle pos' lengths'
+

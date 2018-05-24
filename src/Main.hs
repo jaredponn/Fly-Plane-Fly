@@ -29,6 +29,7 @@ main = do
         playerpic <- Image.load (resourcePath </> "player.png") >>= SDL.createTextureFromSurface renderer 
         botwallpic <- Image.load (resourcePath </> "botwall.jpeg") >>= SDL.createTextureFromSurface renderer 
         topwallpic <- Image.load (resourcePath </> "topwall.jpg") >>= SDL.createTextureFromSurface renderer 
+        bgpic <- Image.load (resourcePath </> "bg.jpg") >>= SDL.createTextureFromSurface renderer 
 
         let cfg = Config { cWindow = window
                          , cRenderer = renderer
@@ -36,7 +37,8 @@ main = do
                          , cResources = Resources { cFont = font
                                                   , playerTexture =  playerpic
                                                   , botWallTexture = botwallpic
-                                                  , topWallTexture = topwallpic} }
+                                                  , topWallTexture = topwallpic
+                                                  , bgTexture = bgpic} }
 
 
         wallstream <- createWallStream wallConf
@@ -48,7 +50,7 @@ main = do
                         , vPlayVars = pvars
                         , dt = 0
                         , score = 0
-                        , camera = V2 0 0
+                        , camera = SDL.P $ V2 0 0
                         , kInput = undefined
 
                         , cGrav = 2900

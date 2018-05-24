@@ -121,7 +121,6 @@ runScene input Play = do
         updateWalls
         updateScore
         where
-
                 updatePhysics :: (Physics m, PlayerManager m, TimeManager m) => Input -> m ()
                 updatePhysics input = do
                         -- applying gravity
@@ -226,7 +225,7 @@ renderGame :: (Logger m, Renderer m, PlayerManager m, CameraManager m) => [m ()]
 renderGame renderactions = do
         SDL.P (V2 x _) <- getPlayerPos
         camoffset <- getCameraOffset
-        setCameraPos $ (V2 x 0) + camoffset
+        setCameraPos . SDL.P $ (V2 x 0) + camoffset
         drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer] ++ renderactions
 
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m) => m ()

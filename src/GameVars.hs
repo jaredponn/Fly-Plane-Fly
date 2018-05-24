@@ -26,6 +26,7 @@ data Config = Config { cWindow :: SDL.Window
                      }
 
 data Resources = Resources { cFont :: TTF.Font
+                           , bgTexture :: SDL.Texture
                            , playerTexture :: SDL.Texture
                            , botWallTexture :: SDL.Texture
                            , topWallTexture :: SDL.Texture }
@@ -37,7 +38,7 @@ data Vars = Vars { vGameStateStack :: GameStack
                  , score ::{-# UNPACK #-} !Int
 
                  , dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
-                 , camera :: {-# UNPACK #-} !(V2 CInt) -- camera position
+                 , camera :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
                  , kInput :: Input 
 
                  , cGrav ::{-# UNPACK #-} !Float
