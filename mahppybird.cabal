@@ -31,11 +31,14 @@ executable bird
                  , GameStateManager
                  , CameraManager
                  , Aabb
+                 , Buttons
                  , GameVars
                  , Util
+                 , RectangleTransforms
   build-depends:       base >= 4.7 && < 5
                        , sdl2
                        , sdl2-ttf
+                       , sdl2-image
                        , mtl
                        , StateVar
                        , linear
@@ -43,3 +46,5 @@ executable bird
                        , random
                        , clock
                        , Stack
+                       , filepath
+                       , text

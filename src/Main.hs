@@ -25,7 +25,7 @@ main = do
         window <- SDL.createWindow "Mahppy Bird" SDL.defaultWindow { SDL.windowInitialSize = V2 screenWidth screenHeight }
         renderer <- SDL.createRenderer window (-1) SDL.defaultRenderer
 
-        font <- TTF.load (resourcePath </> "GreatVibes-Regular.otf") 15
+        font <- TTF.load (resourcePath </> "GreatVibes-Regular.otf") 30
         playerpic <- Image.load (resourcePath </> "player.png") >>= SDL.createTextureFromSurface renderer 
         botwallpic <- Image.load (resourcePath </> "botwall.jpeg") >>= SDL.createTextureFromSurface renderer 
         topwallpic <- Image.load (resourcePath </> "topwall.jpg") >>= SDL.createTextureFromSurface renderer 
@@ -58,14 +58,11 @@ main = do
                         , cRightVel = 125
                         , cCamOffset = (-100)
                         , cWallConf = wallConf }
-                        {- , cPlayerSize = V2 30 30 } -}
 
         runMahppyBird cfg vars loop
 
-        {- destroyTexture texture -}
-        {- freeSurface image -}
-        {- destroyRenderer renderer -}
-        {- destroyWindow window -}
+        SDL.destroyRenderer renderer
+        SDL.destroyWindow window
 
         Image.quit
         TTF.quit

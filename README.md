@@ -1,4 +1,4 @@
 # mahppybird
 
-font from: 
+Font from: 
 https://www.fontsquirrel.com/fonts/great-vibes

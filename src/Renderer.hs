@@ -1,6 +1,7 @@
 {-# LANGUAGE InstanceSigs #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE FlexibleContexts #-} 
+{-# LANGUAGE OverloadedStrings #-}
 module Renderer where
 
 import Control.Monad.Reader
@@ -9,10 +10,13 @@ import Control.Monad.IO.Class (MonadIO(..))
 import Foreign.C.Types
 import Linear.V2
 import qualified SDL 
+import qualified SDL.Font as Font
 import Data.StateVar (($=))
 import System.Clock
+import qualified Data.Text as T
 
 import PlayerManager
+import RectangleTransforms
 import Logger
 import TimeManager
 import CameraManager
@@ -33,6 +37,10 @@ class Monad m => Renderer m where
 
         -- "ToScreen" functions are unaffected by camera position
         drawRectToScreen :: SDL.Rectangle Float -> m ()
+        drawTextToScreen :: T.Text  -- text to render
+                         -> SDL.Point V2 Float  -- position
+                         -> (SDL.Rectangle Float -> m (SDL.Rectangle Float)) -- transform to apply to the text
+                         -> m ()
 
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
@@ -69,7 +77,7 @@ instance Renderer MahppyBird where
                 playertexture <- playerTexture <$> asks cResources
                 player <- getPlayer
                 player' <- toScreenRect player
-                SDL.copy renderer playertexture Nothing (Just player') -- TODO
+                SDL.copy renderer playertexture Nothing (Just player')
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
@@ -85,7 +93,7 @@ instance Renderer MahppyBird where
                                 SDL.copy renderer botwalltexture Nothing $ Just bot
                                 return ()
 
-        -- uses the dimensions from the size of the screen and translates it so that it conforms to the specifcation of the Wall
+        -- uses the dimensions from the size of the screen and translates it so that it conforms to the specification of the Wall
         wallToSDLRect :: (Renderer m, WallManager m, MonadReader Config m, PlayerManager m) => Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
         wallToSDLRect wall = do
                 let wallwidth = wallWidth wall -- width of the wall
@@ -98,7 +106,7 @@ instance Renderer MahppyBird where
                 return $ ( SDL.Rectangle topPoint lengths
                          , SDL.Rectangle botPoint lengths )
 
-        -- draws it directly to the screen irregardless of th ecamera coordinate
+        -- draws it directly to the screen irregardless of the camera coordinate
         drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => SDL.Rectangle Float -> m ()
         drawRectToScreen (SDL.Rectangle (SDL.P pos) lengths) = do
                 renderer <- asks cRenderer 
@@ -107,6 +115,21 @@ instance Renderer MahppyBird where
                 let pos' = roundV2 pos
                     lengths' = roundV2 lengths
                 SDL.fillRect renderer . Just $ SDL.Rectangle (SDL.P pos') lengths'
+
+        drawTextToScreen :: (MonadIO m, MonadReader Config m) => T.Text 
+                         -> SDL.Point V2 Float 
+                         -> (SDL.Rectangle Float -> m (SDL.Rectangle Float))
+                         -> m ()
+        drawTextToScreen str pos f = do
+                renderer <- asks cRenderer 
+                font <- cFont <$> asks cResources
+                texture <- Font.blended font (SDL.V4 255 0 0 255) str >>= SDL.createTextureFromSurface renderer
+                (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> Font.size font str
+                SDL.Rectangle (SDL.P npos) lengths <- f $ SDL.Rectangle pos (V2 width height)
+                let 
+                    npos' = roundV2 npos
+                    lengths' = roundV2 lengths
+                SDL.copy renderer texture Nothing . Just $ SDL.Rectangle (SDL.P npos') lengths'
 
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()
         presentRenderer = asks cRenderer >>= SDL.present

@@ -4,6 +4,7 @@
 {-# LANGUAGE ScopedTypeVariables #-} 
 {-# LANGUAGE BangPatterns #-} 
 {-# LANGUAGE FlexibleInstances #-} 
+{-# LANGUAGE OverloadedStrings #-} 
 
 module MahppyBird (MahppyBird (..)
             , Config (..)
@@ -25,6 +26,7 @@ import Data.Stack
 import qualified Data.Stream as Stream
 import Data.Stream (Stream (..))
 import qualified System.Clock
+import qualified Data.Text as T
 
 import GameVars
 
@@ -35,13 +37,14 @@ import Input
 import Renderer
 import Physics
 import Walls
-import ButtonTransforms
+import Buttons
 import WallManager
 import PlayerManager
 import ScoreManager
 import TimeManager
 import GameStateManager
 import CameraManager
+import RectangleTransforms
 
 import GameVars
 
@@ -65,7 +68,7 @@ loop :: ( Logger m
         , CameraManager m
         , MonadState Vars m
         , TimeManager m
-        , ButtonTransforms m 
+        , RectangleTransforms m
         , GameStateManager m ) => m ()
 loop = do
         input <- acquireInput
@@ -87,7 +90,7 @@ runScene :: ( Logger m
             , ScoreManager m
             , CameraManager m
             , TimeManager m
-            , ButtonTransforms m 
+            , RectangleTransforms m 
             , GameStateManager m ) => Input -> GameState -> m ()
 runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
@@ -99,7 +102,11 @@ runScene input Menu = do
         quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100)
         runReaderT quitbtneffect quitbtnattr
 
-        drawObjects [drawBg, drawRectToScreen (rect playbtnattr), drawRectToScreen (rect quitbtnattr)]
+        drawObjects [drawBg
+          , drawRectToScreen (rect playbtnattr)
+          , drawRectToScreen (rect quitbtnattr)
+                , drawTextToScreen "asdf" (SDL.P (V2 0 0)) xCenterRectangle]
+
 
         where
                 playbtneffect ::( GameStateManager m
