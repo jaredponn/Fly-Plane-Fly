@@ -33,7 +33,6 @@ main = do
 
         let cfg = Config { cWindow = window
                          , cRenderer = renderer
-                         , cWindowSize = (screenWidth, screenHeight)
                          , cResources = Resources { cFont = font
                                                   , playerTexture =  playerpic
                                                   , botWallTexture = botwallpic

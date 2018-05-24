@@ -21,9 +21,7 @@ newtype MahppyBird a = MahppyBird (ReaderT Config (StateT Vars IO) a)
 
 data Config = Config { cWindow :: SDL.Window
                      , cRenderer :: SDL.Renderer
-                     , cResources :: Resources
-                     , cWindowSize :: {-# UNPACK #-} !(CInt,CInt) --width, height
-                     }
+                     , cResources :: Resources }
 
 data Resources = Resources { cFont :: TTF.Font
                            , bgTexture :: SDL.Texture

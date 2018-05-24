@@ -94,10 +94,11 @@ instance Renderer MahppyBird where
                                 return ()
 
         -- uses the dimensions from the size of the screen and translates it so that it conforms to the specification of the Wall
-        wallToSDLRect :: (Renderer m, WallManager m, MonadReader Config m, PlayerManager m) => Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
+        wallToSDLRect :: (Renderer m, WallManager m, MonadReader Config m, PlayerManager m, MonadIO m) => Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
         wallToSDLRect wall = do
                 let wallwidth = wallWidth wall -- width of the wall
-                (_, wallheight) <- asks cWindowSize -- height of the wall
+                window <- asks cWindow 
+                V2 _ wallheight <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> SDL.glGetDrawableSize window
                 let lengths = V2 (round wallwidth) wallheight
 
                 topPoint <- toScreenCord . SDL.P $ V2 (xPos wall) (0 - (gap wall + lowerWall wall))
@@ -126,8 +127,7 @@ instance Renderer MahppyBird where
                 texture <- Font.blended font (SDL.V4 255 0 0 255) str >>= SDL.createTextureFromSurface renderer
                 (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> Font.size font str
                 SDL.Rectangle (SDL.P npos) lengths <- f $ SDL.Rectangle pos (V2 width height)
-                let 
-                    npos' = roundV2 npos
+                let npos' = roundV2 npos
                     lengths' = roundV2 lengths
                 SDL.copy renderer texture Nothing . Just $ SDL.Rectangle (SDL.P npos') lengths'
 
