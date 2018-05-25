@@ -43,8 +43,9 @@ main = do
         wallstream <- createWallStream wallConf
 
         let pvars = PlayVars { player  = SDL.Rectangle (SDL.P (V2 50 2)) (V2 30 30)
-                               , vel = 0.0001
-                               , wallStream = wallstream }
+                             , vel = 0.0001
+                             , wallStream = wallstream
+                             , isPassingWall = False }
             vars = Vars { vGameStateStack = stackPush stackNew Menu
                         , vPlayVars = pvars
                         , dt = 0

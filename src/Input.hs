@@ -11,14 +11,20 @@ import Control.Monad.State
 
 import GameVars
 
-eventIs :: Keycode  -- desired key
+keyEventIs :: Keycode  -- desired key
         -> Event  -- input event
         -> Bool
-eventIs key event =
-        case eventPayload event of
+keyEventIs key event =
+        case SDL.eventPayload event of
           KeyboardEvent keyboardEvent -> do
                   keyboardEventKeyMotion keyboardEvent == SDL.Pressed &&
                           keysymKeycode (keyboardEventKeysym keyboardEvent) == key
+          _ -> False
+
+isMouseTap :: Event -> Bool
+isMouseTap event = 
+        case SDL.eventPayload event of
+          MouseButtonEvent mouseEvent -> toInteger (mouseButtonEventClicks mouseEvent) > 0
           _ -> False
 
 class Monad m => HasInput m where
@@ -31,18 +37,17 @@ instance HasInput MahppyBird where
         updateInput = do
                 events <- SDL.pollEvents
                 SDL.P mousepos <- liftIO  SDL.getAbsoluteMouseLocation
-                mousepress <- liftIO SDL.getMouseButtons
-                let space = any (eventIs SDL.KeycodeSpace) events
-                    esc = any (eventIs SDL.KeycodeEscape) events
+                let space = any (keyEventIs SDL.KeycodeSpace) events
+                    esc = any (keyEventIs SDL.KeycodeEscape) events
+                    mousepress = any isMouseTap events
 
                 setInput Input { isSpace = space
                                , isEsc = esc 
                                , mousePos = mousepos
-                               , mousePress = foldr ((||) . mousepress) False [SDL.ButtonLeft, SDL.ButtonMiddle, SDL.ButtonRight] }
+                               , mousePress = mousepress}
 
         setInput :: (MonadState Vars m) => Input -> m ()
         setInput input = modify (\v -> v { kInput = input })
 
         getInput :: (MonadState Vars m) => m Input
         getInput = gets kInput
-

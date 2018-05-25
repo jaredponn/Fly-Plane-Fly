@@ -20,6 +20,7 @@ class Monad m => WallManager m where
 
         getFirstUpperWallAabb :: m Aabb
         getFirstLowerWallAabb :: m Aabb
+        getFirstWallGapAabb :: m Aabb
 
         getWallsInScreen :: m ([Wall])
 
@@ -57,12 +58,17 @@ instance WallManager MahppyBird where
         getFirstUpperWallAabb :: WallManager m => m Aabb
         getFirstUpperWallAabb = do
                 fstwall <- getFirstWall
-                return $ Aabb (V2 (xPos fstwall) 0) (V2 (wallWidth fstwall + xPos fstwall) (upperWall fstwall))
+                return $ Aabb (P (V2 (xPos fstwall) 0)) (P (V2 (wallWidth fstwall + xPos fstwall) (upperWall fstwall)))
 
         getFirstLowerWallAabb :: WallManager m => m Aabb
         getFirstLowerWallAabb = do
                 fstwall <- getFirstWall
-                return $ Aabb (V2 (xPos fstwall) (gap fstwall + upperWall fstwall)) (V2 (wallWidth fstwall + xPos fstwall) (upperWall fstwall + gap fstwall + lowerWall fstwall))
+                return $ Aabb (P (V2 (xPos fstwall) (gap fstwall + upperWall fstwall))) (P (V2 (wallWidth fstwall + xPos fstwall) (upperWall fstwall + gap fstwall + lowerWall fstwall)))
+
+        getFirstWallGapAabb :: (WallManager m) => m Aabb
+        getFirstWallGapAabb = do
+                fstwall <- getFirstWall
+                return $ Aabb (P (V2 (xPos fstwall) (upperWall fstwall))) (P (V2 (xPos fstwall + wallWidth fstwall) (upperWall fstwall + gap fstwall + lowerWall fstwall)))
 
         popWall :: (MonadState Vars m, WallManager m) => m ( Wall )
         popWall = do
@@ -84,3 +90,4 @@ instance WallManager MahppyBird where
                 wallconf <- gets cWallConf
                 wallstream <- liftIO . createWallStream $ wallconf
                 modify (\v -> v { vPlayVars = playvars { wallStream = wallstream } } )
+

@@ -68,7 +68,8 @@ instance Show Vars where
 
 data PlayVars = PlayVars { player :: SDL.Rectangle Float
                          , vel :: {-# UNPACK #-} !Float
-                         , wallStream :: Stream Wall }
+                         , wallStream :: Stream Wall
+                         , isPassingWall :: Bool}
 
 
 data GameState = Menu

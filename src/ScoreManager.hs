@@ -7,10 +7,12 @@ import Control.Monad.State
 
 import GameVars
 
-class (Monad m) => ScoreManager m where
+class Monad m => ScoreManager m where
         incrementScore :: m ()
         getScore :: m (Int)
         resetScore :: m ()
+        setIsPassingWall :: Bool -> m ()
+        getIsPassingWall :: m (Bool)
 
 instance ScoreManager MahppyBird where
         getScore :: MonadState Vars m => m (Int)
@@ -23,3 +25,15 @@ instance ScoreManager MahppyBird where
 
         resetScore :: MonadState Vars m => m ()
         resetScore = modify (\v -> v { score = 0} )
+
+        setIsPassingWall :: MonadState Vars m => Bool -> m ()
+        setIsPassingWall bool = do
+                playvars <- gets vPlayVars
+                modify (\v -> v {vPlayVars = playvars { isPassingWall = bool }})
+
+        getIsPassingWall :: MonadState Vars m => m (Bool)
+        getIsPassingWall = do
+                playvars <- gets vPlayVars
+                return $ isPassingWall playvars
+
+

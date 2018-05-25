@@ -105,7 +105,7 @@ runScene input Menu = do
         drawObjects [drawBg
           , drawRectToScreen (rect playbtnattr)
           , drawRectToScreen (rect quitbtnattr)
-                , drawTextToScreen "asdf" (SDL.P (V2 0 0)) xCenterRectangle]
+                , drawTextToScreen "SUPER FUN GAME THAT IS MORE STUPID THAN FUN" (SDL.P (V2 0 0)) xCenterRectangle]
 
 
         where
@@ -157,16 +157,14 @@ runScene input Play = do
 
                 updateScore :: (Logger m, PlayerManager m, WallManager m, ScoreManager m) => m ()
                 updateScore = do
-                        SDL.P (V2 xPlayer _) <- getPlayerPos 
-                        fstWall <- getFirstWall
-                        wallwidth <- wallWidth <$> getFirstWall
-                        currscore <- getScore
-                        let centerOfWallX = xPos fstWall + wallwidth / 2
-                            -- TODO the score increment is definetly a hacky solution and NEEDS to be changed 
-                        if (abs (xPlayer - centerOfWallX)) <= 0.2
+                        playerpos <- getPlayerPos 
+                        gapaabb <- getFirstWallGapAabb
+                        prevpassingwall <- getIsPassingWall
+                        if not (pointHitTest playerpos gapaabb) && prevpassingwall
                            then do incrementScore
                                    getScore >>= logText . show
                            else return ()
+                        setIsPassingWall (pointHitTest playerpos gapaabb)
 
                 renderScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m) => m ()
                 renderScreen = do
@@ -241,6 +239,7 @@ resetGame = do
         resetScore
         resetWalls
         resetPlayerPos
+        setIsPassingWall False
         setPlayerYVel 0
 
 -- if the button is pressed, then execute the modifier to the game state
@@ -248,7 +247,7 @@ buttonGameStateModifierFromMouse :: (GameStateManager m
   , HasInput m) => m ()  -- action to modify the game
   -> Button m
 buttonGameStateModifierFromMouse f = do
-        mousepos <- lift $ (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
+        mousepos <- lift $ (\(V2 a b) -> (SDL.P (V2 (fromIntegral a) (fromIntegral b)))) <$> mousePos <$> getInput
         mousepress <- lift $ mousePress <$> getInput
 
         btnattr <- ask 

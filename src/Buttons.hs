@@ -32,7 +32,7 @@ createXCenteredButtonAttr :: (RectangleTransforms m) => Float  -- y position
                           -> m ButtonAttr
 createXCenteredButtonAttr ypos lengths = do
         let tmpbtnattr = ButtonAttr { rect = Rectangle (P (V2 0 ypos)) lengths
-                                    , aabb = Aabb (V2 0 0) (V2 0 0)}
+                                    , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))}
         xCenterButton tmpbtnattr 
 
 xCenterButton :: (RectangleTransforms m ) => ButtonAttr -> m ButtonAttr  
