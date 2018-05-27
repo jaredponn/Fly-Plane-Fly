@@ -2,7 +2,6 @@
 module GameVars where
 
 import Data.Stream
-import Walls
 import Linear.V2
 import Foreign.C.Types
 import Data.Stack
@@ -13,6 +12,9 @@ import Control.Monad.Reader (MonadReader (..)
 import Control.Monad.State (MonadState (..)
                            , StateT (..))
 import Control.Monad.IO.Class (MonadIO(..))
+
+import Animations 
+import Walls
 
 -- ReaderT Environment Monad ReturnedVal
 newtype MahppyBird a = MahppyBird (ReaderT Config (StateT Vars IO) a) 
@@ -38,6 +40,8 @@ data Vars = Vars { vGameStateStack :: GameStack
                  , dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
                  , camera :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
                  , kInput :: Input 
+                
+                 , animationVars :: AnimationVars
 
                  , cGrav ::{-# UNPACK #-} !Float
                  , cJumpHeight :: {-# UNPACK #-} !Float
@@ -52,6 +56,14 @@ data Input = Input { isSpace :: Bool
                    , mousePress :: Bool }
                    deriving Show
 
+
+data PlayVars = PlayVars { player :: SDL.Rectangle Float
+                         , vel :: {-# UNPACK #-} !Float
+                         , wallStream :: Stream Wall
+                         , isPassingWall :: Bool}
+
+data AnimationVars = AnimationVars { playerAnimationHandler :: AnimationHandler }
+
 -- http://lazyfoo.net/tutorials/SDL/30_scrolling/index.php
 -- https://hackage.haskell.org/package/sdl2-2.4.0.1/docs/SDL-Raw-Types.html
 
@@ -64,13 +76,6 @@ instance Show Vars where
                 ++ "FPS: " ++ show (10000.001 / (dt vars)) ++ "\n"
                 ++ "camera: " ++ show (camera vars) ++ "\n"
                 ++ "kInput: " ++ show (kInput vars) ++ "\n"
-
-
-data PlayVars = PlayVars { player :: SDL.Rectangle Float
-                         , vel :: {-# UNPACK #-} !Float
-                         , wallStream :: Stream Wall
-                         , isPassingWall :: Bool}
-
 
 data GameState = Menu
                 | Play 

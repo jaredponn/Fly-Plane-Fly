@@ -4,7 +4,7 @@ module Walls
         , createWallStream
         ) where
 
-import Data.Stream as Stream
+import Data.Stream as S
 import System.Random
 import Control.Monad.State.Lazy
 
@@ -36,6 +36,7 @@ data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float,
                              }
 
 -- takes a range of floats and spits out a value between them
+-- used to make random percents. E.g. (0, 1) -> 0.56
 randPercent :: RandomGen g => (Float, Float) 
       -> State g Float
 randPercent (lowerBound, upperBound) = do 
@@ -47,7 +48,7 @@ randPercent (lowerBound, upperBound) = do
 
 createWall :: RandomGen g => WallConfig
            -> Float -- starting wall position
-           -> g -- rng generator
+           -> g -- initial rng generator
            -> (Wall, g)
 createWall conf startPos g = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
                               in ( Wall { upperWall = val
@@ -74,13 +75,13 @@ createWallStream conf = do
         seed <- getStdGen
         let firstWall = createWall conf (startingPos conf) seed
         setStdGen . snd $ firstWall -- sets a new global rng generator so each new wall stream created will be unique
-        return . Stream.map fst $ Stream.iterate (createNextWall conf) firstWall 
+        return . S.map fst $ S.iterate (createNextWall conf) firstWall 
 
 
 {- FUNCTIONS TO HELP WITH TESTING -}
 testCreateWallStream conf = do
         a <- createWallStream conf
-        return $ Stream.take 4 a
+        return $ S.take 4 a
 
 
 testWallConf :: WallConfig

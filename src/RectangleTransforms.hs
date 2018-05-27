@@ -14,11 +14,9 @@ class Monad m => RectangleTransforms m where
         xCenterRectangle ::  Rectangle Float-> m (Rectangle Float)
         yCenterRectangle ::  Rectangle Float-> m (Rectangle Float)
 
-
 instance RectangleTransforms MahppyBird where
         xCenterRectangle :: (MonadReader Config m, MonadIO m) => Rectangle Float-> m (Rectangle Float)
         xCenterRectangle rect = do
-                {- (winW, winH) <- (\(a, b) -> (fromIntegral a, fromIntegral b)) <$> asks cWindowSize -}
                 window <- asks cWindow 
                 V2 winW winH <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
                 let Rectangle (P (V2 _ y)) (V2 width height) = rect
@@ -36,3 +34,5 @@ instance RectangleTransforms MahppyBird where
                 return nrect
 
 
+translate :: V2 Float -> Rectangle Float -> Rectangle Float
+translate (V2 dx dy) (Rectangle (P (V2 x y)) lengths) = Rectangle (P (V2 (dx + x) (dy + y))) lengths

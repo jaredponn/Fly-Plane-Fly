@@ -7,7 +7,7 @@ module WallManager
 import Linear.V2
 import Control.Monad.Reader
 import Control.Monad.State
-import Data.Stream as Stream
+import Data.Stream as S
 import SDL
 
 import Aabb
@@ -49,11 +49,11 @@ instance WallManager MahppyBird where
 
                 wallconf <- gets cWallConf
                 wallstream <- wallStream <$> gets vPlayVars
-                let wallstorender = Stream.take (ceiling (winW / (allWallWidth wallconf + allWallSpacing wallconf))) wallstream
+                let wallstorender = S.take (ceiling (winW / (allWallWidth wallconf + allWallSpacing wallconf))) wallstream
                 mapM transformWallLengthsToWorldVals wallstorender
 
         getFirstWall :: (MonadState Vars m, WallManager m) => m (Wall)
-        getFirstWall = Stream.head <$> wallStream <$> gets vPlayVars >>= transformWallLengthsToWorldVals
+        getFirstWall = S.head <$> wallStream <$> gets vPlayVars >>= transformWallLengthsToWorldVals
 
         getFirstUpperWallAabb :: WallManager m => m Aabb
         getFirstUpperWallAabb = do
@@ -75,14 +75,14 @@ instance WallManager MahppyBird where
                 playvars <- gets vPlayVars
                 fstwall <- getFirstWall
                 wallstream <- wallStream <$> gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { wallStream = Stream.tail wallstream } } )
+                modify (\v -> v { vPlayVars = playvars { wallStream = S.tail wallstream } } )
                 return fstwall
 
         popWall_ :: (MonadState Vars m, WallManager m) => m ()
         popWall_ = do
                 playvars <- gets vPlayVars
                 wallstream <- wallStream <$> gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { wallStream = Stream.tail wallstream } } )
+                modify (\v -> v { vPlayVars = playvars { wallStream = S.tail wallstream } } )
 
         resetWalls :: (MonadState Vars m, MonadIO m) => m ()
         resetWalls = do

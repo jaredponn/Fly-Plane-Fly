@@ -23,8 +23,6 @@ import Foreign.C.Types
 import Control.Monad (unless)
 import Linear.V2
 import Data.Stack
-import qualified Data.Stream as Stream
-import Data.Stream (Stream (..))
 import qualified System.Clock
 import qualified Data.Text as T
 

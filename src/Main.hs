@@ -16,6 +16,7 @@ import System.FilePath
 import MahppyBird
 import Walls
 import GameVars
+import Animations
 
 main :: IO ()
 main = do
@@ -46,6 +47,7 @@ main = do
                              , vel = 0.0001
                              , wallStream = wallstream
                              , isPassingWall = False }
+            animationvars = AnimationVars { playerAnimationHandler =  AnimationHandler {{- TODO MAKE IT WORK -}} }
             vars = Vars { vGameStateStack = stackPush stackNew Menu
                         , vPlayVars = pvars
                         , dt = 0
@@ -57,7 +59,8 @@ main = do
                         , cJumpHeight = (-700)
                         , cRightVel = 125
                         , cCamOffset = (-100)
-                        , cWallConf = wallConf }
+                        , cWallConf = wallConf 
+                        , animationVars = animationvars }
 
         runMahppyBird cfg vars loop
 
