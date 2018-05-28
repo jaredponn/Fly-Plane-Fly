@@ -27,11 +27,10 @@ data AnimationType = AnimationType'Idle
                    | AnimationType'Jump
                    deriving Eq
 
-createAnimationHandler :: Texture -- sprites
-                -> S.Stream AnimationSrcRect -- srcRectStream
+createAnimationHandler :: S.Stream AnimationSrcRect -- srcRectStream
                 -> Float -- frameDuration
                 -> AnimationHandler
-createAnimationHandler texture stream frameduration = AnimationHandler { srcRectStream = stream
+createAnimationHandler stream frameduration = AnimationHandler { srcRectStream = stream
                                                                        , frameDuration = frameduration
                                                                        , accTime = 0 }
 

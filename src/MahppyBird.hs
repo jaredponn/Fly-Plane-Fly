@@ -29,6 +29,7 @@ import qualified Data.Text as T
 import GameVars
 
 import Aabb
+import Animations (AnimationType (..))
 import Walls
 import Logger
 import Input
@@ -38,6 +39,8 @@ import Walls
 import Buttons
 import WallManager
 import PlayerManager
+import AnimationsManager
+import BackgroundManager
 import ScoreManager
 import TimeManager
 import GameStateManager
@@ -58,6 +61,7 @@ acquireInput = do
 
 loop :: ( Logger m
         , Renderer m
+        , MonadReader Config m
         , HasInput m
         , Physics m
         , WallManager m
@@ -65,9 +69,11 @@ loop :: ( Logger m
         , ScoreManager m
         , CameraManager m
         , MonadState Vars m
+        , BackgroundManager m
         , TimeManager m
         , RectangleTransforms m
-        , GameStateManager m ) => m ()
+        , GameStateManager m
+        , AnimationsManager m) => m ()
 loop = do
         input <- acquireInput
         curgamestate <- peekGameState
@@ -80,16 +86,19 @@ loop = do
         unless (curgamestate == Quit) loop 
 
 runScene :: ( Logger m
+            , MonadReader Config m
             , Renderer m
             , HasInput m
             , Physics m
             , WallManager m
+            , BackgroundManager m
             , PlayerManager m
             , ScoreManager m
             , CameraManager m
             , TimeManager m
             , RectangleTransforms m 
-            , GameStateManager m ) => Input -> GameState -> m ()
+            , GameStateManager m
+            , AnimationsManager m) => Input -> GameState -> m ()
 runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
         mousepress <- mousePress <$> getInput
@@ -126,12 +135,16 @@ runScene input Play = do
         updateWalls
         updateScore
         where
-                updatePhysics :: (Physics m, PlayerManager m, TimeManager m) => Input -> m ()
+                updatePhysics :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m) => Input -> m ()
                 updatePhysics input = do
                         -- applying gravity
                         applyGrav
                         if isSpace input
-                           then jumpPlayer
+                           then do jumpPlayer
+                                   -- sends the jump animation
+                                   playerjumpanimation <- playerJumpAnimation <$> asks cResources 
+                                   prependToPlayerAnimation playerjumpanimation
+
                            else return ()
                         applyYVel
                         -- moving character right
@@ -164,9 +177,16 @@ runScene input Play = do
                            else return ()
                         setIsPassingWall (pointHitTest playerpos gapaabb)
 
-                renderScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m) => m ()
+                renderScreen :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m) => m ()
                 renderScreen = do
                         renderGame []
+                        updatePlayerAnimation
+
+                        -- stops the jump animation if the player is not jumping
+                        playeryvel <- getPlayerYVel
+                        if playeryvel > 0
+                                then removePlayerAnimationsUpto AnimationType'Idle
+                                else return ()
 
                 collisionTest :: (WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
                 collisionTest = do
@@ -225,7 +245,7 @@ runScene input GameOver = do
 runScene input Quit = return ()
 
 
-renderGame :: (Logger m, Renderer m, PlayerManager m, CameraManager m) => [m ()] ->m ()
+renderGame :: (Renderer m, PlayerManager m, CameraManager m) => [m ()] ->m ()
 renderGame renderactions = do
         SDL.P (V2 x _) <- getPlayerPos
         camoffset <- getCameraOffset

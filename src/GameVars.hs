@@ -28,6 +28,7 @@ data Config = Config { cWindow :: SDL.Window
 data Resources = Resources { cFont :: TTF.Font
                            , bgTexture :: SDL.Texture
                            , playerTexture :: SDL.Texture
+                           , playerJumpAnimation :: [AnimationSrcRect]
                            , botWallTexture :: SDL.Texture
                            , topWallTexture :: SDL.Texture }
 
@@ -62,7 +63,8 @@ data PlayVars = PlayVars { player :: SDL.Rectangle Float
                          , wallStream :: Stream Wall
                          , isPassingWall :: Bool}
 
-data AnimationVars = AnimationVars { playerAnimationHandler :: AnimationHandler }
+data AnimationVars = AnimationVars { playerAnimationHandler :: AnimationHandler
+                                   , bgRect :: SDL.Rectangle Float }
 
 -- http://lazyfoo.net/tutorials/SDL/30_scrolling/index.php
 -- https://hackage.haskell.org/package/sdl2-2.4.0.1/docs/SDL-Raw-Types.html

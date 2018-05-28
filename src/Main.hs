@@ -27,15 +27,17 @@ main = do
         renderer <- SDL.createRenderer window (-1) SDL.defaultRenderer
 
         font <- TTF.load (resourcePath </> "GreatVibes-Regular.otf") 30
-        playerpic <- Image.load (resourcePath </> "player.png") >>= SDL.createTextureFromSurface renderer 
+        playerpic <- Image.load (resourcePath </> "playerspritesheet.png") >>= SDL.createTextureFromSurface renderer 
         botwallpic <- Image.load (resourcePath </> "botwall.jpeg") >>= SDL.createTextureFromSurface renderer 
         topwallpic <- Image.load (resourcePath </> "topwall.jpg") >>= SDL.createTextureFromSurface renderer 
         bgpic <- Image.load (resourcePath </> "bg.jpg") >>= SDL.createTextureFromSurface renderer 
 
-        let cfg = Config { cWindow = window
+        let playerjumpanimationsrcrects = generateSrcRects (SDL.P (V2 0 30)) (V2 30 30) (V2 30 0) 3 AnimationType'Jump
+            cfg = Config { cWindow = window
                          , cRenderer = renderer
                          , cResources = Resources { cFont = font
                                                   , playerTexture =  playerpic
+                                                  , playerJumpAnimation =  playerjumpanimationsrcrects
                                                   , botWallTexture = botwallpic
                                                   , topWallTexture = topwallpic
                                                   , bgTexture = bgpic} }
@@ -47,7 +49,11 @@ main = do
                              , vel = 0.0001
                              , wallStream = wallstream
                              , isPassingWall = False }
-            animationvars = AnimationVars { playerAnimationHandler =  AnimationHandler {{- TODO MAKE IT WORK -}} }
+            playeridlesrcrects = generateSrcRects (SDL.P (V2 0 0)) (V2 30 30) (V2 30 0) 3 AnimationType'Idle
+            playersrcidlerectstream = generateSrcRectStream playeridlesrcrects 
+            animationvars = AnimationVars { playerAnimationHandler =  createAnimationHandler playersrcidlerectstream 0.25
+                                          , bgRect = SDL.Rectangle (SDL.P (V2 0 0)) (V2 (fromIntegral screenWidth) (fromIntegral screenHeight))}
+
             vars = Vars { vGameStateStack = stackPush stackNew Menu
                         , vPlayVars = pvars
                         , dt = 0

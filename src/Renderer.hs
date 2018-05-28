@@ -16,6 +16,9 @@ import System.Clock
 import qualified Data.Text as T
 
 import PlayerManager
+import AnimationsManager
+import BackgroundManager
+import Animations
 import RectangleTransforms
 import Logger
 import TimeManager
@@ -66,7 +69,7 @@ instance Renderer MahppyBird where
                 t1 <- getRealTime
                 setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
 
-        drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
+        drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m, BackgroundManager m) => m ()
         drawBg = do
                 renderer <- asks cRenderer 
                 bgtexture <- bgTexture <$> asks cResources
@@ -74,13 +77,24 @@ instance Renderer MahppyBird where
                 {- SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255 -}
                 {- SDL.clear renderer -}
 
-        drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m) => m ()
+        drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m, AnimationsManager m) => m ()
         drawPlayer = do
                 renderer <- asks cRenderer 
-                playertexture <- playerTexture <$> asks cResources
+                playerspritesheet <- playerTexture <$> asks cResources
+
                 player <- getPlayer
                 player' <- toScreenRect player
-                SDL.copy renderer playertexture Nothing (Just player')
+
+                srcrect <- srcRect <$> getPlayerAnimationSrc
+
+                SDL.copy renderer playerspritesheet (Just srcrect) (Just player')
+                
+        {- drawPlayer = do -}
+        {-         renderer <- asks cRenderer  -}
+        {-         playertexture <- playerTexture <$> asks cResources -}
+        {-         player <- getPlayer -}
+        {-         player' <- toScreenRect player -}
+        {-         SDL.copy renderer playertexture Nothing (Just player') -}
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do

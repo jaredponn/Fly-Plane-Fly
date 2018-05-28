@@ -10,6 +10,7 @@ import Control.Monad.State
 
 import Aabb
 import GameVars
+import AnimationsManager
 
 class Monad m => PlayerManager m where
         getPlayerPos :: m (Point V2 Float)
@@ -22,6 +23,7 @@ class Monad m => PlayerManager m where
         translatePlayer:: V2 Float -> m ()
 
         jumpPlayer :: m ()
+        isPlayerJumping :: m (Bool)
 
         getPlayerAabb :: m Aabb 
         resetPlayerPos :: m ()
@@ -64,11 +66,16 @@ instance PlayerManager MahppyBird where
                 playvars <- gets vPlayVars
                 modify (\v -> v { vPlayVars = playvars { vel = nvel }  })
 
-        jumpPlayer :: (MonadState Vars m, MonadReader Config m, PlayerManager m) => m ()
-        jumpPlayer = gets cJumpHeight >>= setPlayerYVel
+        jumpPlayer :: (MonadState Vars m, MonadReader Config m, PlayerManager m, AnimationsManager m) => m ()
+        jumpPlayer = do
+                jumpheight <- gets cJumpHeight 
+                setPlayerYVel jumpheight
 
         translatePlayer :: PlayerManager m => V2 Float -> m ()
         translatePlayer transform = do
                 P curpos <- getPlayerPos
                 setPlayerPos . P $ transform + curpos
+
+        isPlayerJumping :: PlayerManager m => m (Bool)
+        isPlayerJumping = (<0) <$> getPlayerYVel 
 
