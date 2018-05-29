@@ -7,6 +7,7 @@ import Linear.V2
 import SDL
 import Control.Monad.Reader
 import Control.Monad.State
+import Control.Lens
 
 import Aabb
 import GameVars
@@ -14,7 +15,7 @@ import AnimationsManager
 
 class Monad m => PlayerManager m where
         getPlayerPos :: m (Point V2 Float)
-        getPlayer :: m (Rectangle Float)
+        getPlayerAttributes :: m (Rectangle Float)
         getPlayerYVel :: m (Float)
         getPlayerXVel :: m (Float)
 
@@ -31,44 +32,37 @@ class Monad m => PlayerManager m where
 instance PlayerManager MahppyBird where
         getPlayerPos ::(MonadState Vars m) => m (Point V2 Float)
         getPlayerPos = do
-                Rectangle pos _  <- player <$> gets vPlayVars
+                Rectangle pos _  <- use $ vPlayVars.player.attributes
                 return pos
 
-        getPlayer ::(MonadState Vars m, MonadReader Config m) => m (Rectangle Float)
-        getPlayer = do
-                player <$> gets vPlayVars
+        getPlayerAttributes ::(MonadState Vars m, MonadReader Config m) => m (Rectangle Float)
+        getPlayerAttributes = use $ vPlayVars.player.attributes
 
         getPlayerAabb :: PlayerManager m => m (Aabb)
         getPlayerAabb = do
-                player <- getPlayer
+                player <- getPlayerAttributes
                 return $ rectangleToAabb player
 
-        resetPlayerPos :: (MonadState Vars m, PlayerManager m) => m ()
-        resetPlayerPos = do
-                playvars <- gets vPlayVars
-                Rectangle _ lengths <- getPlayer
-                modify (\v -> v { vPlayVars = playvars { player = Rectangle (P (V2 0 0)) lengths }})
+        resetPlayerPos :: (PlayerManager m) => m ()
+        resetPlayerPos = setPlayerPos $ P $ V2 0 0
 
         getPlayerYVel :: MonadState Vars m => m (Float)
-        getPlayerYVel = vel <$> gets vPlayVars
+        getPlayerYVel = use $ vPlayVars.player.yvel
 
         getPlayerXVel :: MonadState Vars m => m (Float)
-        getPlayerXVel = gets cRightVel
+        getPlayerXVel = use $ vPlayVars.player.xvel
 
         setPlayerPos :: (MonadState Vars m, PlayerManager m) => Point V2 Float -> m ()
         setPlayerPos npos = do
-                playvars <- gets vPlayVars
-                Rectangle _ lengths <- getPlayer
-                modify (\v -> v { vPlayVars = playvars { player = Rectangle npos lengths }  })
+                Rectangle _ lengths <- use $ vPlayVars.player.attributes
+                vPlayVars.player.attributes .= Rectangle npos lengths
 
         setPlayerYVel :: MonadState Vars m => Float -> m ()
-        setPlayerYVel nvel = do
-                playvars <- gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { vel = nvel }  })
+        setPlayerYVel nvel = vPlayVars.player.yvel .= nvel
 
         jumpPlayer :: (MonadState Vars m, MonadReader Config m, PlayerManager m, AnimationsManager m) => m ()
         jumpPlayer = do
-                jumpheight <- gets cJumpHeight 
+                jumpheight <- use $ vPlayVars.player.cJumpHeight
                 setPlayerYVel jumpheight
 
         translatePlayer :: PlayerManager m => V2 Float -> m ()

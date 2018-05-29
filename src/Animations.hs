@@ -18,14 +18,14 @@ import SDL
 
 data AnimationHandler = AnimationHandler { srcRectStream :: S.Stream AnimationSrcRect -- stream of the default animation
                            , frameDuration :: Float  -- duration of each sprite visual
-                           , accTime :: Float }
+                           , accTime :: Float } deriving Show
 
 data AnimationSrcRect = AnimationSrcRect { srcRect :: Rectangle CInt
-                                         , animationType :: AnimationType}
+                                         , animationType :: AnimationType} deriving Show
 
 data AnimationType = AnimationType'Idle 
                    | AnimationType'Jump
-                   deriving Eq
+                   deriving (Eq, Show)
 
 createAnimationHandler :: S.Stream AnimationSrcRect -- srcRectStream
                 -> Float -- frameDuration

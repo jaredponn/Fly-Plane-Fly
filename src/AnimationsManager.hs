@@ -4,6 +4,7 @@
 module AnimationsManager where
 
 import Control.Monad.State
+import Control.Lens
 
 import GameVars
 import Animations
@@ -21,27 +22,24 @@ class Monad m => AnimationsManager m where
 
 instance AnimationsManager MahppyBird where
         getPlayerAnimationSrc :: MonadState Vars m => m (AnimationSrcRect)
-        getPlayerAnimationSrc =  gets animationVars >>= return . headAnimation . playerAnimationHandler
+        getPlayerAnimationSrc = headAnimation <$> use (vRenderingVars.playerAnimationHandler) 
 
         updatePlayerAnimation :: (MonadState Vars m, TimeManager m) => m ()
         updatePlayerAnimation = do
-                animationvars <- gets animationVars 
+                playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
                 -- adds the dt to the accumlated time of the animation
                 dt <- getdt
-                let playeranimationhandler = addTimeToAnimationHandler (playerAnimationHandler animationvars) dt
-
+                let nplayeranimationhandler = addTimeToAnimationHandler playeranimationhandler dt
                 -- iterates to the next animation if enough time has elapsed
-                modify (\v -> v { animationVars = animationvars {playerAnimationHandler = updateAnimationHandler playeranimationhandler} } )
+                vRenderingVars.playerAnimationHandler .= updateAnimationHandler nplayeranimationhandler
 
         removePlayerAnimationsUpto :: MonadState Vars m => AnimationType -> m ()
         removePlayerAnimationsUpto animationtype = do
-                animationvars <- gets animationVars 
-                let playeranimationhandler = playerAnimationHandler animationvars
-                modify (\v -> v { animationVars = animationvars {playerAnimationHandler = removeAnimationsUpto animationtype playeranimationhandler } } )
+                playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
+                vRenderingVars.playerAnimationHandler .= removeAnimationsUpto animationtype playeranimationhandler
 
         prependToPlayerAnimation :: MonadState Vars m => [AnimationSrcRect] -> m ()
         prependToPlayerAnimation animations = do
-                animationvars <- gets animationVars 
-                let playeranimationhandler = playerAnimationHandler animationvars
-                modify (\v -> v { animationVars = animationvars {playerAnimationHandler = prefixAnimation animations playeranimationhandler } } )
+                playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
+                vRenderingVars.playerAnimationHandler .= prefixAnimation animations playeranimationhandler
 

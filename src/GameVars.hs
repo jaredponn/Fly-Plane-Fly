@@ -1,4 +1,5 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving #-} 
+{-# LANGUAGE TemplateHaskell #-}
 module GameVars where
 
 import Data.Stream
@@ -13,14 +14,10 @@ import Control.Monad.Reader (MonadReader (..)
 import Control.Monad.State (MonadState (..)
                            , StateT (..))
 import Control.Monad.IO.Class (MonadIO(..))
+import Control.Lens
 
 import Animations 
 import Walls
-
--- ReaderT Environment Monad ReturnedVal
-newtype MahppyBird a = MahppyBird (ReaderT Config (StateT Vars IO) a) 
-        deriving (Functor, Applicative, Monad, MonadReader Config, MonadState Vars, MonadIO)
-                
 
 data Config = Config { cWindow :: SDL.Window
                      , cRenderer :: SDL.Renderer
@@ -34,59 +31,57 @@ data Resources = Resources { cFont :: TTF.Font
                            , topWallTexture :: SDL.Texture
                            , bgMusicChannel :: Mixer.Channel
                            , jumpFx :: Mixer.Chunk }
+data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
+                     , _yvel ::{-# UNPACK #-} !Float 
+                     , _xvel ::{-# UNPACK #-} !Float
+                     , _cJumpHeight ::{-# UNPACK #-} !Float
+                     , _isPassingWall ::{-# UNPACK #-} !Bool
+                     } deriving Show
+makeLenses ''Player
 
-data Vars = Vars { vGameStateStack :: GameStack
+data PlayVars = PlayVars { _player ::{-# UNPACK #-} !Player
+                         , _wallStream :: Stream Wall
+                         , _cGrav ::{-# UNPACK #-} !Float
+                         , _cWallConf ::{-# UNPACK #-} !WallConfig
+                         , _score ::{-# UNPACK #-} !Int
+                         } 
+instance Show PlayVars where
+        show _ = ""
 
-                 , vPlayVars :: PlayVars
+makeLenses ''PlayVars
 
-                 , score ::{-# UNPACK #-} !Int
-
-                 , dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
-                 , camera :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
-                 , kInput :: Input 
-                
-                 , animationVars :: AnimationVars
-
-                 , cGrav ::{-# UNPACK #-} !Float
-                 , cJumpHeight :: {-# UNPACK #-} !Float
-                 , cCamOffset :: {-# UNPACK #-} !(V2 Float)
-                 , cRightVel :: {-# UNPACK #-} !Float
-                 , cWallConf :: {-# UNPACK #-} !WallConfig }
-
-
-data Input = Input { isSpace :: Bool 
-                   , isEsc :: Bool
-                   , mousePos :: V2 CInt
-                   , mousePress :: Bool }
+data Input = Input { _isSpace :: Bool 
+                   , _isEsc :: Bool
+                   , _mousePos ::{-# UNPACK #-} !(V2 CInt)
+                   , _mousePress ::{-# UNPACK #-} !(Bool) }
                    deriving Show
+makeLenses ''Input
 
-
-data PlayVars = PlayVars { player :: SDL.Rectangle Float
-                         , vel :: {-# UNPACK #-} !Float
-                         , wallStream :: Stream Wall
-                         , isPassingWall :: Bool}
-
-data AnimationVars = AnimationVars { playerAnimationHandler :: AnimationHandler
-                                   , bgRect :: SDL.Rectangle Float }
-
--- http://lazyfoo.net/tutorials/SDL/30_scrolling/index.php
--- https://hackage.haskell.org/package/sdl2-2.4.0.1/docs/SDL-Raw-Types.html
-
-instance Show Vars where
-        show vars = 
-                   {- "Playerpos: " ++ show (playerPos vars) ++ "\n" -}
-                {- ++ "Velocity: " ++ show (vel vars) ++ "\n" -}
-                "\n"
-                ++ "dt: " ++ show (dt vars) ++ "\n"
-                ++ "FPS: " ++ show (10000.001 / (dt vars)) ++ "\n"
-                ++ "camera: " ++ show (camera vars) ++ "\n"
-                ++ "kInput: " ++ show (kInput vars) ++ "\n"
+data RenderingVars = RenderingVars { _playerAnimationHandler :: AnimationHandler
+                                   , _bgRect :: SDL.Rectangle Float
+                                   , _cameraPos :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
+                                   , _camOffset :: {-# UNPACK #-} !(V2 Float)
+                                   } deriving Show
+makeLenses ''RenderingVars
 
 data GameState = Menu
                 | Play 
                 | Pause 
                 | GameOver 
                 | Quit
-                deriving Eq
+                deriving (Eq, Show)
 
 type GameStack = Stack GameState
+
+data Vars = Vars { _vGameStateStack :: GameStack 
+                 , _vPlayVars :: PlayVars
+                 , _vRenderingVars :: RenderingVars 
+                 , _kInput :: Input 
+                 , _dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
+                 }  deriving Show
+
+makeLenses ''Vars
+
+-- ReaderT Environment Monad ReturnedVal
+newtype MahppyBird a = MahppyBird (ReaderT Config (StateT Vars IO) a) 
+        deriving (Functor, Applicative, Monad, MonadReader Config, MonadState Vars, MonadIO)

@@ -17,7 +17,6 @@ import qualified Data.Text as T
 
 import PlayerManager
 import AnimationsManager
-import BackgroundManager
 import Animations
 import RectangleTransforms
 import Logger
@@ -56,7 +55,7 @@ class Monad m => Renderer m where
 
 
 instance Renderer MahppyBird where
-        drawObjects :: (Renderer m, TimeManager m) => [m ()] -> m ()
+        drawObjects :: (Logger m, Renderer m, TimeManager m) => [m ()] -> m ()
         drawObjects drawactions = do
                 threadDelay 2000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
                 mapM_ id drawactions
@@ -70,7 +69,7 @@ instance Renderer MahppyBird where
                 t1 <- getRealTime
                 setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
 
-        drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m, BackgroundManager m) => m ()
+        drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
         drawBg = do
                 renderer <- asks cRenderer 
                 bgtexture <- bgTexture <$> asks cResources
@@ -83,7 +82,7 @@ instance Renderer MahppyBird where
                 renderer <- asks cRenderer 
                 playerspritesheet <- playerTexture <$> asks cResources
 
-                player <- getPlayer
+                player <- getPlayerAttributes
                 player' <- toScreenRect player
 
                 srcrect <- srcRect <$> getPlayerAnimationSrc
@@ -162,7 +161,7 @@ instance Renderer MahppyBird where
         toScreenCord :: (CameraManager m) => SDL.Point V2 Float -> m (SDL.Point V2 CInt)
         toScreenCord (SDL.P pos) = do
                 let pos' = roundV2 pos
-                SDL.P cam <- getCamera
+                SDL.P cam <- getCameraPos
                 return . SDL.P $ pos' - cam
 
         toScreenRect :: (Renderer m) => SDL.Rectangle Float -> m (SDL.Rectangle CInt)

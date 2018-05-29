@@ -4,6 +4,7 @@
 module ScoreManager where
 
 import Control.Monad.State
+import Control.Lens
 
 import GameVars
 
@@ -16,24 +17,19 @@ class Monad m => ScoreManager m where
 
 instance ScoreManager MahppyBird where
         getScore :: MonadState Vars m => m (Int)
-        getScore = gets score
+        getScore = use $ vPlayVars.score
 
         incrementScore :: MonadState Vars m => m ()
-        incrementScore = do
-                currscore <- gets score
-                modify (\v -> v { score = currscore + 1} )
+        incrementScore = vPlayVars.score += 1
 
         resetScore :: MonadState Vars m => m ()
-        resetScore = modify (\v -> v { score = 0} )
+        resetScore = vPlayVars.score .= 0
 
         setIsPassingWall :: MonadState Vars m => Bool -> m ()
-        setIsPassingWall bool = do
-                playvars <- gets vPlayVars
-                modify (\v -> v {vPlayVars = playvars { isPassingWall = bool }})
+        setIsPassingWall passing = vPlayVars.player.isPassingWall .= passing
 
         getIsPassingWall :: MonadState Vars m => m (Bool)
         getIsPassingWall = do
-                playvars <- gets vPlayVars
-                return $ isPassingWall playvars
+                use $ vPlayVars.player.isPassingWall
 
 

@@ -17,6 +17,7 @@ import qualified SDL.Font as Font
 import Data.StateVar (($=))
 import Control.Monad.Reader
 import Control.Monad.State
+import Control.Lens
 import Foreign.C.Types
 import Control.Monad (unless)
 import Linear.V2
@@ -38,7 +39,6 @@ import Buttons
 import WallManager
 import PlayerManager
 import AnimationsManager
-import BackgroundManager
 import ScoreManager
 import TimeManager
 import GameStateManager
@@ -68,7 +68,6 @@ loop :: ( Logger m
         , ScoreManager m
         , CameraManager m
         , MonadState Vars m
-        , BackgroundManager m
         , SoundManager m 
         , TimeManager m
         , RectangleTransforms m
@@ -80,8 +79,8 @@ loop = do
 
         runScene input curgamestate
 
-        playState <- get
-        logToFile "/home/jared/Programs/mahppybird/log.txt" . show $ playState
+        {- playState <- get -}
+        {- logToFile "/home/jared/Programs/mahppybird/log.txt" . show $ playState -}
 
         unless (curgamestate == Quit) loop 
 
@@ -91,7 +90,6 @@ runScene :: ( Logger m
             , HasInput m
             , Physics m
             , WallManager m
-            , BackgroundManager m
             , PlayerManager m
             , ScoreManager m
             , CameraManager m
@@ -101,8 +99,8 @@ runScene :: ( Logger m
             , SoundManager m
             , AnimationsManager m) => Input -> GameState -> m ()
 runScene input Menu = do
-        mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
-        mousepress <- mousePress <$> getInput
+        mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
+        mousepress <- _mousePress <$> getInput
 
         playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200)
         runReaderT playbtneffect playbtnattr
@@ -138,7 +136,7 @@ runScene input Play = do
         where
                 inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, GameStateManager m) => Input -> m ()
                 inputHandler input = do
-                        if isSpace input
+                        if _isSpace input
                            then do jumpPlayer
                                    -- sends the jump animation
                                    playerjumpanimation <- playerJumpAnimation <$> asks cResources 
@@ -146,7 +144,7 @@ runScene input Play = do
                                    playJumpFx
                            else return ()
 
-                        if isEsc input
+                        if _isEsc input
                            then pauseGame
                            else return ()
 
@@ -207,7 +205,7 @@ runScene input Play = do
 
 runScene input Pause = do
         renderScreen
-        if isEsc input || isSpace input
+        if _isEsc input || _isSpace input
            then popGameState_
            else return ()
         where
@@ -270,8 +268,8 @@ buttonGameStateModifierFromMouse :: (GameStateManager m
   , HasInput m) => m ()  -- action to modify the game
   -> Button m
 buttonGameStateModifierFromMouse f = do
-        mousepos <- lift $ (\(V2 a b) -> (SDL.P (V2 (fromIntegral a) (fromIntegral b)))) <$> mousePos <$> getInput
-        mousepress <- lift $ mousePress <$> getInput
+        mousepos <- lift $ (\(V2 a b) -> (SDL.P (V2 (fromIntegral a) (fromIntegral b)))) <$> _mousePos <$> getInput
+        mousepress <- lift $ _mousePress <$> getInput
 
         btnattr <- ask 
 

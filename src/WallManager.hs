@@ -9,6 +9,7 @@ import Control.Monad.Reader
 import Control.Monad.State
 import Data.Stream as S
 import SDL
+import Control.Lens
 
 import Aabb
 import Walls
@@ -46,14 +47,15 @@ instance WallManager MahppyBird where
         getWallsInScreen = do
                 window <- asks cWindow 
                 V2 winW winH <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
-
-                wallconf <- gets cWallConf
-                wallstream <- wallStream <$> gets vPlayVars
+                wallconf <- use $ vPlayVars.cWallConf
+                wallstream <- use $ vPlayVars.wallStream
                 let wallstorender = S.take (ceiling (winW / (allWallWidth wallconf + allWallSpacing wallconf))) wallstream
                 mapM transformWallLengthsToWorldVals wallstorender
 
         getFirstWall :: (MonadState Vars m, WallManager m) => m (Wall)
-        getFirstWall = S.head <$> wallStream <$> gets vPlayVars >>= transformWallLengthsToWorldVals
+        getFirstWall =  do
+                wallstream <- use $ vPlayVars.wallStream
+                transformWallLengthsToWorldVals . S.head $ wallstream
 
         getFirstUpperWallAabb :: WallManager m => m Aabb
         getFirstUpperWallAabb = do
@@ -72,22 +74,19 @@ instance WallManager MahppyBird where
 
         popWall :: (MonadState Vars m, WallManager m) => m ( Wall )
         popWall = do
-                playvars <- gets vPlayVars
                 fstwall <- getFirstWall
-                wallstream <- wallStream <$> gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { wallStream = S.tail wallstream } } )
+                wallstream <- use $ vPlayVars.wallStream
+                vPlayVars.wallStream .=  S.tail wallstream
                 return fstwall
 
         popWall_ :: (MonadState Vars m, WallManager m) => m ()
         popWall_ = do
-                playvars <- gets vPlayVars
-                wallstream <- wallStream <$> gets vPlayVars
-                modify (\v -> v { vPlayVars = playvars { wallStream = S.tail wallstream } } )
+                wallstream <- use $ vPlayVars.wallStream
+                vPlayVars.wallStream .=  S.tail wallstream
 
         resetWalls :: (MonadState Vars m, MonadIO m) => m ()
         resetWalls = do
-                playvars <- gets vPlayVars
-                wallconf <- gets cWallConf
+                wallconf <- use $ vPlayVars.cWallConf
                 wallstream <- liftIO . createWallStream $ wallconf
-                modify (\v -> v { vPlayVars = playvars { wallStream = wallstream } } )
+                vPlayVars.cWallConf .= wallconf
 

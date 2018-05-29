@@ -8,6 +8,7 @@ import SDL
 import Foreign.C.Types
 import Control.Monad.Reader
 import Control.Monad.State
+import Control.Lens
 
 import GameVars
 import Util
@@ -18,21 +19,17 @@ class Monad m => CameraManager m where
         setCameraPos :: Point V2 Float -> m ()
         moveCameraBy :: V2 CInt -> m ()
 
-        getCamera :: m (Point V2 CInt)
+        getCameraPos :: m (Point V2 CInt)
 
 instance CameraManager MahppyBird where
         moveCameraBy :: (MonadState Vars m) => V2 CInt -> m ()
-        moveCameraBy transform = do
-                P cam <- gets camera 
-                modify (\v -> v { camera  = P $ cam + transform } )
+        moveCameraBy transform = vRenderingVars.cameraPos %= (+ (P transform))
 
         setCameraPos :: (MonadState Vars m) => Point V2 Float -> m ()
-        setCameraPos cam = do
-                let P cam' = cam
-                modify (\v -> v { camera  = P $ roundV2 cam' } )
+        setCameraPos (P npos) = vRenderingVars.cameraPos .= (P (roundV2 npos))
 
-        getCamera :: (MonadState Vars m ) => m (Point V2 CInt)
-        getCamera = gets camera
+        getCameraPos :: (MonadState Vars m ) => m (Point V2 CInt)
+        getCameraPos = use $ vRenderingVars.cameraPos
 
         getCameraOffset :: MonadState Vars m => m (V2 Float)
-        getCameraOffset = gets cCamOffset
+        getCameraOffset = use $ vRenderingVars.camOffset

@@ -5,6 +5,7 @@ module Physics where
 
 import Control.Monad.Reader
 import Control.Monad.State
+import Control.Lens
 import Linear.V2
 
 import GameVars
@@ -24,7 +25,7 @@ instance Physics MahppyBird where
         -- converts the gravity into velocity 
         applyGrav :: (MonadState Vars m, PlayerManager m, TimeManager m) => m  ()
         applyGrav = do 
-                acc <- gets cGrav
+                acc <- use $ vPlayVars.cGrav
                 ndt <- getdt
                 curvel <- getPlayerYVel
                 setPlayerYVel $ curvel + ndt * acc

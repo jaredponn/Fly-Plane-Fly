@@ -55,31 +55,33 @@ main = do
 
         wallstream <- createWallStream wallConf
 
-        let pvars = PlayVars { player  = SDL.Rectangle (SDL.P (V2 50 2)) (V2 30 30)
-                             , vel = 0.0001
-                             , wallStream = wallstream
-                             , isPassingWall = False }
+        let playervars = Player { _attributes = SDL.Rectangle (SDL.P (V2 50 2)) (V2 30 30)
+                                , _yvel = 0
+                                , _xvel = 125
+                                , _cJumpHeight = (-700)
+                                , _isPassingWall = False }
+            playvars = PlayVars { _player = playervars
+                                , _wallStream = wallstream
+                                , _cGrav = 2900
+                                , _cWallConf = wallConf
+                                , _score = 0 }
+            kinput = Input { _isSpace = False
+                           , _isEsc = False 
+                           , _mousePos = V2 0 0
+                           , _mousePress = False }
+
             playeridlesrcrects = generateSrcRects (SDL.P (V2 0 0)) (V2 30 30) (V2 30 0) 3 AnimationType'Idle
             playersrcidlerectstream = generateSrcRectStream playeridlesrcrects 
-            animationvars = AnimationVars { playerAnimationHandler =  createAnimationHandler playersrcidlerectstream 0.25
-                                          , bgRect = SDL.Rectangle (SDL.P (V2 0 0)) (V2 (fromIntegral screenWidth) (fromIntegral screenHeight))}
+            renderingvars = RenderingVars { _playerAnimationHandler =  createAnimationHandler playersrcidlerectstream 0.25
+                                          , _bgRect = SDL.Rectangle (SDL.P (V2 0 0)) (V2 (fromIntegral screenWidth) (fromIntegral screenHeight))
+                                          , _cameraPos = SDL.P $ V2 0 0
+                                          , _camOffset = (-100)}
 
-            vars = Vars { vGameStateStack = stackPush stackNew Menu
-                        , vPlayVars = pvars
-                        , dt = 0
-                        , score = 0
-                        , camera = SDL.P $ V2 0 0
-                        , kInput = Input { isSpace = False
-                                         , isEsc = False 
-                                         , mousePos = V2 0 0
-                                         , mousePress = False }
-
-                        , cGrav = 2900
-                        , cJumpHeight = (-700)
-                        , cRightVel = 125
-                        , cCamOffset = (-100)
-                        , cWallConf = wallConf 
-                        , animationVars = animationvars }
+            vars = Vars { _vGameStateStack = stackPush stackNew Menu
+                        , _vPlayVars = playvars
+                        , _vRenderingVars = renderingvars
+                        , _kInput = kinput
+                        , _dt = 0 }
 
 
         runMahppyBird cfg vars loop

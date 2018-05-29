@@ -33,7 +33,7 @@ data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float,
                              , allWallWidth :: {-# UNPACK #-} !Float
                              , allWallSpacing :: {-# UNPACK #-} !Float 
                              , startingPos :: {-# UNPACK #-} !Float
-                             }
+                             } deriving Show
 
 -- takes a range of floats and spits out a value between them
 -- used to make random percents. E.g. (0, 1) -> 0.56

@@ -7,6 +7,7 @@ import System.Clock
 import Control.Monad.State
 import Control.Monad.IO.Class (MonadIO(..))
 import qualified Control.Concurrent (threadDelay)
+import Control.Lens
 
 import GameVars
 
@@ -24,7 +25,7 @@ instance TimeManager MahppyBird where
         threadDelay = liftIO . Control.Concurrent.threadDelay 
 
         setdt :: MonadState Vars m => Float -> m ()
-        setdt ndt = modify (\v -> v { dt = ndt } )
+        setdt = (.=) dt 
 
         getdt :: MonadState Vars m => m (Float)
-        getdt = gets dt
+        getdt = use dt

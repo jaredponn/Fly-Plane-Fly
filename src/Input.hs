@@ -8,6 +8,7 @@ import Foreign.C.Types
 import Control.Monad.IO.Class (MonadIO(..))
 import Control.Monad.Reader
 import Control.Monad.State
+import Control.Lens
 
 import GameVars
 
@@ -41,13 +42,13 @@ instance HasInput MahppyBird where
                     esc = any (keyEventIs SDL.KeycodeEscape) events
                     mousepress = any isMouseTap events
 
-                setInput Input { isSpace = space
-                               , isEsc = esc 
-                               , mousePos = mousepos
-                               , mousePress = mousepress}
+                setInput Input { _isSpace = space
+                               , _isEsc = esc 
+                               , _mousePos = mousepos
+                               , _mousePress = mousepress}
 
         setInput :: (MonadState Vars m) => Input -> m ()
-        setInput input = modify (\v -> v { kInput = input })
+        setInput input = kInput .= input
 
         getInput :: (MonadState Vars m) => m Input
-        getInput = gets kInput
+        getInput = use kInput
