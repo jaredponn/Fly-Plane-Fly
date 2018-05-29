@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 module Main where
 
@@ -8,6 +9,7 @@ import SDL (($=)
            , Point (..))
 import qualified SDL.Font as TTF
 import qualified SDL.Image as Image
+import qualified SDL.Mixer as Mixer
 import Foreign.C.Types
 import Control.Monad (unless)
 import Data.Stack
@@ -22,6 +24,8 @@ main :: IO ()
 main = do
         SDL.initializeAll
         TTF.initialize
+        Mixer.openAudio Mixer.defaultAudio 2048
+        Mixer.setChannels 8
 
         window <- SDL.createWindow "Mahppy Bird" SDL.defaultWindow { SDL.windowInitialSize = V2 screenWidth screenHeight }
         renderer <- SDL.createRenderer window (-1) SDL.defaultRenderer
@@ -32,6 +36,10 @@ main = do
         topwallpic <- Image.load (resourcePath </> "topwall.jpg") >>= SDL.createTextureFromSurface renderer 
         bgpic <- Image.load (resourcePath </> "bg.jpg") >>= SDL.createTextureFromSurface renderer 
 
+        (jumpsfx :: Mixer.Chunk) <- Mixer.load (resourcePath </> "fx.wav")
+        (music :: Mixer.Chunk) <- Mixer.load (resourcePath </> "music.wav")
+        bgmusicchannel <- Mixer.fadeInLimit Mixer.NoLimit 0 Mixer.Forever 1000 music
+
         let playerjumpanimationsrcrects = generateSrcRects (SDL.P (V2 0 30)) (V2 30 30) (V2 30 0) 3 AnimationType'Jump
             cfg = Config { cWindow = window
                          , cRenderer = renderer
@@ -40,7 +48,9 @@ main = do
                                                   , playerJumpAnimation =  playerjumpanimationsrcrects
                                                   , botWallTexture = botwallpic
                                                   , topWallTexture = topwallpic
-                                                  , bgTexture = bgpic} }
+                                                  , bgTexture = bgpic
+                                                  , jumpFx = jumpsfx
+                                                  , bgMusicChannel = bgmusicchannel } }
 
 
         wallstream <- createWallStream wallConf
@@ -59,7 +69,10 @@ main = do
                         , dt = 0
                         , score = 0
                         , camera = SDL.P $ V2 0 0
-                        , kInput = undefined
+                        , kInput = Input { isSpace = False
+                                         , isEsc = False 
+                                         , mousePos = V2 0 0
+                                         , mousePress = False }
 
                         , cGrav = 2900
                         , cJumpHeight = (-700)
@@ -68,10 +81,16 @@ main = do
                         , cWallConf = wallConf 
                         , animationVars = animationvars }
 
+
         runMahppyBird cfg vars loop
 
         SDL.destroyRenderer renderer
         SDL.destroyWindow window
+
+        Mixer.closeAudio
+        Mixer.free music
+        Mixer.free jumpsfx
+        Mixer.quit
 
         Image.quit
         TTF.quit

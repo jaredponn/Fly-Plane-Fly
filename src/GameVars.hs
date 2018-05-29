@@ -7,6 +7,7 @@ import Foreign.C.Types
 import Data.Stack
 import qualified SDL
 import qualified SDL.Font as TTF
+import qualified SDL.Mixer as Mixer
 import Control.Monad.Reader (MonadReader (..)
                             , ReaderT (..))
 import Control.Monad.State (MonadState (..)
@@ -30,7 +31,9 @@ data Resources = Resources { cFont :: TTF.Font
                            , playerTexture :: SDL.Texture
                            , playerJumpAnimation :: [AnimationSrcRect]
                            , botWallTexture :: SDL.Texture
-                           , topWallTexture :: SDL.Texture }
+                           , topWallTexture :: SDL.Texture
+                           , bgMusicChannel :: Mixer.Channel
+                           , jumpFx :: Mixer.Chunk }
 
 data Vars = Vars { vGameStateStack :: GameStack
 

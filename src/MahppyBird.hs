@@ -7,8 +7,6 @@
 {-# LANGUAGE OverloadedStrings #-} 
 
 module MahppyBird (MahppyBird (..)
-            , Config (..)
-            , Vars (..)
             , loop
             , runMahppyBird
             ) where
@@ -44,15 +42,16 @@ import BackgroundManager
 import ScoreManager
 import TimeManager
 import GameStateManager
+import SoundManager
 import CameraManager
 import RectangleTransforms
 
 import GameVars
 
 
-
 runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a 
-runMahppyBird conf vars (MahppyBird m) = evalStateT (runReaderT m conf) vars
+runMahppyBird conf vars (MahppyBird m) = do
+        evalStateT (runReaderT m conf) vars
 
 acquireInput :: (Logger m, HasInput m) => m Input
 acquireInput = do
@@ -70,6 +69,7 @@ loop :: ( Logger m
         , CameraManager m
         , MonadState Vars m
         , BackgroundManager m
+        , SoundManager m 
         , TimeManager m
         , RectangleTransforms m
         , GameStateManager m
@@ -98,6 +98,7 @@ runScene :: ( Logger m
             , TimeManager m
             , RectangleTransforms m 
             , GameStateManager m
+            , SoundManager m
             , AnimationsManager m) => Input -> GameState -> m ()
 runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> mousePos <$> getInput
@@ -112,7 +113,7 @@ runScene input Menu = do
         drawObjects [drawBg
           , drawRectToScreen (rect playbtnattr)
           , drawRectToScreen (rect quitbtnattr)
-                , drawTextToScreen "SUPER FUN GAME THAT IS MORE STUPID THAN FUN" (SDL.P (V2 0 0)) xCenterRectangle]
+          , drawTextToScreen "SUPER FUN GAME THAT IS MORE STUPID THAN FUN" (SDL.P (V2 0 0)) xCenterRectangle]
 
 
         where
@@ -128,33 +129,37 @@ runScene input Menu = do
 
 runScene input Play = do
         renderScreen
-        updatePhysics input
-        shouldPause input
+        inputHandler input
+        updatePhysics 
 
         collisionTest
         updateWalls
         updateScore
         where
-                updatePhysics :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m) => Input -> m ()
-                updatePhysics input = do
-                        -- applying gravity
-                        applyGrav
+                inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, GameStateManager m) => Input -> m ()
+                inputHandler input = do
                         if isSpace input
                            then do jumpPlayer
                                    -- sends the jump animation
                                    playerjumpanimation <- playerJumpAnimation <$> asks cResources 
                                    prependToPlayerAnimation playerjumpanimation
-
+                                   playJumpFx
                            else return ()
+
+                        if isEsc input
+                           then pauseGame
+                           else return ()
+
+                updatePhysics :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m) => m ()
+                updatePhysics = do
+                        -- applying gravity
+                        applyGrav
                         applyYVel
                         -- moving character right
                         applyXVel
 
-                shouldPause :: (Physics m, GameStateManager m) => Input -> m ()
-                shouldPause input = do
-                        if isEsc input
-                           then pushGameState Pause
-                           else return ()
+                pauseGame :: GameStateManager m => m ()
+                pauseGame = pushGameState Pause
 
                 updateWalls :: (PlayerManager m, WallManager m, CameraManager m) => m ()
                 updateWalls = do

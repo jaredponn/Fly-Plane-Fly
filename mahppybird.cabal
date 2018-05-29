@@ -29,15 +29,20 @@ executable bird
                  , TimeManager
                  , GameStateManager
                  , CameraManager
+                 , AnimationsManager
+                 , BackgroundManager
+                 , SoundManager
                  , Aabb
                  , Buttons
                  , GameVars
                  , Util
                  , RectangleTransforms
+                 , Animations
   build-depends:       base >= 4.7 && < 5
                        , sdl2
                        , sdl2-ttf
                        , sdl2-image
+                       , sdl2-mixer
                        , mtl
                        , StateVar
                        , linear
