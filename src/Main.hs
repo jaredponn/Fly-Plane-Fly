@@ -1,6 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE ScopedTypeVariables #-}
-
+{-# LANGUAGE ScopedTypeVariables #-} 
 module Main where
 
 import qualified SDL
@@ -93,7 +92,8 @@ main = do
                         , _vPlayVars = playvars
                         , _vRenderingVars = renderingvars
                         , _kInput = kinput
-                        , _dt = 0 }
+                        , _dt = 0
+                        , _highScores = (0,0,0) }
 
 
         runMahppyBird cfg vars loop

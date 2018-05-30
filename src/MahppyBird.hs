@@ -196,7 +196,16 @@ runScene input Play = do
                         if (hitTestAbove playerAabb upperWallAabb) || (hitTestBelow playerAabb lowerWallAabb)
                         then do 
                                 logText "you lose. FINAL SCORE: "
-                                getScore >>= logText . show 
+                                curscore <- getScore
+                                logText . show $ curscore
+                                scoreplacing <- scorePlacing curscore
+                                case scoreplacing of
+                                  Just n -> do 
+                                          logText "HIGH SCORE: "
+                                          modifyHighScore (Just n) curscore
+                                          getHighScores >>= logText . show  
+                                  Nothing -> return ()
+                                
                                 getPlayerDeathAnimation >>= replacePlayerAnimation 
                                 pushGameState GameOver
                         else return ()

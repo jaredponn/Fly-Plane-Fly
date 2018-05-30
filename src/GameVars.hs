@@ -99,6 +99,7 @@ data Vars = Vars { _vGameStateStack :: GameStack
                  , _vRenderingVars :: RenderingVars 
                  , _kInput :: Input 
                  , _dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
+                 , _highScores :: {-# UNPACK #-} !(Int, Int, Int) -- time it took for the frame to render
                  }  deriving Show
 
 makeLenses ''Vars

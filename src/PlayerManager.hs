@@ -23,6 +23,9 @@ class Monad m => PlayerManager m where
         setPlayerYVel :: Float -> m ()
         translatePlayer:: V2 Float -> m ()
 
+        setIsPassingWall :: Bool -> m ()
+        getIsPassingWall :: m (Bool)
+
         jumpPlayer :: m ()
         isPlayerJumping :: m (Bool)
 
@@ -70,4 +73,11 @@ instance PlayerManager MahppyBird where
 
         isPlayerJumping :: PlayerManager m => m (Bool)
         isPlayerJumping = (<0) <$> getPlayerYVel 
+
+        setIsPassingWall :: MonadState Vars m => Bool -> m ()
+        setIsPassingWall passing = vPlayVars.player.isPassingWall .= passing
+
+        getIsPassingWall :: MonadState Vars m => m (Bool)
+        getIsPassingWall = do
+                use $ vPlayVars.player.isPassingWall
 
