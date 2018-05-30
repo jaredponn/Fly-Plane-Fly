@@ -19,18 +19,38 @@ import Control.Lens
 import Animations 
 import Walls
 
-data Resources = Resources { cFont :: TTF.Font
-                           , bgTexture :: SDL.Texture
-                           , playerTexture :: SDL.Texture
-                           , playerJumpAnimation :: [AnimationSrcRect]
-                           , botWallTexture :: SDL.Texture
-                           , topWallTexture :: SDL.Texture
-                           , bgMusicChannel :: Mixer.Channel
-                           , jumpFx :: Mixer.Chunk }
+data ButtonTextures = ButtonTextures { _playBtnTexture :: SDL.Texture
+                                     , _quitBtnTexture :: SDL.Texture
+                                     , _playAgainBtnTexture :: SDL.Texture }
+makeLenses ''ButtonTextures
+
+data Textures = Textures { _bgTexture :: SDL.Texture
+                         , _playerSpriteSheet :: SDL.Texture
+                         , _botWallTexture :: SDL.Texture
+                         , _topWallTexture :: SDL.Texture
+                         , _btnTextures :: ButtonTextures
+                         }
+makeLenses ''Textures
+
+data Animations = Animations { _playerIdleAnimation :: [AnimationSrcRect]
+                             , _playerJumpAnimation :: [AnimationSrcRect]
+                             , _playerDeathAnimation :: [AnimationSrcRect] }
+makeLenses ''Animations
+
+data Sound = Sound { _bgMusicChannel :: Mixer.Channel
+                   , _jumpFx :: Mixer.Chunk }
+makeLenses ''Sound
+
+data Resources = Resources { _cFont :: TTF.Font
+                           , _cTextures :: Textures
+                           , _cAnimations :: Animations
+                           , _cSound :: Sound }
+makeLenses ''Resources
 
 data Config = Config { cWindow :: SDL.Window
                      , cRenderer :: SDL.Renderer
-                     , cResources :: Resources }
+                     , _cResources :: Resources }
+makeLenses ''Config
 
 data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
                      , _yvel ::{-# UNPACK #-} !Float 

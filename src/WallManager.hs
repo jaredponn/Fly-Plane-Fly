@@ -14,6 +14,7 @@ import Control.Lens
 import Aabb
 import Walls
 import GameVars
+import Logger
 
 class Monad m => WallManager m where
         -- takes the percent values that the wall has and converts them into the sizes corrosponding to the window size in world coordinateS
@@ -84,9 +85,9 @@ instance WallManager MahppyBird where
                 wallstream <- use $ vPlayVars.wallStream
                 vPlayVars.wallStream .=  S.tail wallstream
 
-        resetWalls :: (MonadState Vars m, MonadIO m) => m ()
+        resetWalls :: (MonadState Vars m, MonadIO m, Logger m) => m ()
         resetWalls = do
                 wallconf <- use $ vPlayVars.cWallConf
                 wallstream <- liftIO . createWallStream $ wallconf
-                vPlayVars.cWallConf .= wallconf
+                vPlayVars.wallStream .= wallstream
 

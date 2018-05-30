@@ -4,6 +4,7 @@
 module AnimationsManager where
 
 import Control.Monad.State
+import Control.Monad.Reader
 import Control.Lens
 
 import GameVars
@@ -15,10 +16,11 @@ class Monad m => AnimationsManager m where
         updatePlayerAnimation :: m ()
         removePlayerAnimationsUpto :: AnimationType -> m ()
         prependToPlayerAnimation :: [AnimationSrcRect] -> m ()
+        replacePlayerAnimation :: [AnimationSrcRect] -> m ()
 
-
--- TODO make some crappy graphics for testing player animation
--- Implement it so that it works.
+        getPlayerJumpAnimation :: m ([AnimationSrcRect])
+        getPlayerDeathAnimation :: m ([AnimationSrcRect])
+        getPlayerIdleAnimation :: m ([AnimationSrcRect])
 
 instance AnimationsManager MahppyBird where
         getPlayerAnimationSrc :: MonadState Vars m => m (AnimationSrcRect)
@@ -43,3 +45,16 @@ instance AnimationsManager MahppyBird where
                 playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
                 vRenderingVars.playerAnimationHandler .= prefixAnimation animations playeranimationhandler
 
+        replacePlayerAnimation :: MonadState Vars m => [AnimationSrcRect] -> m ()
+        replacePlayerAnimation animations = do 
+                playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
+                vRenderingVars.playerAnimationHandler .= replaceAnimation animations playeranimationhandler
+
+        getPlayerJumpAnimation :: MonadReader Config m => m ([AnimationSrcRect])
+        getPlayerJumpAnimation = view (cResources.cAnimations.playerJumpAnimation)
+
+        getPlayerDeathAnimation :: MonadReader Config m => m ([AnimationSrcRect])
+        getPlayerDeathAnimation = view (cResources.cAnimations.playerDeathAnimation)
+
+        getPlayerIdleAnimation :: MonadReader Config m => m ([AnimationSrcRect])
+        getPlayerIdleAnimation = view (cResources.cAnimations.playerIdleAnimation)
