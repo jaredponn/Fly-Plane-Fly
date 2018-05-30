@@ -134,7 +134,7 @@ runScene input Play = do
         where
                 inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, GameStateManager m) => Input -> m ()
                 inputHandler input = do
-                        if _isSpace input
+                        if _isSpace input 
                            then do jumpPlayer
                                    -- sends the jump animation
                                    join $ views (cResources.cAnimations.playerJumpAnimation) prependToPlayerAnimation 
@@ -195,17 +195,15 @@ runScene input Play = do
                         lowerWallAabb <- ceilingAabb <$> getFirstLowerWallAabb
                         if (hitTestAbove playerAabb upperWallAabb) || (hitTestBelow playerAabb lowerWallAabb)
                         then do 
-                                logText "you lose. FINAL SCORE: "
                                 curscore <- getScore
-                                logText . show $ curscore
                                 scoreplacing <- scorePlacing curscore
                                 case scoreplacing of
                                   Just n -> do 
-                                          logText "HIGH SCORE: "
+                                          logText $ "CONGRATS NEW HIGH SCORE: " ++ (show curscore)
                                           modifyHighScore (Just n) curscore
                                           getHighScores >>= logText . show  
-                                  Nothing -> return ()
-                                
+                                  Nothing -> do
+                                          logText $ "YOUR FINAL SCORE:" ++ (show curscore)
                                 getPlayerDeathAnimation >>= replacePlayerAnimation 
                                 pushGameState GameOver
                         else return ()

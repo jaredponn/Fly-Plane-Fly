@@ -19,7 +19,7 @@ class Monad m => ScoreManager m where
         modifyHighScore :: Maybe Int  -- how high the new score ranks
                         -> Int  -- the new score
                         -> m ()
-        getHighScores :: m(Int, Int, Int)
+        getHighScores :: m (Int, Int, Int)
 
 instance ScoreManager MahppyBird where
         getScore :: MonadState Vars m => m (Int)
@@ -37,9 +37,9 @@ instance ScoreManager MahppyBird where
                 return $ f score scores 
                         where
                                 f n (a,b,c)
-                                  | n >= a = Just 1
-                                  | n >= b = Just 2
-                                  | n >= c = Just 3
+                                  | n > a = Just 1
+                                  | n > b = Just 2
+                                  | n > c = Just 3
                                   | otherwise = Nothing
 
 
