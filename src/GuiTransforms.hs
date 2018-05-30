@@ -1,8 +1,7 @@
 {-# LANGUAGE InstanceSigs #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE FlexibleContexts #-} 
-
-module RectangleTransforms where
+module GuiTransforms where
 
 import SDL
 import SDL.Video 
@@ -10,11 +9,11 @@ import Control.Monad.Reader
 import Control.Monad.State
 import GameVars
 
-class Monad m => RectangleTransforms m where
+class Monad m => GuiTransforms m where
         xCenterRectangle ::  Rectangle Float-> m (Rectangle Float)
         yCenterRectangle ::  Rectangle Float-> m (Rectangle Float)
 
-instance RectangleTransforms MahppyBird where
+instance GuiTransforms MahppyBird where
         xCenterRectangle :: (MonadReader Config m, MonadIO m) => Rectangle Float-> m (Rectangle Float)
         xCenterRectangle rect = do
                 window <- asks cWindow 

@@ -29,7 +29,9 @@ data Wall = Wall { upperWall :: Float -- percent of the size
                  deriving Show
 
 data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float, Float)
-                             , allGapSize :: {-# UNPACK #-} !Float
+                             , startingGapSize :: {-# UNPACK #-} !Float
+                             , gapSizeChangeRate :: {-# UNPACK #-} !Float
+                             , finalGapSize :: {-# UNPACK #-} !Float
                              , allWallWidth :: {-# UNPACK #-} !Float
                              , allWallSpacing :: {-# UNPACK #-} !Float 
                              , startingPos :: {-# UNPACK #-} !Float
@@ -52,8 +54,8 @@ createWall :: RandomGen g => WallConfig
            -> (Wall, g)
 createWall conf startPos g = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
                               in ( Wall { upperWall = val
-                                        , gap = allGapSize conf
-                                        , lowerWall = 1 - (val + allGapSize conf)
+                                        , gap = startingGapSize conf
+                                        , lowerWall = 1 - (val + startingGapSize conf)
                                         , xPos = startPos
                                         , wallWidth = allWallWidth conf}
                                 , g' )
@@ -62,9 +64,12 @@ createNextWall :: RandomGen g => WallConfig
                -> (Wall, g) -- old wall
                -> (Wall, g)
 createNextWall conf (old, g) = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
+                                   gapsize = if gap old + gapSizeChangeRate conf <= finalGapSize conf
+                                                then finalGapSize conf
+                                                else gap old + gapSizeChangeRate conf
                                 in ( Wall { upperWall = val
-                                          , gap = allGapSize conf
-                                          , lowerWall = 1 - (val + allGapSize conf)
+                                          , gap = gapsize
+                                          , lowerWall = 1 - (val + gapsize)
                                           , xPos = (allWallSpacing conf) + (xPos old) + (wallWidth old) 
                                           , wallWidth = allWallWidth conf}
                                    , g' )
@@ -86,7 +91,9 @@ testCreateWallStream conf = do
 
 testWallConf :: WallConfig
 testWallConf =  WallConfig { allUppperWallRngBounds = (0, 0.6)
-                           , allGapSize = 0.2
+                           , startingGapSize = 0.4
+                           , gapSizeChangeRate = (-0.05)
+                           , finalGapSize = 0.22
                            , allWallWidth = 30
                            , allWallSpacing = 30
                            , startingPos = 30 }

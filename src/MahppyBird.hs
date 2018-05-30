@@ -43,7 +43,7 @@ import TimeManager
 import GameStateManager
 import SoundManager
 import CameraManager
-import RectangleTransforms
+import GuiTransforms
 
 runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a 
 runMahppyBird conf vars (MahppyBird m) = do
@@ -66,7 +66,7 @@ loop :: ( Logger m
         , MonadState Vars m
         , SoundManager m 
         , TimeManager m
-        , RectangleTransforms m
+        , GuiTransforms m
         , GameStateManager m
         , AnimationsManager m) => m ()
 loop = do
@@ -90,7 +90,7 @@ runScene :: ( Logger m
             , ScoreManager m
             , CameraManager m
             , TimeManager m
-            , RectangleTransforms m 
+            , GuiTransforms m 
             , GameStateManager m
             , SoundManager m
             , AnimationsManager m) => Input -> GameState -> m ()
@@ -98,11 +98,11 @@ runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
         mousepress <- _mousePress <$> getInput
         
-        playbtntexture <- view $ cResources.cTextures.btnTextures.playBtnTexture
+        playbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
         playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) playbtntexture
         runReaderT playbtneffect playbtnattr
 
-        quitbtntexture <- view $ cResources.cTextures.btnTextures.quitBtnTexture
+        quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
         quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
@@ -217,29 +217,38 @@ runScene input Pause = do
                 renderScreen = renderGame []
 
 runScene input GameOver = do
-
-        playagainbtntexture <- view $ cResources.cTextures.btnTextures.playBtnTexture
-        playagainbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) playagainbtntexture
+        playagainbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
+        playagainbtnattr <- translateButtonAttr (V2 (-125) 150) <$> createCenteredButtonAttr (V2 200 50) playagainbtntexture
         runReaderT playagainbtneffect playagainbtnattr
+
+        quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
+        quitbtnattr <- translateButtonAttr (V2 (125) 150) <$> createCenteredButtonAttr (V2 200 50) playagainbtntexture
+        runReaderT quitbtneffect quitbtnattr
+
+        gameoverwindowtexture <- view $ cResources.cTextures.guiTextures.gameOverWindowTexture
+        gameoverwindowrect <- GuiTransforms.translate (V2 0 (-50)) <$> ((xCenterRectangle >=> yCenterRectangle) (SDL.Rectangle (SDL.P (V2 0 0)) (V2 450 300)))
 
         if _isEsc input 
            then popGameState_ >> pushGameState Play >> resetGame
            else return ()
 
-        quitbtntexture <- view $ cResources.cTextures.btnTextures.quitBtnTexture
-        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) quitbtntexture
-        runReaderT quitbtneffect quitbtnattr
-
-        renderScreen playagainbtnattr quitbtnattr
+        renderGameOverScreen [ drawBtnToScreen playagainbtnattr
+                             , drawBtnToScreen quitbtnattr 
+                             , drawTextureToScreen gameoverwindowrect gameoverwindowtexture
+                             , renderScores ]
 
         updatePhysics 
         where
-                renderScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m, AnimationsManager m) => ButtonAttr
-                             -> ButtonAttr
+                renderGameOverScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m, AnimationsManager m) => [m()]
                              -> m ()
-                renderScreen btn0 btn1= do
-                        renderGame [drawBtnToScreen btn0, drawBtnToScreen btn1]
+                renderGameOverScreen renderactions = do
+                        renderGame renderactions
                         updatePlayerAnimation
+                        
+                renderScores :: (GuiTransforms m, ScoreManager m, Renderer m) => m ()
+                renderScores = do 
+                        (first, second, third) <- getHighScores
+                        drawTextToScreen (T.pack . show $ first) (SDL.P (V2 0 0)) ((liftM (GuiTransforms.translate (V2 (-300) 300))) <$> (yCenterRectangle >=> xCenterRectangle))
 
                 updatePhysics :: (Physics m) => m ()
                 updatePhysics = do
@@ -261,16 +270,18 @@ runScene input GameOver = do
 runScene input Quit = return ()
 
 
-renderGame :: (Renderer m, PlayerManager m, CameraManager m) => [m ()] ->m ()
+renderGame :: (Renderer m, PlayerManager m, CameraManager m) => [m ()] -> m ()
 renderGame renderactions = do
         SDL.P (V2 x _) <- getPlayerPos
         camoffset <- getCameraOffset
         setCameraPos . SDL.P $ (V2 x 0) + camoffset
         drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer, drawScore] ++ renderactions
 
+
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m, AnimationsManager m) => m ()
 resetGame = do
         resetScore
+        changeWallConfStartingPosition 200
         resetWalls
         resetPlayerPos
         setIsPassingWall False

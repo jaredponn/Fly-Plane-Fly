@@ -42,14 +42,15 @@ main = do
         let playeridlesrcrects = generateSrcRects (SDL.P (V2 0 0)) (V2 30 30) (V2 30 0) 3 AnimationType'Idle
             playerjumpanimationsrcrects = generateSrcRects (SDL.P (V2 0 30)) (V2 30 30) (V2 30 0) 3 AnimationType'Jump
             playerdeathanimationsrcrects = generateSrcRects (SDL.P (V2 0 60)) (V2 30 30) (V2 30 0) 3 AnimationType'Death
-            buttontextures = ButtonTextures{ _playBtnTexture = bgpic
-                                           , _quitBtnTexture = bgpic
-                                           , _playAgainBtnTexture = bgpic}
+            guitextures = GUITextures{ _playBtnTexture = bgpic
+                                      , _quitBtnTexture = bgpic
+                                      , _playAgainBtnTexture = bgpic
+                                     , _gameOverWindowTexture = bgpic}
             textures = Textures {_bgTexture = bgpic
                                 , _playerSpriteSheet = playerpic
                                 , _botWallTexture = botwallpic
                                 , _topWallTexture = topwallpic
-                                , _btnTextures = buttontextures}
+                                , _guiTextures = guitextures }
             animations = Animations { _playerJumpAnimation = playerjumpanimationsrcrects
                                     , _playerDeathAnimation = playerdeathanimationsrcrects
                                     , _playerIdleAnimation = playeridlesrcrects}
@@ -117,11 +118,13 @@ screenWidth = 1280
 screenHeight = 720
 
 wallConf :: WallConfig
-wallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.58)
-                           , allGapSize = 0.22
-                           , allWallWidth = 100
-                           , allWallSpacing = 175
-                           , startingPos = 200 }
+wallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.44)
+                       , startingGapSize = 0.40
+                       , gapSizeChangeRate = (-0.02)
+                       , finalGapSize = 0.22
+                       , allWallWidth = 100
+                       , allWallSpacing = 175
+                       , startingPos = 700 }
 
 resourcePath :: FilePath
 resourcePath = "/home/jared/Programs/mahppybird/Resources" 

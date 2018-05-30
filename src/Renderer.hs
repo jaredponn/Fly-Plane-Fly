@@ -20,7 +20,7 @@ import PlayerManager
 import Buttons
 import AnimationsManager
 import Animations
-import RectangleTransforms
+import GuiTransforms
 import Logger
 import TimeManager
 import ScoreManager
@@ -49,6 +49,7 @@ class Monad m => Renderer m where
                          -> (SDL.Rectangle Float -> m (SDL.Rectangle Float)) -- transform to apply to the text
                          -> m ()
         drawBtnToScreen :: ButtonAttr -> m ()
+        drawTextureToScreen :: SDL.Rectangle Float -> SDL.Texture -> m ()
 
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
@@ -68,7 +69,7 @@ instance Renderer MahppyBird where
         drawObjectsWithDt drawactions = do
                 t0 <- getRealTime 
                 drawObjects drawactions
-                threadDelay 2000 -- fixes the weird random speed ups / slow downs
+                threadDelay 2000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
                 t1 <- getRealTime
                 setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
 
@@ -128,12 +129,12 @@ instance Renderer MahppyBird where
                 return $ ( SDL.Rectangle topPoint lengths
                          , SDL.Rectangle botPoint lengths )
 
-        drawScore :: (ScoreManager m, Renderer m, RectangleTransforms m) => m ()
+        drawScore :: (ScoreManager m, Renderer m, GuiTransforms m) => m ()
         drawScore = do
                 score <- getScore
                 drawTextToScreen (T.pack . show $ score) (SDL.P (V2 0 0)) f
                 where
-                        f :: (RectangleTransforms m) => SDL.Rectangle Float -> m (SDL.Rectangle Float)
+                        f :: (GuiTransforms m) => SDL.Rectangle Float -> m (SDL.Rectangle Float)
                         f rect = xCenterRectangle rect >>= yCenterRectangle 
 
         drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => SDL.Rectangle Float -> m ()
@@ -161,8 +162,14 @@ instance Renderer MahppyBird where
         drawBtnToScreen :: (MonadIO m, MonadReader Config m) => ButtonAttr -> m ()
         drawBtnToScreen btnattr = do
                 renderer <- asks cRenderer
-                let nrect = (\(SDL.Rectangle (SDL.P (V2 x y)) (V2 w h)) -> SDL.Rectangle (SDL.P (V2 (round x) (round y))) (V2 (round w) (round h))) $ rect btnattr
+                let nrect =  roundSDLRect . rect $ btnattr
                 SDL.copy renderer (texture btnattr) Nothing $ Just nrect
+
+        drawTextureToScreen :: (MonadIO m, MonadReader Config m) => SDL.Rectangle Float -> SDL.Texture -> m ()
+        drawTextureToScreen rect texture = do
+                renderer <- asks cRenderer
+                let nrect = roundSDLRect rect
+                SDL.copy renderer texture Nothing $ Just nrect
 
 
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()
@@ -171,7 +178,6 @@ instance Renderer MahppyBird where
         toScreenCord :: (CameraManager m) => SDL.Point V2 Float -> m (SDL.Point V2 CInt)
         toScreenCord (SDL.P pos) = do
                 let pos' = roundV2 pos
-
                 SDL.P cam <- getCameraPos
                 return . SDL.P $ pos' - cam
 
@@ -181,3 +187,5 @@ instance Renderer MahppyBird where
                 let lengths' = roundV2 lengths
                 return $ SDL.Rectangle pos' lengths'
 
+roundSDLRect :: SDL.Rectangle Float -> SDL.Rectangle CInt
+roundSDLRect = (\(SDL.Rectangle (SDL.P (V2 x y)) (V2 w h)) -> SDL.Rectangle (SDL.P (V2 (round x) (round y))) (V2 (round w) (round h)))

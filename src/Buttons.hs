@@ -11,7 +11,7 @@ import Aabb
 import GameVars
 import Logger
 import Util
-import RectangleTransforms
+import GuiTransforms
 
 data ButtonAttr = ButtonAttr { rect :: Rectangle Float
                              , aabb :: Aabb
@@ -29,28 +29,41 @@ createButtonAttrFromRectangle nrect texture = ButtonAttr { rect = nrect
                                                          , aabb = rectangleToAabb nrect
                                                          , texture = texture}
 
-createXCenteredButtonAttr :: (RectangleTransforms m) => Float  -- y position
+createCenteredButtonAttr :: (GuiTransforms m) => V2 Float -- lengths.  Width, height
+                          -> Texture
+                          -> m ButtonAttr
+createCenteredButtonAttr lengths texture = do
+        let tmpbtnattr = ButtonAttr { rect = Rectangle (P (V2 0 0)) lengths
+                                    , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))
+                                    , texture = texture}
+        yCenterButtonAttr >=> xCenterButtonAttr $ tmpbtnattr
+
+
+createXCenteredButtonAttr :: (GuiTransforms m) => Float  -- y position
                           -> V2 Float -- lengths.  Width, height
                           -> Texture
                           -> m ButtonAttr
 createXCenteredButtonAttr ypos lengths texture = do
         let tmpbtnattr = ButtonAttr { rect = Rectangle (P (V2 0 ypos)) lengths
                                     , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))
-                                    , texture = undefined}
-        xCenterButton tmpbtnattr texture
+                                    , texture = texture}
+        xCenterButtonAttr tmpbtnattr
 
-xCenterButton :: (RectangleTransforms m ) => ButtonAttr -> Texture -> m ButtonAttr  
-xCenterButton btnattr texture = do
+xCenterButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  
+xCenterButtonAttr btnattr = do
         let rectangle = rect btnattr
         rectangle' <- xCenterRectangle rectangle
-        return ButtonAttr { rect = rectangle'
-                          , aabb = rectangleToAabb rectangle'
-                          , texture = texture }
+        return btnattr { rect = rectangle'
+                       , aabb = rectangleToAabb rectangle' }
 
-yCenterButton :: (RectangleTransforms m ) => ButtonAttr -> Texture -> m ButtonAttr  
-yCenterButton btnattr texture = do
+yCenterButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  
+yCenterButtonAttr btnattr = do
         let rectangle = rect btnattr
         rectangle' <- yCenterRectangle rectangle
-        return ButtonAttr { rect = rectangle'
-                          , aabb = rectangleToAabb rectangle'
-                          , texture = texture }
+        return btnattr { rect = rectangle'
+                       , aabb = rectangleToAabb rectangle'}
+
+translateButtonAttr :: V2 Float -> ButtonAttr -> ButtonAttr
+translateButtonAttr translation btnattr = let nrect = GuiTransforms.translate translation $ rect btnattr
+                                           in btnattr { rect = nrect
+                                                      , aabb = rectangleToAabb nrect}

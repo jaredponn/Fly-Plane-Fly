@@ -30,6 +30,7 @@ class Monad m => WallManager m where
         popWall :: m (Wall)
         popWall_ :: m ()
 
+        changeWallConfStartingPosition :: Float -> m ()
         resetWalls :: m ()
 
 instance WallManager MahppyBird where
@@ -90,4 +91,10 @@ instance WallManager MahppyBird where
                 wallconf <- use $ vPlayVars.cWallConf
                 wallstream <- liftIO . createWallStream $ wallconf
                 vPlayVars.wallStream .= wallstream
+
+        changeWallConfStartingPosition :: MonadState Vars m => Float -> m ()
+        changeWallConfStartingPosition newstartingpos = do
+                wallconf <- use (vPlayVars.cWallConf) 
+                let nwallconf = wallconf {startingPos = newstartingpos}
+                vPlayVars.cWallConf .= nwallconf
 

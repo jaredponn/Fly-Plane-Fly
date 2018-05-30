@@ -19,16 +19,17 @@ import Control.Lens
 import Animations 
 import Walls
 
-data ButtonTextures = ButtonTextures { _playBtnTexture :: SDL.Texture
-                                     , _quitBtnTexture :: SDL.Texture
-                                     , _playAgainBtnTexture :: SDL.Texture }
-makeLenses ''ButtonTextures
+data GUITextures = GUITextures { _playBtnTexture :: SDL.Texture
+                               , _quitBtnTexture :: SDL.Texture
+                               , _playAgainBtnTexture :: SDL.Texture
+                               , _gameOverWindowTexture :: SDL.Texture}
+makeLenses ''GUITextures
 
 data Textures = Textures { _bgTexture :: SDL.Texture
                          , _playerSpriteSheet :: SDL.Texture
                          , _botWallTexture :: SDL.Texture
                          , _topWallTexture :: SDL.Texture
-                         , _btnTextures :: ButtonTextures
+                         , _guiTextures :: GUITextures
                          }
 makeLenses ''Textures
 
