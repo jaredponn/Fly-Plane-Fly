@@ -97,16 +97,18 @@ runScene :: ( Logger m
 runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
         mousepress <- _mousePress <$> getInput
-
-        playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) undefined
+        
+        playbtntexture <- view $ cResources.cTextures.btnTextures.playBtnTexture
+        playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) playbtntexture
         runReaderT playbtneffect playbtnattr
 
-        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) undefined
+        quitbtntexture <- view $ cResources.cTextures.btnTextures.quitBtnTexture
+        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
         drawObjects [drawBg
-          , drawRectToScreen (rect playbtnattr)
-          , drawRectToScreen (rect quitbtnattr)
+          , drawBtnToScreen playbtnattr
+          , drawBtnToScreen quitbtnattr
           , drawTextToScreen "SUPER FUN GAME THAT IS MORE STUPID THAN FUN" (SDL.P (V2 0 0)) xCenterRectangle]
 
 
@@ -135,8 +137,7 @@ runScene input Play = do
                         if _isSpace input
                            then do jumpPlayer
                                    -- sends the jump animation
-                                   playerjumpanimation <- playerJumpAnimation <$> asks cResources 
-                                   prependToPlayerAnimation playerjumpanimation
+                                   join $ views (cResources.cAnimations.playerJumpAnimation) prependToPlayerAnimation 
                                    playJumpFx
                            else return ()
 
@@ -187,7 +188,7 @@ runScene input Play = do
                                 then removePlayerAnimationsUpto AnimationType'Idle
                                 else return ()
 
-                collisionTest :: (WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
+                collisionTest :: (AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
                 collisionTest = do
                         playerAabb <- getPlayerAabb
                         upperWallAabb <- floorAabb <$> getFirstUpperWallAabb
@@ -196,6 +197,7 @@ runScene input Play = do
                         then do 
                                 logText "you lose. FINAL SCORE: "
                                 getScore >>= logText . show 
+                                getPlayerDeathAnimation >>= replacePlayerAnimation 
                                 pushGameState GameOver
                         else return ()
 
@@ -209,21 +211,28 @@ runScene input Pause = do
 
 runScene input GameOver = do
 
-        playagainbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) undefined
+        playagainbtntexture <- view $ cResources.cTextures.btnTextures.playBtnTexture
+        playagainbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) playagainbtntexture
         runReaderT playagainbtneffect playagainbtnattr
 
-        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) undefined
+        if _isEsc input 
+           then popGameState_ >> pushGameState Play >> resetGame
+           else return ()
+
+        quitbtntexture <- view $ cResources.cTextures.btnTextures.quitBtnTexture
+        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
         renderScreen playagainbtnattr quitbtnattr
 
         updatePhysics 
         where
-                renderScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m) => ButtonAttr
+                renderScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m, AnimationsManager m) => ButtonAttr
                              -> ButtonAttr
                              -> m ()
                 renderScreen btn0 btn1= do
-                        renderGame [drawRectToScreen (rect btn0), drawRectToScreen (rect btn1)]
+                        renderGame [drawBtnToScreen btn0, drawBtnToScreen btn1]
+                        updatePlayerAnimation
 
                 updatePhysics :: (Physics m) => m ()
                 updatePhysics = do
@@ -234,6 +243,7 @@ runScene input GameOver = do
                                      , HasInput m
                                      , WallManager m
                                      , PlayerManager m
+                                     , AnimationsManager m
                                      , ScoreManager m) => Button m
                 playagainbtneffect = buttonGameStateModifierFromMouse $ popGameState_ >> pushGameState Play >> resetGame
 
@@ -251,12 +261,13 @@ renderGame renderactions = do
         setCameraPos . SDL.P $ (V2 x 0) + camoffset
         drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer, drawScore] ++ renderactions
 
-resetGame :: (WallManager m, PlayerManager m, ScoreManager m) => m ()
+resetGame :: (WallManager m, PlayerManager m, ScoreManager m, AnimationsManager m) => m ()
 resetGame = do
         resetScore
         resetWalls
         resetPlayerPos
         setIsPassingWall False
+        getPlayerIdleAnimation >>= replacePlayerAnimation 
         setPlayerYVel 0
 
 -- if the button is pressed, then execute the modifier to the game state

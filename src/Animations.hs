@@ -9,6 +9,7 @@ module Animations ( AnimationHandler (..)
                   , headAnimation
                   , prefixAnimation
                   , removeAnimationsUpto
+                  , replaceAnimation
                   , removeAnimations
                   ) where
 
@@ -24,6 +25,7 @@ data AnimationSrcRect = AnimationSrcRect { srcRect :: Rectangle CInt
                                          , animationType :: AnimationType} deriving Show
 
 data AnimationType = AnimationType'Idle 
+                   | AnimationType'Death
                    | AnimationType'Jump
                    deriving (Eq, Show)
 
@@ -69,8 +71,13 @@ popAnimation animation = let (headanimation, tailanimations) = pop . srcRectStre
 popAnimation_ :: AnimationHandler -> AnimationHandler
 popAnimation_ animation = animation { srcRectStream = pop_ . srcRectStream $ animation  }
 
+-- prefixes animations for the stream
 prefixAnimation :: [AnimationSrcRect] -> AnimationHandler -> AnimationHandler
 prefixAnimation newanimations animation = animation { srcRectStream = prefix newanimations $ srcRectStream animation  }
+
+-- replaces all animations in the stream
+replaceAnimation :: [AnimationSrcRect] -> AnimationHandler -> AnimationHandler
+replaceAnimation newanimations animation = animation { srcRectStream = prefix (cycle newanimations) $ srcRectStream animation  }
 
 removeAnimations :: AnimationType -> AnimationHandler -> AnimationHandler
 removeAnimations animationtype animation = animation { srcRectStream = Animations.dropWhile (==animationtype) $ srcRectStream animation }

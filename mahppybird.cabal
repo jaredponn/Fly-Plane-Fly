@@ -52,3 +52,4 @@ executable bird
                        , Stack
                        , filepath
                        , text
+                       , lens

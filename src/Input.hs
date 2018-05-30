@@ -28,6 +28,15 @@ isMouseTap event =
           MouseButtonEvent mouseEvent -> toInteger (mouseButtonEventClicks mouseEvent) > 0
           _ -> False
 
+isSpaceTap :: Event -> Bool
+isSpaceTap event =
+        case SDL.eventPayload event of
+          KeyboardEvent keyboardEvent -> do
+                  keyboardEventKeyMotion keyboardEvent == SDL.Pressed &&
+                          SDL.keysymKeycode (keyboardEventKeysym keyboardEvent) == SDL.KeycodeSpace &&
+                                  not (SDL.keyboardEventRepeat keyboardEvent)
+          _ -> False
+
 class Monad m => HasInput m where
         updateInput :: m ()
         setInput :: Input -> m ()
@@ -38,7 +47,7 @@ instance HasInput MahppyBird where
         updateInput = do
                 events <- SDL.pollEvents
                 SDL.P mousepos <- liftIO  SDL.getAbsoluteMouseLocation
-                let space = any (keyEventIs SDL.KeycodeSpace) events
+                let space = any isSpaceTap events
                     esc = any (keyEventIs SDL.KeycodeEscape) events
                     mousepress = any isMouseTap events
 

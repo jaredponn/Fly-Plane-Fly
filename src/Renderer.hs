@@ -5,6 +5,7 @@
 module Renderer where
 
 import Control.Monad.Reader
+import Control.Lens
 import Control.Monad.State
 import Control.Monad.IO.Class (MonadIO(..))
 import Foreign.C.Types
@@ -16,6 +17,7 @@ import System.Clock
 import qualified Data.Text as T
 
 import PlayerManager
+import Buttons
 import AnimationsManager
 import Animations
 import RectangleTransforms
@@ -46,6 +48,7 @@ class Monad m => Renderer m where
                          -> SDL.Point V2 Float  -- position
                          -> (SDL.Rectangle Float -> m (SDL.Rectangle Float)) -- transform to apply to the text
                          -> m ()
+        drawBtnToScreen :: ButtonAttr -> m ()
 
         -- wrapper for SDL.present renderer
         presentRenderer :: m()
@@ -72,15 +75,16 @@ instance Renderer MahppyBird where
         drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
         drawBg = do
                 renderer <- asks cRenderer 
-                bgtexture <- bgTexture <$> asks cResources
-                SDL.copy renderer bgtexture Nothing Nothing
+                bgtexture <- view $ cResources.cTextures.bgTexture
+                SDL.copy renderer bgtexture Nothing Nothing 
+                {- for drawing blank color backgrounds:   -}
                 {- SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255 -}
                 {- SDL.clear renderer -}
 
         drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m, AnimationsManager m) => m ()
         drawPlayer = do
                 renderer <- asks cRenderer 
-                playerspritesheet <- playerTexture <$> asks cResources
+                playerspritesheet <- view $ cResources.cTextures.playerSpriteSheet
 
                 player <- getPlayerAttributes
                 player' <- toScreenRect player
@@ -99,8 +103,8 @@ instance Renderer MahppyBird where
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
                 renderer <- asks cRenderer 
-                topwalltexture <- topWallTexture <$> asks cResources
-                botwalltexture <- botWallTexture <$> asks cResources
+                topwalltexture <- view $ cResources.cTextures.topWallTexture
+                botwalltexture <- view $ cResources.cTextures.botWallTexture
                 walls <- getWallsInScreen >>= mapM wallToSDLRect
                 mapM_ (f renderer topwalltexture botwalltexture) walls
                 where
@@ -132,7 +136,6 @@ instance Renderer MahppyBird where
                         f :: (RectangleTransforms m) => SDL.Rectangle Float -> m (SDL.Rectangle Float)
                         f rect = xCenterRectangle rect >>= yCenterRectangle 
 
-        -- draws it directly to the screen irregardless of the camera coordinate
         drawRectToScreen :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m) => SDL.Rectangle Float -> m ()
         drawRectToScreen (SDL.Rectangle (SDL.P pos) lengths) = do
                 renderer <- asks cRenderer 
@@ -147,7 +150,7 @@ instance Renderer MahppyBird where
                          -> m ()
         drawTextToScreen str pos f = do
                 renderer <- asks cRenderer 
-                font <- cFont <$> asks cResources
+                font <- view $ cResources.cFont
                 texture <- Font.blended font (SDL.V4 255 0 0 255) str >>= SDL.createTextureFromSurface renderer
                 (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> Font.size font str
                 SDL.Rectangle (SDL.P npos) lengths <- f $ SDL.Rectangle pos (V2 width height)
@@ -155,12 +158,20 @@ instance Renderer MahppyBird where
                     lengths' = roundV2 lengths
                 SDL.copy renderer texture Nothing . Just $ SDL.Rectangle (SDL.P npos') lengths'
 
+        drawBtnToScreen :: (MonadIO m, MonadReader Config m) => ButtonAttr -> m ()
+        drawBtnToScreen btnattr = do
+                renderer <- asks cRenderer
+                let nrect = (\(SDL.Rectangle (SDL.P (V2 x y)) (V2 w h)) -> SDL.Rectangle (SDL.P (V2 (round x) (round y))) (V2 (round w) (round h))) $ rect btnattr
+                SDL.copy renderer (texture btnattr) Nothing $ Just nrect
+
+
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()
         presentRenderer = asks cRenderer >>= SDL.present
 
         toScreenCord :: (CameraManager m) => SDL.Point V2 Float -> m (SDL.Point V2 CInt)
         toScreenCord (SDL.P pos) = do
                 let pos' = roundV2 pos
+
                 SDL.P cam <- getCameraPos
                 return . SDL.P $ pos' - cam
 
@@ -169,3 +180,4 @@ instance Renderer MahppyBird where
                 pos' <- toScreenCord pos
                 let lengths' = roundV2 lengths
                 return $ SDL.Rectangle pos' lengths'
+

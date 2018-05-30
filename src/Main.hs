@@ -40,17 +40,30 @@ main = do
         (music :: Mixer.Chunk) <- Mixer.load (resourcePath </> "music.wav")
         bgmusicchannel <- Mixer.fadeInLimit Mixer.NoLimit 0 Mixer.Forever 1000 music
 
-        let playerjumpanimationsrcrects = generateSrcRects (SDL.P (V2 0 30)) (V2 30 30) (V2 30 0) 3 AnimationType'Jump
+        let playeridlesrcrects = generateSrcRects (SDL.P (V2 0 0)) (V2 30 30) (V2 30 0) 3 AnimationType'Idle
+            playerjumpanimationsrcrects = generateSrcRects (SDL.P (V2 0 30)) (V2 30 30) (V2 30 0) 3 AnimationType'Jump
+            playerdeathanimationsrcrects = generateSrcRects (SDL.P (V2 0 60)) (V2 30 30) (V2 30 0) 3 AnimationType'Death
+            buttontextures = ButtonTextures{ _playBtnTexture = bgpic
+                                           , _quitBtnTexture = bgpic
+                                           , _playAgainBtnTexture = bgpic}
+            textures = Textures {_bgTexture = bgpic
+                                , _playerSpriteSheet = playerpic
+                                , _botWallTexture = botwallpic
+                                , _topWallTexture = topwallpic
+                                , _btnTextures = buttontextures}
+            animations = Animations { _playerJumpAnimation = playerjumpanimationsrcrects
+                                    , _playerDeathAnimation = playerdeathanimationsrcrects
+                                    , _playerIdleAnimation = playeridlesrcrects}
+            sound = Sound { _bgMusicChannel = bgmusicchannel
+                          , _jumpFx = jumpsfx}
+            resources = Resources { _cFont = font
+                                  , _cTextures = textures
+                                  , _cAnimations = animations
+                                  , _cSound = sound }
+
             cfg = Config { cWindow = window
                          , cRenderer = renderer
-                         , cResources = Resources { cFont = font
-                                                  , playerTexture =  playerpic
-                                                  , playerJumpAnimation =  playerjumpanimationsrcrects
-                                                  , botWallTexture = botwallpic
-                                                  , topWallTexture = topwallpic
-                                                  , bgTexture = bgpic
-                                                  , jumpFx = jumpsfx
-                                                  , bgMusicChannel = bgmusicchannel } }
+                         , _cResources = resources}
 
 
         wallstream <- createWallStream wallConf
@@ -70,7 +83,6 @@ main = do
                            , _mousePos = V2 0 0
                            , _mousePress = False }
 
-            playeridlesrcrects = generateSrcRects (SDL.P (V2 0 0)) (V2 30 30) (V2 30 0) 3 AnimationType'Idle
             playersrcidlerectstream = generateSrcRectStream playeridlesrcrects 
             renderingvars = RenderingVars { _playerAnimationHandler =  createAnimationHandler playersrcidlerectstream 0.25
                                           , _bgRect = SDL.Rectangle (SDL.P (V2 0 0)) (V2 (fromIntegral screenWidth) (fromIntegral screenHeight))
