@@ -49,6 +49,11 @@ runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a
 runMahppyBird conf vars (MahppyBird m) = do
         evalStateT (runReaderT m conf) vars
 
+acquireInput :: (Logger m, HasInput m) => m Input
+acquireInput = do
+        updateInput
+        getInput
+
 loop :: ( Logger m
         , Renderer m
         , MonadReader Config m
@@ -65,7 +70,7 @@ loop :: ( Logger m
         , GameStateManager m
         , AnimationsManager m) => m ()
 loop = do
-        input <- getInput
+        input <- acquireInput
         curgamestate <- peekGameState
 
         runScene input curgamestate
@@ -90,7 +95,6 @@ runScene :: ( Logger m
             , SoundManager m
             , AnimationsManager m) => Input -> GameState -> m ()
 runScene input Menu = do
-        updateInput
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
         mousepress <- _mousePress <$> getInput
         
@@ -120,7 +124,6 @@ runScene input Menu = do
 
 
 runScene input Play = do
-        updateInput
         renderScreen
         inputHandler input
         updatePhysics 
@@ -129,19 +132,14 @@ runScene input Play = do
         updateWalls
         updateScore
         where
-                inputHandler :: (MonadReader Config m, AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, GameStateManager m, HasInput m, Logger m) => Input -> m ()
+                inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, GameStateManager m) => Input -> m ()
                 inputHandler input = do
-                        currinput <- getInput 
-                        logText . show $ _isSpace input
-                        logText . show $ _isSpace currinput
-                        if _isSpace input && not (_isSpace currinput)
+                        if _isSpace input
                            then do jumpPlayer
                                    -- sends the jump animation
-                                   logText . show $ "YEEY"
                                    join $ views (cResources.cAnimations.playerJumpAnimation) prependToPlayerAnimation 
                                    playJumpFx
                            else return ()
-                        logText . show $ "------------------"
 
                         if _isEsc input
                            then pauseGame
@@ -204,7 +202,6 @@ runScene input Play = do
                         else return ()
 
 runScene input Pause = do
-        updateInput
         renderScreen
         if _isEsc input || _isSpace input
            then popGameState_
@@ -213,7 +210,7 @@ runScene input Pause = do
                 renderScreen = renderGame []
 
 runScene input GameOver = do
-        updateInput
+
         playagainbtntexture <- view $ cResources.cTextures.btnTextures.playBtnTexture
         playagainbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) playagainbtntexture
         runReaderT playagainbtneffect playagainbtnattr
