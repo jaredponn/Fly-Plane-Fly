@@ -19,32 +19,38 @@ data ButtonAttr = ButtonAttr { rect :: Rectangle Float
 
 type Button m = ReaderT (ButtonAttr) m ()
 
-createButtonAttrFromAabb :: Aabb -> ButtonAttr
-createButtonAttrFromAabb aabb = ButtonAttr { rect = aabbToRectangle aabb
-                                            , aabb = aabb }
+createButtonAttrFromAabb :: Aabb -> Texture -> ButtonAttr
+createButtonAttrFromAabb aabb texture = ButtonAttr { rect = aabbToRectangle aabb
+                                                   , aabb = aabb 
+                                                   , texture = texture}
 
-createButtonAttrFromRectangle :: Rectangle Float -> ButtonAttr
-createButtonAttrFromRectangle nrect = ButtonAttr { rect = nrect 
-                                         , aabb = rectangleToAabb nrect }
+createButtonAttrFromRectangle :: Rectangle Float -> Texture -> ButtonAttr
+createButtonAttrFromRectangle nrect texture = ButtonAttr { rect = nrect 
+                                                         , aabb = rectangleToAabb nrect
+                                                         , texture = texture}
 
 createXCenteredButtonAttr :: (RectangleTransforms m) => Float  -- y position
                           -> V2 Float -- lengths.  Width, height
+                          -> Texture
                           -> m ButtonAttr
-createXCenteredButtonAttr ypos lengths = do
+createXCenteredButtonAttr ypos lengths texture = do
         let tmpbtnattr = ButtonAttr { rect = Rectangle (P (V2 0 ypos)) lengths
-                                    , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))}
-        xCenterButton tmpbtnattr 
+                                    , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))
+                                    , texture = undefined}
+        xCenterButton tmpbtnattr texture
 
-xCenterButton :: (RectangleTransforms m ) => ButtonAttr -> m ButtonAttr  
-xCenterButton btnattr = do
+xCenterButton :: (RectangleTransforms m ) => ButtonAttr -> Texture -> m ButtonAttr  
+xCenterButton btnattr texture = do
         let rectangle = rect btnattr
         rectangle' <- xCenterRectangle rectangle
         return ButtonAttr { rect = rectangle'
-                          , aabb = rectangleToAabb rectangle' }
+                          , aabb = rectangleToAabb rectangle'
+                          , texture = texture }
 
-yCenterButton :: (RectangleTransforms m ) => ButtonAttr -> m ButtonAttr  
-yCenterButton btnattr = do
+yCenterButton :: (RectangleTransforms m ) => ButtonAttr -> Texture -> m ButtonAttr  
+yCenterButton btnattr texture = do
         let rectangle = rect btnattr
         rectangle' <- yCenterRectangle rectangle
         return ButtonAttr { rect = rectangle'
-                          , aabb = rectangleToAabb rectangle' }
+                          , aabb = rectangleToAabb rectangle'
+                          , texture = texture }

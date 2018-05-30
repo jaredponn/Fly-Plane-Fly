@@ -19,10 +19,6 @@ import Control.Lens
 import Animations 
 import Walls
 
-data Config = Config { cWindow :: SDL.Window
-                     , cRenderer :: SDL.Renderer
-                     , cResources :: Resources }
-
 data Resources = Resources { cFont :: TTF.Font
                            , bgTexture :: SDL.Texture
                            , playerTexture :: SDL.Texture
@@ -31,6 +27,11 @@ data Resources = Resources { cFont :: TTF.Font
                            , topWallTexture :: SDL.Texture
                            , bgMusicChannel :: Mixer.Channel
                            , jumpFx :: Mixer.Chunk }
+
+data Config = Config { cWindow :: SDL.Window
+                     , cRenderer :: SDL.Renderer
+                     , cResources :: Resources }
+
 data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
                      , _yvel ::{-# UNPACK #-} !Float 
                      , _xvel ::{-# UNPACK #-} !Float

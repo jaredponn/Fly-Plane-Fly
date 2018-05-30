@@ -61,9 +61,7 @@ instance PlayerManager MahppyBird where
         setPlayerYVel nvel = vPlayVars.player.yvel .= nvel
 
         jumpPlayer :: (MonadState Vars m, MonadReader Config m, PlayerManager m, AnimationsManager m) => m ()
-        jumpPlayer = do
-                jumpheight <- use $ vPlayVars.player.cJumpHeight
-                setPlayerYVel jumpheight
+        jumpPlayer = join $ uses (vPlayVars.player.cJumpHeight) setPlayerYVel 
 
         translatePlayer :: PlayerManager m => V2 Float -> m ()
         translatePlayer transform = do

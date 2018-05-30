@@ -25,9 +25,8 @@ import Data.Stack
 import qualified System.Clock
 import qualified Data.Text as T
 
-import GameVars
-
 import Aabb
+import Buttons
 import Animations (AnimationType (..))
 import Walls
 import Logger
@@ -35,7 +34,7 @@ import Input
 import Renderer
 import Physics
 import Walls
-import Buttons
+import GameVars
 import WallManager
 import PlayerManager
 import AnimationsManager
@@ -45,9 +44,6 @@ import GameStateManager
 import SoundManager
 import CameraManager
 import RectangleTransforms
-
-import GameVars
-
 
 runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a 
 runMahppyBird conf vars (MahppyBird m) = do
@@ -102,10 +98,10 @@ runScene input Menu = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
         mousepress <- _mousePress <$> getInput
 
-        playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200)
+        playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) undefined
         runReaderT playbtneffect playbtnattr
 
-        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100)
+        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) undefined
         runReaderT quitbtneffect quitbtnattr
 
         drawObjects [drawBg
@@ -148,7 +144,7 @@ runScene input Play = do
                            then pauseGame
                            else return ()
 
-                updatePhysics :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m) => m ()
+                updatePhysics :: Physics m => m ()
                 updatePhysics = do
                         -- applying gravity
                         applyGrav
@@ -213,10 +209,10 @@ runScene input Pause = do
 
 runScene input GameOver = do
 
-        playagainbtnattr <- createXCenteredButtonAttr 100 (V2 600 200)
+        playagainbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) undefined
         runReaderT playagainbtneffect playagainbtnattr
 
-        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100)
+        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) undefined
         runReaderT quitbtneffect quitbtnattr
 
         renderScreen playagainbtnattr quitbtnattr
