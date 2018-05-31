@@ -49,6 +49,27 @@ createXCenteredButtonAttr ypos lengths texture = do
                                     , texture = texture}
         xCenterButtonAttr tmpbtnattr
 
+createLeftEdgeAlignedButtonAttr :: (GuiTransforms m) => Float  -- y position
+                                -> V2 Float -- lengths.  Width, height
+                                -> Texture
+                                -> m ButtonAttr
+createLeftEdgeAlignedButtonAttr ypos lengths texture = do
+        let tmpbtnattr = ButtonAttr { rect = Rectangle (P (V2 0 ypos)) lengths
+                                    , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))
+                                    , texture = texture}
+        alignToLeftEdgeButtonAttr tmpbtnattr
+
+createRightEdgeAlignedButtonAttr :: (GuiTransforms m) => Float  -- y position
+                                -> V2 Float -- lengths.  Width, height
+                                -> Texture
+                                -> m ButtonAttr
+createRightEdgeAlignedButtonAttr ypos lengths texture = do
+        let tmpbtnattr = ButtonAttr { rect = Rectangle (P (V2 0 ypos)) lengths
+                                    , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))
+                                    , texture = texture}
+        alignToRightEdgeButtonAttr tmpbtnattr
+
+{- TRANSFORMS TO BUTTON ATTRIBUTES -}
 xCenterButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  
 xCenterButtonAttr btnattr = do
         let rectangle = rect btnattr
@@ -60,6 +81,20 @@ yCenterButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr
 yCenterButtonAttr btnattr = do
         let rectangle = rect btnattr
         rectangle' <- yCenterRectangle rectangle
+        return btnattr { rect = rectangle'
+                       , aabb = rectangleToAabb rectangle'}
+
+alignToLeftEdgeButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  
+alignToLeftEdgeButtonAttr btnattr = do
+        let rectangle = rect btnattr
+        rectangle' <- alignToLeftEdge rectangle
+        return btnattr { rect = rectangle'
+                       , aabb = rectangleToAabb rectangle'}
+
+alignToRightEdgeButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  
+alignToRightEdgeButtonAttr btnattr = do
+        let rectangle = rect btnattr
+        rectangle' <- alignToRightEdge rectangle
         return btnattr { rect = rectangle'
                        , aabb = rectangleToAabb rectangle'}
 

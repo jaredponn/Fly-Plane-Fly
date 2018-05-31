@@ -5,7 +5,6 @@
 {-# LANGUAGE BangPatterns #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE OverloadedStrings #-} 
-
 module MahppyBird (MahppyBird (..)
             , loop
             , runMahppyBird
@@ -95,33 +94,64 @@ runScene :: ( Logger m
             , SoundManager m
             , AnimationsManager m) => Input -> GameState -> m ()
 runScene input Menu = do
-        mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
-        mousepress <- _mousePress <$> getInput
+        (mousepress, mousepos) <- getMouseAttrib
         
         playbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
-        playbtnattr <- createXCenteredButtonAttr 100 (V2 600 200) playbtntexture
+        playbtnattr <- translateButtonAttr (V2 (-50) 0 ) <$> createRightEdgeAlignedButtonAttr 150 (V2 600 300) playbtntexture
         runReaderT playbtneffect playbtnattr
 
         quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
-        quitbtnattr <- createXCenteredButtonAttr 500 (V2 600 100) quitbtntexture
+        quitbtnattr <- translateButtonAttr (V2 (-50) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
-        drawObjects [drawBg
+        {- TODO  -}
+        {- setPlayerPos (SDL.P (V2 200 500))  -}
+
+        renderScreen [drawBg
           , drawBtnToScreen playbtnattr
           , drawBtnToScreen quitbtnattr
-          , drawTextToScreen "SUPER FUN GAME THAT IS MORE STUPID THAN FUN" (SDL.P (V2 0 0)) xCenterRectangle]
+          , drawTextToScreen "SUPER FUN GAME THAT IS MORE STUPID THAN FUN" (SDL.P (V2 0 0)) xCenterRectangle
+          {- , drawPlayer -}]
 
 
         where
                 playbtneffect ::( GameStateManager m
-                  , HasInput m) => Button m
-                playbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Play
+                                , HasInput m
+                                , PlayerManager m ) => Button m
+                {- TODO  -}
+                playbtneffect = buttonGameStateModifierFromMouse $ pushGameState PrePlay >> setPlayerPos (SDL.P (V2 50 100)) 
 
                 quitbtneffect ::( GameStateManager m
                                 , HasInput m) => Button m
                 quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
+                
+                renderScreen :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m) => [m()] -> m ()
+                renderScreen renderactions = do
+                        drawObjectsWithDt renderactions
+                        updatePlayerAnimation
 
+runScene input PrePlay = do
+        renderScreen
 
+        if _isSpace input 
+           then do
+                   jumpPlayer 
+                   setGrav 2900 
+                   popGameState_ 
+                   pushGameState Play
+
+           else return ()
+
+        where
+                renderScreen :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, GuiTransforms m) => m ()
+                renderScreen = do
+                        SDL.P (V2 x _) <- getPlayerPos
+                        camoffset <- getCameraOffset
+                        setCameraPos . SDL.P $ (V2 x 0) + camoffset
+                        drawObjectsWithDt $ [drawBg
+                                            , drawPlayer
+                                            , drawTextToScreen "press space to jump" (SDL.P (V2 0 0)) (yCenterRectangle >=> xCenterRectangle) ] 
+                        updatePlayerAnimation
 
 runScene input Play = do
         renderScreen
@@ -136,7 +166,6 @@ runScene input Play = do
                 inputHandler input = do
                         if _isSpace input 
                            then do jumpPlayer
-                                   -- sends the jump animation
                                    join $ views (cResources.cAnimations.playerJumpAnimation) prependToPlayerAnimation 
                                    playJumpFx
                            else return ()
@@ -228,9 +257,9 @@ runScene input GameOver = do
         gameoverwindowtexture <- view $ cResources.cTextures.guiTextures.gameOverWindowTexture
         gameoverwindowrect <- GuiTransforms.translate (V2 0 (-50)) <$> ((xCenterRectangle >=> yCenterRectangle) (SDL.Rectangle (SDL.P (V2 0 0)) (V2 450 300)))
 
-        if _isEsc input 
-           then popGameState_ >> pushGameState Play >> resetGame
-           else return ()
+        {- if _isEsc input  -}
+        {-    then popGameState_ >> pushGameState PrePlay >> resetGame -}
+        {-    else return () -}
 
         renderGameOverScreen [ drawBtnToScreen playagainbtnattr
                              , drawBtnToScreen quitbtnattr 
@@ -248,7 +277,12 @@ runScene input GameOver = do
                 renderScores :: (GuiTransforms m, ScoreManager m, Renderer m) => m ()
                 renderScores = do 
                         (first, second, third) <- getHighScores
-                        drawTextToScreen (T.pack . show $ first) (SDL.P (V2 0 0)) ((liftM (GuiTransforms.translate (V2 (-300) 300))) <$> (yCenterRectangle >=> xCenterRectangle))
+                        drawTextToScreen (T.pack . show $ first) (SDL.P (V2 0 0)) ((liftM (GuiTransforms.translate (V2 (-100) (-100)))) <$> (yCenterRectangle >=> xCenterRectangle))
+                        drawTextToScreen (T.pack . show $ second) (SDL.P (V2 0 0)) ((liftM (GuiTransforms.translate (V2 (0) (-100)))) <$> (yCenterRectangle >=> xCenterRectangle))
+                        drawTextToScreen (T.pack . show $ third) (SDL.P (V2 0 0)) ((liftM (GuiTransforms.translate (V2 (100) (-100)))) <$> (yCenterRectangle >=> xCenterRectangle))
+
+                        curscore <- getScore
+                        drawTextToScreen (T.pack . show $ curscore) (SDL.P (V2 0 0)) ((liftM (GuiTransforms.translate (V2 (0) (0)))) <$> (yCenterRectangle >=> xCenterRectangle))
 
                 updatePhysics :: (Physics m) => m ()
                 updatePhysics = do
@@ -261,7 +295,7 @@ runScene input GameOver = do
                                      , PlayerManager m
                                      , AnimationsManager m
                                      , ScoreManager m) => Button m
-                playagainbtneffect = buttonGameStateModifierFromMouse $ popGameState_ >> pushGameState Play >> resetGame
+                playagainbtneffect = buttonGameStateModifierFromMouse $ popGameState_ >> pushGameState PrePlay >> resetGame
 
                 quitbtneffect ::( GameStateManager m
                                 , HasInput m) => Button m
@@ -301,3 +335,9 @@ buttonGameStateModifierFromMouse f = do
         if pointHitTest mousepos (aabb btnattr) && mousepress
            then lift $ f
            else return () 
+
+getMouseAttrib :: HasInput m => m (Bool, V2 Float)
+getMouseAttrib = do
+        mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
+        mousepress <- _mousePress <$> getInput
+        return (mousepress, mousepos)

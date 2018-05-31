@@ -87,11 +87,12 @@ data RenderingVars = RenderingVars { _playerAnimationHandler :: AnimationHandler
 makeLenses ''RenderingVars
 
 data GameState = Menu
-                | Play 
-                | Pause 
-                | GameOver 
-                | Quit
-                deriving (Eq, Show)
+               | PrePlay
+               | Play 
+               | Pause 
+               | GameOver 
+               | Quit
+               deriving (Eq, Show)
 
 type GameStack = Stack GameState
 
