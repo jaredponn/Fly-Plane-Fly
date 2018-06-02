@@ -22,7 +22,8 @@ import Walls
 data GUITextures = GUITextures { _playBtnTexture :: SDL.Texture
                                , _quitBtnTexture :: SDL.Texture
                                , _playAgainBtnTexture :: SDL.Texture
-                               , _gameOverWindowTexture :: SDL.Texture}
+                               , _gameOverWindowTexture :: SDL.Texture
+                               , _pressSpacetoJumpTexture :: SDL.Texture}
 makeLenses ''GUITextures
 
 data Textures = Textures { _bgTexture :: SDL.Texture
@@ -42,7 +43,12 @@ data Sound = Sound { _bgMusicChannel :: Mixer.Channel
                    , _jumpFx :: Mixer.Chunk }
 makeLenses ''Sound
 
-data Resources = Resources { _cFont :: TTF.Font
+data Fonts = Fonts { _scoreFont :: TTF.Font
+                   , _highScoreFont :: TTF.Font }
+
+makeLenses ''Fonts
+
+data Resources = Resources { _cFont :: Fonts
                            , _cTextures :: Textures
                            , _cAnimations :: Animations
                            , _cSound :: Sound }
@@ -58,6 +64,7 @@ data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
                      , _xvel ::{-# UNPACK #-} !Float
                      , _cJumpHeight ::{-# UNPACK #-} !Float
                      , _isPassingWall ::{-# UNPACK #-} !Bool
+                     , _angle ::{-# UNPACK #-} !CDouble
                      } deriving Show
 makeLenses ''Player
 
@@ -101,7 +108,7 @@ data Vars = Vars { _vGameStateStack :: GameStack
                  , _vRenderingVars :: RenderingVars 
                  , _kInput :: Input 
                  , _dt :: {-# UNPACK #-} !Float -- time it took for the frame to render
-                 , _highScores :: {-# UNPACK #-} !(Int, Int, Int) -- time it took for the frame to render
+                 , _highScore :: {-# UNPACK #-} !Int -- high score
                  }  deriving Show
 
 makeLenses ''Vars

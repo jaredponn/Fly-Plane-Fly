@@ -7,6 +7,7 @@ module Aabb ( Aabb (..)
             , hitTestBelow
             , floorAabb
             , ceilingAabb
+            , shiftAabb
             ) where
 
 import Linear.V2
@@ -84,3 +85,6 @@ floorAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymax))
 -}
 ceilingAabb :: Aabb -> Aabb
 ceilingAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymin)) (P (V2 xmax ymin))
+
+shiftAabb :: V2 Float -> Aabb-> Aabb
+shiftAabb  (V2 xshift yshift) (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 (xmin + xshift) (ymin + yshift))) (P (V2 (xmax + xshift) (ymin + yshift)))

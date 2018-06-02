@@ -10,8 +10,9 @@ import Control.Monad.State
 import Control.Monad.IO.Class (MonadIO(..))
 import Foreign.C.Types
 import Linear.V2
+import GHC.Word
 import qualified SDL 
-import qualified SDL.Font as Font
+import qualified SDL.Font as TTF
 import Data.StateVar (($=))
 import System.Clock
 import qualified Data.Text as T
@@ -44,8 +45,10 @@ class Monad m => Renderer m where
 
         -- "ToScreen" functions are unaffected by camera position
         drawRectToScreen :: SDL.Rectangle Float -> m ()
-        drawTextToScreen :: T.Text  -- text to render
+        drawTextToScreen :: TTF.Font
+                         -> T.Text  -- text to render
                          -> SDL.Point V2 Float  -- position
+                         -> SDL.V4 GHC.Word.Word8 -- color
                          -> (SDL.Rectangle Float -> m (SDL.Rectangle Float)) -- transform to apply to the text
                          -> m ()
         drawBtnToScreen :: ButtonAttr -> m ()
@@ -82,24 +85,20 @@ instance Renderer MahppyBird where
                 {- SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255 -}
                 {- SDL.clear renderer -}
 
-        drawPlayer :: (Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m, AnimationsManager m) => m ()
+        drawPlayer :: (Logger m, Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m, AnimationsManager m) => m ()
         drawPlayer = do
                 renderer <- asks cRenderer 
                 playerspritesheet <- view $ cResources.cTextures.playerSpriteSheet
 
                 player <- getPlayerAttributes
                 player' <- toScreenRect player
+                ang <- getPlayerAngle
 
                 srcrect <- srcRect <$> getPlayerAnimationSrc
 
-                SDL.copy renderer playerspritesheet (Just srcrect) (Just player')
-                
-        {- drawPlayer = do -}
-        {-         renderer <- asks cRenderer  -}
-        {-         playertexture <- playerTexture <$> asks cResources -}
-        {-         player <- getPlayer -}
-        {-         player' <- toScreenRect player -}
-        {-         SDL.copy renderer playertexture Nothing (Just player') -}
+                SDL.copyEx renderer playerspritesheet (Just srcrect) (Just player') ang Nothing (V2 False False)
+                {- SDL.copy renderer playerspritesheet (Just srcrect) (Just player') -}
+
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
         drawWalls = do
@@ -129,10 +128,11 @@ instance Renderer MahppyBird where
                 return $ ( SDL.Rectangle topPoint lengths
                          , SDL.Rectangle botPoint lengths )
 
-        drawScore :: (ScoreManager m, Renderer m, GuiTransforms m) => m ()
+        drawScore :: (ScoreManager m, Renderer m, GuiTransforms m, MonadReader Config m) => m ()
         drawScore = do
                 score <- getScore
-                drawTextToScreen (T.pack . show $ score) (SDL.P (V2 0 0)) f
+                font <- view $ cResources.cFont.scoreFont
+                drawTextToScreen font (T.pack . show $ score) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) f
                 where
                         f :: (GuiTransforms m) => SDL.Rectangle Float -> m (SDL.Rectangle Float)
                         f rect = xCenterRectangle rect >>= yCenterRectangle 
@@ -145,15 +145,16 @@ instance Renderer MahppyBird where
                     lengths' = roundV2 lengths
                 SDL.fillRect renderer . Just $ SDL.Rectangle (SDL.P pos') lengths'
 
-        drawTextToScreen :: (MonadIO m, MonadReader Config m) => T.Text 
+        drawTextToScreen :: (MonadIO m, MonadReader Config m) => TTF.Font
+                         -> T.Text 
                          -> SDL.Point V2 Float 
+                         -> SDL.V4 GHC.Word.Word8 -- color
                          -> (SDL.Rectangle Float -> m (SDL.Rectangle Float))
                          -> m ()
-        drawTextToScreen str pos f = do
+        drawTextToScreen font str pos color f = do
                 renderer <- asks cRenderer 
-                font <- view $ cResources.cFont
-                texture <- Font.blended font (SDL.V4 255 0 0 255) str >>= SDL.createTextureFromSurface renderer
-                (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> Font.size font str
+                texture <- TTF.blended font color str >>= SDL.createTextureFromSurface renderer
+                (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> TTF.size font str
                 SDL.Rectangle (SDL.P npos) lengths <- f $ SDL.Rectangle pos (V2 width height)
                 let npos' = roundV2 npos
                     lengths' = roundV2 lengths
