@@ -23,7 +23,7 @@ import Animations
 import GameStateManager
 
 resourcePath :: FilePath
-resourcePath = "/home/jared/Programs/mahppybird/Resources" 
+resourcePath = "/home/jared/Programs/FlyPlaneFly/Resources" 
 
 screenWidth, screenHeight :: CInt
 screenWidth = 1280

@@ -2,4 +2,4 @@
 
 #chmod 775
 
-stack build && stack exec bird
+stack build && stack exec game
