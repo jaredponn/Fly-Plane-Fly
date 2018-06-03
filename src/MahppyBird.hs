@@ -45,8 +45,7 @@ import CameraManager
 import GuiTransforms
 
 runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a 
-runMahppyBird conf vars (MahppyBird m) = do
-        evalStateT (runReaderT m conf) vars
+runMahppyBird conf vars (MahppyBird m) = evalStateT (runReaderT m conf) vars
 
 acquireInput :: (Logger m, HasInput m) => m Input
 acquireInput = do
@@ -97,21 +96,15 @@ runScene input Menu = do
         (mousepress, mousepos) <- getMouseAttrib
         
         playbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
-        playbtnattr <- translateButtonAttr (V2 (-50) 0 ) <$> createRightEdgeAlignedButtonAttr 150 (V2 600 300) playbtntexture
+        playbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 150 (V2 600 300) playbtntexture
         runReaderT playbtneffect playbtnattr
 
         quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
-        quitbtnattr <- translateButtonAttr (V2 (-50) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
+        quitbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
-        {- TODO  -}
-        {- setPlayerPos (SDL.P (V2 200 500))  -}
-
-        renderScreen [drawBg
-          , drawBtnToScreen playbtnattr
-          , drawBtnToScreen quitbtnattr
-          , drawPlayer ]
-
+        renderactions <- (++[drawBtnToScreen playbtnattr, drawBtnToScreen quitbtnattr]) <$> updatedRenderMenuActions  
+        drawObjectsWithDt renderactions
 
         where
                 playbtneffect ::( GameStateManager m
@@ -122,18 +115,14 @@ runScene input Menu = do
                 quitbtneffect ::( GameStateManager m
                                 , HasInput m) => Button m
                 quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
-                
-                renderScreen :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m) => [m()] -> m ()
-                renderScreen renderactions = do
-                        SDL.P (V2 x _) <- getPlayerPos
-                        camoffset <- getCameraOffset
-                        setCameraPos . SDL.P $ (V2 x 0) + camoffset
-                        drawObjectsWithDt $ [drawBg, drawWalls, drawPlayer] ++ renderactions
-                        updatePlayerAnimation
-
 
 runScene input PrePlay = do
-        renderScreen
+        pressspacetoplay <- view $ cResources.cTextures.guiTextures.pressSpacetoJumpTexture
+        pressspacetoplayrect <- (xCenterRectangle >=> yCenterRectangle) $ SDL.Rectangle (SDL.P (V2 0 0)) (V2 550 194)
+        pressspacetoplayrect <- (xCenterRectangle >=> yCenterRectangle) $ SDL.Rectangle (SDL.P (V2 0 0)) (V2 550 194)
+        
+        renderactions <- (++[drawTextureToScreen pressspacetoplayrect pressspacetoplay]) <$> updatedRenderPrePlayActions
+        drawObjectsWithDt renderactions
 
         if _isSpace input 
            then do
@@ -144,22 +133,11 @@ runScene input PrePlay = do
 
            else return ()
 
-        where
-                renderScreen :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, GuiTransforms m, MonadReader Config m) => m ()
-                renderScreen = do
-                        SDL.P (V2 x _) <- getPlayerPos
-                        camoffset <- getCameraOffset
-                        setCameraPos . SDL.P $ (V2 x 0) + camoffset
-                        pressspacetoplay <- view $ cResources.cTextures.guiTextures.pressSpacetoJumpTexture
-                        pressspacetoplayrect <- (xCenterRectangle >=> yCenterRectangle) $ SDL.Rectangle (SDL.P (V2 0 0)) (V2 550 194)
-                        drawObjectsWithDt $ [drawBg
-                                            , drawPlayer
-                                            , drawWalls
-                                            , drawTextureToScreen pressspacetoplayrect pressspacetoplay] 
-                        updatePlayerAnimation
 
 runScene input Play = do
-        renderScreen
+        renderactions <- updatedRenderPlayActions
+        drawObjectsWithDt renderactions
+
         inputHandler input
         updatePhysics 
 
@@ -181,10 +159,8 @@ runScene input Play = do
 
                 updatePhysics :: Physics m => m ()
                 updatePhysics = do
-                        -- applying gravity
                         applyGrav
                         applyYVel
-                        -- moving character right
                         applyXVel
 
                 pauseGame :: GameStateManager m => m ()
@@ -211,19 +187,7 @@ runScene input Play = do
                            else return ()
                         setIsPassingWall (pointHitTest playerpos gapaabb)
 
-                renderScreen :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m) => m ()
-                renderScreen = do
-                        renderGame []
-                        updatePlayerAngle
-                        updatePlayerAnimation
-
-                        -- stops the jump animation if the player is not jumping
-                        playeryvel <- getPlayerYVel
-                        if playeryvel > 0
-                                then removePlayerAnimationsUpto AnimationType'Idle
-                                else return ()
-
-                collisionTest :: (AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
+                collisionTest :: (SoundManager m, AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
                 collisionTest = do
                         playerAabb <- getPlayerAabb
                         upperWallAabb <- shiftAabb (V2 0 (-25)) <$> floorAabb <$> getFirstUpperWallAabb
@@ -241,58 +205,35 @@ runScene input Play = do
                                            logText $ "YOUR FINAL SCORE:" ++ (show curscore)
 
                                 getPlayerDeathAnimation >>= replacePlayerAnimation 
-                                pushGameState GameOver
+                                playCrashFx
+                                pushGameState (GameOver True)
+
                         else return ()
 
 runScene input Pause = do
-        renderScreen
+        renderactions <- updatedRenderPauseActions
+        drawObjectsWithDt renderactions
         if _isEsc input || _isSpace input
            then popGameState_
            else return ()
-        where
-                renderScreen = renderGame []
 
-runScene input GameOver = do
-        playagainbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
+runScene input (GameOver _) = do
+        playagainbtntexture <- view $ cResources.cTextures.guiTextures.playAgainBtnTexture
         playagainbtnattr <- translateButtonAttr (V2 (-125) 150) <$> createCenteredButtonAttr (V2 200 50) playagainbtntexture
         runReaderT playagainbtneffect playagainbtnattr
 
-        quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
+        quitbtntexture <- view $ cResources.cTextures.guiTextures.quitGameOverBtnTexture
         quitbtnattr <- translateButtonAttr (V2 (125) 150) <$> createCenteredButtonAttr (V2 200 50) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
         gameoverwindowtexture <- view $ cResources.cTextures.guiTextures.gameOverWindowTexture
         gameoverwindowrect <- GuiTransforms.translate (V2 0 (-50)) <$> ((xCenterRectangle >=> yCenterRectangle) (SDL.Rectangle (SDL.P (V2 0 0)) (V2 450 300)))
 
-        renderGameOverScreen [ drawBtnToScreen playagainbtnattr
-                             , drawBtnToScreen quitbtnattr 
-                             , drawTextureToScreen gameoverwindowrect gameoverwindowtexture
-                             , renderScores ]
+        renderactions <- (++[updatedRenderScoresAction]) <$> (++[drawBtnToScreen playagainbtnattr, drawBtnToScreen quitbtnattr, drawTextureToScreen gameoverwindowrect gameoverwindowtexture]) <$> updatedRenderGameOverActions
 
-        updatePhysics 
+        drawObjectsWithDt renderactions
+
         where
-                renderGameOverScreen :: (Logger m, Renderer m, PlayerManager m, CameraManager m, AnimationsManager m) => [m()]
-                             -> m ()
-                renderGameOverScreen renderactions = do
-                        renderGame renderactions
-                        updatePlayerAngle
-                        updatePlayerAnimation
-                        
-                renderScores :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
-                renderScores = do 
-                        highscore <- getHighScore
-                        highscorefont <- view $ cResources.cFont.highScoreFont
-                        drawTextToScreen highscorefont (T.pack . show $ highscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (0) (70)))) <$> (yCenterRectangle >=> xCenterRectangle))
-
-                        curscore <- getScore
-                        scorefont <- view $ cResources.cFont.scoreFont
-                        drawTextToScreen scorefont (T.pack . show $ curscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (140) (-70)))) <$> (yCenterRectangle >=> xCenterRectangle))
-
-                updatePhysics :: (Physics m) => m ()
-                updatePhysics = do
-                        applyGrav
-                        applyYVel
-
                 playagainbtneffect ::( GameStateManager m
                                      , HasInput m
                                      , WallManager m
@@ -308,12 +249,59 @@ runScene input GameOver = do
 runScene input Quit = return ()
 
 
-renderGame :: (Renderer m, PlayerManager m, CameraManager m) => [m ()] -> m ()
-renderGame renderactions = do
-        SDL.P (V2 x _) <- getPlayerPos
-        camoffset <- getCameraOffset
-        setCameraPos . SDL.P $ (V2 x 0) + camoffset
-        drawObjectsWithDt $ [drawBg, drawScore, drawWalls, drawPlayer] ++ renderactions
+-- updatedRender<..> functions include some of the render functions necassary to render the game for that scene
+updatedRenderMenuActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m) => m [m()]
+updatedRenderMenuActions = do
+        updateCameraPos
+        updatePlayerAnimation
+
+        titletexttexture <- view $ cResources.cTextures.guiTextures.titleTextTexture
+        titletextrect <- GuiTransforms.translate (V2 (30) 0) <$> (GuiTransforms.alignToLeftEdge $ SDL.Rectangle (SDL.P (V2 0 60)) (V2 590 551))
+
+        return $ [drawBg, drawTextureToScreen titletextrect titletexttexture, drawWalls, drawPlayer]
+
+
+updatedRenderPrePlayActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, GuiTransforms m, MonadReader Config m) => m ([m ()])
+updatedRenderPrePlayActions = do
+        updateCameraPos
+        updatePlayerAnimation
+        return [drawBg, drawPlayer, drawWalls] 
+
+updatedRenderPlayActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m) => m [m ()]
+updatedRenderPlayActions = do
+        updateCameraPos
+        updatePlayerAngle
+        updatePlayerAnimation
+        -- stops the jump animation if the player is not jumping
+        playeryvel <- getPlayerYVel
+        if playeryvel > 0
+           then removePlayerAnimationsUpto AnimationType'Idle
+           else return ()
+
+        return [drawBg, drawScore, drawWalls, drawPlayer]
+
+        
+updatedRenderPauseActions :: (Renderer m, PlayerManager m, CameraManager m) => m ([m ()])
+updatedRenderPauseActions = do
+        updateCameraPos
+        return [drawBg, drawScore, drawWalls, drawPlayer] 
+
+updatedRenderGameOverActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m, ScoreManager m) => m [m ()]
+updatedRenderGameOverActions = do
+        updateCameraPos
+        updatePlayerAngle
+        updatePlayerAnimation
+        return [drawBg, drawScore, drawWalls, drawPlayer] 
+
+updatedRenderScoresAction :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
+updatedRenderScoresAction = do 
+        highscore <- getHighScore
+        highscorefont <- view $ cResources.cFont.highScoreFont
+        drawTextToScreen highscorefont (T.pack . show $ highscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (0) (70)))) <$> (yCenterRectangle >=> xCenterRectangle))
+        
+        curscore <- getScore
+        scorefont <- view $ cResources.cFont.scoreFont
+        drawTextToScreen scorefont (T.pack . show $ curscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (140) (-70)))) <$> (yCenterRectangle >=> xCenterRectangle))
 
 
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m, AnimationsManager m) => m ()
@@ -354,7 +342,7 @@ buttonGameStateModifierFromMouse f = do
         btnattr <- ask 
 
         if pointHitTest mousepos (aabb btnattr) && mousepress
-           then lift $ f
+           then lift f
            else return () 
 
 getMouseAttrib :: HasInput m => m (Bool, V2 Float)
@@ -362,3 +350,9 @@ getMouseAttrib = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
         mousepress <- _mousePress <$> getInput
         return (mousepress, mousepos)
+
+updateCameraPos :: (PlayerManager m, CameraManager m) => m ()
+updateCameraPos = do
+        SDL.P (V2 x _) <- getPlayerPos
+        camoffset <- getCameraOffset
+        setCameraPos . SDL.P $ (V2 x 0) + camoffset

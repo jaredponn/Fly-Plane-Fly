@@ -22,8 +22,10 @@ import Walls
 data GUITextures = GUITextures { _playBtnTexture :: SDL.Texture
                                , _quitBtnTexture :: SDL.Texture
                                , _playAgainBtnTexture :: SDL.Texture
+                               , _quitGameOverBtnTexture :: SDL.Texture
                                , _gameOverWindowTexture :: SDL.Texture
-                               , _pressSpacetoJumpTexture :: SDL.Texture}
+                               , _pressSpacetoJumpTexture :: SDL.Texture
+                               , _titleTextTexture :: SDL.Texture}
 makeLenses ''GUITextures
 
 data Textures = Textures { _bgTexture :: SDL.Texture
@@ -40,7 +42,8 @@ data Animations = Animations { _playerIdleAnimation :: [AnimationSrcRect]
 makeLenses ''Animations
 
 data Sound = Sound { _bgMusicChannel :: Mixer.Channel
-                   , _jumpFx :: Mixer.Chunk }
+                   , _jumpFx :: Mixer.Chunk 
+                   , _crashFx :: Mixer.Chunk }
 makeLenses ''Sound
 
 data Fonts = Fonts { _scoreFont :: TTF.Font
@@ -97,9 +100,29 @@ data GameState = Menu
                | PrePlay
                | Play 
                | Pause 
-               | GameOver 
+               | GameOver Bool -- bool to know if there was a new high score
                | Quit
-               deriving (Eq, Show)
+               | Transition (IO ()) (IO ()) -- rendering of the two frames
+
+instance Show GameState where
+        show Menu = "Menu"
+        show PrePlay = "PrePlay"
+        show Play = "Play"
+        show Pause = "Pause"
+        show (GameOver _) = "GameOver"
+        show Quit = "Quit"
+        show (Transition _ _) = "Transition"
+
+instance Eq GameState where
+        (==) Menu Menu = True
+        (==) PrePlay PrePlay = True
+        (==) Play Play = True
+        (==) Pause Pause = True
+        (==) (GameOver _) (GameOver _) = True
+        (==) Quit Quit = True
+        (==) (Transition _ _) (Transition _ _) = True
+        (==) _ _ = False
+
 
 type GameStack = Stack GameState
 

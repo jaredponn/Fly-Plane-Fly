@@ -6,7 +6,8 @@ module InitGameVars ( initConf
                     , defaultPlayerVars) where
 
 import SDL ( V2 (..)
-           , Point (..))
+           , Point (..)
+           , ($=))
 import qualified SDL
 import qualified SDL.Font as TTF
 import qualified SDL.Image as Image
@@ -42,6 +43,7 @@ initConf :: IO Config
 initConf = do
         window <- SDL.createWindow "Mahppy Bird" SDL.defaultWindow { SDL.windowInitialSize = V2 screenWidth screenHeight }
         renderer <- SDL.createRenderer window (-1) SDL.defaultRenderer
+        SDL.rendererDrawBlendMode renderer $= SDL.BlendAlphaBlend
 
         scorefont <- TTF.load (resourcePath </> "FFFFORWA.TTF") 72
         highscorefont <- TTF.load (resourcePath </> "FFFFORWA.TTF") 35
@@ -51,19 +53,26 @@ initConf = do
         bgpic <- Image.load (resourcePath </> "bg.png") >>= SDL.createTextureFromSurface renderer 
         pressspacetojumppic <- Image.load (resourcePath </> "pressspacetojump.png") >>= SDL.createTextureFromSurface renderer 
 
+        playmainmenupic <- Image.load (resourcePath </> "playmainmenu.png") >>= SDL.createTextureFromSurface renderer 
+        quitmainmenupic <- Image.load (resourcePath </> "quitmainmenu.png") >>= SDL.createTextureFromSurface renderer 
+
         playagaingameoverpic <- Image.load (resourcePath </> "playagaingameover.png") >>= SDL.createTextureFromSurface renderer 
         quitgameoverpic <- Image.load (resourcePath </> "quitgameover.png") >>= SDL.createTextureFromSurface renderer 
         gameoverwindowpic <- Image.load (resourcePath </> "gameoverwindow.png") >>= SDL.createTextureFromSurface renderer 
+        titletextpic <- Image.load (resourcePath </> "titletext.png") >>= SDL.createTextureFromSurface renderer 
 
         (jumpsfx :: Mixer.Chunk) <- Mixer.load (resourcePath </> "fx.wav")
+        (crashfx :: Mixer.Chunk) <- Mixer.load (resourcePath </> "crash.wav")
         (music :: Mixer.Chunk) <- Mixer.load (resourcePath </> "music.wav")
         bgmusicchannel <- Mixer.fadeInLimit Mixer.NoLimit 0 Mixer.Forever 1000 music
 
-        let guitextures = GUITextures{ _playBtnTexture = playagaingameoverpic 
-                                      , _quitBtnTexture = quitgameoverpic
+        let guitextures = GUITextures{ _playBtnTexture = playmainmenupic 
+                                      , _quitBtnTexture = quitmainmenupic
                                       , _playAgainBtnTexture = playagaingameoverpic 
-                                     , _gameOverWindowTexture = gameoverwindowpic
-                                     , _pressSpacetoJumpTexture = pressspacetojumppic }
+                                      , _quitGameOverBtnTexture = quitgameoverpic
+                                      , _gameOverWindowTexture = gameoverwindowpic
+                                      , _pressSpacetoJumpTexture = pressspacetojumppic 
+                                      , _titleTextTexture = titletextpic}
             textures = Textures {_bgTexture = bgpic
                                 , _playerSpriteSheet = playerpic
                                 , _botWallTexture = botwallpic
@@ -73,7 +82,8 @@ initConf = do
                                     , _playerDeathAnimation = playerdeathanimationsrcrects
                                     , _playerIdleAnimation = playeridlesrcrects }
             sound = Sound { _bgMusicChannel = bgmusicchannel
-                          , _jumpFx = jumpsfx}
+                          , _jumpFx = jumpsfx 
+                          , _crashFx = crashfx}
             fonts = Fonts { _scoreFont = scorefont
                           , _highScoreFont = highscorefont}
             resources = Resources { _cFont = fonts
@@ -111,7 +121,7 @@ initPlayVars = do
         wallstream <- initWallStream
         return PlayVars { _player = defaultPlayerVars
                         , _wallStream = wallstream
-                        , _cGrav = 3000
+                        , _cGrav = 2900
                         , _cWallConf = initWallConf
                         , _score = 0 }
 

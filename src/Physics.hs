@@ -25,18 +25,16 @@ class Monad m => Physics m where
 
 instance Physics MahppyBird where
         -- converts the gravity into velocity 
-        applyGrav :: (Logger m, MonadState Vars m, PlayerManager m, TimeManager m) => m  ()
+        applyGrav :: (MonadState Vars m, PlayerManager m, TimeManager m) => m  ()
         applyGrav = do 
                 acc <- use $ vPlayVars.cGrav
                 ndt <- getdt
                 curvel <- getPlayerYVel
                 setPlayerYVel $ curvel + ndt * acc
 
-        setGrav :: (Logger m, MonadState Vars m) => Float -> m ()
+        setGrav :: MonadState Vars m => Float -> m ()
         setGrav ngrav = do 
                 vPlayVars.cGrav .= ngrav
-                printgrav <- use $ vPlayVars.cGrav
-                logText . show $ printgrav
 
         -- allows the addition of any given velocity number to the current velocity
         addYVel :: PlayerManager m => Float -> m  ()

@@ -43,6 +43,8 @@ class Monad m => Renderer m where
         drawWalls :: m ()
         wallToSDLRect :: Wall -> m (SDL.Rectangle CInt, SDL.Rectangle CInt)
 
+        drawScreenOverlay :: SDL.V4 Word8 -> m ()
+
         -- "ToScreen" functions are unaffected by camera position
         drawRectToScreen :: SDL.Rectangle Float -> m ()
         drawTextToScreen :: TTF.Font
@@ -72,7 +74,6 @@ instance Renderer MahppyBird where
         drawObjectsWithDt drawactions = do
                 t0 <- getRealTime 
                 drawObjects drawactions
-                threadDelay 2000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
                 t1 <- getRealTime
                 setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
 
@@ -81,9 +82,15 @@ instance Renderer MahppyBird where
                 renderer <- asks cRenderer 
                 bgtexture <- view $ cResources.cTextures.bgTexture
                 SDL.copy renderer bgtexture Nothing Nothing 
-                {- for drawing blank color backgrounds:   -}
-                {- SDL.rendererDrawColor renderer $= SDL.V4 0 0 0 255 -}
-                {- SDL.clear renderer -}
+
+        drawScreenOverlay :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m, GuiTransforms m) => SDL.V4 Word8
+                          -> m ()
+        drawScreenOverlay color = do
+                renderer <- asks cRenderer 
+                lengths <- roundV2 <$> getWindowSize
+                SDL.rendererDrawColor renderer $= color
+                SDL.fillRect renderer (Just $ SDL.Rectangle (SDL.P (V2 0 0)) lengths)
+
 
         drawPlayer :: (Logger m, Renderer m, MonadIO m, MonadReader Config m, PlayerManager m, Renderer m, AnimationsManager m) => m ()
         drawPlayer = do
@@ -97,7 +104,6 @@ instance Renderer MahppyBird where
                 srcrect <- srcRect <$> getPlayerAnimationSrc
 
                 SDL.copyEx renderer playerspritesheet (Just srcrect) (Just player') ang Nothing (V2 False False)
-                {- SDL.copy renderer playerspritesheet (Just srcrect) (Just player') -}
 
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()

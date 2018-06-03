@@ -16,6 +16,7 @@ import GameVars
 
 class Monad m => SoundManager m where
         playJumpFx :: m ()
+        playCrashFx :: m ()
 
         pauseBgMusic :: m ()
         resumeBgMusic :: m ()
@@ -30,6 +31,14 @@ instance SoundManager MahppyBird where
                 jumpfx <- view $ cResources.cSound.jumpFx
                 -- it will play the sound on the channel above the music channel
                 jumpfxchannel <- views (cResources.cSound.bgMusicChannel) (+1)
+                _ <- Mixer.playOn jumpfxchannel Mixer.Once jumpfx
+                return ()
+
+        playCrashFx :: (MonadReader Config m, MonadIO m) => m ()
+        playCrashFx = do
+                jumpfx <- view $ cResources.cSound.crashFx
+                -- it will play the sound on the channel above the music channel
+                jumpfxchannel <- views (cResources.cSound.bgMusicChannel) (+2)
                 _ <- Mixer.playOn jumpfxchannel Mixer.Once jumpfx
                 return ()
 
