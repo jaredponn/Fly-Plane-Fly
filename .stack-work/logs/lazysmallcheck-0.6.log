@@ -1,0 +1,6 @@
+Configuring lazysmallcheck-0.6...
+Preprocessing library for lazysmallcheck-0.6..
+Building library for lazysmallcheck-0.6..
+[1 of 1] Compiling Test.LazySmallCheck ( Test/LazySmallCheck.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Test/LazySmallCheck.o )
+Installing library in /home/jared/Programs/Fly-Plane-Fly/.stack-work/install/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/lazysmallcheck-0.6-L5EK6BO6J1C7OjNFFSdzzZ
+Registering library for lazysmallcheck-0.6..

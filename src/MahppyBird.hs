@@ -265,10 +265,7 @@ updatedRenderMenuActions = do
         updateCameraPos
         updatePlayerAnimation
 
-        titletexttexture <- view $ cResources.cTextures.guiTextures.titleTextTexture
-        titletextrect <- GuiTransforms.translate (V2 (30) 0) <$> (GuiTransforms.alignToLeftEdge $ SDL.Rectangle (SDL.P (V2 0 60)) (V2 590 551))
-
-        return $ [drawBg, drawTextureToScreen titletextrect titletexttexture, drawWalls, drawPlayer]
+        return $ [drawBg, drawWalls, drawPlayer]
 
 
 updatedRenderPrePlayActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, GuiTransforms m, MonadReader Config m) => m ([m ()])

@@ -1,0 +1,73 @@
+Configuring free-5.0.2...
+Preprocessing library for free-5.0.2..
+Building library for free-5.0.2..
+[ 1 of 20] Compiling Control.Alternative.Free ( src/Control/Alternative/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Alternative/Free.o )
+[ 2 of 20] Compiling Control.Alternative.Free.Final ( src/Control/Alternative/Free/Final.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Alternative/Free/Final.o )
+[ 3 of 20] Compiling Control.Applicative.Free ( src/Control/Applicative/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Free.o )
+[ 4 of 20] Compiling Control.Applicative.Free.Fast ( src/Control/Applicative/Free/Fast.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Free/Fast.o )
+[ 5 of 20] Compiling Control.Applicative.Free.Final ( src/Control/Applicative/Free/Final.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Free/Final.o )
+[ 6 of 20] Compiling Control.Applicative.Trans.Free ( src/Control/Applicative/Trans/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Trans/Free.o )
+[ 7 of 20] Compiling Control.Comonad.Cofree.Class ( src/Control/Comonad/Cofree/Class.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Cofree/Class.o )
+[ 8 of 20] Compiling Control.Comonad.Trans.Cofree ( src/Control/Comonad/Trans/Cofree.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Trans/Cofree.o )
+[ 9 of 20] Compiling Control.Monad.Free.Class ( src/Control/Monad/Free/Class.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/Class.o )
+[10 of 20] Compiling Control.Monad.Free.TH ( src/Control/Monad/Free/TH.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/TH.o )
+
+[;1msrc/Control/Monad/Free/TH.hs:249:7: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Woverlapping-patterns[0m[0m[;1m][0m[0m[;1m
+    Pattern match is redundant
+    In a case alternative: _ -> ...[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m249 |[0m[0m       [;1m[35m_ -> fail $ "Unsupported constructor type: `" ++ pprint con ++ "'"[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/Control/Monad/Free/TH.hs:278:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Woverlapping-patterns[0m[0m[;1m][0m[0m[;1m
+    Pattern match is redundant
+    In an equation for ‘constructorNames’: constructorNames con' = ...[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m278 |[0m[0m [;1m[35mconstructorNames con' = fail $ "Unsupported constructor type: `" ++ pprint con' ++ "'"[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[11 of 20] Compiling Data.Functor.Classes.Compat ( src/Data/Functor/Classes/Compat.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Functor/Classes/Compat.o )
+[12 of 20] Compiling Control.Monad.Trans.Iter ( src/Control/Monad/Trans/Iter.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Iter.o )
+[13 of 20] Compiling Control.Monad.Trans.Free.Ap ( src/Control/Monad/Trans/Free/Ap.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Free/Ap.o )
+[14 of 20] Compiling Control.Monad.Trans.Free ( src/Control/Monad/Trans/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Free.o )
+[15 of 20] Compiling Control.Monad.Trans.Free.Church ( src/Control/Monad/Trans/Free/Church.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Free/Church.o )
+[16 of 20] Compiling Control.Monad.Free.Ap ( src/Control/Monad/Free/Ap.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/Ap.o )
+[17 of 20] Compiling Control.Monad.Free ( src/Control/Monad/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free.o )
+[18 of 20] Compiling Control.Monad.Free.Church ( src/Control/Monad/Free/Church.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/Church.o )
+[19 of 20] Compiling Control.Comonad.Trans.Coiter ( src/Control/Comonad/Trans/Coiter.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Trans/Coiter.o )
+[20 of 20] Compiling Control.Comonad.Cofree ( src/Control/Comonad/Cofree.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Cofree.o )
+[ 1 of 20] Compiling Control.Alternative.Free ( src/Control/Alternative/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Alternative/Free.p_o )
+[ 2 of 20] Compiling Control.Alternative.Free.Final ( src/Control/Alternative/Free/Final.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Alternative/Free/Final.p_o )
+[ 3 of 20] Compiling Control.Applicative.Free ( src/Control/Applicative/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Free.p_o )
+[ 4 of 20] Compiling Control.Applicative.Free.Fast ( src/Control/Applicative/Free/Fast.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Free/Fast.p_o )
+[ 5 of 20] Compiling Control.Applicative.Free.Final ( src/Control/Applicative/Free/Final.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Free/Final.p_o )
+[ 6 of 20] Compiling Control.Applicative.Trans.Free ( src/Control/Applicative/Trans/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Applicative/Trans/Free.p_o )
+[ 7 of 20] Compiling Control.Comonad.Cofree.Class ( src/Control/Comonad/Cofree/Class.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Cofree/Class.p_o )
+[ 8 of 20] Compiling Control.Comonad.Trans.Cofree ( src/Control/Comonad/Trans/Cofree.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Trans/Cofree.p_o )
+[ 9 of 20] Compiling Control.Monad.Free.Class ( src/Control/Monad/Free/Class.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/Class.p_o )
+[10 of 20] Compiling Control.Monad.Free.TH ( src/Control/Monad/Free/TH.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/TH.p_o )
+
+[;1msrc/Control/Monad/Free/TH.hs:249:7: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Woverlapping-patterns[0m[0m[;1m][0m[0m[;1m
+    Pattern match is redundant
+    In a case alternative: _ -> ...[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m249 |[0m[0m       [;1m[35m_ -> fail $ "Unsupported constructor type: `" ++ pprint con ++ "'"[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/Control/Monad/Free/TH.hs:278:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Woverlapping-patterns[0m[0m[;1m][0m[0m[;1m
+    Pattern match is redundant
+    In an equation for ‘constructorNames’: constructorNames con' = ...[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m278 |[0m[0m [;1m[35mconstructorNames con' = fail $ "Unsupported constructor type: `" ++ pprint con' ++ "'"[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[11 of 20] Compiling Data.Functor.Classes.Compat ( src/Data/Functor/Classes/Compat.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Functor/Classes/Compat.p_o )
+[12 of 20] Compiling Control.Monad.Trans.Iter ( src/Control/Monad/Trans/Iter.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Iter.p_o )
+[13 of 20] Compiling Control.Monad.Trans.Free.Ap ( src/Control/Monad/Trans/Free/Ap.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Free/Ap.p_o )
+[14 of 20] Compiling Control.Monad.Trans.Free ( src/Control/Monad/Trans/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Free.p_o )
+[15 of 20] Compiling Control.Monad.Trans.Free.Church ( src/Control/Monad/Trans/Free/Church.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Trans/Free/Church.p_o )
+[16 of 20] Compiling Control.Monad.Free.Ap ( src/Control/Monad/Free/Ap.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/Ap.p_o )
+[17 of 20] Compiling Control.Monad.Free ( src/Control/Monad/Free.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free.p_o )
+[18 of 20] Compiling Control.Monad.Free.Church ( src/Control/Monad/Free/Church.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Monad/Free/Church.p_o )
+[19 of 20] Compiling Control.Comonad.Trans.Coiter ( src/Control/Comonad/Trans/Coiter.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Trans/Coiter.p_o )
+[20 of 20] Compiling Control.Comonad.Cofree ( src/Control/Comonad/Cofree.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Comonad/Cofree.p_o )
+Installing library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/free-5.0.2-7MTUQqyNvpUDYBpWVP0GpG
+Registering library for free-5.0.2..

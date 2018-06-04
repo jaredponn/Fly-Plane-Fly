@@ -1,0 +1,7 @@
+Configuring StateVar-1.1.1.0...
+Preprocessing library for StateVar-1.1.1.0..
+Building library for StateVar-1.1.1.0..
+[1 of 1] Compiling Data.StateVar    ( src/Data/StateVar.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/StateVar.o )
+[1 of 1] Compiling Data.StateVar    ( src/Data/StateVar.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/StateVar.p_o )
+Installing library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/StateVar-1.1.1.0-7hicwZfZdWh9t78q7QM8bm
+Registering library for StateVar-1.1.1.0..

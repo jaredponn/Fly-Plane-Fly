@@ -1,0 +1,356 @@
+
+==================== FINAL INTERFACE ====================
+2018-06-04 17:45:35.989945451 UTC
+
+interface main:Logger 8022
+  interface hash: c92d52ab7d7fdd0914d87061cff1df04
+  ABI hash: de91407b46dc2af6570ae0f0d44f5bb4
+  export-list hash: c7f6c47792388de1970a4c43887f8fdc
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: fbfc9b4f0124b3a129b4a2321798f29f
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Logger.Logger{Logger.logText Logger.logToFile}
+module dependencies: Aabb Animations GameVars TimeManager Util
+                     Walls
+package dependencies: QuickCheck-2.10.1 Stack-0.3.2
+                      StateVar-1.1.1.0 Stream-0.4.7.2 adjunctions-4.4 array-0.5.2.0
+                      base-4.10.1.0 base-orphans-0.7 bifunctors-5.5.2 binary-0.8.5.1
+                      bytes-0.15.4 bytestring-0.10.8.2 call-stack-0.1.0 cereal-0.5.5.0
+                      clock-0.7.2 comonad-5.0.3 containers-0.5.10.2 contravariant-1.4.1
+                      data-default-class-0.1.2.0 deepseq-1.4.3.0 distributive-0.5.3
+                      exceptions-0.8.3 free-5.0.2 ghc-boot-th-8.2.2 ghc-prim-0.5.1.1
+                      hashable-1.2.7.0 integer-gmp-1.0.1.0 integer-logarithms-1.0.2.1
+                      kan-extensions-5.1 lazysmallcheck-0.6 lens-4.16.1
+                      lifted-base-0.2.3.12 linear-1.20.7 monad-control-1.0.2.3 mtl-2.2.2
+                      pretty-1.1.3.3 primitive-0.6.3.0 profunctors-5.2.2 random-1.1
+                      reflection-2.1.3 scientific-0.3.6.0 sdl2-2.4.0.1 sdl2-mixer-1.1.0
+                      sdl2-ttf-2.0.2 semigroupoids-5.2.2 stm-2.4.5.0 tagged-0.8.5
+                      template-haskell-2.12.0.0 text-1.2.3.0 tf-random-0.5
+                      th-abstraction-0.2.6.0 time-1.8.0.2 transformers-0.5.2.0
+                      transformers-base-0.4.4 transformers-compat-0.5.1.4
+                      unordered-containers-0.2.9.0 vector-0.12.0.1
+orphans: time-1.8.0.2:Data.Time.Clock.TAI
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         reflection-2.1.3:Data.Reflection
+         vector-0.12.0.1:Data.Vector.Unboxed
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.0:Data.Text.Lazy
+         linear-1.20.7:Linear.Instances base-orphans-0.7:Data.Orphans
+         text-1.2.3.0:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         text-1.2.3.0:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         stm-2.4.5.0:Control.Monad.STM
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: adjunctions-4.4:Data.Functor.Rep
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Fix
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Sum
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped bytes-0.15.4:Data.Bytes.Get
+                         bytes-0.15.4:Data.Bytes.Signed bytes-0.15.4:Data.Bytes.VarInt
+                         clock-0.7.2:System.Clock containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         free-5.0.2:Control.Comonad.Cofree
+                         free-5.0.2:Control.Comonad.Trans.Cofree
+                         free-5.0.2:Control.Monad.Free free-5.0.2:Control.Monad.Trans.Free
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         kan-extensions-5.1:Data.Functor.Day
+                         kan-extensions-5.1:Data.Functor.Yoneda lens-4.16.1:Control.Lens.At
+                         lens-4.16.1:Control.Lens.Internal.Indexed
+                         lens-4.16.1:Control.Lens.Reified lens-4.16.1:Control.Lens.Tuple
+                         lens-4.16.1:Control.Lens.Wrapped lens-4.16.1:Control.Lens.Zoom
+                         linear-1.20.7:Linear.Affine linear-1.20.7:Linear.Plucker
+                         linear-1.20.7:Linear.Quaternion linear-1.20.7:Linear.V
+                         linear-1.20.7:Linear.V0 linear-1.20.7:Linear.V1
+                         linear-1.20.7:Linear.V2 linear-1.20.7:Linear.V3
+                         linear-1.20.7:Linear.V4
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray
+                         profunctors-5.2.2:Data.Profunctor.Composition
+                         profunctors-5.2.2:Data.Profunctor.Rep sdl2-2.4.0.1:SDL.Audio
+                         sdl2-2.4.0.1:SDL.Event sdl2-2.4.0.1:SDL.Exception
+                         sdl2-2.4.0.1:SDL.Hint sdl2-2.4.0.1:SDL.Init
+                         sdl2-2.4.0.1:SDL.Input.GameController
+                         sdl2-2.4.0.1:SDL.Input.Joystick sdl2-2.4.0.1:SDL.Input.Keyboard
+                         sdl2-2.4.0.1:SDL.Input.Keyboard.Codes sdl2-2.4.0.1:SDL.Input.Mouse
+                         sdl2-2.4.0.1:SDL.Internal.Types sdl2-2.4.0.1:SDL.Power
+                         sdl2-2.4.0.1:SDL.Time sdl2-2.4.0.1:SDL.Video
+                         sdl2-2.4.0.1:SDL.Video.OpenGL sdl2-2.4.0.1:SDL.Video.Renderer
+                         sdl2-ttf-2.0.2:SDL.Font tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.0:Data.Text text-1.2.3.0:Data.Text.Lazy
+                         th-abstraction-0.2.6.0:Language.Haskell.TH.Datatype
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+import  -/  base-4.10.1.0:Control.Monad.IO.Class 9d78cd0f73a837f3c00753bd212b9f2c
+import  -/  base-4.10.1.0:Data.Functor 2ffda4f936b8f474394d93205750aff3
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.IO e261d8b68ccf81a359626fa520b57d1d
+import  -/  base-4.10.1.0:GHC.Show 0a8ce2b5e533d1c2cfb7954e6736be45
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  base-4.10.1.0:System.IO 6e5bb580370d8d71dc5888f723cea4b4
+import  -/  clock-0.7.2:System.Clock 056d9486cb81fc87e6657deb7d2591d2
+import  -/  GameVars 95546c61036798381255e3d7e11311b2
+  exports: bffadec9649d88993fa5a790487d46e7
+  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  TimeManager c5a6185a6f35cba82cca87bc7827c727
+  exports: 8b2c0f72e07dc8e418f06d3a9f6510ae
+  TimeManager 11f819b14b751ed055082b44f160b76d
+  getRealTime 59f73b0eb62d3e22760cfa13fd446ede
+import  -/  Util 04dd18c408cec1d861350946bb6e7df1
+  exports: 01755414b1287618f45750309b35edae
+  convertToSeconds 64f234d3f86665d369be3b594eceb7c4
+77ad9183556b8f37f2d10bd5f3bb788c
+  $fLoggerMahppyBird :: Logger.Logger GameVars.MahppyBird
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ GameVars.MahppyBird
+                  GameVars.$fMonadMahppyBird
+                  Logger.$fLoggerMahppyBird5
+                    `cast`
+                  (<GHC.Base.String>_R
+                   ->_R Trans
+                            (<GameVars.Config>_R
+                             ->_R Trans
+                                      (<GameVars.Vars>_R
+                                       ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                            (Trans
+                                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <GameVars.Config>_R
+                                           <Control.Monad.Trans.State.Lazy.StateT
+                                              GameVars.Vars GHC.Types.IO>_R
+                                           <()>_N))
+                                 (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  Logger.$fLoggerMahppyBird1
+                    `cast`
+                  (<GHC.IO.FilePath>_R
+                   ->_R <GHC.Base.String>_R
+                   ->_R Trans
+                            (<GameVars.Config>_R
+                             ->_R Trans
+                                      (<GameVars.Vars>_R
+                                       ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                            (Trans
+                                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <GameVars.Config>_R
+                                           <Control.Monad.Trans.State.Lazy.StateT
+                                              GameVars.Vars GHC.Types.IO>_R
+                                           <()>_N))
+                                 (Sym (GameVars.N:MahppyBird[0]) <()>_N))) -}
+009c6148c8db049ad1af1faf840880a6
+  $fLoggerMahppyBird1 ::
+    GHC.IO.FilePath
+    -> GHC.Base.String
+    -> GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 5, Strictness: <L,U><L,1*U><L,A><L,U><S,U>, Inline: [0],
+     Unfolding: InlineRule (5, True, True)
+                (\ (w :: GHC.IO.FilePath)
+                   (w1 :: GHC.Base.String)
+                   (w2 :: GameVars.Config)
+                   (w3 :: GameVars.Vars)
+                   (w4 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 Logger.$w$clogToFile w w1 w3 w4) -}
+8955a4f33eb421182238c4635852cef3
+  $fLoggerMahppyBird2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Logger.$fLoggerMahppyBird3) -}
+e206eab6196591fa4ce7cb9450b958d5
+  $fLoggerMahppyBird3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("\n"#) -}
+51f016b00e5c6b6f14823f62d4089a0b
+  $fLoggerMahppyBird4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: (": "#) -}
+f61a8f10a11d78997401b9a0e7f71244
+  $fLoggerMahppyBird5 ::
+    GHC.Base.String
+    -> GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 4, Strictness: <L,1*U><L,A><L,U><S,U>, Inline: [0],
+     Unfolding: InlineRule (4, True, True)
+                (\ (w :: GHC.Base.String)
+                   (w1 :: GameVars.Config)
+                   (w2 :: GameVars.Vars)
+                   (w3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 Logger.$w$clogText w w2 w3) -}
+82afffa916535ad8af7b58743bec823b
+  $tc'C:Logger :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   14986927816770427872##
+                   16764165599868537031##
+                   Logger.$trModule
+                   Logger.$tc'C:Logger2
+                   1#
+                   Logger.$tc'C:Logger1) -}
+4c01f24741e61266f53fa13810cb3778
+  $tc'C:Logger1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+27e58b5685b4d352ef8f46190fd06d82
+  $tc'C:Logger2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Logger.$tc'C:Logger3) -}
+2614e5c1a5d7c544087681afb6fe45b1
+  $tc'C:Logger3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'C:Logger"#) -}
+b85f9cf5e2963c5765db07a780886fe2
+  $tcLogger :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5885712143007102916##
+                   18073248403077172797##
+                   Logger.$trModule
+                   Logger.$trModule1
+                   0#
+                   Logger.$tcLogger1) -}
+145056de985c5f07137668c20a921ea6
+  $tcLogger1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+3c98bde97a37f833b2810241aef0fbd1
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Logger.$trModule3
+                   Logger.$trModule1) -}
+8cb715ca0be2e741ebb76f76f8134b4f
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Logger.$trModule2) -}
+7aa14aedd2e7fd19ed0e03c3cf082e5d
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Logger"#) -}
+bf4b846203f9465dd8db6d19e06123d8
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Logger.$trModule4) -}
+422052f0f3ce1eeb2247a011ab797396
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+3d0580edf795ebc3506dde6f661a1dc0
+  $w$clogText ::
+    GHC.Base.String
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 3, Strictness: <L,1*U><L,U><S,U>, Inline: [0],
+     Unfolding: (\ (w :: GHC.Base.String)
+                   (w1 :: GameVars.Vars)
+                   (w2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case System.Clock.$w$j1 0# w2 of ds1 { (#,#) ipv ipv1 ->
+                 case GHC.IO.Handle.Text.hPutStr2
+                        GHC.IO.Handle.FD.stdout
+                        (case ipv1 of ww { System.Clock.TimeSpec ww1 ww2 ->
+                         case GHC.Integer.Type.doubleFromInteger
+                                (System.Clock.$wtoNanoSecs ww1 ww2) of wild2 { DEFAULT ->
+                         GHC.Base.++
+                           @ GHC.Types.Char
+                           (GHC.Float.$w$sshowSignedFloat1
+                              GHC.Float.$fShowFloat2
+                              GHC.Float.minExpt
+                              (GHC.Prim.divideFloat# (GHC.Prim.double2Float# wild2) 1.0e9#)
+                              (GHC.Types.[] @ GHC.Types.Char))
+                           (GHC.CString.unpackAppendCString#
+                              Logger.$fLoggerMahppyBird4
+                              (GHC.Base.++ @ GHC.Types.Char w Logger.$fLoggerMahppyBird2)) } })
+                        GHC.Types.True
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 (# ipv2, (ipv3, w1) #) } }) -}
+f46fed93e31ea3d2bd245bbfa866cbd0
+  $w$clogToFile ::
+    GHC.IO.FilePath
+    -> GHC.Base.String
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 4, Strictness: <L,U><L,1*U><L,U><S,U>, Inline: [0],
+     Unfolding: (\ (w :: GHC.IO.FilePath)
+                   (w1 :: GHC.Base.String)
+                   (w2 :: GameVars.Vars)
+                   (w3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case System.Clock.$w$j1 0# w3 of ds1 { (#,#) ipv ipv1 ->
+                 case System.IO.appendFile2
+                        @ ()
+                        w
+                        GHC.IO.IOMode.AppendMode
+                        (\ (hdl :: GHC.IO.Handle.Types.Handle)[OneShot] ->
+                         GHC.IO.Handle.Text.hPutStr2
+                           hdl
+                           (case ipv1 of ww { System.Clock.TimeSpec ww1 ww2 ->
+                            case GHC.Integer.Type.doubleFromInteger
+                                   (System.Clock.$wtoNanoSecs ww1 ww2) of wild2 { DEFAULT ->
+                            GHC.Base.++
+                              @ GHC.Types.Char
+                              (GHC.Float.$w$sshowSignedFloat1
+                                 GHC.Float.$fShowFloat2
+                                 GHC.Float.minExpt
+                                 (GHC.Prim.divideFloat# (GHC.Prim.double2Float# wild2) 1.0e9#)
+                                 (GHC.Types.[] @ GHC.Types.Char))
+                              (GHC.CString.unpackAppendCString#
+                                 Logger.$fLoggerMahppyBird4
+                                 (GHC.Base.++ @ GHC.Types.Char w1 Logger.$fLoggerMahppyBird2)) } })
+                           GHC.Types.False)
+                          `cast`
+                        (<GHC.IO.Handle.Types.Handle>_R
+                         ->_R Sym (GHC.Types.N:IO[0] <()>_R))
+                        ipv of ds2 { (#,#) ipv2 ipv3 ->
+                 (# ipv2, (ipv3, w2) #) } }) -}
+77ad9183556b8f37f2d10bd5f3bb788c
+  class GHC.Base.Monad m => Logger (m :: * -> *) where
+    logText :: GHC.Base.String -> m ()
+    logToFile :: GHC.IO.FilePath -> GHC.Base.String -> m ()
+    {-# MINIMAL logText, logToFile #-}
+instance Logger.Logger [GameVars.MahppyBird]
+  = Logger.$fLoggerMahppyBird
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

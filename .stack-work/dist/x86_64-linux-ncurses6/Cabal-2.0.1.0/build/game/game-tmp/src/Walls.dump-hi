@@ -1,0 +1,863 @@
+
+==================== FINAL INTERFACE ====================
+2018-06-04 17:00:35.595816673 UTC
+
+interface main:Walls [hpc] 8022
+  interface hash: 2589ac88eb101bd5d7c0e71630c8b0dc
+  ABI hash: 37739ea89aa4c8bbd4881392f355c35c
+  export-list hash: 9a82a9ead6771cc6b661267f6167d45d
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 252e2e51efdfaca011fc25a9634d1926
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Walls.createWallStream
+  Walls.Wall{Walls.Wall gap lowerWall upperWall wallWidth xPos}
+  Walls.WallConfig{Walls.WallConfig allUppperWallRngBounds allWallSpacing allWallWidth finalGapSize gapSizeChangeRate startingGapSize startingPos}
+module dependencies:
+package dependencies: QuickCheck-2.10.1 Stream-0.4.7.2
+                      array-0.5.2.0 base-4.10.1.0* containers-0.5.10.2 deepseq-1.4.3.0
+                      ghc-boot-th-8.2.2 ghc-prim-0.5.1.1 integer-gmp-1.0.1.0
+                      lazysmallcheck-0.6 mtl-2.2.2 pretty-1.1.3.3 primitive-0.6.3.0
+                      random-1.1* template-haskell-2.12.0.0 tf-random-0.5 time-1.8.0.2
+                      transformers-0.5.2.0
+orphans: time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: base-4.10.1.0:Control.Applicative
+                         base-4.10.1.0:Data.Complex base-4.10.1.0:Data.Either
+                         base-4.10.1.0:Data.Functor.Compose base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.ByteArray
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+import  -/  Stream-0.4.7.2:Data.Stream 9cd51e4556ef7baaac4a787bec9c59a8
+import  -/  base-4.10.1.0:Data.Tuple 8fa1305aa5032ea35e2a54fa5f1e78f9
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
+import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
+import  -/  base-4.10.1.0:GHC.Show 0a8ce2b5e533d1c2cfb7954e6736be45
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
+import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
+import  -/  mtl-2.2.2:Control.Monad.State.Class da009d29b3bf5f5a071358357a2d2ea8
+import  -/  mtl-2.2.2:Control.Monad.State.Lazy 1fd6277cc7a06432c7f008ae6678f387
+import  -/  random-1.1:System.Random b3821d62ca4f4d63875317cf9ffbb94b
+import  -/  transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 1a80bdb936666c1b8faf2f03f91a48cc
+a78114f622b9279a8eb0c63e9b6c4e74
+  $fShowWall :: GHC.Show.Show Walls.Wall
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Walls.Wall
+                  Walls.$fShowWall_$cshowsPrec
+                  Walls.$fShowWall_$cshow
+                  Walls.$fShowWall_$cshowList -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  $fShowWall1 :: Walls.Wall -> GHC.Show.ShowS
+  {- Arity: 1,
+     Strictness: <S,1*U(1*U(U),1*U(U),1*U(U),1*U(U),1*U(U))>,
+     Unfolding: (\ (w :: Walls.Wall) ->
+                 {__scc {main:Walls.showList} False True} case w of ww { Walls.Wall ww1 ww2 ww3 ww4 ww5 ->
+                                                          Walls.$w$cshowsPrec
+                                                            0#
+                                                            ww1
+                                                            ww2
+                                                            ww3
+                                                            ww4
+                                                            ww5 }) -}
+5b44e7d1fa54acbd26eb8cc7d109b240
+  $fShowWall10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall11) -}
+bcf764ba550d04e97b1c56c26327e4b9
+  $fShowWall11 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("gap = "#) -}
+115b8f7b2f36c1a64ea1bd5e75736398
+  $fShowWall12 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall13) -}
+ebfb8ddb3ffe081097de9a1162ac8909
+  $fShowWall13 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("upperWall = "#) -}
+d4d4eb97f6644e25ec5bc50d8d29822e
+  $fShowWall14 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall15) -}
+9e05fdbc11a4525feafd9d9162ace0dc
+  $fShowWall15 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Wall {"#) -}
+92b336b587a4fe3b53c084e6f284c0c5
+  $fShowWall16 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+9175117dbc42181175ad0b6cc3c189c7
+  $fShowWall2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall3) -}
+b057d1f1df6941bda48ed79f8e1e02ef
+  $fShowWall3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("}"#) -}
+6a7bd53356567b1ea4bb9db3bf33eb24
+  $fShowWall4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall5) -}
+a968f10d26d9763cef83e678e72fe794
+  $fShowWall5 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("wallWidth = "#) -}
+fdf17e54085fb68d1f954e8c3218d338
+  $fShowWall6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall7) -}
+8df011bc9e2f7e781d9d6eb91f51f5e0
+  $fShowWall7 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("xPos = "#) -}
+aa83497e10f3c568ac3fb063fa8b0b19
+  $fShowWall8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# Walls.$fShowWall9) -}
+32d3229f935d45390e6604bde24eb455
+  $fShowWall9 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("lowerWall = "#) -}
+ff736f2beb1551834908d6a68d5d6594
+  $fShowWallConfig :: GHC.Show.Show Walls.WallConfig
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Walls.WallConfig
+                  Walls.$fShowWallConfig_$cshowsPrec
+                  Walls.$fShowWallConfig_$cshow
+                  Walls.$fShowWallConfig_$cshowList -}
+ff736f2beb1551834908d6a68d5d6594
+  $fShowWallConfig1 :: Walls.WallConfig -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <S(LLSSSSSS),1*U(U(U),U(U),U,U,U,U,U,U)>,
+     Unfolding: (\ (w :: Walls.WallConfig) ->
+                 {__scc {main:Walls.showList} False True} case w of ww { Walls.WallConfig ww1 ww2 ww3 ww4 ww5 ww6 ww7 ww8 ->
+                                                          Walls.$w$cshowsPrec1
+                                                            0#
+                                                            ww1
+                                                            ww2
+                                                            ww3
+                                                            ww4
+                                                            ww5
+                                                            ww6
+                                                            ww7
+                                                            ww8 }) -}
+ff736f2beb1551834908d6a68d5d6594
+  $fShowWallConfig_$cshow :: Walls.WallConfig -> GHC.Base.String
+  {- Arity: 1, Strictness: <S(LLSSSSSS),1*U(U(U),U(U),U,U,U,U,U,U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Walls.WallConfig) ->
+                 Walls.$fShowWallConfig_$cshowsPrec
+                   Walls.$fShowWall16
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+ff736f2beb1551834908d6a68d5d6594
+  $fShowWallConfig_$cshowList :: [Walls.WallConfig] -> GHC.Show.ShowS
+  {- Unfolding: ({__scc {main:Walls.showList} True True} GHC.Show.showList__
+                                                           @ Walls.WallConfig
+                                                           Walls.$fShowWallConfig1) -}
+ff736f2beb1551834908d6a68d5d6594
+  $fShowWallConfig_$cshowsPrec ::
+    GHC.Types.Int -> Walls.WallConfig -> GHC.Show.ShowS
+  {- Arity: 2,
+     Strictness: <S(S),1*U(U)><S(LLSSSSSS),1*U(U(U),U(U),U,U,U,U,U,U)>,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: Walls.WallConfig) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Walls.WallConfig ww3 ww4 ww5 ww6 ww7 ww8 ww9 ww10 ->
+                 Walls.$w$cshowsPrec1 ww1 ww3 ww4 ww5 ww6 ww7 ww8 ww9 ww10 } }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  $fShowWall_$cshow :: Walls.Wall -> GHC.Base.String
+  {- Arity: 1,
+     Strictness: <S,1*U(1*U(U),1*U(U),1*U(U),1*U(U),1*U(U))>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Walls.Wall) ->
+                 Walls.$fShowWall_$cshowsPrec
+                   Walls.$fShowWall16
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  $fShowWall_$cshowList :: [Walls.Wall] -> GHC.Show.ShowS
+  {- Unfolding: ({__scc {main:Walls.showList} True True} GHC.Show.showList__
+                                                           @ Walls.Wall
+                                                           Walls.$fShowWall1) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  $fShowWall_$cshowsPrec ::
+    GHC.Types.Int -> Walls.Wall -> GHC.Show.ShowS
+  {- Arity: 2,
+     Strictness: <S(S),1*U(U)><S,1*U(1*U(U),1*U(U),1*U(U),1*U(U),1*U(U))>,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: Walls.Wall) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Walls.Wall ww3 ww4 ww5 ww6 ww7 ->
+                 Walls.$w$cshowsPrec ww1 ww3 ww4 ww5 ww6 ww7 } }) -}
+78a8a86d976cc53c04c0ff23679a90f2
+  $tc'Wall :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7126272174702688270##
+                   11777945104883625950##
+                   Walls.$trModule
+                   Walls.$tc'Wall2
+                   0#
+                   Walls.$tc'Wall1) -}
+802657d432f6bd26729dc206dc5fcea4
+  $tc'Wall1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+d3d876b38945c1e98de21815a2dbde8b
+  $tc'Wall2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Walls.$tc'Wall3) -}
+c51a9a52157f1b95362dbc34491b62f6
+  $tc'Wall3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Wall"#) -}
+f7951fa11346061beb4f0f42135ab53e
+  $tc'WallConfig :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   4591704469518737801##
+                   8395347210812344398##
+                   Walls.$trModule
+                   Walls.$tc'WallConfig2
+                   0#
+                   Walls.$tc'WallConfig1) -}
+c00f247f26b489efe53255e6a71ecf78
+  $tc'WallConfig1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+abcf347a6eb3491d67f043b30d18377c
+  $tc'WallConfig2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Walls.$tc'WallConfig3) -}
+8f225e6afa00612bf80539255b43aa00
+  $tc'WallConfig3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'WallConfig"#) -}
+9aa16590649e02275ff5edbda740f5a8
+  $tcWall :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   3426869057654588525##
+                   5624780605529446619##
+                   Walls.$trModule
+                   Walls.$tcWall1
+                   0#
+                   GHC.Types.krep$*) -}
+2516a5efeef48360eb9e01488dc68144
+  $tcWall1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Walls.$tcWall2) -}
+af7bc26020e8d438840b54ce94091a04
+  $tcWall2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Wall"#) -}
+e80ef730b48cc55aa6cf8d276a6bc191
+  $tcWallConfig :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   5856417135046266852##
+                   4018127970198340003##
+                   Walls.$trModule
+                   Walls.$tcWallConfig1
+                   0#
+                   GHC.Types.krep$*) -}
+6c77f27b01d06f28f99daf9c6b8ac6f4
+  $tcWallConfig1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Walls.$tcWallConfig2) -}
+44a0ba5ea48b56b2bdb531cdbe58c6ec
+  $tcWallConfig2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("WallConfig"#) -}
+a6244202c5ab565b929ebfe585571e90
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module Walls.$trModule3 Walls.$trModule1) -}
+9f2277c3b7cf269eca00ddae2b4c4b2f
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Walls.$trModule2) -}
+81f18cf3229995502e3f356fd2b6703d
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Walls"#) -}
+98f09bc1f6f8e45ea0583d022b6d39bc
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Walls.$trModule4) -}
+f06f3c104e6e02b59bb40342e8b7c56e
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+48162efb228ef5890b380402f56917ac
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> GHC.Types.Float
+    -> GHC.Types.Float
+    -> GHC.Types.Float
+    -> GHC.Types.Float
+    -> GHC.Types.Float
+    -> GHC.Show.ShowS
+  {- Arity: 6,
+     Strictness: <S,U><L,1*U(U)><L,1*U(U)><L,1*U(U)><L,1*U(U)><L,1*U(U)>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: GHC.Types.Float)
+                   (ww2 :: GHC.Types.Float)
+                   (ww3 :: GHC.Types.Float)
+                   (ww4 :: GHC.Types.Float)
+                   (ww5 :: GHC.Types.Float) ->
+                 {__scc {main:Walls.showsPrec} True True} let {
+                                                            f :: GHC.Base.String -> GHC.Base.String
+                                                            = case ww1 of ww6 { GHC.Types.F# ww7 ->
+                                                              GHC.Float.$w$sshowSignedFloat1
+                                                                GHC.Float.$fShowFloat2
+                                                                Walls.$fShowWall16
+                                                                ww7 }
+                                                          } in
+                                                          let {
+                                                            f1 :: GHC.Base.String -> GHC.Base.String
+                                                            = case ww2 of ww6 { GHC.Types.F# ww7 ->
+                                                              GHC.Float.$w$sshowSignedFloat1
+                                                                GHC.Float.$fShowFloat2
+                                                                Walls.$fShowWall16
+                                                                ww7 }
+                                                          } in
+                                                          let {
+                                                            f2 :: GHC.Base.String -> GHC.Base.String
+                                                            = case ww3 of ww6 { GHC.Types.F# ww7 ->
+                                                              GHC.Float.$w$sshowSignedFloat1
+                                                                GHC.Float.$fShowFloat2
+                                                                Walls.$fShowWall16
+                                                                ww7 }
+                                                          } in
+                                                          let {
+                                                            f3 :: GHC.Base.String -> GHC.Base.String
+                                                            = case ww4 of ww6 { GHC.Types.F# ww7 ->
+                                                              GHC.Float.$w$sshowSignedFloat1
+                                                                GHC.Float.$fShowFloat2
+                                                                Walls.$fShowWall16
+                                                                ww7 }
+                                                          } in
+                                                          let {
+                                                            f4 :: GHC.Base.String -> GHC.Base.String
+                                                            = case ww5 of ww6 { GHC.Types.F# ww7 ->
+                                                              GHC.Float.$w$sshowSignedFloat1
+                                                                GHC.Float.$fShowFloat2
+                                                                Walls.$fShowWall16
+                                                                ww7 }
+                                                          } in
+                                                          let {
+                                                            p :: GHC.Show.ShowS
+                                                              {- Arity: 1, Strictness: <L,1*U> -}
+                                                            = \ (x :: GHC.Base.String) ->
+                                                              GHC.Base.++
+                                                                @ GHC.Types.Char
+                                                                Walls.$fShowWall14
+                                                                (GHC.Base.++
+                                                                   @ GHC.Types.Char
+                                                                   Walls.$fShowWall12
+                                                                   (f (GHC.Base.++
+                                                                         @ GHC.Types.Char
+                                                                         GHC.Show.showCommaSpace1
+                                                                         (GHC.Base.++
+                                                                            @ GHC.Types.Char
+                                                                            Walls.$fShowWall10
+                                                                            (f1
+                                                                               (GHC.Base.++
+                                                                                  @ GHC.Types.Char
+                                                                                  GHC.Show.showCommaSpace1
+                                                                                  (GHC.Base.++
+                                                                                     @ GHC.Types.Char
+                                                                                     Walls.$fShowWall8
+                                                                                     (f2
+                                                                                        (GHC.Base.++
+                                                                                           @ GHC.Types.Char
+                                                                                           GHC.Show.showCommaSpace1
+                                                                                           (GHC.Base.++
+                                                                                              @ GHC.Types.Char
+                                                                                              Walls.$fShowWall6
+                                                                                              (f3
+                                                                                                 (GHC.Base.++
+                                                                                                    @ GHC.Types.Char
+                                                                                                    GHC.Show.showCommaSpace1
+                                                                                                    (GHC.Base.++
+                                                                                                       @ GHC.Types.Char
+                                                                                                       Walls.$fShowWall4
+                                                                                                       (f4
+                                                                                                          (GHC.Base.++
+                                                                                                             @ GHC.Types.Char
+                                                                                                             Walls.$fShowWall2
+                                                                                                             x)))))))))))))))
+                                                          } in
+                                                          case GHC.Prim.tagToEnum#
+                                                                 @ GHC.Types.Bool
+                                                                 (GHC.Prim.>=# ww 11#) of wild {
+                                                            GHC.Types.False -> p
+                                                            GHC.Types.True
+                                                            -> \ (x :: GHC.Base.String) ->
+                                                               GHC.Types.:
+                                                                 @ GHC.Types.Char
+                                                                 GHC.Show.$fShow(,)4
+                                                                 (p (GHC.Types.:
+                                                                       @ GHC.Types.Char
+                                                                       GHC.Show.$fShow(,)2
+                                                                       x)) }) -}
+d17b2e9b93ed00874322ae028b30ed8f
+  $w$cshowsPrec1 ::
+    GHC.Prim.Int#
+    -> GHC.Types.Float
+    -> GHC.Types.Float
+    -> GHC.Prim.Float#
+    -> GHC.Prim.Float#
+    -> GHC.Prim.Float#
+    -> GHC.Prim.Float#
+    -> GHC.Prim.Float#
+    -> GHC.Prim.Float#
+    -> GHC.Show.ShowS
+  {- Arity: 9,
+     Strictness: <S,U><L,U(U)><L,U(U)><L,U><L,U><L,U><L,U><L,U><L,U>,
+     Inline: [0] -}
+5ee0c4ce2a9449b67a04b1f64e192ea8
+  $w$srandPercent ::
+    GHC.Types.Float
+    -> GHC.Types.Float
+    -> System.Random.StdGen
+    -> (# GHC.Types.Float, System.Random.StdGen #)
+  {- Arity: 3, Strictness: <L,1*U(U)><L,1*U(U)><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Types.Float)
+                   (ww1 :: GHC.Types.Float)
+                   (w :: System.Random.StdGen) ->
+                 case {__scc {main:Walls.randPercent} True True} let {
+                                                                   ds :: (GHC.Types.Int,
+                                                                          System.Random.StdGen)
+                                                                   = let {
+                                                                       generator :: System.Random.StdGen
+                                                                       = case Walls.createWallStream4
+                                                                                w of wild { (,) a1 s' ->
+                                                                         a1 }
+                                                                     } in
+                                                                     let {
+                                                                       intBounds :: (GHC.Types.Int,
+                                                                                     GHC.Types.Int)
+                                                                       = {__scc {main:Walls.randPercent.intBounds} True False} ({__scc {main:Walls.randPercent.intBounds} False True} case ww of wild3 { GHC.Types.F# y ->
+                                                                                                                                                                                      case {__pkg_ccall base-4.10.1.0 GHC.Prim.Float#
+                                                                                                                                                                                                                      -> GHC.Prim.State#
+                                                                                                                                                                                                                           GHC.Prim.RealWorld
+                                                                                                                                                                                                                      -> (# GHC.Prim.State#
+                                                                                                                                                                                                                              GHC.Prim.RealWorld,
+                                                                                                                                                                                                                            GHC.Prim.Float# #)}
+                                                                                                                                                                                             (GHC.Prim.timesFloat#
+                                                                                                                                                                                                100.0#
+                                                                                                                                                                                                y)
+                                                                                                                                                                                             GHC.Prim.realWorld# of wild { (#,#) ds2 ds3 ->
+                                                                                                                                                                                      GHC.Types.I#
+                                                                                                                                                                                        (GHC.Prim.float2Int#
+                                                                                                                                                                                           ds3) } },
+                                                                                                                                {__scc {main:Walls.randPercent.intBounds} False True} case ww1 of wild3 { GHC.Types.F# y ->
+                                                                                                                                                                                      case {__pkg_ccall base-4.10.1.0 GHC.Prim.Float#
+                                                                                                                                                                                                                      -> GHC.Prim.State#
+                                                                                                                                                                                                                           GHC.Prim.RealWorld
+                                                                                                                                                                                                                      -> (# GHC.Prim.State#
+                                                                                                                                                                                                                              GHC.Prim.RealWorld,
+                                                                                                                                                                                                                            GHC.Prim.Float# #)}
+                                                                                                                                                                                             (GHC.Prim.timesFloat#
+                                                                                                                                                                                                100.0#
+                                                                                                                                                                                                y)
+                                                                                                                                                                                             GHC.Prim.realWorld# of wild { (#,#) ds2 ds3 ->
+                                                                                                                                                                                      GHC.Types.I#
+                                                                                                                                                                                        (GHC.Prim.float2Int#
+                                                                                                                                                                                           ds3) } })
+                                                                     } in
+                                                                     {__scc {main:Walls.randPercent.(...)} True True} Walls.createWallStream3
+                                                                                                                        intBounds
+                                                                                                                        generator
+                                                                 } in
+                                                                 ({__scc {main:Walls.randPercent.val} True False} case ds of wild { (,) val generator' ->
+                                                                                                                  case val of wild1 { GHC.Types.I# i ->
+                                                                                                                  GHC.Types.F#
+                                                                                                                    (GHC.Prim.divideFloat#
+                                                                                                                       (GHC.Prim.int2Float#
+                                                                                                                          i)
+                                                                                                                       100.0#) } },
+                                                                  {__scc {mtl-2.2.2:Control.Monad.State.Class.put} True False} {__scc {main:Walls.randPercent.generator'} True True} case ds of wild { (,) val generator' ->
+                                                                                                                                                                                     generator' }) of ww2 { (,) ww3 ww4 ->
+                 (# ww3, ww4 #) }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  data Wall
+    = Wall {upperWall :: GHC.Types.Float,
+            gap :: GHC.Types.Float,
+            lowerWall :: GHC.Types.Float,
+            xPos :: GHC.Types.Float,
+            wallWidth :: GHC.Types.Float}
+ff736f2beb1551834908d6a68d5d6594
+  data WallConfig
+    = WallConfig {allUppperWallRngBounds :: {-# UNPACK #-}(GHC.Types.Float,
+                                                           GHC.Types.Float),
+                  startingGapSize :: {-# UNPACK #-}GHC.Types.Float,
+                  gapSizeChangeRate :: {-# UNPACK #-}GHC.Types.Float,
+                  finalGapSize :: {-# UNPACK #-}GHC.Types.Float,
+                  allWallWidth :: {-# UNPACK #-}GHC.Types.Float,
+                  allWallSpacing :: {-# UNPACK #-}GHC.Types.Float,
+                  startingPos :: {-# UNPACK #-}GHC.Types.Float}
+ff736f2beb1551834908d6a68d5d6594
+  allUppperWallRngBounds ::
+    Walls.WallConfig -> (GHC.Types.Float, GHC.Types.Float)
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U(U,U,A,A,A,A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.allUppperWallRngBounds} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                       (dt, dt1) }) -}
+ff736f2beb1551834908d6a68d5d6594
+  allWallSpacing :: Walls.WallConfig -> GHC.Types.Float
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLLLSL),1*U(A,A,A,A,A,A,U,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.allWallSpacing} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                               GHC.Types.F# dt6 }) -}
+ff736f2beb1551834908d6a68d5d6594
+  allWallWidth :: Walls.WallConfig -> GHC.Types.Float
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLLSLL),1*U(A,A,A,A,A,U,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.allWallWidth} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                             GHC.Types.F# dt5 }) -}
+1eaa4cdc6d68b360c3f0be36f1215680
+  createWallStream ::
+    Walls.WallConfig -> GHC.Types.IO (Data.Stream.Stream Walls.Wall)
+  {- Arity: 1, Strictness: <L,U(U(U),U(U),U,U,U,U,U,U)>,
+     Unfolding: InlineRule (0, True, True)
+                Walls.createWallStream1
+                  `cast`
+                (<Walls.WallConfig>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <Data.Stream.Stream Walls.Wall>_R)) -}
+747cf72d07d0c9666959528c8090f0a8
+  createWallStream1 ::
+    Walls.WallConfig
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
+          Data.Stream.Stream Walls.Wall #)
+  {- Arity: 1, Strictness: <L,U(U(U),U(U),U,U,U,U,U,U)>,
+     Unfolding: (\ (conf :: Walls.WallConfig) ->
+                 {__scc {main:Walls.createWallStream} True False} \ (s :: GHC.Prim.State#
+                                                                            GHC.Prim.RealWorld) ->
+                                                                  let {
+                                                                    lvl16 :: (GHC.Types.Float,
+                                                                              GHC.Types.Float)
+                                                                    = {__scc {main:Walls.createWallStream} False True} {__scc {main:Walls.createNextWall} False True} {__scc {main:Walls.createNextWall.(...)} False True} {__scc {main:Walls.allUppperWallRngBounds} False True} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                                                                  (dt,
+                                                                                                                                                                                                                                                                                   dt1) }
+                                                                  } in
+                                                                  let {
+                                                                    lvl17 :: GHC.Types.Float
+                                                                    = {__scc {main:Walls.createWallStream} False True} {__scc {main:Walls.createNextWall} False True} {__scc {main:Walls.allWallWidth} False True} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                   GHC.Types.F#
+                                                                                                                                                                                                                     dt5 }
+                                                                  } in
+                                                                  {__scc {main:Walls.createWallStream} False True} case System.Random.getStdGen1
+                                                                                                                          s of ds1 { (#,#) ipv ipv1 ->
+                                                                                                                   let {
+                                                                                                                     firstWall :: (Walls.Wall,
+                                                                                                                                   System.Random.StdGen)
+                                                                                                                     = {__scc {main:Walls.createWallStream.firstWall} True True} let {
+                                                                                                                                                                                   startPos :: GHC.Types.Float
+                                                                                                                                                                                   = {__scc {main:Walls.startingPos} True True} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                GHC.Types.F#
+                                                                                                                                                                                                                                  dt7 }
+                                                                                                                                                                                 } in
+                                                                                                                                                                                 {__scc {main:Walls.createWall} True True} let {
+                                                                                                                                                                                                                             ds :: Data.Functor.Identity.Identity
+                                                                                                                                                                                                                                     (GHC.Types.Float,
+                                                                                                                                                                                                                                      System.Random.StdGen)
+                                                                                                                                                                                                                             = {__scc {main:Walls.createWall.(...)} True True} {__scc {main:Walls.allUppperWallRngBounds} True False} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                                                                                                                      case Walls.$w$srandPercent
+                                                                                                                                                                                                                                                                                                                                             dt
+                                                                                                                                                                                                                                                                                                                                             dt1
+                                                                                                                                                                                                                                                                                                                                             ipv1 of ww { (#,#) ww1 ww2 ->
+                                                                                                                                                                                                                                                                                                                                      (ww1,
+                                                                                                                                                                                                                                                                                                                                       ww2)
+                                                                                                                                                                                                                                                                                                                                        `cast`
+                                                                                                                                                                                                                                                                                                                                      (Sym (Data.Functor.Identity.N:Identity[0]
+                                                                                                                                                                                                                                                                                                                                                <(GHC.Types.Float,
+                                                                                                                                                                                                                                                                                                                                                  System.Random.StdGen)>_R)) } }
+                                                                                                                                                                                                                           } in
+                                                                                                                                                                                                                           (let {
+                                                                                                                                                                                                                              val :: GHC.Types.Float
+                                                                                                                                                                                                                              = {__scc {main:Walls.createWall.val} True True} case ds
+                                                                                                                                                                                                                                                                                     `cast`
+                                                                                                                                                                                                                                                                                   (Data.Functor.Identity.N:Identity[0]
+                                                                                                                                                                                                                                                                                        <(GHC.Types.Float,
+                                                                                                                                                                                                                                                                                          System.Random.StdGen)>_R) of wild { (,) val1 g' ->
+                                                                                                                                                                                                                                                                              val1 }
+                                                                                                                                                                                                                            } in
+                                                                                                                                                                                                                            Walls.Wall
+                                                                                                                                                                                                                              val
+                                                                                                                                                                                                                              ({__scc {main:Walls.startingGapSize} True True} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                                                              GHC.Types.F#
+                                                                                                                                                                                                                                                                                dt2 })
+                                                                                                                                                                                                                              (case val of wild2 { GHC.Types.F# x ->
+                                                                                                                                                                                                                               {__scc {main:Walls.startingGapSize} True False} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                                                               GHC.Types.F#
+                                                                                                                                                                                                                                                                                 (GHC.Prim.minusFloat#
+                                                                                                                                                                                                                                                                                    1.0#
+                                                                                                                                                                                                                                                                                    (GHC.Prim.plusFloat#
+                                                                                                                                                                                                                                                                                       x
+                                                                                                                                                                                                                                                                                       dt2)) } })
+                                                                                                                                                                                                                              startPos
+                                                                                                                                                                                                                              ({__scc {main:Walls.allWallWidth} True True} case conf of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                                                           GHC.Types.F#
+                                                                                                                                                                                                                                                                             dt5 }),
+                                                                                                                                                                                                                            {__scc {main:Walls.createWall.g'} True True} case ds
+                                                                                                                                                                                                                                                                                `cast`
+                                                                                                                                                                                                                                                                              (Data.Functor.Identity.N:Identity[0]
+                                                                                                                                                                                                                                                                                   <(GHC.Types.Float,
+                                                                                                                                                                                                                                                                                     System.Random.StdGen)>_R) of wild { (,) val g' ->
+                                                                                                                                                                                                                                                                         g' })
+                                                                                                                   } in
+                                                                                                                   let {
+                                                                                                                     sgen :: System.Random.StdGen
+                                                                                                                     = case firstWall of wild { (,) ds2 y ->
+                                                                                                                       y }
+                                                                                                                   } in
+                                                                                                                   case ({__scc {random-1.1:System.Random.setStdGen} True True} GHC.STRef.writeSTRef1
+                                                                                                                                                                                  @ GHC.Prim.RealWorld
+                                                                                                                                                                                  @ System.Random.StdGen
+                                                                                                                                                                                  System.Random.theStdGen
+                                                                                                                                                                                    `cast`
+                                                                                                                                                                                  (Nth:2
+                                                                                                                                                                                       (Trans
+                                                                                                                                                                                            (<GHC.IORef.IORef
+                                                                                                                                                                                                System.Random.StdGen>_R
+                                                                                                                                                                                             ->_R <System.Random.StdGen>_R
+                                                                                                                                                                                             ->_R GHC.Types.N:IO[0]
+                                                                                                                                                                                                      <()>_R)
+                                                                                                                                                                                            (GHC.IORef.N:IORef[0] <System.Random.StdGen>_N
+                                                                                                                                                                                             ->_R <System.Random.StdGen
+                                                                                                                                                                                                   -> GHC.Prim.State#
+                                                                                                                                                                                                        GHC.Prim.RealWorld
+                                                                                                                                                                                                   -> (# GHC.Prim.State#
+                                                                                                                                                                                                           GHC.Prim.RealWorld,
+                                                                                                                                                                                                         () #)>_R)))
+                                                                                                                                                                                  sgen)
+                                                                                                                          ipv of ds2 { (#,#) ipv2 ipv3 ->
+                                                                                                                   (# ipv2,
+                                                                                                                      Data.Stream.map
+                                                                                                                        @ (Walls.Wall,
+                                                                                                                           System.Random.StdGen)
+                                                                                                                        @ Walls.Wall
+                                                                                                                        (Data.Tuple.fst
+                                                                                                                           @ Walls.Wall
+                                                                                                                           @ System.Random.StdGen)
+                                                                                                                        (case Data.Stream.$witerate
+                                                                                                                                @ (Walls.Wall,
+                                                                                                                                   System.Random.StdGen)
+                                                                                                                                (\ (ds :: (Walls.Wall,
+                                                                                                                                           System.Random.StdGen)) ->
+                                                                                                                                 {__scc {main:Walls.createNextWall} True True} case ds of wild { (,) old g ->
+                                                                                                                                                                               let {
+                                                                                                                                                                                 ds3 :: Data.Functor.Identity.Identity
+                                                                                                                                                                                          (GHC.Types.Float,
+                                                                                                                                                                                           System.Random.StdGen)
+                                                                                                                                                                                 = {__scc {main:Walls.createNextWall.(...)} True True} {__scc {main:Walls.allUppperWallRngBounds} True False} Walls.createWallStream2
+                                                                                                                                                                                                                                                                                                lvl16
+                                                                                                                                                                                                                                                                                                g
+                                                                                                                                                                               } in
+                                                                                                                                                                               (let {
+                                                                                                                                                                                  gapsize :: GHC.Types.Float
+                                                                                                                                                                                  = {__scc {main:Walls.createNextWall.gapsize} True True} {__scc {main:Walls.gap} True False} case old of wild1 { Walls.Wall ds4 ds5 ds6 ds7 ds8 ->
+                                                                                                                                                                                                                                                                              case ds5 of wild2 { GHC.Types.F# x ->
+                                                                                                                                                                                                                                                                              {__scc {main:Walls.gapSizeChangeRate} True False} case conf of wild3 { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                                                                                                                {__scc {main:Walls.finalGapSize} True False} case GHC.Prim.tagToEnum#
+                                                                                                                                                                                                                                                                                                                                                                                    @ GHC.Types.Bool
+                                                                                                                                                                                                                                                                                                                                                                                    (GHC.Prim.leFloat#
+                                                                                                                                                                                                                                                                                                                                                                                       (GHC.Prim.plusFloat#
+                                                                                                                                                                                                                                                                                                                                                                                          x
+                                                                                                                                                                                                                                                                                                                                                                                          dt3)
+                                                                                                                                                                                                                                                                                                                                                                                       dt4) of wild4 {
+                                                                                                                                                                                                                                                                                                                                                                               GHC.Types.False
+                                                                                                                                                                                                                                                                                                                                                                               -> {__scc {main:Walls.gap} True False} {__scc {main:Walls.gapSizeChangeRate} True False} GHC.Types.F#
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                          (GHC.Prim.plusFloat#
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             x
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             dt3)
+                                                                                                                                                                                                                                                                                                                                                                               GHC.Types.True
+                                                                                                                                                                                                                                                                                                                                                                               -> {__scc {main:Walls.finalGapSize} True False} GHC.Types.F#
+                                                                                                                                                                                                                                                                                                                                                                                                                                 dt4 } } } }
+                                                                                                                                                                                } in
+                                                                                                                                                                                let {
+                                                                                                                                                                                  val :: GHC.Types.Float
+                                                                                                                                                                                  = {__scc {main:Walls.createNextWall.val} True True} case ds3
+                                                                                                                                                                                                                                             `cast`
+                                                                                                                                                                                                                                           (Data.Functor.Identity.N:Identity[0]
+                                                                                                                                                                                                                                                <(GHC.Types.Float,
+                                                                                                                                                                                                                                                  System.Random.StdGen)>_R) of wild1 { (,) val1 g' ->
+                                                                                                                                                                                                                                      val1 }
+                                                                                                                                                                                } in
+                                                                                                                                                                                Walls.Wall
+                                                                                                                                                                                  val
+                                                                                                                                                                                  gapsize
+                                                                                                                                                                                  (case val of wild2 { GHC.Types.F# x ->
+                                                                                                                                                                                   case gapsize of wild3 { GHC.Types.F# y ->
+                                                                                                                                                                                   GHC.Types.F#
+                                                                                                                                                                                     (GHC.Prim.minusFloat#
+                                                                                                                                                                                        1.0#
+                                                                                                                                                                                        (GHC.Prim.plusFloat#
+                                                                                                                                                                                           x
+                                                                                                                                                                                           y)) } })
+                                                                                                                                                                                  ({__scc {main:Walls.allWallSpacing} True False} case conf of wild1 { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                                                                                                                                                                                  {__scc {main:Walls.xPos} True False} case old of wild2 { Walls.Wall ds4 ds5 ds6 ds7 ds8 ->
+                                                                                                                                                                                                                                                                       case ds7 of wild3 { GHC.Types.F# y ->
+                                                                                                                                                                                                                                                                       {__scc {main:Walls.wallWidth} True False} case ds8 of wild4 { GHC.Types.F# y1 ->
+                                                                                                                                                                                                                                                                                                                 GHC.Types.F#
+                                                                                                                                                                                                                                                                                                                   (GHC.Prim.plusFloat#
+                                                                                                                                                                                                                                                                                                                      (GHC.Prim.plusFloat#
+                                                                                                                                                                                                                                                                                                                         dt6
+                                                                                                                                                                                                                                                                                                                         y)
+                                                                                                                                                                                                                                                                                                                      y1) } } } })
+                                                                                                                                                                                  ({__scc {main:Walls.allWallWidth} True False} lvl17),
+                                                                                                                                                                                {__scc {main:Walls.createNextWall.g'} True True} case ds3
+                                                                                                                                                                                                                                        `cast`
+                                                                                                                                                                                                                                      (Data.Functor.Identity.N:Identity[0]
+                                                                                                                                                                                                                                           <(GHC.Types.Float,
+                                                                                                                                                                                                                                             System.Random.StdGen)>_R) of wild1 { (,) val g' ->
+                                                                                                                                                                                                                                 g' }) })
+                                                                                                                                firstWall of ww { (#,#) ww1 ww2 ->
+                                                                                                                         Data.Stream.Cons
+                                                                                                                           @ (Walls.Wall,
+                                                                                                                              System.Random.StdGen)
+                                                                                                                           ww1
+                                                                                                                           ww2 }) #) } }) -}
+7843a6143b7f7f03b7f464d93f30bc6b
+  createWallStream2 ::
+    (GHC.Types.Float, GHC.Types.Float)
+    -> System.Random.StdGen
+    -> Data.Functor.Identity.Identity
+         (GHC.Types.Float, System.Random.StdGen)
+  {- Arity: 2, Strictness: <S,1*U(1*U(U),1*U(U))><L,U>m, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: (GHC.Types.Float, GHC.Types.Float))
+                   (w1 :: System.Random.StdGen) ->
+                 case w of ww { (,) ww1 ww2 ->
+                 case Walls.$w$srandPercent ww1 ww2 w1 of ww3 { (#,#) ww4 ww5 ->
+                 (ww4, ww5)
+                   `cast`
+                 (Sym (Data.Functor.Identity.N:Identity[0]
+                           <(GHC.Types.Float, System.Random.StdGen)>_R)) } }) -}
+c518e79b9469bb35fcb36c90216c49df
+  createWallStream3 ::
+    (GHC.Types.Int, GHC.Types.Int)
+    -> System.Random.StdGen -> (GHC.Types.Int, System.Random.StdGen)
+  {- Unfolding: ({__scc {main:Walls.randPercent} False True} {__scc {main:Walls.randPercent.(...)} False True} System.Random.$fRandomInt_$crandomR
+                                                                                                                 @ System.Random.StdGen
+                                                                                                                 System.Random.$fRandomGenStdGen) -}
+558b65087c23acd8420c85f25a22fe9d
+  createWallStream4 ::
+    System.Random.StdGen
+    -> (System.Random.StdGen, System.Random.StdGen)
+  {- Unfolding: ({__scc {main:Walls.randPercent} False True} {__scc {mtl-2.2.2:Control.Monad.State.Class.get} True False} \ (x :: System.Random.StdGen) ->
+                                                                                                                          (x,
+                                                                                                                           x)) -}
+ff736f2beb1551834908d6a68d5d6594
+  finalGapSize :: Walls.WallConfig -> GHC.Types.Float
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLSLLL),1*U(A,A,A,A,U,A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.finalGapSize} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                             GHC.Types.F# dt4 }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  gap :: Walls.Wall -> GHC.Types.Float
+  RecSel Left Walls.Wall
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LSLLL),1*U(A,1*U(U),A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.Wall) ->
+                 {__scc {main:Walls.gap} True True} case ds of wild { Walls.Wall ds1 ds2 ds3 ds4 ds5 ->
+                                                    ds2 }) -}
+ff736f2beb1551834908d6a68d5d6594
+  gapSizeChangeRate :: Walls.WallConfig -> GHC.Types.Float
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLSLLLL),1*U(A,A,A,U,A,A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.gapSizeChangeRate} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                  GHC.Types.F# dt3 }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  lowerWall :: Walls.Wall -> GHC.Types.Float
+  RecSel Left Walls.Wall
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLSLL),1*U(A,A,1*U(U),A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.Wall) ->
+                 {__scc {main:Walls.lowerWall} True True} case ds of wild { Walls.Wall ds1 ds2 ds3 ds4 ds5 ->
+                                                          ds3 }) -}
+ff736f2beb1551834908d6a68d5d6594
+  startingGapSize :: Walls.WallConfig -> GHC.Types.Float
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLSLLLLL),1*U(A,A,U,A,A,A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.startingGapSize} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                                GHC.Types.F# dt2 }) -}
+ff736f2beb1551834908d6a68d5d6594
+  startingPos :: Walls.WallConfig -> GHC.Types.Float
+  RecSel Left Walls.WallConfig
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLLLLS),1*U(A,A,A,A,A,A,A,U)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.WallConfig) ->
+                 {__scc {main:Walls.startingPos} True True} case ds of wild { Walls.WallConfig dt dt1 dt2 dt3 dt4 dt5 dt6 dt7 ->
+                                                            GHC.Types.F# dt7 }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  upperWall :: Walls.Wall -> GHC.Types.Float
+  RecSel Left Walls.Wall
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(SLLLL),1*U(1*U(U),A,A,A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.Wall) ->
+                 {__scc {main:Walls.upperWall} True True} case ds of wild { Walls.Wall ds1 ds2 ds3 ds4 ds5 ->
+                                                          ds1 }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  wallWidth :: Walls.Wall -> GHC.Types.Float
+  RecSel Left Walls.Wall
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLS),1*U(A,A,A,A,1*U(U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.Wall) ->
+                 {__scc {main:Walls.wallWidth} True True} case ds of wild { Walls.Wall ds1 ds2 ds3 ds4 ds5 ->
+                                                          ds5 }) -}
+a78114f622b9279a8eb0c63e9b6c4e74
+  xPos :: Walls.Wall -> GHC.Types.Float
+  RecSel Left Walls.Wall
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLSL),1*U(A,A,A,1*U(U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Walls.Wall) ->
+                 {__scc {main:Walls.xPos} True True} case ds of wild { Walls.Wall ds1 ds2 ds3 ds4 ds5 ->
+                                                     ds4 }) -}
+instance [safe] GHC.Show.Show [Walls.Wall] = Walls.$fShowWall
+instance [safe] GHC.Show.Show [Walls.WallConfig]
+  = Walls.$fShowWallConfig
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

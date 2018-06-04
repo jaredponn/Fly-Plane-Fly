@@ -50,7 +50,7 @@ initConf = do
         playerpic <- Image.load (resourcePath </> "playerspritesheet.png") >>= SDL.createTextureFromSurface renderer 
         botwallpic <- Image.load (resourcePath </> "botwall.png") >>= SDL.createTextureFromSurface renderer 
         topwallpic <- Image.load (resourcePath </> "topwall.png") >>= SDL.createTextureFromSurface renderer 
-        bgpic <- Image.load (resourcePath </> "bg.png") >>= SDL.createTextureFromSurface renderer 
+        bgpic <- Image.load (resourcePath </> "nbg.png") >>= SDL.createTextureFromSurface renderer 
         pressspacetojumppic <- Image.load (resourcePath </> "pressspacetojump.png") >>= SDL.createTextureFromSurface renderer 
 
         playmainmenupic <- Image.load (resourcePath </> "playmainmenu.png") >>= SDL.createTextureFromSurface renderer 

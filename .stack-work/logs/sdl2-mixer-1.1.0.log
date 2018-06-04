@@ -1,0 +1,565 @@
+Configuring sdl2-mixer-1.1.0...
+Preprocessing library for sdl2-mixer-1.1.0..
+Building library for sdl2-mixer-1.1.0..
+[1 of 3] Compiling SDL.Raw.Helper   ( src/SDL/Raw/Helper.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Helper.o )
+[2 of 3] Compiling SDL.Raw.Mixer    ( .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Mixer.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Mixer.o )
+
+[;1msrc/SDL/Raw/Mixer.hsc:181:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern SDL_MIXER_MAJOR_VERSION :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m181 |[0m[0m [;1m[35mpattern SDL_MIXER_MAJOR_VERSION = (#c[0m[0monst SDL_MIXER_MAJOR_VERSION)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:182:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern SDL_MIXER_MINOR_VERSION :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m182 |[0m[0m [;1m[35mpattern SDL_MIXER_MINOR_VERSION = (#c[0m[0monst SDL_MIXER_MINOR_VERSION)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:183:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern SDL_MIXER_PATCHLEVEL :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m183 |[0m[0m [;1m[35mpattern SDL_MIXER_PATCHLEVEL    = (#c[0m[0monst SDL_MIXER_PATCHLEVEL)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:190:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_FLAC :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m190 |[0m[0m [;1m[35mpattern INIT_FLAC       = (#c[0m[0monst MIX_INIT_FLAC)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:191:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_MOD :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m191 |[0m[0m [;1m[35mpattern INIT_MOD        = (#c[0m[0monst MIX_INIT_MOD)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:192:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_MP3 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m192 |[0m[0m [;1m[35mpattern INIT_MP3        = (#c[0m[0monst MIX_INIT_MP3)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:193:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_OGG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m193 |[0m[0m [;1m[35mpattern INIT_OGG        = (#co[0m[0mnst MIX_INIT_OGG)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:200:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DEFAULT_FREQUENCY :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m200 |[0m[0m [;1m[35mpattern DEFAULT_FREQUENCY = (#const[0m[0m MIX_DEFAULT_FREQUENCY)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:201:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DEFAULT_CHANNELS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m201 |[0m[0m [;1m[35mpattern DEFAULT_CHANNELS  = (#c[0m[0monst MIX_DEFAULT_CHANNELS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:206:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U8 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m206 |[0m[0m [;1m[35mpattern AUDIO_U8       = (#c[0m[0monst AUDIO_U8)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:207:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S8 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m207 |[0m[0m [;1m[35mpattern AUDIO_S8       = (#const[0m[0m AUDIO_S8)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:208:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16LSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m208 |[0m[0m [;1m[35mpattern AUDIO_U16LSB   = (#co[0m[0mnst AUDIO_U16LSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:209:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16LSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m209 |[0m[0m [;1m[35mpattern AUDIO_S16LSB   = (#const[0m[0m AUDIO_S16LSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:210:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16MSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m210 |[0m[0m [;1m[35mpattern AUDIO_U16MSB   = (#cons[0m[0mt AUDIO_U16MSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:211:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16MSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m211 |[0m[0m [;1m[35mpattern AUDIO_S16MSB   = (#const[0m[0m AUDIO_S16MSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:212:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m212 |[0m[0m [;1m[35mpattern AUDIO_U16      = (#co[0m[0mnst AUDIO_U16)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:213:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m213 |[0m[0m [;1m[35mpattern AUDIO_S16      = (#const[0m[0m AUDIO_S16)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:214:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16SYS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m214 |[0m[0m [;1m[35mpattern AUDIO_U16SYS   = (#co[0m[0mnst AUDIO_U16SYS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:215:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16SYS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m215 |[0m[0m [;1m[35mpattern AUDIO_S16SYS   = (#const[0m[0m AUDIO_S16SYS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:216:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DEFAULT_FORMAT :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m216 |[0m[0m [;1m[35mpattern DEFAULT_FORMAT = (#const[0m[0m MIX_DEFAULT_FORMAT)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:268:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MAX_VOLUME :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m268 |[0m[0m [;1m[35mpattern MAX_VOLUME = (#con[0m[0mst MIX_MAX_VOLUME)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:281:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern CHANNELS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m281 |[0m[0m [;1m[35mpattern CHANNELS = (#c[0m[0monst MIX_CHANNELS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:329:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern NO_FADING :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m329 |[0m[0m [;1m[35mpattern NO_FADING  = (#c[0m[0monst MIX_NO_FADING)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:330:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern FADING_IN :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m330 |[0m[0m [;1m[35mpattern FADING_IN  = (#c[0m[0monst MIX_FADING_IN)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:331:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern FADING_OUT :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m331 |[0m[0m [;1m[35mpattern FADING_OUT = (#c[0m[0monst MIX_FADING_OUT)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:391:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_NONE :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m391 |[0m[0m [;1m[35mpattern MUS_NONE    = (#c[0m[0monst MUS_NONE)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:392:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_CMD :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m392 |[0m[0m [;1m[35mpattern MUS_CMD     = (#c[0m[0monst MUS_CMD)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:393:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_WAV :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m393 |[0m[0m [;1m[35mpattern MUS_WAV     = (#c[0m[0monst MUS_WAV)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:394:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_MOD :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m394 |[0m[0m [;1m[35mpattern MUS_MOD     = (#c[0m[0monst MUS_MOD)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:395:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_MID :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m395 |[0m[0m [;1m[35mpattern MUS_MID     = (#c[0m[0monst MUS_MID)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:396:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_OGG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m396 |[0m[0m [;1m[35mpattern MUS_OGG     = (#c[0m[0monst MUS_OGG)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:397:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_MP3 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m397 |[0m[0m [;1m[35mpattern MUS_MP3     = (#c[0m[0monst MUS_MP3)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:398:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_FLAC :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m398 |[0m[0m [;1m[35mpattern MUS_FLAC    = (#c[0m[0monst MUS_FLAC)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:462:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern CHANNEL_POST :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m462 |[0m[0m [;1m[35mpattern CHANNEL_POST = (#co[0m[0mnst MIX_CHANNEL_POST)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[3 of 3] Compiling SDL.Mixer        ( src/SDL/Mixer.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Mixer.o )
+
+[;1msrc/SDL/Mixer.hs:510:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AllChannels :: Channel[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m510 |[0m[0m [;1m[35mpattern AllChannels = (-1) :: Channel[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:530:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature: pattern Once :: Times[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m530 |[0m[0m [;1m[35mpattern Once = 1 :: Times[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:533:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature: pattern Forever :: Times[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m533 |[0m[0m [;1m[35mpattern Forever = 0 :: Times[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:552:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature: pattern NoLimit :: Limit[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m552 |[0m[0m [;1m[35mpattern NoLimit = (-1) :: Limit[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:727:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DefaultGroup :: Group[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m727 |[0m[0m [;1m[35mpattern DefaultGroup = (-1) :: Group[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:1033:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern PostProcessing :: Channel[0m[0m
+[;1m[34m     |[0m[0m
+[;1m[34m1033 |[0m[0m [;1m[35mpattern PostProcessing = SDL.Raw.Mixer.CHANNEL_POST :: Channel[0m[0m
+[;1m[34m     |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[1 of 3] Compiling SDL.Raw.Helper   ( src/SDL/Raw/Helper.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Helper.p_o )
+[2 of 3] Compiling SDL.Raw.Mixer    ( .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Mixer.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Mixer.p_o )
+
+[;1msrc/SDL/Raw/Mixer.hsc:181:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern SDL_MIXER_MAJOR_VERSION :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m181 |[0m[0m [;1m[35mpattern SDL_MIXER_MAJOR_VERSION = (#c[0m[0monst SDL_MIXER_MAJOR_VERSION)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:182:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern SDL_MIXER_MINOR_VERSION :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m182 |[0m[0m [;1m[35mpattern SDL_MIXER_MINOR_VERSION = (#c[0m[0monst SDL_MIXER_MINOR_VERSION)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:183:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern SDL_MIXER_PATCHLEVEL :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m183 |[0m[0m [;1m[35mpattern SDL_MIXER_PATCHLEVEL    = (#c[0m[0monst SDL_MIXER_PATCHLEVEL)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:190:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_FLAC :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m190 |[0m[0m [;1m[35mpattern INIT_FLAC       = (#c[0m[0monst MIX_INIT_FLAC)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:191:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_MOD :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m191 |[0m[0m [;1m[35mpattern INIT_MOD        = (#c[0m[0monst MIX_INIT_MOD)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:192:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_MP3 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m192 |[0m[0m [;1m[35mpattern INIT_MP3        = (#c[0m[0monst MIX_INIT_MP3)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:193:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern INIT_OGG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m193 |[0m[0m [;1m[35mpattern INIT_OGG        = (#co[0m[0mnst MIX_INIT_OGG)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:200:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DEFAULT_FREQUENCY :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m200 |[0m[0m [;1m[35mpattern DEFAULT_FREQUENCY = (#const[0m[0m MIX_DEFAULT_FREQUENCY)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:201:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DEFAULT_CHANNELS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m201 |[0m[0m [;1m[35mpattern DEFAULT_CHANNELS  = (#c[0m[0monst MIX_DEFAULT_CHANNELS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:206:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U8 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m206 |[0m[0m [;1m[35mpattern AUDIO_U8       = (#c[0m[0monst AUDIO_U8)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:207:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S8 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m207 |[0m[0m [;1m[35mpattern AUDIO_S8       = (#const[0m[0m AUDIO_S8)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:208:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16LSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m208 |[0m[0m [;1m[35mpattern AUDIO_U16LSB   = (#co[0m[0mnst AUDIO_U16LSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:209:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16LSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m209 |[0m[0m [;1m[35mpattern AUDIO_S16LSB   = (#const[0m[0m AUDIO_S16LSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:210:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16MSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m210 |[0m[0m [;1m[35mpattern AUDIO_U16MSB   = (#cons[0m[0mt AUDIO_U16MSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:211:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16MSB :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m211 |[0m[0m [;1m[35mpattern AUDIO_S16MSB   = (#const[0m[0m AUDIO_S16MSB)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:212:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m212 |[0m[0m [;1m[35mpattern AUDIO_U16      = (#co[0m[0mnst AUDIO_U16)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:213:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m213 |[0m[0m [;1m[35mpattern AUDIO_S16      = (#const[0m[0m AUDIO_S16)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:214:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_U16SYS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m214 |[0m[0m [;1m[35mpattern AUDIO_U16SYS   = (#co[0m[0mnst AUDIO_U16SYS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:215:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AUDIO_S16SYS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m215 |[0m[0m [;1m[35mpattern AUDIO_S16SYS   = (#const[0m[0m AUDIO_S16SYS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:216:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DEFAULT_FORMAT :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m216 |[0m[0m [;1m[35mpattern DEFAULT_FORMAT = (#const[0m[0m MIX_DEFAULT_FORMAT)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:268:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MAX_VOLUME :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m268 |[0m[0m [;1m[35mpattern MAX_VOLUME = (#con[0m[0mst MIX_MAX_VOLUME)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:281:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern CHANNELS :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m281 |[0m[0m [;1m[35mpattern CHANNELS = (#c[0m[0monst MIX_CHANNELS)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:329:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern NO_FADING :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m329 |[0m[0m [;1m[35mpattern NO_FADING  = (#c[0m[0monst MIX_NO_FADING)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:330:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern FADING_IN :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m330 |[0m[0m [;1m[35mpattern FADING_IN  = (#c[0m[0monst MIX_FADING_IN)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:331:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern FADING_OUT :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m331 |[0m[0m [;1m[35mpattern FADING_OUT = (#c[0m[0monst MIX_FADING_OUT)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:391:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_NONE :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m391 |[0m[0m [;1m[35mpattern MUS_NONE    = (#c[0m[0monst MUS_NONE)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:392:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_CMD :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m392 |[0m[0m [;1m[35mpattern MUS_CMD     = (#c[0m[0monst MUS_CMD)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:393:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_WAV :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m393 |[0m[0m [;1m[35mpattern MUS_WAV     = (#c[0m[0monst MUS_WAV)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:394:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_MOD :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m394 |[0m[0m [;1m[35mpattern MUS_MOD     = (#c[0m[0monst MUS_MOD)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:395:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_MID :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m395 |[0m[0m [;1m[35mpattern MUS_MID     = (#c[0m[0monst MUS_MID)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:396:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_OGG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m396 |[0m[0m [;1m[35mpattern MUS_OGG     = (#c[0m[0monst MUS_OGG)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:397:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_MP3 :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m397 |[0m[0m [;1m[35mpattern MUS_MP3     = (#c[0m[0monst MUS_MP3)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:398:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern MUS_FLAC :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m398 |[0m[0m [;1m[35mpattern MUS_FLAC    = (#c[0m[0monst MUS_FLAC)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Mixer.hsc:462:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern CHANNEL_POST :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m462 |[0m[0m [;1m[35mpattern CHANNEL_POST = (#co[0m[0mnst MIX_CHANNEL_POST)
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[3 of 3] Compiling SDL.Mixer        ( src/SDL/Mixer.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Mixer.p_o )
+
+[;1msrc/SDL/Mixer.hs:510:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern AllChannels :: Channel[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m510 |[0m[0m [;1m[35mpattern AllChannels = (-1) :: Channel[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:530:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature: pattern Once :: Times[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m530 |[0m[0m [;1m[35mpattern Once = 1 :: Times[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:533:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature: pattern Forever :: Times[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m533 |[0m[0m [;1m[35mpattern Forever = 0 :: Times[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:552:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature: pattern NoLimit :: Limit[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m552 |[0m[0m [;1m[35mpattern NoLimit = (-1) :: Limit[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:727:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern DefaultGroup :: Group[0m[0m
+[;1m[34m    |[0m[0m
+[;1m[34m727 |[0m[0m [;1m[35mpattern DefaultGroup = (-1) :: Group[0m[0m
+[;1m[34m    |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Mixer.hs:1033:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern PostProcessing :: Channel[0m[0m
+[;1m[34m     |[0m[0m
+[;1m[34m1033 |[0m[0m [;1m[35mpattern PostProcessing = SDL.Raw.Mixer.CHANNEL_POST :: Channel[0m[0m
+[;1m[34m     |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0mInstalling library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/sdl2-mixer-1.1.0-LVVDeWzob9eFzvgZEKYXJl
+Registering library for sdl2-mixer-1.1.0..

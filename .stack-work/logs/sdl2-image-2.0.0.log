@@ -1,0 +1,83 @@
+Configuring sdl2-image-2.0.0...
+Preprocessing library for sdl2-image-2.0.0..
+Building library for sdl2-image-2.0.0..
+[1 of 4] Compiling SDL.ExceptionHelper ( src/SDL/ExceptionHelper.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/ExceptionHelper.o )
+[2 of 4] Compiling SDL.Raw.Helper   ( src/SDL/Raw/Helper.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Helper.o )
+[3 of 4] Compiling SDL.Raw.Image    ( .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Image.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Image.o )
+
+[;1msrc/SDL/Raw/Image.hsc:85:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_JPG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m85 |[0m[0m [;1m[35mpattern IMG_INIT_JPG  = #[0m[0m{const IMG_INIT_JPG}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Image.hsc:86:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_PNG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m86 |[0m[0m [;1m[35mpattern IMG_INIT_PNG  = #[0m[0m{const IMG_INIT_PNG}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Image.hsc:87:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_TIF :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m87 |[0m[0m [;1m[35mpattern IMG_INIT_TIF  = #[0m[0m{const IMG_INIT_TIF}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Image.hsc:88:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_WEBP :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m88 |[0m[0m [;1m[35mpattern IMG_INIT_WEBP = #[0m[0m{const IMG_INIT_WEBP}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[4 of 4] Compiling SDL.Image        ( src/SDL/Image.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Image.o )
+[1 of 4] Compiling SDL.ExceptionHelper ( src/SDL/ExceptionHelper.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/ExceptionHelper.p_o )
+[2 of 4] Compiling SDL.Raw.Helper   ( src/SDL/Raw/Helper.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Helper.p_o )
+[3 of 4] Compiling SDL.Raw.Image    ( .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Image.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Raw/Image.p_o )
+
+[;1msrc/SDL/Raw/Image.hsc:85:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_JPG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m85 |[0m[0m [;1m[35mpattern IMG_INIT_JPG  = #[0m[0m{const IMG_INIT_JPG}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Image.hsc:86:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_PNG :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m86 |[0m[0m [;1m[35mpattern IMG_INIT_PNG  = #[0m[0m{const IMG_INIT_PNG}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Image.hsc:87:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_TIF :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m87 |[0m[0m [;1m[35mpattern IMG_INIT_TIF  = #[0m[0m{const IMG_INIT_TIF}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m
+[;1msrc/SDL/Raw/Image.hsc:88:1: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wmissing-pattern-synonym-signatures[0m[0m[;1m][0m[0m[;1m
+    Pattern synonym with no type signature:
+      pattern IMG_INIT_WEBP :: forall a. (Num a, Eq a) => a[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m88 |[0m[0m [;1m[35mpattern IMG_INIT_WEBP = #[0m[0m{const IMG_INIT_WEBP}
+[;1m[34m   |[0m[0m[;1m[35m ^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0m[4 of 4] Compiling SDL.Image        ( src/SDL/Image.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/SDL/Image.p_o )
+Preprocessing executable 'sdl2-image-example' for sdl2-image-2.0.0..
+Building executable 'sdl2-image-example' for sdl2-image-2.0.0..
+[1 of 1] Compiling Main             ( example/Example.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/sdl2-image-example/sdl2-image-example-tmp/Main.o )
+
+[;1mexample/Example.hs:25:7: [;1m[35mwarning:[0m[0m[;1m [[;1m[35m-Wunused-do-bind[0m[0m[;1m][0m[0m[;1m
+    A do-notation statement discarded a result of type
+      ‘Maybe (SDL.Rectangle Foreign.C.Types.CInt)’
+    Suppress this warning by saying
+      ‘_ <- SDL.surfaceBlit image Nothing screen Nothing’[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m25 |[0m[0m       [;1m[35mSDL.surfaceBlit image Nothing screen Nothing[0m[0m
+[;1m[34m   |[0m[0m[;1m[35m       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0mLinking .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/sdl2-image-example/sdl2-image-example ...
+Installing library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/sdl2-image-2.0.0-FSuPq9veTpj9ruYCCKKloe
+Installing executable sdl2-image-example in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/bin
+Registering library for sdl2-image-2.0.0..

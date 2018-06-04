@@ -1,0 +1,509 @@
+
+==================== FINAL INTERFACE ====================
+2018-06-04 17:45:38.088603768 UTC
+
+interface main:Physics 8022
+  interface hash: ad5d6c373f3d11e051293a5f633686d8
+  ABI hash: 9fef5200bac6e7f9e26adde587a20f17
+  export-list hash: 351c7a3cc081ac564329eb8cf05ccdc3
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: fbfc9b4f0124b3a129b4a2321798f29f
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Physics.Physics{Physics.addYVel Physics.applyGrav Physics.applyXVel Physics.applyYVel Physics.setGrav Physics.setYVel}
+module dependencies: Aabb Animations AnimationsManager GameVars
+                     Logger PlayerManager TimeManager Util Walls
+package dependencies: QuickCheck-2.10.1 Stack-0.3.2
+                      StateVar-1.1.1.0 Stream-0.4.7.2 adjunctions-4.4 array-0.5.2.0
+                      base-4.10.1.0 base-orphans-0.7 bifunctors-5.5.2 binary-0.8.5.1
+                      bytes-0.15.4 bytestring-0.10.8.2 call-stack-0.1.0 cereal-0.5.5.0
+                      clock-0.7.2 comonad-5.0.3 containers-0.5.10.2 contravariant-1.4.1
+                      data-default-class-0.1.2.0 deepseq-1.4.3.0 distributive-0.5.3
+                      exceptions-0.8.3 free-5.0.2 ghc-boot-th-8.2.2 ghc-prim-0.5.1.1
+                      hashable-1.2.7.0 integer-gmp-1.0.1.0 integer-logarithms-1.0.2.1
+                      kan-extensions-5.1 lazysmallcheck-0.6 lens-4.16.1
+                      lifted-base-0.2.3.12 linear-1.20.7 monad-control-1.0.2.3 mtl-2.2.2
+                      pretty-1.1.3.3 primitive-0.6.3.0 profunctors-5.2.2 random-1.1
+                      reflection-2.1.3 scientific-0.3.6.0 sdl2-2.4.0.1 sdl2-mixer-1.1.0
+                      sdl2-ttf-2.0.2 semigroupoids-5.2.2 stm-2.4.5.0 tagged-0.8.5
+                      template-haskell-2.12.0.0 text-1.2.3.0 tf-random-0.5
+                      th-abstraction-0.2.6.0 time-1.8.0.2 transformers-0.5.2.0
+                      transformers-base-0.4.4 transformers-compat-0.5.1.4
+                      unordered-containers-0.2.9.0 vector-0.12.0.1
+orphans: time-1.8.0.2:Data.Time.Clock.TAI
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         reflection-2.1.3:Data.Reflection
+         vector-0.12.0.1:Data.Vector.Unboxed
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.0:Data.Text.Lazy
+         linear-1.20.7:Linear.Instances base-orphans-0.7:Data.Orphans
+         text-1.2.3.0:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         text-1.2.3.0:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         stm-2.4.5.0:Control.Monad.STM
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: adjunctions-4.4:Data.Functor.Rep
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Fix
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Sum
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped bytes-0.15.4:Data.Bytes.Get
+                         bytes-0.15.4:Data.Bytes.Signed bytes-0.15.4:Data.Bytes.VarInt
+                         clock-0.7.2:System.Clock containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         free-5.0.2:Control.Comonad.Cofree
+                         free-5.0.2:Control.Comonad.Trans.Cofree
+                         free-5.0.2:Control.Monad.Free free-5.0.2:Control.Monad.Trans.Free
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         kan-extensions-5.1:Data.Functor.Day
+                         kan-extensions-5.1:Data.Functor.Yoneda lens-4.16.1:Control.Lens.At
+                         lens-4.16.1:Control.Lens.Internal.Indexed
+                         lens-4.16.1:Control.Lens.Reified lens-4.16.1:Control.Lens.Tuple
+                         lens-4.16.1:Control.Lens.Wrapped lens-4.16.1:Control.Lens.Zoom
+                         linear-1.20.7:Linear.Affine linear-1.20.7:Linear.Plucker
+                         linear-1.20.7:Linear.Quaternion linear-1.20.7:Linear.V
+                         linear-1.20.7:Linear.V0 linear-1.20.7:Linear.V1
+                         linear-1.20.7:Linear.V2 linear-1.20.7:Linear.V3
+                         linear-1.20.7:Linear.V4
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray
+                         profunctors-5.2.2:Data.Profunctor.Composition
+                         profunctors-5.2.2:Data.Profunctor.Rep sdl2-2.4.0.1:SDL.Audio
+                         sdl2-2.4.0.1:SDL.Event sdl2-2.4.0.1:SDL.Exception
+                         sdl2-2.4.0.1:SDL.Hint sdl2-2.4.0.1:SDL.Init
+                         sdl2-2.4.0.1:SDL.Input.GameController
+                         sdl2-2.4.0.1:SDL.Input.Joystick sdl2-2.4.0.1:SDL.Input.Keyboard
+                         sdl2-2.4.0.1:SDL.Input.Keyboard.Codes sdl2-2.4.0.1:SDL.Input.Mouse
+                         sdl2-2.4.0.1:SDL.Internal.Types sdl2-2.4.0.1:SDL.Power
+                         sdl2-2.4.0.1:SDL.Time sdl2-2.4.0.1:SDL.Video
+                         sdl2-2.4.0.1:SDL.Video.OpenGL sdl2-2.4.0.1:SDL.Video.Renderer
+                         sdl2-ttf-2.0.2:SDL.Font tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.0:Data.Text text-1.2.3.0:Data.Text.Lazy
+                         th-abstraction-0.2.6.0:Language.Haskell.TH.Datatype
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
+import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
+import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
+import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
+import  -/  GameVars 95546c61036798381255e3d7e11311b2
+  exports: bffadec9649d88993fa5a790487d46e7
+  MahppyBird fb5607b55373083b420634b0454a4ddb
+  Vars 5829ea20be4fb9a24ab87f3fe067aa3c
+  cGrav 2a8c373e7c82c3c47207141ae2901a0f
+  vPlayVars dbef10ec54712962f546a8d4b473ed09
+import  -/  Logger de91407b46dc2af6570ae0f0d44f5bb4
+  exports: c7f6c47792388de1970a4c43887f8fdc
+  Logger 77ad9183556b8f37f2d10bd5f3bb788c
+import  -/  PlayerManager 6410674bd76f72a678b626b327e31876
+  exports: 90666d388c993bafd900a62a82f9ea2a
+  PlayerManager 848ee61a9056a9b20a824f25f60c47da
+  getPlayerXVel 79d63ef80b42bae2d579d4ed80c3eece
+  getPlayerYVel a7c135cb6d78b07f06157943088ef5ee
+  setPlayerYVel d91388458ea803bc4f14a5209d0585c7
+  translatePlayer 97617b215b0b081f649a71bb641d5071
+import  -/  TimeManager c5a6185a6f35cba82cca87bc7827c727
+  exports: 8b2c0f72e07dc8e418f06d3a9f6510ae
+  TimeManager 11f819b14b751ed055082b44f160b76d
+  getdt e6fb864aaca5b697f52669c64cf5945c
+import  -/  mtl-2.2.2:Control.Monad.Reader 8d63edf5dfaf25ad085eae4468bdd77e
+import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
+import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
+cf87dad5941d01bbf83f863fdf7550b1
+  $fPhysicsMahppyBird :: Physics.Physics GameVars.MahppyBird
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ GameVars.MahppyBird
+                  GameVars.$fMonadMahppyBird
+                  Physics.$fPhysicsMahppyBird6
+                    `cast`
+                  (Trans
+                       (<GameVars.Config>_R
+                        ->_R Trans
+                                 (<GameVars.Vars>_R
+                                  ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                           <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                       (Trans
+                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                      <*>_N
+                                      <GameVars.Config>_R
+                                      <Control.Monad.Trans.State.Lazy.StateT
+                                         GameVars.Vars GHC.Types.IO>_R
+                                      <()>_N))
+                            (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  Physics.$fPhysicsMahppyBird5
+                    `cast`
+                  (<GHC.Types.Float>_R
+                   ->_R Trans
+                            (<GameVars.Config>_R
+                             ->_R Trans
+                                      (<GameVars.Vars>_R
+                                       ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                            (Trans
+                                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <GameVars.Config>_R
+                                           <Control.Monad.Trans.State.Lazy.StateT
+                                              GameVars.Vars GHC.Types.IO>_R
+                                           <()>_N))
+                                 (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  Physics.$fPhysicsMahppyBird4
+                    `cast`
+                  (<GHC.Types.Float>_R
+                   ->_R Trans
+                            (<GameVars.Config>_R
+                             ->_R Trans
+                                      (<GameVars.Vars>_R
+                                       ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                            (Trans
+                                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <GameVars.Config>_R
+                                           <Control.Monad.Trans.State.Lazy.StateT
+                                              GameVars.Vars GHC.Types.IO>_R
+                                           <()>_N))
+                                 (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  PlayerManager.$fPlayerManagerMahppyBird9
+                    `cast`
+                  (<GHC.Types.Float>_R
+                   ->_R Trans
+                            (<GameVars.Config>_R
+                             ->_R Trans
+                                      (<GameVars.Vars>_R
+                                       ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                            (Trans
+                                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <GameVars.Config>_R
+                                           <Control.Monad.Trans.State.Lazy.StateT
+                                              GameVars.Vars GHC.Types.IO>_R
+                                           <()>_N))
+                                 (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  Physics.$fPhysicsMahppyBird3
+                    `cast`
+                  (Trans
+                       (<GameVars.Config>_R
+                        ->_R Trans
+                                 (<GameVars.Vars>_R
+                                  ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                           <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                       (Trans
+                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                      <*>_N
+                                      <GameVars.Config>_R
+                                      <Control.Monad.Trans.State.Lazy.StateT
+                                         GameVars.Vars GHC.Types.IO>_R
+                                      <()>_N))
+                            (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  Physics.$fPhysicsMahppyBird1
+                    `cast`
+                  (Trans
+                       (<GameVars.Config>_R
+                        ->_R Trans
+                                 (<GameVars.Vars>_R
+                                  ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                           <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                       (Trans
+                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                      <*>_N
+                                      <GameVars.Config>_R
+                                      <Control.Monad.Trans.State.Lazy.StateT
+                                         GameVars.Vars GHC.Types.IO>_R
+                                      <()>_N))
+                            (Sym (GameVars.N:MahppyBird[0]) <()>_N))) -}
+d9487fca6da2be9e35424f5d0dd21e47
+  $fPhysicsMahppyBird1 ::
+    GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS(LLLLLSLLLLLLLLLLLL)LLLL),U(U,U(1*U(U(U),U(U)),U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U),U,U,U,U)><S,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (r1 :: GameVars.Config)
+                   (eta :: GameVars.Vars)
+                   (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 PlayerManager.$fPlayerManagerMahppyBird8
+                   (case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
+                    case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
+                    Linear.V2.V2
+                      @ GHC.Types.Float
+                      (GHC.Types.F# (GHC.Prim.timesFloat# dt6 dt1))
+                      Physics.$fPhysicsMahppyBird2 } })
+                   r1
+                   eta
+                   eta1) -}
+fc928aba6988a0a7f70ee8ecc5ed04a0
+  $fPhysicsMahppyBird2 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
+0571a4dbb415d5a38ae9b16c37084618
+  $fPhysicsMahppyBird3 ::
+    GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><S(LS(LLLLLSLLLLLLLLLLLL)LLLL),U(U,U(1*U(U(U),U(U)),U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U),U,U,U,U)><S,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (r1 :: GameVars.Config)
+                   (eta :: GameVars.Vars)
+                   (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 PlayerManager.$fPlayerManagerMahppyBird8
+                   (case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
+                    case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
+                    Linear.V2.V2
+                      @ GHC.Types.Float
+                      Physics.$fPhysicsMahppyBird2
+                      (GHC.Types.F# (GHC.Prim.timesFloat# dt3 dt1)) } })
+                   r1
+                   eta
+                   eta1) -}
+32a1187040c19be87505fd2f1d49b59e
+  $fPhysicsMahppyBird4 ::
+    GHC.Types.Float
+    -> GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,1*U(U)><L,A><L,1*U(U,1*U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U),U,U,U,U)><S,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ (dv :: GHC.Types.Float)
+                   (eta :: GameVars.Config)
+                   (eta1 :: GameVars.Vars)
+                   (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 (# eta2,
+                    (GHC.Tuple.(),
+                     case eta1 of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
+                     GameVars.Vars
+                       x1
+                       (case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
+                        case dv of wild3 { GHC.Types.F# y ->
+                        GameVars.PlayVars
+                          dt4
+                          dt5
+                          (GHC.Prim.plusFloat# dt3 y)
+                          dt6
+                          dt7
+                          dt8
+                          dt9
+                          x7
+                          dt10
+                          dt11
+                          dt12
+                          dt13
+                          dt14
+                          dt15
+                          dt16
+                          dt17
+                          dt18
+                          dt19 } })
+                       x3
+                       x4
+                       dt1
+                       dt2 }) #)) -}
+ef6f0a178f48d094bbb2927aa3650593
+  $fPhysicsMahppyBird5 ::
+    GHC.Types.Float
+    -> GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 4, HasNoCafRefs,
+     Strictness: <L,1*U(U)><L,A><L,1*U(U,1*U(U,U,U,U,U,U,U,U,A,U,U,U,U,U,U,U,U,U),U,U,U,U)><S,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ (ngrav :: GHC.Types.Float)
+                   (eta :: GameVars.Config)
+                   (eta1 :: GameVars.Vars)
+                   (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 (# eta2,
+                    (GHC.Tuple.(),
+                     case eta1 of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
+                     GameVars.Vars
+                       x1
+                       (case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
+                        case ngrav of dt { GHC.Types.F# dt20 ->
+                        GameVars.PlayVars
+                          dt4
+                          dt5
+                          dt3
+                          dt6
+                          dt7
+                          dt8
+                          dt9
+                          x7
+                          dt20
+                          dt11
+                          dt12
+                          dt13
+                          dt14
+                          dt15
+                          dt16
+                          dt17
+                          dt18
+                          dt19 } })
+                       x3
+                       x4
+                       dt1
+                       dt2 }) #)) -}
+07b3376d7eb34118c71d5f5a7d96977e
+  $fPhysicsMahppyBird6 ::
+    GameVars.Config
+    -> GameVars.Vars
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <L,A><L,1*U(U,1*U(U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U,U),U,U,U,U)><S,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ (r1 :: GameVars.Config)
+                   (eta :: GameVars.Vars)
+                   (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 (# eta1,
+                    (GHC.Tuple.(),
+                     case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
+                     GameVars.Vars
+                       x1
+                       (case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
+                        GameVars.PlayVars
+                          dt4
+                          dt5
+                          (GHC.Prim.plusFloat# dt3 (GHC.Prim.timesFloat# dt1 dt10))
+                          dt6
+                          dt7
+                          dt8
+                          dt9
+                          x7
+                          dt10
+                          dt11
+                          dt12
+                          dt13
+                          dt14
+                          dt15
+                          dt16
+                          dt17
+                          dt18
+                          dt19 })
+                       x3
+                       x4
+                       dt1
+                       dt2 }) #)) -}
+28a302fff284c30e169c6485dc384c43
+  $tc'C:Physics :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   3797500224779470498##
+                   3250057988544770108##
+                   Physics.$trModule
+                   Physics.$tc'C:Physics2
+                   1#
+                   Physics.$tc'C:Physics1) -}
+06fc670194c9c12ab1a16c03c80c750e
+  $tc'C:Physics1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+77af782b6e03755154dfcbcb38b02088
+  $tc'C:Physics2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Physics.$tc'C:Physics3) -}
+c5fa4086f766ec663e4fc2eb484ebf64
+  $tc'C:Physics3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'C:Physics"#) -}
+95259b83c315d2d496231710e5908fcb
+  $tcPhysics :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7591819114600045332##
+                   6377424025911432365##
+                   Physics.$trModule
+                   Physics.$trModule1
+                   0#
+                   Physics.$tcPhysics1) -}
+4f14ae75ddd71a07ef644ca5c8ea571c
+  $tcPhysics1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+ed4929cfe026e0aa0824c17c5a5ac58c
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Physics.$trModule3
+                   Physics.$trModule1) -}
+a1d351a4fc1189bd638c91c2ec42560b
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Physics.$trModule2) -}
+3acf8bf5b774e33ff6167515454d11d2
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Physics"#) -}
+eaab7e54187ecf1cbfdb98bec11e54e5
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Physics.$trModule4) -}
+4eb639dd750e13dd55584b2c0c24f59a
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+cf87dad5941d01bbf83f863fdf7550b1
+  class GHC.Base.Monad m => Physics (m :: * -> *) where
+    applyGrav :: m ()
+    setGrav :: GHC.Types.Float -> m ()
+    addYVel :: GHC.Types.Float -> m ()
+    setYVel :: GHC.Types.Float -> m ()
+    applyYVel :: m ()
+    applyXVel :: m ()
+    {-# MINIMAL applyGrav, setGrav, addYVel, setYVel, applyYVel,
+                applyXVel #-}
+instance Physics.Physics [GameVars.MahppyBird]
+  = Physics.$fPhysicsMahppyBird
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

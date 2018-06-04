@@ -1,0 +1,18 @@
+[1 of 2] Compiling Main             ( /tmp/stack14546/bytes-0.15.4/Setup.lhs, /tmp/stack14546/bytes-0.15.4/.stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/setup/Main.o )
+[2 of 2] Compiling StackSetupShim   ( /home/jared/.stack/setup-exe-src/setup-shim-mPHDZzAJ.hs, /tmp/stack14546/bytes-0.15.4/.stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/setup/StackSetupShim.o )
+Linking /tmp/stack14546/bytes-0.15.4/.stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/setup/setup ...
+Configuring bytes-0.15.4...
+Preprocessing library for bytes-0.15.4..
+Building library for bytes-0.15.4..
+[1 of 5] Compiling Data.Bytes.Get   ( src/Data/Bytes/Get.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Get.o )
+[2 of 5] Compiling Data.Bytes.Put   ( src/Data/Bytes/Put.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Put.o )
+[3 of 5] Compiling Data.Bytes.Signed ( src/Data/Bytes/Signed.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Signed.o )
+[4 of 5] Compiling Data.Bytes.VarInt ( src/Data/Bytes/VarInt.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/VarInt.o )
+[5 of 5] Compiling Data.Bytes.Serial ( src/Data/Bytes/Serial.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Serial.o )
+[1 of 5] Compiling Data.Bytes.Get   ( src/Data/Bytes/Get.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Get.p_o )
+[2 of 5] Compiling Data.Bytes.Put   ( src/Data/Bytes/Put.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Put.p_o )
+[3 of 5] Compiling Data.Bytes.Signed ( src/Data/Bytes/Signed.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Signed.p_o )
+[4 of 5] Compiling Data.Bytes.VarInt ( src/Data/Bytes/VarInt.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/VarInt.p_o )
+[5 of 5] Compiling Data.Bytes.Serial ( src/Data/Bytes/Serial.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Bytes/Serial.p_o )
+Installing library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/bytes-0.15.4-5F9O31FmG5FIYoabb0beUb
+Registering library for bytes-0.15.4..

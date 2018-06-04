@@ -1,0 +1,505 @@
+
+==================== FINAL INTERFACE ====================
+2018-06-04 20:35:21.971592011 UTC
+
+interface main:InitGameVars 8022
+  interface hash: ce0a1a26a620025dd4720fe285fdc287
+  ABI hash: 684ff3c12b6644a1cb5c633033aa88bb
+  export-list hash: fbc9364d5ab5298ae16518b83d74060c
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 788e424068b393658ec3b6041402b51a
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  InitGameVars.defaultInput
+  InitGameVars.defaultPlayerVars
+  InitGameVars.initConf
+  InitGameVars.initVars
+module dependencies: Animations GameStateManager GameVars Walls
+package dependencies: QuickCheck-2.10.1 Stack-0.3.2
+                      StateVar-1.1.1.0 Stream-0.4.7.2 adjunctions-4.4 array-0.5.2.0
+                      base-4.10.1.0 base-orphans-0.7 bifunctors-5.5.2 binary-0.8.5.1
+                      bytes-0.15.4 bytestring-0.10.8.2 call-stack-0.1.0 cereal-0.5.5.0
+                      comonad-5.0.3 containers-0.5.10.2 contravariant-1.4.1
+                      data-default-class-0.1.2.0 deepseq-1.4.3.0 distributive-0.5.3
+                      exceptions-0.8.3 filepath-1.4.1.2 free-5.0.2 ghc-boot-th-8.2.2
+                      ghc-prim-0.5.1.1 hashable-1.2.7.0 integer-gmp-1.0.1.0
+                      integer-logarithms-1.0.2.1 kan-extensions-5.1 lazysmallcheck-0.6
+                      lens-4.16.1 lifted-base-0.2.3.12 linear-1.20.7
+                      monad-control-1.0.2.3 mtl-2.2.2 pretty-1.1.3.3 primitive-0.6.3.0
+                      profunctors-5.2.2 random-1.1 reflection-2.1.3 scientific-0.3.6.0
+                      sdl2-2.4.0.1 sdl2-image-2.0.0 sdl2-mixer-1.1.0 sdl2-ttf-2.0.2
+                      semigroupoids-5.2.2 stm-2.4.5.0 tagged-0.8.5
+                      template-haskell-2.12.0.0 text-1.2.3.0 tf-random-0.5
+                      th-abstraction-0.2.6.0 time-1.8.0.2 transformers-0.5.2.0
+                      transformers-base-0.4.4 transformers-compat-0.5.1.4
+                      unordered-containers-0.2.9.0 vector-0.12.0.1
+orphans: time-1.8.0.2:Data.Time.Clock.TAI
+         linear-1.20.7:Linear.Instances time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         reflection-2.1.3:Data.Reflection
+         vector-0.12.0.1:Data.Vector.Unboxed
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.0:Data.Text.Lazy
+         text-1.2.3.0:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.3.0:Data.Text.Show base-orphans-0.7:Data.Orphans
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         stm-2.4.5.0:Control.Monad.STM base-4.10.1.0:GHC.Float
+         base-4.10.1.0:GHC.Base
+family instance modules: adjunctions-4.4:Data.Functor.Rep
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Fix
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Sum
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped bytes-0.15.4:Data.Bytes.Get
+                         bytes-0.15.4:Data.Bytes.Signed bytes-0.15.4:Data.Bytes.VarInt
+                         containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         free-5.0.2:Control.Comonad.Cofree
+                         free-5.0.2:Control.Comonad.Trans.Cofree
+                         free-5.0.2:Control.Monad.Free free-5.0.2:Control.Monad.Trans.Free
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         kan-extensions-5.1:Data.Functor.Day
+                         kan-extensions-5.1:Data.Functor.Yoneda lens-4.16.1:Control.Lens.At
+                         lens-4.16.1:Control.Lens.Internal.Indexed
+                         lens-4.16.1:Control.Lens.Reified lens-4.16.1:Control.Lens.Tuple
+                         lens-4.16.1:Control.Lens.Wrapped lens-4.16.1:Control.Lens.Zoom
+                         linear-1.20.7:Linear.Affine linear-1.20.7:Linear.Plucker
+                         linear-1.20.7:Linear.Quaternion linear-1.20.7:Linear.V
+                         linear-1.20.7:Linear.V0 linear-1.20.7:Linear.V1
+                         linear-1.20.7:Linear.V2 linear-1.20.7:Linear.V3
+                         linear-1.20.7:Linear.V4
+                         monad-control-1.0.2.3:Control.Monad.Trans.Control
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray
+                         profunctors-5.2.2:Data.Profunctor.Composition
+                         profunctors-5.2.2:Data.Profunctor.Rep sdl2-2.4.0.1:SDL.Audio
+                         sdl2-2.4.0.1:SDL.Event sdl2-2.4.0.1:SDL.Exception
+                         sdl2-2.4.0.1:SDL.Hint sdl2-2.4.0.1:SDL.Init
+                         sdl2-2.4.0.1:SDL.Input.GameController
+                         sdl2-2.4.0.1:SDL.Input.Joystick sdl2-2.4.0.1:SDL.Input.Keyboard
+                         sdl2-2.4.0.1:SDL.Input.Keyboard.Codes sdl2-2.4.0.1:SDL.Input.Mouse
+                         sdl2-2.4.0.1:SDL.Internal.Types sdl2-2.4.0.1:SDL.Power
+                         sdl2-2.4.0.1:SDL.Time sdl2-2.4.0.1:SDL.Video
+                         sdl2-2.4.0.1:SDL.Video.OpenGL sdl2-2.4.0.1:SDL.Video.Renderer
+                         sdl2-image-2.0.0:SDL.Image sdl2-ttf-2.0.2:SDL.Font
+                         tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.0:Data.Text text-1.2.3.0:Data.Text.Lazy
+                         th-abstraction-0.2.6.0:Language.Haskell.TH.Datatype
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+import  -/  Stack-0.3.2:Data.Stack e7f704bd11627e1a734f5ce5c24b374a
+import  -/  StateVar-1.1.1.0:Data.StateVar e298ac6d18dc5cb4525ddce72dbe03f7
+import  -/  Stream-0.4.7.2:Data.Stream 31cb8ae1d25bf69d02bfbc06a9a73871
+import  -/  base-4.10.1.0:Foreign.C.Types 936c0db027291520097b61fd8686710a
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.IO e261d8b68ccf81a359626fa520b57d1d
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  filepath-1.4.1.2:System.FilePath 3751e022be1498b82ed80e7d6465cd1a
+import  -/  filepath-1.4.1.2:System.FilePath.Posix e53ce4f7e12552941b411aaefd9d2247
+import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
+import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
+import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
+import  -/  Animations ed8ac26f601711059133f19a17b8411f
+  exports: 1b514af753d69c9c6476a9810faf24f0
+  AnimationSrcRect bec91fea7b73f18603dba410b765ef72
+  AnimationType'Death 92a5a6251e354e19796c1a8a40bb0cba
+  AnimationType'Idle 053d7b999a4a72927414591d605eb1c5
+  AnimationType'Jump 821cc92f22d82bf1287cc9cb5a9debb4
+  createAnimationHandler 10af5fcc52286eba6e955ee0b297b43e
+  generateSrcRectStream a4bc7b838e14c35f4d52b3a518e99298
+  generateSrcRects e0d301a5ae235656afa7da9abe8b39bf
+import  -/  GameStateManager b3a1d140e6b3d11f54cbacec2e0264a8
+  exports: 31a22b4a25b84d92d55314f503d3c92f
+import  -/  GameVars 95546c61036798381255e3d7e11311b2
+  exports: bffadec9649d88993fa5a790487d46e7
+  Animations 30f11177157f153fdbee5359a31f5a1c
+  Config 0eb811f4d91ea41f0c6754719ae802dc
+  Config e44e7628e39bfe67c0571be38f0cb139
+  Fonts ae5054e403c4f2d0019977825d840507
+  GUITextures aa05c3962adf85bbd46c9b487a40e974
+  Input 2b358ec8c687e8f33c55a4723db9e95a
+  Input 14baa3ae6b26e7d8a8967e8549c7576d
+  Menu c93e18feadbb490b363082d606e5efdd
+  PlayVars 221ae93e80c58ed765f077f8ca98be18
+  PlayVars 25f3834dc4dee20a203f7a0126c24d7f
+  Player 4fc7e916221efc9c953451cc13170640
+  Player 36914763174f19a2f02a4dc6ef3432f7
+  RenderingVars 64815b4ef3fe3fdd941400078b4f4938
+  RenderingVars ac97681929c8648b7947e304c501ec6a
+  Resources 30972247818b622f021382b538dcf0a6
+  Sound 5b02ec1fff184a39ba42184e76145203
+  Textures 0f357d81fad747cb2a590c9b8650ca52
+  Vars 4cfec49c42f5878a965a4c2adc366f4b
+  Vars 5829ea20be4fb9a24ab87f3fe067aa3c
+  _angle 36914763174f19a2f02a4dc6ef3432f7
+  _attributes 36914763174f19a2f02a4dc6ef3432f7
+  _bgMusicChannel 5f201986779c9c0ba6901d357d52f9fe
+  _bgTexture bc0895f78ba7a6f8ea4aeb2608f6529b
+  _botWallTexture bc0895f78ba7a6f8ea4aeb2608f6529b
+  _cAnimations 5245c4107042b952bbc99248e9f0c042
+  _cFont 5245c4107042b952bbc99248e9f0c042
+  _cGrav 25f3834dc4dee20a203f7a0126c24d7f
+  _cJumpHeight 36914763174f19a2f02a4dc6ef3432f7
+  _cResources e44e7628e39bfe67c0571be38f0cb139
+  _cSound 5245c4107042b952bbc99248e9f0c042
+  _cTextures 5245c4107042b952bbc99248e9f0c042
+  _cWallConf 25f3834dc4dee20a203f7a0126c24d7f
+  _camOffset ac97681929c8648b7947e304c501ec6a
+  _cameraPos ac97681929c8648b7947e304c501ec6a
+  _crashFx 5f201986779c9c0ba6901d357d52f9fe
+  _dt 5829ea20be4fb9a24ab87f3fe067aa3c
+  _gameOverWindowTexture bc622934b9ca39e380dfe788c418e5bd
+  _guiTextures bc0895f78ba7a6f8ea4aeb2608f6529b
+  _highScore 5829ea20be4fb9a24ab87f3fe067aa3c
+  _highScoreFont 5a464f5c7bff2eae896998b908658507
+  _isEsc 14baa3ae6b26e7d8a8967e8549c7576d
+  _isPassingWall 36914763174f19a2f02a4dc6ef3432f7
+  _isSpace 14baa3ae6b26e7d8a8967e8549c7576d
+  _jumpFx 5f201986779c9c0ba6901d357d52f9fe
+  _kInput 5829ea20be4fb9a24ab87f3fe067aa3c
+  _mousePos 14baa3ae6b26e7d8a8967e8549c7576d
+  _mousePress 14baa3ae6b26e7d8a8967e8549c7576d
+  _playAgainBtnTexture bc622934b9ca39e380dfe788c418e5bd
+  _playBtnTexture bc622934b9ca39e380dfe788c418e5bd
+  _player 25f3834dc4dee20a203f7a0126c24d7f
+  _playerAnimationHandler ac97681929c8648b7947e304c501ec6a
+  _playerDeathAnimation 2b1e70dc5d2cf0fae1f292c9db001c5f
+  _playerIdleAnimation 2b1e70dc5d2cf0fae1f292c9db001c5f
+  _playerJumpAnimation 2b1e70dc5d2cf0fae1f292c9db001c5f
+  _playerSpriteSheet bc0895f78ba7a6f8ea4aeb2608f6529b
+  _pressSpacetoJumpTexture bc622934b9ca39e380dfe788c418e5bd
+  _quitBtnTexture bc622934b9ca39e380dfe788c418e5bd
+  _quitGameOverBtnTexture bc622934b9ca39e380dfe788c418e5bd
+  _score 25f3834dc4dee20a203f7a0126c24d7f
+  _scoreFont 5a464f5c7bff2eae896998b908658507
+  _titleTextTexture bc622934b9ca39e380dfe788c418e5bd
+  _topWallTexture bc0895f78ba7a6f8ea4aeb2608f6529b
+  _transitionOpacity ac97681929c8648b7947e304c501ec6a
+  _vGameStateStack 5829ea20be4fb9a24ab87f3fe067aa3c
+  _vPlayVars 5829ea20be4fb9a24ab87f3fe067aa3c
+  _vRenderingVars 5829ea20be4fb9a24ab87f3fe067aa3c
+  _wallStream 25f3834dc4dee20a203f7a0126c24d7f
+  _xvel 36914763174f19a2f02a4dc6ef3432f7
+  _yvel 36914763174f19a2f02a4dc6ef3432f7
+  cRenderer e44e7628e39bfe67c0571be38f0cb139
+  cWindow e44e7628e39bfe67c0571be38f0cb139
+import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
+  exports: 9a82a9ead6771cc6b661267f6167d45d
+  Wall 0489472b2e8cbbdc29c5c06003041655
+  WallConfig 06585fd670b145cdf37154a87397aaca
+  WallConfig 15ef4e0e6139268899ada48c6bd61c62
+  allUppperWallRngBounds 15ef4e0e6139268899ada48c6bd61c62
+  allWallSpacing 15ef4e0e6139268899ada48c6bd61c62
+  allWallWidth 15ef4e0e6139268899ada48c6bd61c62
+  createWallStream b12a4b626c295ff96089526777cf4b0d
+  finalGapSize 15ef4e0e6139268899ada48c6bd61c62
+  gapSizeChangeRate 15ef4e0e6139268899ada48c6bd61c62
+  startingGapSize 15ef4e0e6139268899ada48c6bd61c62
+  startingPos 15ef4e0e6139268899ada48c6bd61c62
+import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
+import  -/  sdl2-2.4.0.1:SDL.Video d45fd583608f97209f87f6e4859b5c5c
+import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
+import  -/  sdl2-image-2.0.0:SDL.Image 427aaf9a9550a24d7379c049b39b7094
+import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
+import  -/  sdl2-ttf-2.0.2:SDL.Font 44c9d73e1da8a9f90d50e498341d19f1
+00efd8bfc2740aa0988fe438c36cb947
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   InitGameVars.$trModule3
+                   InitGameVars.$trModule1) -}
+9d76e34f13335152368e7370788cbf7b
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS InitGameVars.$trModule2) -}
+6aa7d92e921e1b59c6d5b97ebfaf9899
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("InitGameVars"#) -}
+b8f5f5bb7951a4bf994960566b53aa29
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS InitGameVars.$trModule4) -}
+f4cd87a0ef4846c0a0562cca4d187a7e
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+d540f3c0ba6ae952d1e3775d07570884
+  defaultInput :: GameVars.Input
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GameVars.Input
+                   GHC.Types.False
+                   GHC.Types.False
+                   InitGameVars.defaultInput1 `cast` (Sym (Foreign.C.Types.N:CInt[0]))
+                   InitGameVars.defaultInput1 `cast` (Sym (Foreign.C.Types.N:CInt[0]))
+                   GHC.Types.False) -}
+d27b957ed3d9a29dc91ff039e0559d34
+  defaultInput1 :: GHC.Int.Int32
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Int.I32# 0#) -}
+a8bc41567122eb0eb122fa42e7858c10
+  defaultPlayerVars :: GameVars.Player
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GameVars.Player
+                   InitGameVars.defaultPlayerVars4
+                     `cast`
+                   (Sym (Linear.Affine.N:Point[0]
+                             <Linear.V2.V2>_R) <GHC.Types.Float>_N)
+                   InitGameVars.defaultPlayerVars1
+                   0.0#
+                   275.0#
+                   -700.0#
+                   GHC.Types.False
+                   0.0##) -}
+ff7ccb8317a877bb6a5970bbff1072a6
+  defaultPlayerVars1 :: Linear.V2.V2 GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (Linear.V2.V2
+                   @ GHC.Types.Float
+                   InitGameVars.defaultPlayerVars3
+                   InitGameVars.defaultPlayerVars2) -}
+83aa8daf411eaff454ee81311df32c5b
+  defaultPlayerVars2 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 30.0#) -}
+e982772bb9e4d6e9e8d31a5f55ea063d
+  defaultPlayerVars3 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 60.0#) -}
+f768b3405a70c869f451cad28be46e66
+  defaultPlayerVars4 :: Linear.V2.V2 GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (Linear.V2.V2
+                   @ GHC.Types.Float
+                   InitGameVars.defaultPlayerVars6
+                   InitGameVars.defaultPlayerVars5) -}
+84eadd9ab16eed4247474d94c052ae4c
+  defaultPlayerVars5 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 270.0#) -}
+1f5379941a7ae7d47882d77e62c0126d
+  defaultPlayerVars6 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
+376dd241ff4956220df56d578225a4ea
+  initConf :: GHC.Types.IO GameVars.Config
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: InlineRule (0, True, True)
+                InitGameVars.initConf1
+                  `cast`
+                (Sym (GHC.Types.N:IO[0] <GameVars.Config>_R)) -}
+a89f9127b045601d6a113a29d823d5ee
+  initConf1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, GameVars.Config #)
+  {- Arity: 1, Strictness: <S,U> -}
+30e3b4546006792f2681e27a2ca0a0fd
+  initVars :: GHC.Types.IO GameVars.Vars
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: InlineRule (0, True, True)
+                InitGameVars.initVars1
+                  `cast`
+                (Sym (GHC.Types.N:IO[0] <GameVars.Vars>_R)) -}
+3c3659915bd97cd58c310e6d8d5db4af
+  initVars1 ::
+    GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, GameVars.Vars #)
+  {- Arity: 1, Strictness: <S,U>,
+     Unfolding: (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 case Walls.createWallStream1
+                        InitGameVars.initVars11
+                        s of ds1 { (#,#) ipv ipv1 ->
+                 (# ipv,
+                    GameVars.Vars
+                      InitGameVars.initVars10
+                      (GameVars.PlayVars
+                         InitGameVars.defaultPlayerVars4
+                           `cast`
+                         (Sym (Linear.Affine.N:Point[0]
+                                   <Linear.V2.V2>_R) <GHC.Types.Float>_N)
+                         InitGameVars.defaultPlayerVars1
+                         0.0#
+                         275.0#
+                         -700.0#
+                         GHC.Types.False
+                         0.0##
+                         ipv1
+                         2900.0#
+                         InitGameVars.initVars5
+                         InitGameVars.initVars9
+                         0.4#
+                         -2.0e-2#
+                         0.22#
+                         150.0#
+                         200.0#
+                         700.0#
+                         0#)
+                      InitGameVars.initVars2
+                      InitGameVars.defaultInput
+                      0.0#
+                      0# #) }) -}
+fd352114d553c90475661cfd65c46976
+  initVars10 :: GameVars.GameStack
+  {- Unfolding: (case Data.Stack.stackNew
+                        @ GameVars.GameState of ww { Data.Stack.Stack ww1 ww2 ->
+                 let {
+                   fail :: GHC.Prim.Void# -> GameVars.GameStack
+                     <join 1> {- Arity: 1, Strictness: <L,A>m -}
+                   = \ (ds2 :: GHC.Prim.Void#)[OneShot] ->
+                     case ww1 of wild {
+                       GHC.Natural.NatS# x
+                       -> case GHC.Prim.plusWord2# x 1## of wild2 { (#,#) ds4 l ->
+                          case ds4 of ds5 {
+                            DEFAULT
+                            -> case GHC.Magic.runRW#
+                                      @ ('GHC.Types.TupleRep
+                                           '['GHC.Types.TupleRep '[], 'GHC.Types.LiftedRep])
+                                      @ (# GHC.Prim.State# GHC.Prim.RealWorld,
+                                           GHC.Integer.Type.BigNat #)
+                                      (\ (s :: GHC.Prim.State# GHC.Prim.RealWorld)[OneShot] ->
+                                       case GHC.Prim.newByteArray#
+                                              @ GHC.Prim.RealWorld
+                                              16#
+                                              s of ds6 { (#,#) ipv ipv1 ->
+                                       case GHC.Prim.writeWordArray#
+                                              @ GHC.Prim.RealWorld
+                                              ipv1
+                                              0#
+                                              l
+                                              ipv of s' { DEFAULT ->
+                                       case GHC.Prim.writeWordArray#
+                                              @ GHC.Prim.RealWorld
+                                              ipv1
+                                              1#
+                                              ds5
+                                              s' of s'1 { DEFAULT ->
+                                       case GHC.Prim.unsafeFreezeByteArray#
+                                              @ GHC.Prim.RealWorld
+                                              ipv1
+                                              s'1 of ds7 { (#,#) ipv2 ipv3 ->
+                                       (# ipv2,
+                                          GHC.Integer.Type.BN#
+                                            ipv3 #) } } } }) of ds6 { (#,#) ipv ipv1 ->
+                               case ipv1 of dt { GHC.Integer.Type.BN# dt1 ->
+                               Data.Stack.Stack
+                                 @ GameVars.GameState
+                                 (GHC.Natural.NatJ# dt1)
+                                 (GHC.Types.: @ GameVars.GameState GameVars.Menu ww2) } }
+                            0##
+                            -> Data.Stack.Stack
+                                 @ GameVars.GameState
+                                 (GHC.Natural.NatS# l)
+                                 (GHC.Types.: @ GameVars.GameState GameVars.Menu ww2) } }
+                       GHC.Natural.NatJ# dt
+                       -> case GHC.Integer.Type.$wplusBigNatWord
+                                 dt
+                                 1## of dt1 { GHC.Integer.Type.BN# dt2 ->
+                          Data.Stack.Stack
+                            @ GameVars.GameState
+                            (GHC.Natural.NatJ# dt2)
+                            (GHC.Types.: @ GameVars.GameState GameVars.Menu ww2) } }
+                 } in
+                 case ww1 of wild {
+                   GHC.Natural.NatS# ds2
+                   -> case ds2 of ds3 {
+                        DEFAULT -> fail GHC.Prim.void#
+                        0##
+                        -> Data.Stack.Stack
+                             @ GameVars.GameState
+                             GHC.Natural.$fEnumNatural1
+                             (GHC.Types.: @ GameVars.GameState GameVars.Menu ww2) }
+                   GHC.Natural.NatJ# ipv -> fail GHC.Prim.void# } }) -}
+e1684b8a6d5dacca329dec6ece525047
+  initVars11 :: Walls.WallConfig
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (Walls.WallConfig
+                   InitGameVars.initVars5
+                   InitGameVars.initVars9
+                   0.4#
+                   -2.0e-2#
+                   0.22#
+                   150.0#
+                   200.0#
+                   700.0#) -}
+06fb0122cb12168772d1c7e0d57ba30f
+  initVars2 :: GameVars.RenderingVars
+  {- Strictness: m,
+     Unfolding: (GameVars.RenderingVars
+                   InitGameVars.initVars4
+                   InitGameVars.defaultInput1 `cast` (Sym (Foreign.C.Types.N:CInt[0]))
+                   InitGameVars.defaultInput1 `cast` (Sym (Foreign.C.Types.N:CInt[0]))
+                   InitGameVars.initVars3
+                   InitGameVars.initVars3
+                   100##) -}
+c2a4fc72299bd4e589210ac2e5a8884b
+  initVars3 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.F# -100.0#) -}
+43b9cf28b9798b815750b8c726db42b0
+  initVars4 :: Animations.AnimationHandler
+  {- Strictness: m,
+     Unfolding: (Animations.AnimationHandler
+                   InitGameVars.initVars6
+                   InitGameVars.initVars5
+                   Animations.createAnimationHandler1) -}
+bfc3014cd786941458e04d457e97bc27
+  initVars5 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.1#) -}
+e02ecaad19d6751a83053eb7dc907397
+  initVars6 :: Data.Stream.Stream Animations.AnimationSrcRect
+  {- Unfolding: (Data.Stream.cycle
+                   @ Animations.AnimationSrcRect
+                   InitGameVars.playeridlesrcrects) -}
+ce15bbc0752520d77b2a9631dcfb06ff
+  initVars7 :: GHC.Int.Int32
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Int.I32# 30#) -}
+600ccb373f3db59fdf3fdc8e98203a8b
+  initVars8 :: GHC.Int.Int32
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Int.I32# 60#) -}
+10cb6e8c5b8ab00372095911e4732dc5
+  initVars9 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.44#) -}
+fc83fe255d7c03e59bb1b83a23b71d79
+  playeridlesrcrects :: [Animations.AnimationSrcRect]
+  {- Unfolding: (Animations.$wgenerateSrcRects
+                   0#
+                   0#
+                   InitGameVars.initVars8 `cast` (Sym (Foreign.C.Types.N:CInt[0]))
+                   InitGameVars.initVars7 `cast` (Sym (Foreign.C.Types.N:CInt[0]))
+                   60#
+                   0#
+                   6#
+                   Animations.AnimationType'Idle) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

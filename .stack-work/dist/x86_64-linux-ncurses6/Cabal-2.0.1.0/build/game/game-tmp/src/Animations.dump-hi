@@ -1,0 +1,1254 @@
+
+==================== FINAL INTERFACE ====================
+2018-06-04 17:00:34.857129243 UTC
+
+interface main:Animations [hpc] 8022
+  interface hash: 567999ddd05e8374575cd3c323322db3
+  ABI hash: dfdcabdd418435417b722c167296ea95
+  export-list hash: 4a1f1d0c784c82dec56d1e56481a5b26
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 252e2e51efdfaca011fc25a9634d1926
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Animations.addTimeToAnimationHandler
+  Animations.createAnimationHandler
+  Animations.generateSrcRectStream
+  Animations.generateSrcRects
+  Animations.headAnimation
+  Animations.prefixAnimation
+  Animations.removeAnimations
+  Animations.removeAnimationsUpto
+  Animations.replaceAnimation
+  Animations.updateAnimationHandler
+  Animations.AnimationHandler{Animations.AnimationHandler accTime frameDuration srcRectStream}
+  Animations.AnimationSrcRect{Animations.AnimationSrcRect animationType srcRect}
+  Animations.AnimationType{Animations.AnimationType'Death Animations.AnimationType'Idle Animations.AnimationType'Jump}
+module dependencies:
+package dependencies: QuickCheck-2.10.1 StateVar-1.1.1.0
+                      Stream-0.4.7.2 adjunctions-4.4 array-0.5.2.0 base-4.10.1.0
+                      base-orphans-0.7 bifunctors-5.5.2 binary-0.8.5.1 bytes-0.15.4
+                      bytestring-0.10.8.2 call-stack-0.1.0 cereal-0.5.5.0 comonad-5.0.3
+                      containers-0.5.10.2 contravariant-1.4.1 deepseq-1.4.3.0
+                      distributive-0.5.3 exceptions-0.8.3 free-5.0.2 ghc-boot-th-8.2.2
+                      ghc-prim-0.5.1.1 hashable-1.2.7.0 integer-gmp-1.0.1.0
+                      integer-logarithms-1.0.2.1 kan-extensions-5.1 lazysmallcheck-0.6
+                      lens-4.16.1 linear-1.20.7 mtl-2.2.2 pretty-1.1.3.3
+                      primitive-0.6.3.0 profunctors-5.2.2 random-1.1 reflection-2.1.3
+                      scientific-0.3.6.0 sdl2-2.4.0.1 semigroupoids-5.2.2 stm-2.4.5.0
+                      tagged-0.8.5 template-haskell-2.12.0.0 text-1.2.3.0 tf-random-0.5
+                      th-abstraction-0.2.6.0 time-1.8.0.2 transformers-0.5.2.0
+                      transformers-base-0.4.4 transformers-compat-0.5.1.4
+                      unordered-containers-0.2.9.0 vector-0.12.0.1
+orphans: time-1.8.0.2:Data.Time.Clock.TAI
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian
+         reflection-2.1.3:Data.Reflection
+         vector-0.12.0.1:Data.Vector.Unboxed
+         hashable-1.2.7.0:Data.Hashable.Generic text-1.2.3.0:Data.Text.Lazy
+         linear-1.20.7:Linear.Instances base-orphans-0.7:Data.Orphans
+         text-1.2.3.0:Data.Text binary-0.8.5.1:Data.Binary.Generic
+         text-1.2.3.0:Data.Text.Show
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         vector-0.12.0.1:Data.Vector.Fusion.Bundle
+         stm-2.4.5.0:Control.Monad.STM
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: adjunctions-4.4:Data.Functor.Rep
+                         base-4.10.1.0:Control.Applicative base-4.10.1.0:Data.Complex
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Compose
+                         base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats bifunctors-5.5.2:Data.Bifunctor.Biff
+                         bifunctors-5.5.2:Data.Bifunctor.Clown
+                         bifunctors-5.5.2:Data.Bifunctor.Fix
+                         bifunctors-5.5.2:Data.Bifunctor.Flip
+                         bifunctors-5.5.2:Data.Bifunctor.Join
+                         bifunctors-5.5.2:Data.Bifunctor.Joker
+                         bifunctors-5.5.2:Data.Bifunctor.Product
+                         bifunctors-5.5.2:Data.Bifunctor.Sum
+                         bifunctors-5.5.2:Data.Bifunctor.Tannen
+                         bifunctors-5.5.2:Data.Bifunctor.Wrapped bytes-0.15.4:Data.Bytes.Get
+                         bytes-0.15.4:Data.Bytes.Signed bytes-0.15.4:Data.Bytes.VarInt
+                         containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         free-5.0.2:Control.Comonad.Cofree
+                         free-5.0.2:Control.Comonad.Trans.Cofree
+                         free-5.0.2:Control.Monad.Free free-5.0.2:Control.Monad.Trans.Free
+                         ghc-boot-th-8.2.2:GHC.ForeignSrcLang.Type
+                         ghc-boot-th-8.2.2:GHC.LanguageExtensions.Type
+                         kan-extensions-5.1:Data.Functor.Day
+                         kan-extensions-5.1:Data.Functor.Yoneda lens-4.16.1:Control.Lens.At
+                         lens-4.16.1:Control.Lens.Internal.Indexed
+                         lens-4.16.1:Control.Lens.Reified lens-4.16.1:Control.Lens.Tuple
+                         lens-4.16.1:Control.Lens.Wrapped lens-4.16.1:Control.Lens.Zoom
+                         linear-1.20.7:Linear.Affine linear-1.20.7:Linear.Plucker
+                         linear-1.20.7:Linear.Quaternion linear-1.20.7:Linear.V
+                         linear-1.20.7:Linear.V0 linear-1.20.7:Linear.V1
+                         linear-1.20.7:Linear.V2 linear-1.20.7:Linear.V3
+                         linear-1.20.7:Linear.V4
+                         pretty-1.1.3.3:Text.PrettyPrint.Annotated.HughesPJ
+                         pretty-1.1.3.3:Text.PrettyPrint.HughesPJ
+                         primitive-0.6.3.0:Control.Monad.Primitive
+                         primitive-0.6.3.0:Data.Primitive.Array
+                         primitive-0.6.3.0:Data.Primitive.ByteArray
+                         profunctors-5.2.2:Data.Profunctor.Composition
+                         profunctors-5.2.2:Data.Profunctor.Rep sdl2-2.4.0.1:SDL.Audio
+                         sdl2-2.4.0.1:SDL.Event sdl2-2.4.0.1:SDL.Exception
+                         sdl2-2.4.0.1:SDL.Hint sdl2-2.4.0.1:SDL.Init
+                         sdl2-2.4.0.1:SDL.Input.GameController
+                         sdl2-2.4.0.1:SDL.Input.Joystick sdl2-2.4.0.1:SDL.Input.Keyboard
+                         sdl2-2.4.0.1:SDL.Input.Keyboard.Codes sdl2-2.4.0.1:SDL.Input.Mouse
+                         sdl2-2.4.0.1:SDL.Internal.Types sdl2-2.4.0.1:SDL.Power
+                         sdl2-2.4.0.1:SDL.Time sdl2-2.4.0.1:SDL.Video
+                         sdl2-2.4.0.1:SDL.Video.OpenGL sdl2-2.4.0.1:SDL.Video.Renderer
+                         tagged-0.8.5:Data.Tagged
+                         template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
+                         text-1.2.3.0:Data.Text text-1.2.3.0:Data.Text.Lazy
+                         th-abstraction-0.2.6.0:Language.Haskell.TH.Datatype
+                         unordered-containers-0.2.9.0:Data.HashMap.Base
+                         unordered-containers-0.2.9.0:Data.HashSet
+                         vector-0.12.0.1:Data.Vector vector-0.12.0.1:Data.Vector.Primitive
+                         vector-0.12.0.1:Data.Vector.Storable
+                         vector-0.12.0.1:Data.Vector.Unboxed
+                         vector-0.12.0.1:Data.Vector.Unboxed.Base
+import  -/  Stream-0.4.7.2:Data.Stream 9cd51e4556ef7baaac4a787bec9c59a8
+import  -/  base-4.10.1.0:Foreign.C.Types 936c0db027291520097b61fd8686710a
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.List e3060fbeb44ce0038e6b4dedf2dd9cf1
+import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
+import  -/  base-4.10.1.0:GHC.Show 0a8ce2b5e533d1c2cfb7954e6736be45
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
+import  -/  linear-1.20.7:Linear.Affine 37bd5da38e258025de91487067b52df8
+import  -/  linear-1.20.7:Linear.V2 e87779d762688f70d36f27b366e56018
+import  -/  sdl2-2.4.0.1:SDL 39875bad24bf9a1ac102b247c3d07175
+import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 30f2126ab87e3eaa3a6c27bf0c30395b
+3e4bea669d998b37bc3470c5f2df2496
+  $fEqAnimationType :: GHC.Classes.Eq Animations.AnimationType
+  DFunId
+  {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Animations.AnimationType
+                  Animations.$fEqAnimationType_$c==
+                  Animations.$fEqAnimationType_$c/= -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fEqAnimationType_$c/= ::
+    Animations.AnimationType
+    -> Animations.AnimationType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (a :: Animations.AnimationType)
+                   (b :: Animations.AnimationType) ->
+                 {__scc {main:Animations./=} True True} {__scc {main:Animations.==} True False} case a of wild {
+                                                                                                  Animations.AnimationType'Idle
+                                                                                                  -> case b of wild1 {
+                                                                                                       DEFAULT
+                                                                                                       -> GHC.Types.True
+                                                                                                       Animations.AnimationType'Idle
+                                                                                                       -> GHC.Types.False }
+                                                                                                  Animations.AnimationType'Death
+                                                                                                  -> case b of wild1 {
+                                                                                                       DEFAULT
+                                                                                                       -> GHC.Types.True
+                                                                                                       Animations.AnimationType'Death
+                                                                                                       -> GHC.Types.False }
+                                                                                                  Animations.AnimationType'Jump
+                                                                                                  -> case b of wild1 {
+                                                                                                       DEFAULT
+                                                                                                       -> GHC.Types.True
+                                                                                                       Animations.AnimationType'Jump
+                                                                                                       -> GHC.Types.False } }) -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fEqAnimationType_$c== ::
+    Animations.AnimationType
+    -> Animations.AnimationType -> GHC.Types.Bool
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: Animations.AnimationType)
+                   (ds1 :: Animations.AnimationType) ->
+                 {__scc {main:Animations.==} True True} case ds of wild {
+                                                          Animations.AnimationType'Idle
+                                                          -> case ds1 of wild1 {
+                                                               DEFAULT -> GHC.Types.False
+                                                               Animations.AnimationType'Idle
+                                                               -> GHC.Types.True }
+                                                          Animations.AnimationType'Death
+                                                          -> case ds1 of wild1 {
+                                                               DEFAULT -> GHC.Types.False
+                                                               Animations.AnimationType'Death
+                                                               -> GHC.Types.True }
+                                                          Animations.AnimationType'Jump
+                                                          -> case ds1 of wild1 {
+                                                               DEFAULT -> GHC.Types.False
+                                                               Animations.AnimationType'Jump
+                                                               -> GHC.Types.True } }) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  $fShowAnimationHandler :: GHC.Show.Show Animations.AnimationHandler
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Animations.AnimationHandler
+                  Animations.$fShowAnimationHandler_$cshowsPrec
+                  Animations.$fShowAnimationHandler_$cshow
+                  Animations.$fShowAnimationHandler_$cshowList -}
+66c8d64d174f8ce1c6f2e651826010ed
+  $fShowAnimationHandler1 ::
+    Animations.AnimationHandler -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <S,1*U(U,1*U(U),1*U(U))>,
+     Unfolding: (\ (w :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.showList} False True} case w of ww { Animations.AnimationHandler ww1 ww2 ww3 ->
+                                                               Animations.$w$cshowsPrec
+                                                                 0#
+                                                                 ww1
+                                                                 ww2
+                                                                 ww3 }) -}
+a2af230a7353e176727764650d0ba5b2
+  $fShowAnimationHandler10 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationHandler11) -}
+b0e99e17b7c6cdf84af756ac1d2dea49
+  $fShowAnimationHandler11 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationHandler {"#) -}
+a9b5ef828f98a19bffafe01a87f03b9d
+  $fShowAnimationHandler12 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+fb77a763c6e22487b16db71eedad6f68
+  $fShowAnimationHandler2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationHandler3) -}
+f2f042d1ffa2fbde96487ffc215b2cb5
+  $fShowAnimationHandler3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("}"#) -}
+945bb049db244e6fcdcd412c2d3ed259
+  $fShowAnimationHandler4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationHandler5) -}
+f681017107615fb57e3399b223e375fe
+  $fShowAnimationHandler5 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("accTime = "#) -}
+65912a4e52efae1f3271a55437336da9
+  $fShowAnimationHandler6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationHandler7) -}
+43e0837053811ffa41fb9becb3f3d12b
+  $fShowAnimationHandler7 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("frameDuration = "#) -}
+b044c34d36f18b5226dd440a578a5e63
+  $fShowAnimationHandler8 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationHandler9) -}
+48e16d0b61ef2ad2013578cbe505a301
+  $fShowAnimationHandler9 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("srcRectStream = "#) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  $fShowAnimationHandler_$cshow ::
+    Animations.AnimationHandler -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U(U,1*U(U),1*U(U))>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Animations.AnimationHandler) ->
+                 Animations.$fShowAnimationHandler_$cshowsPrec
+                   Animations.$fShowAnimationHandler12
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  $fShowAnimationHandler_$cshowList ::
+    [Animations.AnimationHandler] -> GHC.Show.ShowS
+  {- Unfolding: ({__scc {main:Animations.showList} True True} GHC.Show.showList__
+                                                                @ Animations.AnimationHandler
+                                                                Animations.$fShowAnimationHandler1) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  $fShowAnimationHandler_$cshowsPrec ::
+    GHC.Types.Int -> Animations.AnimationHandler -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(U,1*U(U),1*U(U))>,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: Animations.AnimationHandler) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Animations.AnimationHandler ww3 ww4 ww5 ->
+                 Animations.$w$cshowsPrec ww1 ww3 ww4 ww5 } }) -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  $fShowAnimationSrcRect :: GHC.Show.Show Animations.AnimationSrcRect
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Animations.AnimationSrcRect
+                  Animations.$fShowAnimationSrcRect_$cshowsPrec
+                  Animations.$fShowAnimationSrcRect_$cshow
+                  Animations.$fShowAnimationSrcRect_$cshowList -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  $fShowAnimationSrcRect1 ::
+    Animations.AnimationSrcRect -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <S,1*U(U,1*U)>,
+     Unfolding: (\ (w :: Animations.AnimationSrcRect) ->
+                 {__scc {main:Animations.showList} False True} case w of ww { Animations.AnimationSrcRect ww1 ww2 ->
+                                                               Animations.$w$cshowsPrec1
+                                                                 0#
+                                                                 ww1
+                                                                 ww2 }) -}
+a7d77fa1b8b37c055fdae5671625fef8
+  $fShowAnimationSrcRect10 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationType'Jump"#) -}
+0cef82615e71fc66123534d2c585cd3e
+  $fShowAnimationSrcRect11 :: [GHC.Types.Char] -> [GHC.Types.Char]
+  {- Arity: 1,
+     Unfolding: (GHC.Base.++
+                   @ GHC.Types.Char
+                   Animations.$fShowAnimationSrcRect12) -}
+a548eb5cd15290983c737cfece988fc4
+  $fShowAnimationSrcRect12 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationSrcRect13) -}
+e3921afedcb8b100aaabbb1a6dffff3c
+  $fShowAnimationSrcRect13 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationType'Death"#) -}
+ae183eccfe6f170b4c336d72bce12ea3
+  $fShowAnimationSrcRect14 :: [GHC.Types.Char] -> [GHC.Types.Char]
+  {- Arity: 1,
+     Unfolding: (GHC.Base.++
+                   @ GHC.Types.Char
+                   Animations.$fShowAnimationSrcRect15) -}
+bfcfefd3d0075fa6a82de959f444780f
+  $fShowAnimationSrcRect15 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationSrcRect16) -}
+fe6ffef0b360e27093c0550f7c4796c8
+  $fShowAnimationSrcRect16 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationType'Idle"#) -}
+5e812128f45959ea98add9aadc5fa7d5
+  $fShowAnimationSrcRect17 ::
+    GHC.Types.Int
+    -> SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt
+    -> GHC.Show.ShowS
+  {- Unfolding: ({__scc {main:Animations.showsPrec} False True} SDL.Video.Renderer.$fShowRectangle_$cshowsPrec
+                                                                  @ Foreign.C.Types.CInt
+                                                                  Foreign.C.Types.$fShowCInt) -}
+ef0ffb99275958dd6ad10ed78a5b9331
+  $fShowAnimationSrcRect18 :: [GHC.Types.Char]
+  {- Unfolding: ({__scc {main:Animations.showsPrec} False True} GHC.Base.++
+                                                                  @ GHC.Types.Char
+                                                                  Animations.$fShowAnimationHandler2
+                                                                  (GHC.Types.[]
+                                                                     @ GHC.Types.Char)) -}
+d378cb360adf249f873c926332ceece6
+  $fShowAnimationSrcRect2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationSrcRect3) -}
+51e3e67859186e68bee5c3da8630ee46
+  $fShowAnimationSrcRect3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("animationType = "#) -}
+92b26eff2ab55689122933903bbd2968
+  $fShowAnimationSrcRect4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationSrcRect5) -}
+a50fabafb6cd9c1050815e48fac338ef
+  $fShowAnimationSrcRect5 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("srcRect = "#) -}
+503ded8adb87f63eab9c4f851ee820d5
+  $fShowAnimationSrcRect6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationSrcRect7) -}
+29b4d73cb1a2bcf36c5e51b60c83cabc
+  $fShowAnimationSrcRect7 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationSrcRect {"#) -}
+db83bca65a91c5c7d59a059328e8d485
+  $fShowAnimationSrcRect8 :: [GHC.Types.Char] -> [GHC.Types.Char]
+  {- Arity: 1,
+     Unfolding: (GHC.Base.++
+                   @ GHC.Types.Char
+                   Animations.$fShowAnimationSrcRect9) -}
+9e73d6f3f8481f823736812ab461ea20
+  $fShowAnimationSrcRect9 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Animations.$fShowAnimationSrcRect10) -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  $fShowAnimationSrcRect_$cshow ::
+    Animations.AnimationSrcRect -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U(U,1*U)>, Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Animations.AnimationSrcRect) ->
+                 case w of ww { Animations.AnimationSrcRect ww1 ww2 ->
+                 Animations.$w$cshow ww1 ww2 }) -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  $fShowAnimationSrcRect_$cshowList ::
+    [Animations.AnimationSrcRect] -> GHC.Show.ShowS
+  {- Unfolding: ({__scc {main:Animations.showList} True True} GHC.Show.showList__
+                                                                @ Animations.AnimationSrcRect
+                                                                Animations.$fShowAnimationSrcRect1) -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  $fShowAnimationSrcRect_$cshowsPrec ::
+    GHC.Types.Int -> Animations.AnimationSrcRect -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(U,1*U)>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: Animations.AnimationSrcRect) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 case w1 of ww2 { Animations.AnimationSrcRect ww3 ww4 ->
+                 Animations.$w$cshowsPrec1 ww1 ww3 ww4 } }) -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fShowAnimationType :: GHC.Show.Show Animations.AnimationType
+  DFunId
+  {- Strictness: m, Inline: CONLIKE,
+     Unfolding: DFun:.
+                  @ Animations.AnimationType
+                  Animations.$fShowAnimationType_$cshowsPrec
+                  Animations.$fShowAnimationType_$cshow
+                  Animations.$fShowAnimationType_$cshowList -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fShowAnimationType1 :: Animations.AnimationType -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Animations.AnimationType) ->
+                 {__scc {main:Animations.showList} False True} {__scc {main:Animations.showsPrec} True True} case ds of wild {
+                                                                                                               Animations.AnimationType'Idle
+                                                                                                               -> Animations.$fShowAnimationSrcRect14
+                                                                                                               Animations.AnimationType'Death
+                                                                                                               -> Animations.$fShowAnimationSrcRect11
+                                                                                                               Animations.AnimationType'Jump
+                                                                                                               -> Animations.$fShowAnimationSrcRect8 }) -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fShowAnimationType_$cshow ::
+    Animations.AnimationType -> GHC.Base.String
+  {- Arity: 1, Strictness: <S,1*U>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (x :: Animations.AnimationType) ->
+                 ({__scc {main:Animations.showsPrec} True True} case x of wild {
+                                                                  Animations.AnimationType'Idle
+                                                                  -> Animations.$fShowAnimationSrcRect14
+                                                                  Animations.AnimationType'Death
+                                                                  -> Animations.$fShowAnimationSrcRect11
+                                                                  Animations.AnimationType'Jump
+                                                                  -> Animations.$fShowAnimationSrcRect8 })
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fShowAnimationType_$cshowList ::
+    [Animations.AnimationType] -> GHC.Show.ShowS
+  {- Unfolding: ({__scc {main:Animations.showList} True True} GHC.Show.showList__
+                                                                @ Animations.AnimationType
+                                                                Animations.$fShowAnimationType1) -}
+3e4bea669d998b37bc3470c5f2df2496
+  $fShowAnimationType_$cshowsPrec ::
+    GHC.Types.Int -> Animations.AnimationType -> GHC.Show.ShowS
+  {- Arity: 2, Strictness: <L,A><S,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: GHC.Types.Int) (ds1 :: Animations.AnimationType) ->
+                 {__scc {main:Animations.showsPrec} True True} case ds1 of wild {
+                                                                 Animations.AnimationType'Idle
+                                                                 -> Animations.$fShowAnimationSrcRect14
+                                                                 Animations.AnimationType'Death
+                                                                 -> Animations.$fShowAnimationSrcRect11
+                                                                 Animations.AnimationType'Jump
+                                                                 -> Animations.$fShowAnimationSrcRect8 }) -}
+e8b69881bee2f8f3bc1e13ca3f9e6789
+  $tc'AnimationHandler :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   4050028388978228626##
+                   8959479335010735909##
+                   Animations.$trModule
+                   Animations.$tc'AnimationHandler2
+                   0#
+                   Animations.$tc'AnimationHandler1) -}
+5084e8d98b960e58d97fff605a643056
+  $tc'AnimationHandler1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+1bb1c0c0e13189fa05890e07c55b4d69
+  $tc'AnimationHandler2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$tc'AnimationHandler3) -}
+dfb4846743f8b1285a520dc2fac9d9b5
+  $tc'AnimationHandler3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'AnimationHandler"#) -}
+2832c742edfc398047034e38c2a5cebd
+  $tc'AnimationSrcRect :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   4466471202165182946##
+                   6265374237906457611##
+                   Animations.$trModule
+                   Animations.$tc'AnimationSrcRect2
+                   0#
+                   Animations.$tc'AnimationSrcRect1) -}
+e78fb64cd9d63f37d9ac4abbe2d8f985
+  $tc'AnimationSrcRect1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+768174dc2a7e10719584760079914c7e
+  $tc'AnimationSrcRect2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$tc'AnimationSrcRect3) -}
+47b61bbe45cdf67e7c625699f5f9642b
+  $tc'AnimationSrcRect3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'AnimationSrcRect"#) -}
+43239275700c48eaabfd149ad5d9b220
+  $tc'AnimationType'Death :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2505499671138149707##
+                   471694010370551779##
+                   Animations.$trModule
+                   Animations.$tc'AnimationType'Death2
+                   0#
+                   Animations.$tc'AnimationType'Death1) -}
+d793e0eeb74c405c9ad6df48934a2347
+  $tc'AnimationType'Death1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m1, Inline: [~] -}
+4733fe36e8f8c5f6c72e9e0362bf53af
+  $tc'AnimationType'Death2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   Animations.$tc'AnimationType'Death3) -}
+5af7bd31e6510b66fa0818754913fae8
+  $tc'AnimationType'Death3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'AnimationType'Death"#) -}
+aed4bd106e891cc2c41a437d9c51ea3a
+  $tc'AnimationType'Idle :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   9706402157989394871##
+                   12030191924707442112##
+                   Animations.$trModule
+                   Animations.$tc'AnimationType'Idle1
+                   0#
+                   Animations.$tc'AnimationType'Death1) -}
+78adee6a76d39add9579eed0cda848e9
+  $tc'AnimationType'Idle1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   Animations.$tc'AnimationType'Idle2) -}
+a9d9d005f54d438002bf4ac12312c168
+  $tc'AnimationType'Idle2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'AnimationType'Idle"#) -}
+5f868f44b62a477cc193ffa783ed1dc7
+  $tc'AnimationType'Jump :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   403505482061814913##
+                   11194073297846066562##
+                   Animations.$trModule
+                   Animations.$tc'AnimationType'Jump1
+                   0#
+                   Animations.$tc'AnimationType'Death1) -}
+364c00750e828dddb3e73eaa1ea00ed7
+  $tc'AnimationType'Jump1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS
+                   Animations.$tc'AnimationType'Jump2) -}
+6899bcca14d1e0c2eab1dea4b91c7778
+  $tc'AnimationType'Jump2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'AnimationType'Jump"#) -}
+d82b6182b3940c5644c85fc3c9d81ade
+  $tcAnimationHandler :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   1533891082206120493##
+                   17471054750545823088##
+                   Animations.$trModule
+                   Animations.$tcAnimationHandler1
+                   0#
+                   GHC.Types.krep$*) -}
+eec320b23b939f3bc229c78f65969b74
+  $tcAnimationHandler1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$tcAnimationHandler2) -}
+8febae0f08b9971e0361fcd1950932b5
+  $tcAnimationHandler2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationHandler"#) -}
+ea16c679ce8508c75a2e3389ab99e893
+  $tcAnimationSrcRect :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   13454671348469045649##
+                   12941994565123841018##
+                   Animations.$trModule
+                   Animations.$tcAnimationSrcRect1
+                   0#
+                   GHC.Types.krep$*) -}
+4009b8e2b2b848c46f0c6eaa23e9781d
+  $tcAnimationSrcRect1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$tcAnimationSrcRect2) -}
+36f1d78f311629b6a9f230f174ecfc8a
+  $tcAnimationSrcRect2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationSrcRect"#) -}
+3424b035e2912de5c697cef448e59748
+  $tcAnimationType :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   6673907239561942413##
+                   9598737835152469040##
+                   Animations.$trModule
+                   Animations.$tcAnimationType1
+                   0#
+                   GHC.Types.krep$*) -}
+def99cd5911441d490368c37c9b7dde8
+  $tcAnimationType1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$tcAnimationType2) -}
+bdf0f89457f3a9a196900cf4971a8cb7
+  $tcAnimationType2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("AnimationType"#) -}
+7d97c383902ad49ae5f2d4180caf365f
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Animations.$trModule3
+                   Animations.$trModule1) -}
+379d65d537db1c3c7d7ea2fb3ec797c5
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$trModule2) -}
+b56fdba985557beb882510621b2732b3
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Animations"#) -}
+84042da2598b61892d9f49e956ba9bef
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Animations.$trModule4) -}
+a62f66498c93f251e54530499ef3414c
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+fb39bf8ad25558da6def8dc726214470
+  $w$cshow ::
+    SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt
+    -> Animations.AnimationType -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U><L,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: SDL.Video.Renderer.Rectangle
+                            Foreign.C.Types.CInt)
+                   (ww1 :: Animations.AnimationType) ->
+                 {__scc {main:Animations.showsPrec} True False} {__scc {main:Animations.showsPrec} False True} GHC.Base.++
+                                                                                                                 @ GHC.Types.Char
+                                                                                                                 Animations.$fShowAnimationSrcRect6
+                                                                                                                 (GHC.Base.++
+                                                                                                                    @ GHC.Types.Char
+                                                                                                                    Animations.$fShowAnimationSrcRect4
+                                                                                                                    (Animations.$fShowAnimationSrcRect17
+                                                                                                                       Animations.$fShowAnimationHandler12
+                                                                                                                       ww
+                                                                                                                       (GHC.Base.++
+                                                                                                                          @ GHC.Types.Char
+                                                                                                                          GHC.Show.showCommaSpace1
+                                                                                                                          (GHC.Base.++
+                                                                                                                             @ GHC.Types.Char
+                                                                                                                             Animations.$fShowAnimationSrcRect2
+                                                                                                                             (({__scc {main:Animations.showsPrec} True True} case ww1 of wild {
+                                                                                                                                                                               Animations.AnimationType'Idle
+                                                                                                                                                                               -> Animations.$fShowAnimationSrcRect14
+                                                                                                                                                                               Animations.AnimationType'Death
+                                                                                                                                                                               -> Animations.$fShowAnimationSrcRect11
+                                                                                                                                                                               Animations.AnimationType'Jump
+                                                                                                                                                                               -> Animations.$fShowAnimationSrcRect8 })
+                                                                                                                                Animations.$fShowAnimationSrcRect18)))))) -}
+1f88f3641e849e46bc1e2964c473efa1
+  $w$cshowsPrec ::
+    GHC.Prim.Int#
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+    -> GHC.Types.Float
+    -> GHC.Types.Float
+    -> GHC.Show.ShowS
+  {- Arity: 4, Strictness: <S,U><L,U><L,1*U(U)><L,1*U(U)>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: Data.Stream.Stream Animations.AnimationSrcRect)
+                   (ww2 :: GHC.Types.Float)
+                   (ww3 :: GHC.Types.Float) ->
+                 {__scc {main:Animations.showsPrec} True True} let {
+                                                                 f :: GHC.Base.String
+                                                                      -> GHC.Base.String
+                                                                 = Data.Stream.$fShowStream_$cshowsPrec
+                                                                     @ Animations.AnimationSrcRect
+                                                                     Animations.$fShowAnimationSrcRect
+                                                                     Animations.$fShowAnimationHandler12
+                                                                     ww1
+                                                               } in
+                                                               let {
+                                                                 f1 :: GHC.Base.String
+                                                                       -> GHC.Base.String
+                                                                 = case ww2 of ww4 { GHC.Types.F# ww5 ->
+                                                                   GHC.Float.$w$sshowSignedFloat1
+                                                                     GHC.Float.$fShowFloat2
+                                                                     Animations.$fShowAnimationHandler12
+                                                                     ww5 }
+                                                               } in
+                                                               let {
+                                                                 f2 :: GHC.Base.String
+                                                                       -> GHC.Base.String
+                                                                 = case ww3 of ww4 { GHC.Types.F# ww5 ->
+                                                                   GHC.Float.$w$sshowSignedFloat1
+                                                                     GHC.Float.$fShowFloat2
+                                                                     Animations.$fShowAnimationHandler12
+                                                                     ww5 }
+                                                               } in
+                                                               case GHC.Prim.tagToEnum#
+                                                                      @ GHC.Types.Bool
+                                                                      (GHC.Prim.>=#
+                                                                         ww
+                                                                         11#) of wild {
+                                                                 GHC.Types.False
+                                                                 -> \ (x :: GHC.Base.String) ->
+                                                                    GHC.Base.++
+                                                                      @ GHC.Types.Char
+                                                                      Animations.$fShowAnimationHandler10
+                                                                      (GHC.Base.++
+                                                                         @ GHC.Types.Char
+                                                                         Animations.$fShowAnimationHandler8
+                                                                         (f (GHC.Base.++
+                                                                               @ GHC.Types.Char
+                                                                               GHC.Show.showCommaSpace1
+                                                                               (GHC.Base.++
+                                                                                  @ GHC.Types.Char
+                                                                                  Animations.$fShowAnimationHandler6
+                                                                                  (f1
+                                                                                     (GHC.Base.++
+                                                                                        @ GHC.Types.Char
+                                                                                        GHC.Show.showCommaSpace1
+                                                                                        (GHC.Base.++
+                                                                                           @ GHC.Types.Char
+                                                                                           Animations.$fShowAnimationHandler4
+                                                                                           (f2
+                                                                                              (GHC.Base.++
+                                                                                                 @ GHC.Types.Char
+                                                                                                 Animations.$fShowAnimationHandler2
+                                                                                                 x)))))))))
+                                                                 GHC.Types.True
+                                                                 -> \ (x :: GHC.Base.String) ->
+                                                                    GHC.Types.:
+                                                                      @ GHC.Types.Char
+                                                                      GHC.Show.$fShow(,)4
+                                                                      (GHC.Base.++
+                                                                         @ GHC.Types.Char
+                                                                         Animations.$fShowAnimationHandler10
+                                                                         (GHC.Base.++
+                                                                            @ GHC.Types.Char
+                                                                            Animations.$fShowAnimationHandler8
+                                                                            (f (GHC.Base.++
+                                                                                  @ GHC.Types.Char
+                                                                                  GHC.Show.showCommaSpace1
+                                                                                  (GHC.Base.++
+                                                                                     @ GHC.Types.Char
+                                                                                     Animations.$fShowAnimationHandler6
+                                                                                     (f1
+                                                                                        (GHC.Base.++
+                                                                                           @ GHC.Types.Char
+                                                                                           GHC.Show.showCommaSpace1
+                                                                                           (GHC.Base.++
+                                                                                              @ GHC.Types.Char
+                                                                                              Animations.$fShowAnimationHandler4
+                                                                                              (f2
+                                                                                                 (GHC.Base.++
+                                                                                                    @ GHC.Types.Char
+                                                                                                    Animations.$fShowAnimationHandler2
+                                                                                                    (GHC.Types.:
+                                                                                                       @ GHC.Types.Char
+                                                                                                       GHC.Show.$fShow(,)2
+                                                                                                       x))))))))))) }) -}
+80b585f9a8e525157367902ee565b8dd
+  $w$cshowsPrec1 ::
+    GHC.Prim.Int#
+    -> SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt
+    -> Animations.AnimationType
+    -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <S,U><L,U><L,1*U>, Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt)
+                   (ww2 :: Animations.AnimationType) ->
+                 {__scc {main:Animations.showsPrec} True True} let {
+                                                                 f :: GHC.Base.String
+                                                                      -> GHC.Base.String
+                                                                 = Animations.$fShowAnimationSrcRect17
+                                                                     Animations.$fShowAnimationHandler12
+                                                                     ww1
+                                                               } in
+                                                               let {
+                                                                 f1 :: GHC.Base.String
+                                                                       -> GHC.Base.String
+                                                                 = {__scc {main:Animations.showsPrec} True True} case ww2 of wild {
+                                                                                                                   Animations.AnimationType'Idle
+                                                                                                                   -> Animations.$fShowAnimationSrcRect14
+                                                                                                                   Animations.AnimationType'Death
+                                                                                                                   -> Animations.$fShowAnimationSrcRect11
+                                                                                                                   Animations.AnimationType'Jump
+                                                                                                                   -> Animations.$fShowAnimationSrcRect8 }
+                                                               } in
+                                                               case GHC.Prim.tagToEnum#
+                                                                      @ GHC.Types.Bool
+                                                                      (GHC.Prim.>=#
+                                                                         ww
+                                                                         11#) of wild {
+                                                                 GHC.Types.False
+                                                                 -> \ (x :: GHC.Base.String) ->
+                                                                    GHC.Base.++
+                                                                      @ GHC.Types.Char
+                                                                      Animations.$fShowAnimationSrcRect6
+                                                                      (GHC.Base.++
+                                                                         @ GHC.Types.Char
+                                                                         Animations.$fShowAnimationSrcRect4
+                                                                         (f (GHC.Base.++
+                                                                               @ GHC.Types.Char
+                                                                               GHC.Show.showCommaSpace1
+                                                                               (GHC.Base.++
+                                                                                  @ GHC.Types.Char
+                                                                                  Animations.$fShowAnimationSrcRect2
+                                                                                  (f1
+                                                                                     (GHC.Base.++
+                                                                                        @ GHC.Types.Char
+                                                                                        Animations.$fShowAnimationHandler2
+                                                                                        x))))))
+                                                                 GHC.Types.True
+                                                                 -> \ (x :: GHC.Base.String) ->
+                                                                    GHC.Types.:
+                                                                      @ GHC.Types.Char
+                                                                      GHC.Show.$fShow(,)4
+                                                                      (GHC.Base.++
+                                                                         @ GHC.Types.Char
+                                                                         Animations.$fShowAnimationSrcRect6
+                                                                         (GHC.Base.++
+                                                                            @ GHC.Types.Char
+                                                                            Animations.$fShowAnimationSrcRect4
+                                                                            (f (GHC.Base.++
+                                                                                  @ GHC.Types.Char
+                                                                                  GHC.Show.showCommaSpace1
+                                                                                  (GHC.Base.++
+                                                                                     @ GHC.Types.Char
+                                                                                     Animations.$fShowAnimationSrcRect2
+                                                                                     (f1
+                                                                                        (GHC.Base.++
+                                                                                           @ GHC.Types.Char
+                                                                                           Animations.$fShowAnimationHandler2
+                                                                                           (GHC.Types.:
+                                                                                              @ GHC.Types.Char
+                                                                                              GHC.Show.$fShow(,)2
+                                                                                              x)))))))) }) -}
+70e1ffb7ed76fc1d7a3301259871b927
+  $wdropWhile ::
+    (Animations.AnimationType -> GHC.Types.Bool)
+    -> Animations.AnimationSrcRect
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+    -> (# Animations.AnimationSrcRect,
+          Data.Stream.Stream Animations.AnimationSrcRect #)
+  {- Arity: 3, HasNoCafRefs, Inline: [0] -}
+34a12fe6bacc5adc15b5742f07b9529d
+  $wgenerateSrcRects ::
+    GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Foreign.C.Types.CInt
+    -> Foreign.C.Types.CInt
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> GHC.Prim.Int#
+    -> Animations.AnimationType
+    -> [Animations.AnimationSrcRect]
+  {- Arity: 8, Strictness: <L,U><L,U><L,U><L,U><L,U><L,U><S,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ (ww :: GHC.Prim.Int#)
+                   (ww1 :: GHC.Prim.Int#)
+                   (ww2 :: Foreign.C.Types.CInt)
+                   (ww3 :: Foreign.C.Types.CInt)
+                   (ww4 :: GHC.Prim.Int#)
+                   (ww5 :: GHC.Prim.Int#)
+                   (ww6 :: GHC.Prim.Int#)
+                   (w :: Animations.AnimationType) ->
+                 {__scc {main:Animations.generateSrcRects} True True} let {
+                                                                        lvl :: GHC.Int.Int32
+                                                                               -> GHC.Int.Int32
+                                                                          {- Arity: 1,
+                                                                             Strictness: <S(S),1*U(U)>m -}
+                                                                        = \ (ds1 :: GHC.Int.Int32) ->
+                                                                          {__scc {main:Animations.generateSrcRects.f} False True} {__scc {linear-1.20.7:Linear.V2.+} False True} {__scc {linear-1.20.7:Linear.V2.fmap} False True} case ds1 of wild1 { GHC.Int.I32# y# ->
+                                                                                                                                                                                                                                   GHC.Int.I32#
+                                                                                                                                                                                                                                     (GHC.Prim.narrow32Int#
+                                                                                                                                                                                                                                        (GHC.Prim.+#
+                                                                                                                                                                                                                                           ww1
+                                                                                                                                                                                                                                           y#)) }
+                                                                      } in
+                                                                      let {
+                                                                        lvl1 :: GHC.Int.Int32
+                                                                                -> GHC.Int.Int32
+                                                                          {- Arity: 1,
+                                                                             Strictness: <S(S),1*U(U)>m -}
+                                                                        = \ (ds1 :: GHC.Int.Int32) ->
+                                                                          {__scc {main:Animations.generateSrcRects.f} False True} {__scc {linear-1.20.7:Linear.V2.+} False True} {__scc {linear-1.20.7:Linear.V2.fmap} False True} case ds1 of wild1 { GHC.Int.I32# y# ->
+                                                                                                                                                                                                                                   GHC.Int.I32#
+                                                                                                                                                                                                                                     (GHC.Prim.narrow32Int#
+                                                                                                                                                                                                                                        (GHC.Prim.+#
+                                                                                                                                                                                                                                           ww
+                                                                                                                                                                                                                                           y#)) }
+                                                                      } in
+                                                                      let {
+                                                                        lvl2 :: Linear.V2.V2
+                                                                                  (Foreign.C.Types.CInt
+                                                                                   -> Foreign.C.Types.CInt)
+                                                                        = Linear.V2.V2
+                                                                            @ (Foreign.C.Types.CInt
+                                                                               -> Foreign.C.Types.CInt)
+                                                                            lvl1
+                                                                              `cast`
+                                                                            (Sym (Foreign.C.Types.N:CInt[0])
+                                                                             ->_R Sym (Foreign.C.Types.N:CInt[0]))
+                                                                            lvl
+                                                                              `cast`
+                                                                            (Sym (Foreign.C.Types.N:CInt[0])
+                                                                             ->_R Sym (Foreign.C.Types.N:CInt[0]))
+                                                                      } in
+                                                                      let {
+                                                                        lvl3 :: Linear.V2.V2
+                                                                                  Foreign.C.Types.CInt
+                                                                        = Linear.V2.V2
+                                                                            @ Foreign.C.Types.CInt
+                                                                            ww2
+                                                                            ww3
+                                                                      } in
+                                                                      GHC.Base.map
+                                                                        @ Foreign.C.Types.CInt
+                                                                        @ Animations.AnimationSrcRect
+                                                                        (\ (n :: Foreign.C.Types.CInt) ->
+                                                                         {__scc {main:Animations.generateSrcRects.f} True False} Animations.AnimationSrcRect
+                                                                                                                                   (SDL.Video.Renderer.Rectangle
+                                                                                                                                      @ Foreign.C.Types.CInt
+                                                                                                                                      ({__scc {main:Animations.generateSrcRects.f} False True} {__scc {linear-1.20.7:Linear.V2.+} True False} ({__scc {linear-1.20.7:Linear.V2.+} False True} Linear.V2.$fAdditiveV2_$c<*>
+                                                                                                                                                                                                                                                                                                @ Foreign.C.Types.CInt
+                                                                                                                                                                                                                                                                                                @ Foreign.C.Types.CInt
+                                                                                                                                                                                                                                                                                                ({__scc {linear-1.20.7:Linear.V2.fmap} True False} lvl2))
+                                                                                                                                                                                                                                                (case n `cast`
+                                                                                                                                                                                                                                                      (Foreign.C.Types.N:CInt[0]) of wild1 { GHC.Int.I32# y# ->
+                                                                                                                                                                                                                                                 Linear.V2.V2
+                                                                                                                                                                                                                                                   @ Foreign.C.Types.CInt
+                                                                                                                                                                                                                                                   (GHC.Int.I32#
+                                                                                                                                                                                                                                                      (GHC.Prim.narrow32Int#
+                                                                                                                                                                                                                                                         (GHC.Prim.*#
+                                                                                                                                                                                                                                                            ww4
+                                                                                                                                                                                                                                                            y#)))
+                                                                                                                                                                                                                                                     `cast`
+                                                                                                                                                                                                                                                   (Sym (Foreign.C.Types.N:CInt[0]))
+                                                                                                                                                                                                                                                   (GHC.Int.I32#
+                                                                                                                                                                                                                                                      (GHC.Prim.narrow32Int#
+                                                                                                                                                                                                                                                         (GHC.Prim.*#
+                                                                                                                                                                                                                                                            ww5
+                                                                                                                                                                                                                                                            y#)))
+                                                                                                                                                                                                                                                     `cast`
+                                                                                                                                                                                                                                                   (Sym (Foreign.C.Types.N:CInt[0])) }))
+                                                                                                                                        `cast`
+                                                                                                                                      (Sym (Linear.Affine.N:Point[0]
+                                                                                                                                                <Linear.V2.V2>_R) <Foreign.C.Types.CInt>_N)
+                                                                                                                                      lvl3)
+                                                                                                                                   w)
+                                                                        (GHC.Int.$w$cenumFromTo1
+                                                                           0#
+                                                                           (GHC.Prim.narrow32Int#
+                                                                              (GHC.Prim.-# ww6 1#)))
+                                                                          `cast`
+                                                                        ([Sym (Foreign.C.Types.N:CInt[0])])_R) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  data AnimationHandler
+    = AnimationHandler {srcRectStream :: Data.Stream.Stream
+                                           Animations.AnimationSrcRect,
+                        frameDuration :: GHC.Types.Float,
+                        accTime :: GHC.Types.Float}
+f5818a8feba4f6a12cf8371a45ec7c30
+  data AnimationSrcRect
+    = AnimationSrcRect {srcRect :: SDL.Video.Renderer.Rectangle
+                                     Foreign.C.Types.CInt,
+                        animationType :: Animations.AnimationType}
+3e4bea669d998b37bc3470c5f2df2496
+  data AnimationType
+    = AnimationType'Idle | AnimationType'Death | AnimationType'Jump
+66c8d64d174f8ce1c6f2e651826010ed
+  accTime :: Animations.AnimationHandler -> GHC.Types.Float
+  RecSel Left Animations.AnimationHandler
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U(U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.accTime} True True} case ds of wild { Animations.AnimationHandler ds1 ds2 ds3 ->
+                                                             ds3 }) -}
+da054f24794855f967f25c1e8837c597
+  addTimeToAnimationHandler ::
+    Animations.AnimationHandler
+    -> GHC.Types.Float -> Animations.AnimationHandler
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S,1*U(U,U,1*U(U))><L,1*U(U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (animation :: Animations.AnimationHandler)
+                   (t :: GHC.Types.Float) ->
+                 {__scc {main:Animations.addTimeToAnimationHandler} True True} case animation of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                                                                               Animations.AnimationHandler
+                                                                                 ds
+                                                                                 ds1
+                                                                                 (case t of wild2 { GHC.Types.F# x ->
+                                                                                  {__scc {main:Animations.accTime} True False} case ds2 of wild3 { GHC.Types.F# y ->
+                                                                                                                               GHC.Types.F#
+                                                                                                                                 (GHC.Prim.plusFloat#
+                                                                                                                                    x
+                                                                                                                                    y) } }) }) -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  animationType ::
+    Animations.AnimationSrcRect -> Animations.AnimationType
+  RecSel Left Animations.AnimationSrcRect
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Animations.AnimationSrcRect) ->
+                 {__scc {main:Animations.animationType} True True} case ds of wild { Animations.AnimationSrcRect ds1 ds2 ->
+                                                                   ds2 }) -}
+537f487b5e9b741e34b0e18f7126078c
+  createAnimationHandler ::
+    Data.Stream.Stream Animations.AnimationSrcRect
+    -> GHC.Types.Float -> Animations.AnimationHandler
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><L,U>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (stream :: Data.Stream.Stream Animations.AnimationSrcRect)
+                   (frameduration :: GHC.Types.Float) ->
+                 {__scc {main:Animations.createAnimationHandler} True False} Animations.AnimationHandler
+                                                                               stream
+                                                                               frameduration
+                                                                               Animations.createAnimationHandler1) -}
+02a32b538f58e1d5249488f06f273d04
+  createAnimationHandler1 :: GHC.Types.Float
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
+3386a661235913872f82a876136e30dc
+  dropWhile ::
+    (Animations.AnimationType -> GHC.Types.Bool)
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U(U,U)>m,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Animations.AnimationType -> GHC.Types.Bool)
+                   (w1 :: Data.Stream.Stream Animations.AnimationSrcRect) ->
+                 case w1 of ww { Data.Stream.Cons ww1 ww2 ->
+                 case Animations.$wdropWhile w ww1 ww2 of ww3 { (#,#) ww4 ww5 ->
+                 Data.Stream.Cons @ Animations.AnimationSrcRect ww4 ww5 } }) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  frameDuration :: Animations.AnimationHandler -> GHC.Types.Float
+  RecSel Left Animations.AnimationHandler
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U(U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.frameDuration} True True} case ds of wild { Animations.AnimationHandler ds1 ds2 ds3 ->
+                                                                   ds2 }) -}
+d237dd8811eacf12c721245a1aa1bf67
+  generateSrcRectStream ::
+    [Animations.AnimationSrcRect]
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+  {- Unfolding: (({__scc {main:Animations.generateSrcRectStream} True False} Data.Stream.cycle)
+                   @ Animations.AnimationSrcRect) -}
+365abbf7ee47fad65f29a738ad9cff6c
+  generateSrcRects ::
+    Linear.Affine.Point Linear.V2.V2 Foreign.C.Types.CInt
+    -> Linear.V2.V2 Foreign.C.Types.CInt
+    -> Linear.V2.V2 Foreign.C.Types.CInt
+    -> Foreign.C.Types.CInt
+    -> Animations.AnimationType
+    -> [Animations.AnimationSrcRect]
+  {- Arity: 5,
+     Strictness: <S(S(S)S(S)),1*U(U(U),U(U))><S(SS),1*U(U,U)><S(S(S)S(S)),1*U(U(U),U(U))><S(S),1*U(U)><L,U>,
+     Inline: [0],
+     Unfolding: InlineRule (5, True, False)
+                (\ (w :: Linear.Affine.Point Linear.V2.V2 Foreign.C.Types.CInt)
+                   (w1 :: Linear.V2.V2 Foreign.C.Types.CInt)
+                   (w2 :: Linear.V2.V2 Foreign.C.Types.CInt)
+                   (w3 :: Foreign.C.Types.CInt)
+                   (w4 :: Animations.AnimationType) ->
+                 case w `cast`
+                      (Linear.Affine.N:Point[0]
+                           <Linear.V2.V2>_R <Foreign.C.Types.CInt>_N) of ww { Linear.V2.V2 ww1 ww2 ->
+                 case ww1
+                        `cast`
+                      (Foreign.C.Types.N:CInt[0]) of ww3 { GHC.Int.I32# ww4 ->
+                 case ww2
+                        `cast`
+                      (Foreign.C.Types.N:CInt[0]) of ww5 { GHC.Int.I32# ww6 ->
+                 case w1 of ww7 { Linear.V2.V2 ww8 ww9 ->
+                 case w2 of ww10 { Linear.V2.V2 ww11 ww12 ->
+                 case ww11
+                        `cast`
+                      (Foreign.C.Types.N:CInt[0]) of ww13 { GHC.Int.I32# ww14 ->
+                 case ww12
+                        `cast`
+                      (Foreign.C.Types.N:CInt[0]) of ww15 { GHC.Int.I32# ww16 ->
+                 case w3
+                        `cast`
+                      (Foreign.C.Types.N:CInt[0]) of ww17 { GHC.Int.I32# ww18 ->
+                 Animations.$wgenerateSrcRects
+                   ww4
+                   ww6
+                   ww8
+                   ww9
+                   ww14
+                   ww16
+                   ww18
+                   w4 } } } } } } } }) -}
+fc0e21270bc5524bf63e9f529c85220a
+  head ::
+    Data.Stream.Stream Animations.AnimationSrcRect
+    -> Animations.AnimationSrcRect
+  {- Unfolding: (({__scc {main:Animations.head} True False} Data.Stream.head)
+                   @ Animations.AnimationSrcRect) -}
+ce7807b37ca52bcb482a76cf4dd95007
+  headAnimation ::
+    Animations.AnimationHandler -> Animations.AnimationSrcRect
+  {- Arity: 1, Strictness: <L,1*U(1*U,A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ (animation :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.headAnimation} True True} Animations.head
+                                                                     ({__scc {main:Animations.srcRectStream} True True} case animation of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                                                                                                                        ds })) -}
+c9836d5f948abbfb5c163d3669a34ba3
+  pop_ ::
+    Data.Stream.Stream Animations.AnimationSrcRect
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+  {- Unfolding: (({__scc {main:Animations.pop_} True False} Data.Stream.tail)
+                   @ Animations.AnimationSrcRect) -}
+b8d03c9c3ff1630cb29c137a658b0347
+  prefix ::
+    [Animations.AnimationSrcRect]
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+  {- Unfolding: (({__scc {main:Animations.prefix} True False} Data.Stream.prefix)
+                   @ Animations.AnimationSrcRect) -}
+4c696e207297cd399f7136af96a4c137
+  prefixAnimation ::
+    [Animations.AnimationSrcRect]
+    -> Animations.AnimationHandler -> Animations.AnimationHandler
+  {- Arity: 2, Strictness: <L,U><S,1*U(1*U,U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (newanimations :: [Animations.AnimationSrcRect])
+                   (animation :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.prefixAnimation} True True} case animation of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                                                                     Animations.AnimationHandler
+                                                                       (Animations.prefix
+                                                                          newanimations
+                                                                          ({__scc {main:Animations.srcRectStream} True False} ds))
+                                                                       ds1
+                                                                       ds2 }) -}
+4646c906e89380b31c81462c9dc28632
+  removeAnimations ::
+    Animations.AnimationType
+    -> Animations.AnimationHandler -> Animations.AnimationHandler
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U(1*U(U,U),U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (animationtype :: Animations.AnimationType)
+                   (animation :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.removeAnimations} True True} case animation of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                                                                      Animations.AnimationHandler
+                                                                        ({__scc {main:Animations.srcRectStream} True False} Animations.dropWhile
+                                                                                                                              (\ (ds3 :: Animations.AnimationType) ->
+                                                                                                                               Animations.$fEqAnimationType_$c==
+                                                                                                                                 ds3
+                                                                                                                                 animationtype)
+                                                                                                                              ds)
+                                                                        ds1
+                                                                        ds2 }) -}
+e8a40d05f850170b985998a25992cebd
+  removeAnimationsUpto ::
+    Animations.AnimationType
+    -> Animations.AnimationHandler -> Animations.AnimationHandler
+  {- Arity: 2, HasNoCafRefs, Strictness: <L,U><S,1*U(1*U(U,U),U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (animationtype :: Animations.AnimationType)
+                   (animation :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.removeAnimationsUpto} True True} case animation of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                                                                          Animations.AnimationHandler
+                                                                            ({__scc {main:Animations.srcRectStream} True False} Animations.dropWhile
+                                                                                                                                  (\ (ds3 :: Animations.AnimationType) ->
+                                                                                                                                   Animations.$fEqAnimationType_$c/=
+                                                                                                                                     ds3
+                                                                                                                                     animationtype)
+                                                                                                                                  ds)
+                                                                            ds1
+                                                                            ds2 }) -}
+d7ea5961eb536345ea8f50caa16cc403
+  replaceAnimation ::
+    [Animations.AnimationSrcRect]
+    -> Animations.AnimationHandler -> Animations.AnimationHandler
+  {- Arity: 2, Strictness: <L,1*U><S,1*U(1*U,U,U)>m,
+     Unfolding: InlineRule (2, True, False)
+                (\ (newanimations :: [Animations.AnimationSrcRect])
+                   (animation :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.replaceAnimation} True True} case animation of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                                                                      Animations.AnimationHandler
+                                                                        (Animations.prefix
+                                                                           (GHC.List.cycle
+                                                                              @ Animations.AnimationSrcRect
+                                                                              newanimations)
+                                                                           ({__scc {main:Animations.srcRectStream} True False} ds))
+                                                                        ds1
+                                                                        ds2 }) -}
+f5818a8feba4f6a12cf8371a45ec7c30
+  srcRect ::
+    Animations.AnimationSrcRect
+    -> SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt
+  RecSel Left Animations.AnimationSrcRect
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U(U,U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Animations.AnimationSrcRect) ->
+                 {__scc {main:Animations.srcRect} True True} case ds of wild { Animations.AnimationSrcRect ds1 ds2 ->
+                                                             ds1 }) -}
+66c8d64d174f8ce1c6f2e651826010ed
+  srcRectStream ::
+    Animations.AnimationHandler
+    -> Data.Stream.Stream Animations.AnimationSrcRect
+  RecSel Left Animations.AnimationHandler
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U(U,U),A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: Animations.AnimationHandler) ->
+                 {__scc {main:Animations.srcRectStream} True True} case ds of wild { Animations.AnimationHandler ds1 ds2 ds3 ->
+                                                                   ds1 }) -}
+d42ebcc3ff0c651b31f924e76a62e52d
+  updateAnimationHandler ::
+    Animations.AnimationHandler -> Animations.AnimationHandler
+  {- Arity: 1, Strictness: <S(LS(S)S(S)),1*U(U,1*U(U),1*U(U))>m,
+     Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Animations.AnimationHandler) ->
+                 case w of ww { Animations.AnimationHandler ww1 ww2 ww3 ->
+                 case ww2 of ww4 { GHC.Types.F# ww5 ->
+                 case ww3 of ww6 { GHC.Types.F# ww7 ->
+                 let {
+                   animation :: GHC.Types.Float = GHC.Types.F# ww5
+                 } in
+                 let {
+                   animation1 :: GHC.Types.Float = GHC.Types.F# ww7
+                 } in
+                 case {__scc {main:Animations.updateAnimationHandler} True True} {__scc {main:Animations.accTime} True False} Animations.AnimationHandler
+                                                                                                                                ww1
+                                                                                                                                animation
+                                                                                                                                animation1 of wild { Animations.AnimationHandler ds ds1 ds2 ->
+                 case ds2 of wild1 { GHC.Types.F# x ->
+                 case {__scc {main:Animations.updateAnimationHandler} False True} {__scc {main:Animations.frameDuration} True False} ds1 of wild2 { GHC.Types.F# y ->
+                 case {__scc {main:Animations.updateAnimationHandler} False True} GHC.Prim.tagToEnum#
+                                                                                    @ GHC.Types.Bool
+                                                                                    (GHC.Prim.geFloat#
+                                                                                       x
+                                                                                       y) of wild3 {
+                   GHC.Types.False -> Animations.AnimationHandler ds wild2 wild1
+                   GHC.Types.True
+                   -> {__scc {main:Animations.updateAnimationHandler} False True} {__scc {main:Animations.popAnimation_} True False} Animations.AnimationHandler
+                                                                                                                                       ({__scc {main:Animations.popAnimation_} False True} Animations.pop_
+                                                                                                                                                                                             ({__scc {main:Animations.srcRectStream} True False} ds))
+                                                                                                                                       wild2
+                                                                                                                                       Animations.createAnimationHandler1 } } } } } } }) -}
+instance GHC.Classes.Eq [Animations.AnimationType]
+  = Animations.$fEqAnimationType
+instance GHC.Show.Show [Animations.AnimationHandler]
+  = Animations.$fShowAnimationHandler
+instance GHC.Show.Show [Animations.AnimationSrcRect]
+  = Animations.$fShowAnimationSrcRect
+instance GHC.Show.Show [Animations.AnimationType]
+  = Animations.$fShowAnimationType
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
