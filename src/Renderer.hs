@@ -196,3 +196,4 @@ instance Renderer MahppyBird where
 
 roundSDLRect :: SDL.Rectangle Float -> SDL.Rectangle CInt
 roundSDLRect = (\(SDL.Rectangle (SDL.P (V2 x y)) (V2 w h)) -> SDL.Rectangle (SDL.P (V2 (round x) (round y))) (V2 (round w) (round h)))
+

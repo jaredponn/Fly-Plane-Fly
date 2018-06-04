@@ -103,7 +103,11 @@ runScene input Menu = do
         quitbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
-        renderactions <- (++[drawBtnToScreen playbtnattr, drawBtnToScreen quitbtnattr]) <$> updatedRenderMenuActions  
+        pausemusicbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
+        pausemusicbtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> (createRightEdgeAlignedButtonAttr 0 (V2 20 20) quitbtntexture) >>= alignToBottomEdgeButtonAttr
+        runReaderT pausemusicbtneffect pausemusicbtnattr
+
+        renderactions <- (++[drawBtnToScreen playbtnattr, drawBtnToScreen quitbtnattr, drawBtnToScreen pausemusicbtnattr]) <$> updatedRenderMenuActions  
         drawObjectsWithDt renderactions
 
         where
@@ -113,8 +117,13 @@ runScene input Menu = do
                 playbtneffect = buttonGameStateModifierFromMouse $ pushGameState PrePlay 
 
                 quitbtneffect ::( GameStateManager m
-                                , HasInput m) => Button m
+                                , HasInput m ) => Button m
                 quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
+
+                pausemusicbtneffect :: ( SoundManager m
+                                       , HasInput m
+                                       , Logger m) => Button m
+                pausemusicbtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
 
 runScene input PrePlay = do
         pressspacetoplay <- view $ cResources.cTextures.guiTextures.pressSpacetoJumpTexture
@@ -239,11 +248,13 @@ runScene input (GameOver _) = do
                                      , WallManager m
                                      , PlayerManager m
                                      , AnimationsManager m
-                                     , ScoreManager m) => Button m
+                                     , ScoreManager m
+                                     , SoundManager m) => Button m
                 playagainbtneffect = buttonGameStateModifierFromMouse $ popGameState_ >> pushGameState PrePlay >> resetGame
 
                 quitbtneffect ::( GameStateManager m
-                                , HasInput m) => Button m
+                                , HasInput m
+                                , SoundManager m) => Button m
                 quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
 
 runScene input Quit = return ()
@@ -331,9 +342,8 @@ resetPlayerAngle :: PlayerManager m => m ()
 resetPlayerAngle = setPlayerAngle 0
 
 -- if the button is pressed, then execute the modifier to the game state
-buttonGameStateModifierFromMouse :: (GameStateManager m 
-  , HasInput m) => m ()  -- action to modify the game
-  -> Button m
+buttonGameStateModifierFromMouse :: ( HasInput m ) => m ()  -- action to modify the game
+                                                      -> Button m
 buttonGameStateModifierFromMouse f = do
         mousepos <- lift $ (\(V2 a b) -> (SDL.P (V2 (fromIntegral a) (fromIntegral b)))) <$> _mousePos <$> getInput
         mousepress <- lift $ _mousePress <$> getInput
@@ -355,3 +365,10 @@ updateCameraPos = do
         SDL.P (V2 x _) <- getPlayerPos
         camoffset <- getCameraOffset
         setCameraPos . SDL.P $ (V2 x 0) + camoffset
+
+pauseOrPlaySounds :: (SoundManager m, Logger m) => m ()
+pauseOrPlaySounds = do
+        arechannelsplaying <- areChannelsPlaying
+        if arechannelsplaying 
+           then pauseAll
+           else resumeAll 

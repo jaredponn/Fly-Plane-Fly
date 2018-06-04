@@ -6,6 +6,7 @@ import Data.Stream
 import Linear.V2
 import Foreign.C.Types
 import Data.Stack
+import qualified GHC.Word
 import qualified SDL
 import qualified SDL.Font as TTF
 import qualified SDL.Mixer as Mixer
@@ -90,9 +91,9 @@ data Input = Input { _isSpace :: Bool
 makeLenses ''Input
 
 data RenderingVars = RenderingVars { _playerAnimationHandler :: AnimationHandler
-                                   , _bgRect :: SDL.Rectangle Float
                                    , _cameraPos :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
                                    , _camOffset :: {-# UNPACK #-} !(V2 Float)
+                                   , _transitionOpacity :: {-# UNPACK #-} !GHC.Word.Word8
                                    } deriving Show
 makeLenses ''RenderingVars
 
@@ -102,7 +103,6 @@ data GameState = Menu
                | Pause 
                | GameOver Bool -- bool to know if there was a new high score
                | Quit
-               | Transition (IO ()) (IO ()) -- rendering of the two frames
 
 instance Show GameState where
         show Menu = "Menu"
@@ -111,7 +111,6 @@ instance Show GameState where
         show Pause = "Pause"
         show (GameOver _) = "GameOver"
         show Quit = "Quit"
-        show (Transition _ _) = "Transition"
 
 instance Eq GameState where
         (==) Menu Menu = True
@@ -120,7 +119,6 @@ instance Eq GameState where
         (==) Pause Pause = True
         (==) (GameOver _) (GameOver _) = True
         (==) Quit Quit = True
-        (==) (Transition _ _) (Transition _ _) = True
         (==) _ _ = False
 
 

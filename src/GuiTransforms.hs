@@ -15,6 +15,7 @@ class Monad m => GuiTransforms m where
 
         alignToLeftEdge :: Rectangle Float -> m (Rectangle Float)
         alignToRightEdge :: Rectangle Float -> m (Rectangle Float)
+        alignToBottomEdge:: Rectangle Float -> m (Rectangle Float)
 
         getWindowSize :: m (V2 Float)
 
@@ -55,5 +56,17 @@ instance GuiTransforms MahppyBird where
                     nrect = Rectangle topleftpt (V2 width height)
                 return nrect
 
+        alignToBottomEdge :: GuiTransforms m => Rectangle Float -> m (Rectangle Float)
+        alignToBottomEdge rect = do
+                V2 winW winH <- getWindowSize
+                let Rectangle (P (V2 x _)) (V2 width height) = rect
+                    topleftpt = (P (V2 x (winH - height)))
+                    nrect = Rectangle topleftpt (V2 width height)
+                return nrect
+
 translate :: V2 Float -> Rectangle Float -> Rectangle Float
 translate (V2 dx dy) (Rectangle (P (V2 x y)) lengths) = Rectangle (P (V2 (dx + x) (dy + y))) lengths
+
+centerRectangle :: (GuiTransforms m) => Rectangle Float
+                                        -> m (Rectangle Float)
+centerRectangle = yCenterRectangle >=> xCenterRectangle

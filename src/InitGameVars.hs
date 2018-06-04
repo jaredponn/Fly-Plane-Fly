@@ -140,6 +140,6 @@ initWallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.44)
 
 defaultRenderingVars :: RenderingVars 
 defaultRenderingVars = RenderingVars { _playerAnimationHandler = createAnimationHandler (generateSrcRectStream playeridlesrcrects) 0.1
-                              , _bgRect = SDL.Rectangle (SDL.P (V2 0 0)) (V2 (fromIntegral screenWidth) (fromIntegral screenHeight))
-                              , _cameraPos = SDL.P $ V2 0 0
-                              , _camOffset = (-100)}
+                                     , _cameraPos = SDL.P $ V2 0 0
+                                     , _camOffset = (-100)
+                                     , _transitionOpacity = 100 }

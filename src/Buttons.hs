@@ -98,6 +98,13 @@ alignToRightEdgeButtonAttr btnattr = do
         return btnattr { rect = rectangle'
                        , aabb = rectangleToAabb rectangle'}
 
+alignToBottomEdgeButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  
+alignToBottomEdgeButtonAttr btnattr = do
+        let rectangle = rect btnattr
+        rectangle' <- alignToBottomEdge rectangle
+        return btnattr { rect = rectangle'
+                       , aabb = rectangleToAabb rectangle'}
+
 translateButtonAttr :: V2 Float -> ButtonAttr -> ButtonAttr
 translateButtonAttr translation btnattr = let nrect = GuiTransforms.translate translation $ rect btnattr
                                            in btnattr { rect = nrect
