@@ -55,7 +55,5 @@ instance GuiTransforms MahppyBird where
                     nrect = Rectangle topleftpt (V2 width height)
                 return nrect
 
-
 translate :: V2 Float -> Rectangle Float -> Rectangle Float
 translate (V2 dx dy) (Rectangle (P (V2 x y)) lengths) = Rectangle (P (V2 (dx + x) (dy + y))) lengths
-

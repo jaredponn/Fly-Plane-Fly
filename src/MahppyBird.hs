@@ -248,8 +248,7 @@ runScene input (GameOver _) = do
 
 runScene input Quit = return ()
 
-
--- updatedRender<..> functions include some of the render functions necassary to render the game for that scene
+{- updatedRender<..> functions include some of the render functions necassary to render the game for that scene -}
 updatedRenderMenuActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m) => m [m()]
 updatedRenderMenuActions = do
         updateCameraPos
@@ -281,15 +280,15 @@ updatedRenderPlayActions = do
         return [drawBg, drawScore, drawWalls, drawPlayer]
 
         
-updatedRenderPauseActions :: (Renderer m, PlayerManager m, CameraManager m) => m ([m ()])
+updatedRenderPauseActions :: (Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m) => m ([m ()])
 updatedRenderPauseActions = do
         updateCameraPos
-        return [drawBg, drawScore, drawWalls, drawPlayer] 
+        font <- view $ cResources.cFont.scoreFont
+        return [drawBg, drawScore, drawWalls, drawPlayer, drawScreenOverlay $ SDL.V4 0 0 0 95, drawTextToScreen font "paused" (SDL.P $ SDL.V2 0 0) (SDL.V4 155 98 0 100) (yCenterRectangle >=> xCenterRectangle)] 
 
 updatedRenderGameOverActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m, ScoreManager m) => m [m ()]
 updatedRenderGameOverActions = do
         updateCameraPos
-        updatePlayerAngle
         updatePlayerAnimation
         return [drawBg, drawScore, drawWalls, drawPlayer] 
 
@@ -297,7 +296,7 @@ updatedRenderScoresAction :: (MonadReader Config m, GuiTransforms m, ScoreManage
 updatedRenderScoresAction = do 
         highscore <- getHighScore
         highscorefont <- view $ cResources.cFont.highScoreFont
-        drawTextToScreen highscorefont (T.pack . show $ highscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (0) (70)))) <$> (yCenterRectangle >=> xCenterRectangle))
+        drawTextToScreen highscorefont (T.pack . show $ highscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 100) ((liftM (GuiTransforms.translate (V2 (0) (70)))) <$> (yCenterRectangle >=> xCenterRectangle))
         
         curscore <- getScore
         scorefont <- view $ cResources.cFont.scoreFont
