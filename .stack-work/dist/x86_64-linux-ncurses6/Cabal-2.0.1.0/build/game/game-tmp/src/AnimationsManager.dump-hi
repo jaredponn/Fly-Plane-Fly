@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:37.070596084 UTC
+2018-06-05 00:36:03.842827526 UTC
 
 interface main:AnimationsManager 8022
-  interface hash: 92f83f923e158f1ec8c9c248a8d0b003
-  ABI hash: cbf8705999ca4b50005279e8fbbfc640
+  interface hash: 1f80909279f17ea20869d5a7d63eebc7
+  ABI hash: d650d562ace7f9bcb6645a5ec1b845b5
   export-list hash: 870ab299162042bfa1955a3278127f9e
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 839f3f975377d929d6342740155f98f2
@@ -130,27 +130,27 @@ import  -/  Animations ed8ac26f601711059133f19a17b8411f
   removeAnimationsUpto 6b976407c3ca44368d47ddb31df8ac56
   replaceAnimation 4161bc53926f2cd22d2433f927437e83
   updateAnimationHandler 817895427789a9e2fd23f2986d91b90b
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
-  cAnimations 3fd248e2074d61cf52350271315c2ced
-  cResources e678b7b654c8cae60a2d1262461e631a
+  cAnimations 274f811ff19250bf36e042224fec3125
+  cResources b04d36993ee1ee6e042ac28bc0eb61e1
   playerAnimationHandler c0a8016eeb612375fb1f7452100c651c
   playerDeathAnimation 20dd5da2e27bacff0b182ae170cc3e81
   playerIdleAnimation 3f8acb5001058db804be180c333dc989
   playerJumpAnimation 41aad7e466f7e7e4a245f84c07c1c830
   vRenderingVars 2d58b68e764b27d35775ee018d600077
-import  -/  TimeManager c5a6185a6f35cba82cca87bc7827c727
-  exports: 8b2c0f72e07dc8e418f06d3a9f6510ae
-  TimeManager 11f819b14b751ed055082b44f160b76d
-  getdt e6fb864aaca5b697f52669c64cf5945c
+import  -/  TimeManager 6917e8576ee854ed7f928bd2c7cdda2f
+  exports: 1444a12543659cbb43ece9f99bc0f223
+  TimeManager 3f466474e9f7b0f2ba00315fed57edeb
+  getdt b59dc952a65b4efc7573533255248ed0
 import  -/  mtl-2.2.2:Control.Monad.Reader 8d63edf5dfaf25ad085eae4468bdd77e
 import  -/  mtl-2.2.2:Control.Monad.Reader.Class 6d33756d93a5919f9374afec232249f4
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
-c8e0f589a92aeed99bff1d8d3702265e
+1300b0f8b825f26c0c0bd424b5660e12
   $fAnimationsManagerMahppyBird ::
     AnimationsManager.AnimationsManager GameVars.MahppyBird
   DFunId
@@ -309,7 +309,7 @@ c8e0f589a92aeed99bff1d8d3702265e
                                          GameVars.Vars GHC.Types.IO>_R
                                       <[Animations.AnimationSrcRect]>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <[Animations.AnimationSrcRect]>_N))) -}
-583e2b2e80be8c1a818c664c0b4c23bd
+ba493dd213709fded2b755557b66b361
   $fAnimationsManagerMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -327,7 +327,7 @@ c8e0f589a92aeed99bff1d8d3702265e
                      case x3 of wild1 { GameVars.Resources x4 x5 x6 x7 ->
                      case x6 of wild2 { GameVars.Animations x8 x9 x10 -> x8 } } },
                      eta) #)) -}
-c8620c5bb235be0ca31c3e04f99fa30f
+6b39cd7e12ff04ad4d07d4660422be98
   $fAnimationsManagerMahppyBird2 ::
     GameVars.Config
     -> GameVars.Vars
@@ -345,7 +345,7 @@ c8620c5bb235be0ca31c3e04f99fa30f
                      case x3 of wild1 { GameVars.Resources x4 x5 x6 x7 ->
                      case x6 of wild2 { GameVars.Animations x8 x9 x10 -> x10 } } },
                      eta) #)) -}
-d32bc72f0ef9ce2851acb5c12dc12dcc
+9b8535dfb117771f23e1885a3d6b00e3
   $fAnimationsManagerMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -363,7 +363,7 @@ d32bc72f0ef9ce2851acb5c12dc12dcc
                      case x3 of wild1 { GameVars.Resources x4 x5 x6 x7 ->
                      case x6 of wild2 { GameVars.Animations x8 x9 x10 -> x9 } } },
                      eta) #)) -}
-44e3f5536853855a0f8bf639a7c8d999
+5d156741ee9aa8d0a2ac4de47e47ca78
   $fAnimationsManagerMahppyBird4 ::
     [Animations.AnimationSrcRect]
     -> GameVars.Config
@@ -394,7 +394,7 @@ d32bc72f0ef9ce2851acb5c12dc12dcc
                        x4
                        dt1
                        dt2 }) #)) -}
-cae7ac2680e591c43fe586a53bc44f30
+2dc4e5ed9f2b481fafda2a2f489ef8d7
   $fAnimationsManagerMahppyBird5 ::
     [Animations.AnimationSrcRect]
     -> GameVars.Config
@@ -425,7 +425,7 @@ cae7ac2680e591c43fe586a53bc44f30
                        x4
                        dt1
                        dt2 }) #)) -}
-064c3d8523d615d346eccdd9b6121d76
+69e6d225cbc1acaacaac6a38ae564fba
   $fAnimationsManagerMahppyBird6 ::
     Animations.AnimationType
     -> GameVars.Config
@@ -441,7 +441,7 @@ cae7ac2680e591c43fe586a53bc44f30
                    (w2 :: GameVars.Vars)
                    (w3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  AnimationsManager.$w$cremovePlayerAnimationsUpto w w2 w3) -}
-2b4ba237eaab5b75cd30b929043feb25
+1e70ad6fe08b239d37f75cbd1cf0e83d
   $fAnimationsManagerMahppyBird7 ::
     GameVars.Config
     -> GameVars.Vars
@@ -455,7 +455,7 @@ cae7ac2680e591c43fe586a53bc44f30
                    (w1 :: GameVars.Vars)
                    (w2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  AnimationsManager.$w$cupdatePlayerAnimation w1 w2) -}
-bd2c47be6001197d63e34471121988c6
+9e1369a31f854fcd17b96d1b3c30fd7e
   $fAnimationsManagerMahppyBird8 ::
     GameVars.Config
     -> GameVars.Vars
@@ -609,7 +609,7 @@ a0e7beab9359d50ed7a3710c4e50decd
                        x4
                        dt1
                        dt2 }) #)) -}
-c8e0f589a92aeed99bff1d8d3702265e
+1300b0f8b825f26c0c0bd424b5660e12
   class GHC.Base.Monad m => AnimationsManager (m :: * -> *) where
     getPlayerAnimationSrc :: m Animations.AnimationSrcRect
     updatePlayerAnimation :: m ()

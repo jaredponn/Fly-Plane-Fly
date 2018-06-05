@@ -36,7 +36,7 @@ class Monad m => Renderer m where
         drawObjects :: [m ()] -> m ()
         drawObjectsWithDt :: [m ()] -> m ()
 
-        drawBg :: m ()
+        drawBg :: SDL.Texture-> m ()
         drawPlayer :: m ()
         drawScore :: m ()
 
@@ -77,10 +77,9 @@ instance Renderer MahppyBird where
                 t1 <- getRealTime
                 setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
 
-        drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => m ()
-        drawBg = do
+        drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => SDL.Texture -> m ()
+        drawBg bgtexture = do
                 renderer <- asks cRenderer 
-                bgtexture <- view $ cResources.cTextures.bgTexture
                 SDL.copy renderer bgtexture Nothing Nothing 
 
         drawScreenOverlay :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m, GuiTransforms m) => SDL.V4 Word8

@@ -1,18 +1,18 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 18:32:55.263893733 UTC
+2018-06-05 00:36:02.211224873 UTC
 
 interface main:SoundManager 8022
-  interface hash: 52168667c0fe45578a86d96918fa2008
-  ABI hash: 15a75b498fe7d8db2e40b5fa4f95e333
-  export-list hash: 8c2e19846d532df58bb6e65c35893349
+  interface hash: 6e8e42795db6503c11106fe44066facb
+  ABI hash: 1010a93932bfc8dbb36d5ad8736a2bb6
+  export-list hash: 2682bf98cf9562134007a2e59b3ed39b
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 839f3f975377d929d6342740155f98f2
   sig of: Nothing
   used TH splices: False
   where
 exports:
-  SoundManager.SoundManager{SoundManager.areChannelsPlaying SoundManager.getBgMusicVolume SoundManager.pauseAll SoundManager.playCrashFx SoundManager.playJumpFx SoundManager.resumeAll SoundManager.setBgMusicVolume}
+  SoundManager.SoundManager{SoundManager.areChannelsPlaying SoundManager.getBgMusicVolume SoundManager.muteAll SoundManager.playCrashFx SoundManager.playJumpFx SoundManager.resumeAll SoundManager.setBgMusicVolume}
 module dependencies: Animations GameVars Walls
 package dependencies: QuickCheck-2.10.1 Stack-0.3.2
                       StateVar-1.1.1.0 Stream-0.4.7.2 adjunctions-4.4 array-0.5.2.0
@@ -115,24 +115,26 @@ family instance modules: adjunctions-4.4:Data.Functor.Rep
                          vector-0.12.0.1:Data.Vector.Unboxed
                          vector-0.12.0.1:Data.Vector.Unboxed.Base
 import  -/  base-4.10.1.0:Control.Monad.IO.Class 9d78cd0f73a837f3c00753bd212b9f2c
+import  -/  base-4.10.1.0:Data.Functor 2ffda4f936b8f474394d93205750aff3
 import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
 import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
 import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   bgMusicChannel 163a373fbfaf72ceaaf6dfa5a0ae9b6b
-  cResources e678b7b654c8cae60a2d1262461e631a
-  cSound 6043d13d4f328aac12ba36cf9cfd043f
+  cResources b04d36993ee1ee6e042ac28bc0eb61e1
+  cSound 59a33c64917b259aef8c17e374b9e5e9
   crashFx 5d006afaa53962228d4cdb502ec43682
   jumpFx d5b1328f33af34462912ac47c2c34f97
 import  -/  mtl-2.2.2:Control.Monad.Reader 8d63edf5dfaf25ad085eae4468bdd77e
 import  -/  mtl-2.2.2:Control.Monad.Reader.Class 6d33756d93a5919f9374afec232249f4
 import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
-14f6e9bc4905bd261949db297bc23ed6
+231bf9fbb0ef1c04a8736ec0d1ad558e
   $fSoundManagerMahppyBird ::
     SoundManager.SoundManager GameVars.MahppyBird
   DFunId
@@ -140,6 +142,23 @@ import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
      Unfolding: DFun:.
                   @ GameVars.MahppyBird
                   GameVars.$fMonadMahppyBird
+                  SoundManager.$fSoundManagerMahppyBird8
+                    `cast`
+                  (Trans
+                       (<GameVars.Config>_R
+                        ->_R Trans
+                                 (<GameVars.Vars>_R
+                                  ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                           <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                       (Trans
+                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                      <*>_N
+                                      <GameVars.Config>_R
+                                      <Control.Monad.Trans.State.Lazy.StateT
+                                         GameVars.Vars GHC.Types.IO>_R
+                                      <()>_N))
+                            (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
                   SoundManager.$fSoundManagerMahppyBird7
                     `cast`
                   (Trans
@@ -157,84 +176,18 @@ import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
                                          GameVars.Vars GHC.Types.IO>_R
                                       <()>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
-                  SoundManager.$fSoundManagerMahppyBird6
-                    `cast`
-                  (Trans
-                       (<GameVars.Config>_R
-                        ->_R Trans
-                                 (<GameVars.Vars>_R
-                                  ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
-                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                           <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
-                       (Trans
-                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                      <*>_N
-                                      <GameVars.Config>_R
-                                      <Control.Monad.Trans.State.Lazy.StateT
-                                         GameVars.Vars GHC.Types.IO>_R
-                                      <()>_N))
-                            (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
-                  SoundManager.$fSoundManagerMahppyBird5
-                    `cast`
-                  (Nth:3
-                       (Trans
-                            (<GHC.Types.IO ()>_R
-                             ->_R Trans
-                                      (<GameVars.Config>_R
-                                       ->_R Trans
-                                                (<GameVars.Vars>_R
-                                                 ->_R Sym (GHC.Types.N:IO[0]
-                                                               <((), GameVars.Vars)>_R))
-                                                (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                                          <GameVars.Vars>_N
-                                                          <GHC.Types.IO>_R
-                                                          <()>_N)))
-                                      (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                                <*>_N
-                                                <GameVars.Config>_R
-                                                <Control.Monad.Trans.State.Lazy.StateT
-                                                   GameVars.Vars GHC.Types.IO>_R
-                                                <()>_N)))
-                            (<GHC.Types.IO ()>_R ->_R Sym (GameVars.N:MahppyBird[0]) <()>_N)))
-                  SoundManager.$fSoundManagerMahppyBird4
-                    `cast`
-                  (Nth:3
-                       (Trans
-                            (<GHC.Types.IO ()>_R
-                             ->_R Trans
-                                      (<GameVars.Config>_R
-                                       ->_R Trans
-                                                (<GameVars.Vars>_R
-                                                 ->_R Sym (GHC.Types.N:IO[0]
-                                                               <((), GameVars.Vars)>_R))
-                                                (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                                          <GameVars.Vars>_N
-                                                          <GHC.Types.IO>_R
-                                                          <()>_N)))
-                                      (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                                <*>_N
-                                                <GameVars.Config>_R
-                                                <Control.Monad.Trans.State.Lazy.StateT
-                                                   GameVars.Vars GHC.Types.IO>_R
-                                                <()>_N)))
-                            (<GHC.Types.IO ()>_R ->_R Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  SoundManager.$fSoundManagerMahppyBird_$cmuteAll
+                  SoundManager.$fSoundManagerMahppyBird_$cresumeAll
                   SoundManager.$fSoundManagerMahppyBird3
                     `cast`
                   (Trans
-                       (<GameVars.Config>_R
-                        ->_R Trans
-                                 (<GameVars.Vars>_R
-                                  ->_R Sym (GHC.Types.N:IO[0] <(GHC.Types.Bool, GameVars.Vars)>_R))
-                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                           <GameVars.Vars>_N <GHC.Types.IO>_R <GHC.Types.Bool>_N)))
-                       (Trans
-                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                      <*>_N
-                                      <GameVars.Config>_R
-                                      <Control.Monad.Trans.State.Lazy.StateT
-                                         GameVars.Vars GHC.Types.IO>_R
-                                      <GHC.Types.Bool>_N))
-                            (Sym (GameVars.N:MahppyBird[0]) <GHC.Types.Bool>_N)))
+                       (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                 <*>_N
+                                 <GameVars.Config>_R
+                                 <Control.Monad.Trans.State.Lazy.StateT
+                                    GameVars.Vars GHC.Types.IO>_R
+                                 <GHC.Types.Bool>_N))
+                       (Sym (GameVars.N:MahppyBird[0]) <GHC.Types.Bool>_N))
                   SoundManager.$fSoundManagerMahppyBird2
                     `cast`
                   (<SDL.Mixer.Volume>_R
@@ -256,7 +209,7 @@ import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
                                     GameVars.Vars GHC.Types.IO>_R
                                  <SDL.Mixer.Volume>_N))
                        (Sym (GameVars.N:MahppyBird[0]) <SDL.Mixer.Volume>_N)) -}
-0140d0eaeb551641ebaac8fc3c4d56bd
+86d989d24c6d2685650beaba57b93a03
   $fSoundManagerMahppyBird1 ::
     GameVars.Config
     -> Control.Monad.Trans.State.Lazy.StateT
@@ -326,7 +279,7 @@ import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
                                                <GameVars.Vars>_N
                                                <GHC.Types.IO>_R
                                                <SDL.Mixer.Volume>_N)))))) -}
-d704d8d7c1810eb79a8ac9c8d1b492a3
+ef95148e1dc493b396f69b39fff2de31
   $fSoundManagerMahppyBird2 ::
     SDL.Mixer.Volume
     -> GameVars.Config
@@ -391,65 +344,97 @@ d704d8d7c1810eb79a8ac9c8d1b492a3
                                             GameVars.Vars GHC.Types.IO ()>_R
                                  ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))))) -}
-795d8f8fb2a3d64f39386fc5591ad6c1
+eef2b1a101b2d9b30dd1680f03d2208d
   $fSoundManagerMahppyBird3 ::
     GameVars.Config
-    -> GameVars.Vars
-    -> GHC.Prim.State# GHC.Prim.RealWorld
-    -> (# GHC.Prim.State# GHC.Prim.RealWorld,
-          (GHC.Types.Bool, GameVars.Vars) #)
-  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><S,U>,
-     Unfolding: InlineRule (3, True, False)
-                (\ (x :: GameVars.Config)
-                   (eta :: GameVars.Vars)
-                   (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
-                 case {__pkg_ccall_GC sdl2-mixer-1.1.0 GHC.Prim.Int#
-                                                       -> GHC.Prim.State# GHC.Prim.RealWorld
-                                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld,
-                                                             GHC.Prim.Int# #)}
-                        -1#
-                        eta1 of wild { (#,#) ds3 ds4 ->
-                 (# ds3,
-                    (GHC.Prim.tagToEnum#
-                       @ GHC.Types.Bool
-                       (GHC.Prim.># (GHC.Prim.narrow32Int# ds4) 0#),
-                     eta) #) }) -}
-2d64cb4b4d40aa91ea83f8c39a672d53
-  $fSoundManagerMahppyBird4 ::
-    GameVars.Config
-    -> GameVars.Vars
-    -> GHC.Prim.State# GHC.Prim.RealWorld
-    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
-  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><S,U>,
-     Unfolding: InlineRule (3, True, False)
-                (\ (eta :: GameVars.Config)
-                   (eta1 :: GameVars.Vars)
-                   (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
-                 case {__pkg_ccall_GC sdl2-mixer-1.1.0 GHC.Prim.Int#
-                                                       -> GHC.Prim.State# GHC.Prim.RealWorld
-                                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld #)}
-                        -1#
-                        eta2 of wild { Unit# ds3 ->
-                 (# ds3, (GHC.Tuple.(), eta1) #) }) -}
-4f1cb09bc8d9257936ea6e683b8080e6
-  $fSoundManagerMahppyBird5 ::
-    GameVars.Config
-    -> GameVars.Vars
-    -> GHC.Prim.State# GHC.Prim.RealWorld
-    -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
-  {- Arity: 3, HasNoCafRefs, Strictness: <L,A><L,U><S,U>,
-     Unfolding: InlineRule (3, True, False)
-                (\ (eta :: GameVars.Config)
-                   (eta1 :: GameVars.Vars)
-                   (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
-                 case {__pkg_ccall_GC sdl2-mixer-1.1.0 GHC.Prim.Int#
-                                                       -> GHC.Prim.State# GHC.Prim.RealWorld
-                                                       -> (# GHC.Prim.State# GHC.Prim.RealWorld #)}
-                        -1#
-                        eta2 of wild { Unit# ds3 ->
-                 (# ds3, (GHC.Tuple.(), eta1) #) }) -}
-e3c725f55874bf1e5fec34048a2428a7
-  $fSoundManagerMahppyBird6 ::
+    -> Control.Monad.Trans.State.Lazy.StateT
+         GameVars.Vars GHC.Types.IO GHC.Types.Bool
+  {- Arity: 1, Strictness: <L,U>,
+     Unfolding: (\ (x :: GameVars.Config) ->
+                 let {
+                   m1 :: Control.Monad.Trans.State.Lazy.StateT
+                           GameVars.Vars GHC.Types.IO SDL.Mixer.Volume
+                   = SoundManager.$fSoundManagerMahppyBird4
+                       `cast`
+                     (Trans
+                          (GameVars.N:MahppyBird[0] <SDL.Mixer.Volume>_N)
+                          (Control.Monad.Trans.Reader.N:ReaderT[0]
+                               <*>_N
+                               <GameVars.Config>_R
+                               <Control.Monad.Trans.State.Lazy.StateT
+                                  GameVars.Vars GHC.Types.IO>_R
+                               <SDL.Mixer.Volume>_N))
+                       x
+                 } in
+                 (\ (s1 :: GameVars.Vars)
+                    (s2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                  case (m1
+                          `cast`
+                        (Trans
+                             (Nth:2
+                                  (Nth:3
+                                       (Trans
+                                            (<SDL.Mixer.Volume -> GHC.Types.Bool>_R
+                                             ->_R <Control.Monad.Trans.State.Lazy.StateT
+                                                     GameVars.Vars GHC.Types.IO SDL.Mixer.Volume>_R
+                                             ->_R Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                      <GameVars.Vars>_N
+                                                      <GHC.Types.IO>_R
+                                                      <GHC.Types.Bool>_N)
+                                            (<SDL.Mixer.Volume -> GHC.Types.Bool>_R
+                                             ->_R <Control.Monad.Trans.State.Lazy.StateT
+                                                     GameVars.Vars GHC.Types.IO SDL.Mixer.Volume>_R
+                                             ->_R <GameVars.Vars>_R
+                                             ->_R GHC.Types.N:IO[0]
+                                                      <(GHC.Types.Bool, GameVars.Vars)>_R))))
+                             (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                  <GameVars.Vars>_N <GHC.Types.IO>_R <SDL.Mixer.Volume>_N))
+                          s1)
+                         `cast`
+                       (GHC.Types.N:IO[0] <(SDL.Mixer.Volume, GameVars.Vars)>_R)
+                         s2 of ds { (#,#) ipv ipv1 ->
+                  (# ipv,
+                     (case ipv1 of wild { (,) a1 s' ->
+                      case a1 of wild1 { GHC.Types.I# x1 ->
+                      GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.># x1 0#) } },
+                      case ipv1 of wild { (,) a1 s' -> s' }) #) })
+                   `cast`
+                 (Nth:3
+                      (Nth:3
+                           (Trans
+                                (<SDL.Mixer.Volume -> GHC.Types.Bool>_R
+                                 ->_R <Control.Monad.Trans.State.Lazy.StateT
+                                         GameVars.Vars GHC.Types.IO SDL.Mixer.Volume>_R
+                                 ->_R <GameVars.Vars>_R
+                                 ->_R Sym (GHC.Types.N:IO[0] <(GHC.Types.Bool, GameVars.Vars)>_R))
+                                (<SDL.Mixer.Volume -> GHC.Types.Bool>_R
+                                 ->_R <Control.Monad.Trans.State.Lazy.StateT
+                                         GameVars.Vars GHC.Types.IO SDL.Mixer.Volume>_R
+                                 ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                               <GameVars.Vars>_N
+                                               <GHC.Types.IO>_R
+                                               <GHC.Types.Bool>_N)))))) -}
+dc8bec8702f1c0cda5ea01dae04b3433
+  $fSoundManagerMahppyBird4 :: GameVars.MahppyBird SDL.Mixer.Volume
+  {- Unfolding: (SDL.Mixer.$fHasVolumeChannel_$cgetVolume
+                   @ GameVars.MahppyBird
+                   GameVars.$fMonadIOMahppyBird
+                   SDL.Mixer.$bAllChannels1
+                     `cast`
+                   (Nth:3
+                        (Trans
+                             (Sym (Foreign.C.Types.N:CInt[0])
+                              ->_R Sym (Foreign.C.Types.N:CInt[0]))
+                             (Sym (SDL.Mixer.N:Channel[0])
+                              ->_R Sym (SDL.Mixer.N:Channel[0]))))) -}
+0140f2b7cd2ac947ddde6144556b3740
+  $fSoundManagerMahppyBird5 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 100#) -}
+6b0b6332a51476780de8e1716c7da4ad
+  $fSoundManagerMahppyBird6 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+b87f8ffc2036a3b109a71acb76f9b815
+  $fSoundManagerMahppyBird7 ::
     GameVars.Config
     -> GameVars.Vars
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -563,8 +548,8 @@ e3c725f55874bf1e5fec34048a2428a7
                         eta1 of ds1 { (#,#) ipv ipv1 ->
                  (# ipv,
                     (GHC.Tuple.(), case ipv1 of wild { (,) a1 s' -> s' }) #) }) -}
-ca0edc1b5db7e704d30caabf09bc97ea
-  $fSoundManagerMahppyBird7 ::
+45d292959b30fd64d1b7f42b43e3e3cb
+  $fSoundManagerMahppyBird8 ::
     GameVars.Config
     -> GameVars.Vars
     -> GHC.Prim.State# GHC.Prim.RealWorld
@@ -678,6 +663,34 @@ ca0edc1b5db7e704d30caabf09bc97ea
                         eta1 of ds1 { (#,#) ipv ipv1 ->
                  (# ipv,
                     (GHC.Tuple.(), case ipv1 of wild { (,) a1 s' -> s' }) #) }) -}
+42fa80130953b33d476badfd6ec2df98
+  $fSoundManagerMahppyBird_$cmuteAll :: GameVars.MahppyBird ()
+  {- Unfolding: (SDL.Mixer.$fHasVolumeChannel_$csetVolume
+                   @ GameVars.MahppyBird
+                   GameVars.$fMonadIOMahppyBird
+                   SoundManager.$fSoundManagerMahppyBird6
+                   SDL.Mixer.$bAllChannels1
+                     `cast`
+                   (Nth:3
+                        (Trans
+                             (Sym (Foreign.C.Types.N:CInt[0])
+                              ->_R Sym (Foreign.C.Types.N:CInt[0]))
+                             (Sym (SDL.Mixer.N:Channel[0])
+                              ->_R Sym (SDL.Mixer.N:Channel[0]))))) -}
+044e1aa0982aa0bc5d170ca433dee546
+  $fSoundManagerMahppyBird_$cresumeAll :: GameVars.MahppyBird ()
+  {- Unfolding: (SDL.Mixer.$fHasVolumeChannel_$csetVolume
+                   @ GameVars.MahppyBird
+                   GameVars.$fMonadIOMahppyBird
+                   SoundManager.$fSoundManagerMahppyBird5
+                   SDL.Mixer.$bAllChannels1
+                     `cast`
+                   (Nth:3
+                        (Trans
+                             (Sym (Foreign.C.Types.N:CInt[0])
+                              ->_R Sym (Foreign.C.Types.N:CInt[0]))
+                             (Sym (SDL.Mixer.N:Channel[0])
+                              ->_R Sym (SDL.Mixer.N:Channel[0]))))) -}
 92764c710442ff530083300640e3dedf
   $tc'C:SoundManager :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -731,16 +744,16 @@ b9fd20d14fbace62ad0fb1d5448c986e
 4e6ec658d1d88d3274afd93c3a415109
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-14f6e9bc4905bd261949db297bc23ed6
+231bf9fbb0ef1c04a8736ec0d1ad558e
   class GHC.Base.Monad m => SoundManager (m :: * -> *) where
     playJumpFx :: m ()
     playCrashFx :: m ()
-    pauseAll :: m ()
+    muteAll :: m ()
     resumeAll :: m ()
     areChannelsPlaying :: m GHC.Types.Bool
     setBgMusicVolume :: SDL.Mixer.Volume -> m ()
     getBgMusicVolume :: m SDL.Mixer.Volume
-    {-# MINIMAL playJumpFx, playCrashFx, pauseAll, resumeAll,
+    {-# MINIMAL playJumpFx, playCrashFx, muteAll, resumeAll,
                 areChannelsPlaying, setBgMusicVolume, getBgMusicVolume #-}
 instance SoundManager.SoundManager [GameVars.MahppyBird]
   = SoundManager.$fSoundManagerMahppyBird

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:37.229754856 UTC
+2018-06-05 00:36:04.034503332 UTC
 
 interface main:PlayerManager 8022
-  interface hash: a640f7db9e52617ce7581ab761d38550
-  ABI hash: 6410674bd76f72a678b626b327e31876
+  interface hash: 6b6ef392a1c59efac7b3af742cce72fe
+  ABI hash: 9868e35f2483697ab3ba877365241301
   export-list hash: 90666d388c993bafd900a62a82f9ea2a
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -130,13 +130,13 @@ import  -/  Aabb 02207cce2d794346ceccf4ae11a9988d
   exports: 74498893d79e07cfc6b7864a88f8a517
   Aabb 4bc4d1c45ad2d3871f1050d664e236c2
   rectangleToAabb 4601f07974c6b4c563a1e869ff1fdd84
-import  -/  AnimationsManager cbf8705999ca4b50005279e8fbbfc640
+import  -/  AnimationsManager d650d562ace7f9bcb6645a5ec1b845b5
   exports: 870ab299162042bfa1955a3278127f9e
-  AnimationsManager c8e0f589a92aeed99bff1d8d3702265e
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+  AnimationsManager 1300b0f8b825f26c0c0bd424b5660e12
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   angle 9ec677c0a905ffa9de6525b5a85accc9
   attributes f6bc13c9b59ea991ef88afd5bf65ef48
@@ -152,7 +152,7 @@ import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
 import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
 import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
-848ee61a9056a9b20a824f25f60c47da
+6545e3f8eb0ac641e42ed8093f9a9539
   $fPlayerManagerMahppyBird ::
     PlayerManager.PlayerManager GameVars.MahppyBird
   DFunId
@@ -419,7 +419,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
                                               GameVars.Vars GHC.Types.IO>_R
                                            <()>_N))
                                  (Sym (GameVars.N:MahppyBird[0]) <()>_N))) -}
-15993cd56f7734c2c2366baeda0b0f27
+2455c4f2bf7ff1a024a50c3907f28907
   $fPlayerManagerMahppyBird1 ::
     Foreign.C.Types.CDouble
     -> GameVars.Config
@@ -465,7 +465,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
                        x4
                        dt1
                        dt2 }) #)) -}
-8af07b641090dc64c3ceb6743e21e38f
+04c0b32d3e4b3eacc8b0db31f728f094
   $fPlayerManagerMahppyBird10 ::
     Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
     -> GameVars.Config
@@ -508,7 +508,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
                        x4
                        dt1
                        dt2) #) } }) -}
-2a46390094ca79c1f4153f2fe3e65746
+3289a55692487403097d43fb6b99f2db
   $fPlayerManagerMahppyBird11 ::
     GameVars.Config
     -> GameVars.Vars
@@ -526,7 +526,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
                      case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                      GHC.Types.F# dt6 } },
                      eta) #)) -}
-aca9ae5d85f0440c8567bbbf3c2b9842
+013c84a66bbfcbd093b1d434e1809658
   $fPlayerManagerMahppyBird12 ::
     GameVars.Config
     -> GameVars.Vars
@@ -544,7 +544,7 @@ aca9ae5d85f0440c8567bbbf3c2b9842
                      case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                      GHC.Types.F# dt3 } },
                      eta) #)) -}
-7cb098569975d45da58690fe3df1567a
+453aec79922838435bcbd745a161d7ff
   $fPlayerManagerMahppyBird13 ::
     GameVars.Config
     -> GameVars.Vars
@@ -562,7 +562,7 @@ aca9ae5d85f0440c8567bbbf3c2b9842
                      case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                      SDL.Video.Renderer.Rectangle @ GHC.Types.Float dt4 dt5 } },
                      eta) #)) -}
-bb2a48d1f25e7199d93b96c1bc5eb5c8
+69ee082f5f59cb75af5c33deb80fed29
   $fPlayerManagerMahppyBird14 ::
     GameVars.Config
     -> GameVars.Vars
@@ -579,7 +579,7 @@ bb2a48d1f25e7199d93b96c1bc5eb5c8
                  case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
                  case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                  (# eta1, (dt4, wild) #) } }) -}
-0ebef8681d17f20ba7dc54fc53b3a3a5
+0d3ff2d1897b92224dc194323b1cabbf
   $fPlayerManagerMahppyBird2 ::
     GameVars.Config
     -> GameVars.Vars
@@ -597,7 +597,7 @@ bb2a48d1f25e7199d93b96c1bc5eb5c8
                      case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                      (GHC.Types.D# dt9) `cast` (Sym (Foreign.C.Types.N:CDouble[0])) } },
                      eta) #)) -}
-2283ca66eccd4c359fbe2cbb9d1d8274
+f3c76fcdce13c5c4e25891bd38abc65c
   $fPlayerManagerMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -612,7 +612,7 @@ bb2a48d1f25e7199d93b96c1bc5eb5c8
                    (w1 :: GameVars.Vars)
                    (w2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  PlayerManager.$w$cgetPlayerAabb w1 w2) -}
-9a26383742296f294f64e6ce23b1b1d2
+aa7b5ae0142a957f3595e69f49fb110b
   $fPlayerManagerMahppyBird4 ::
     GameVars.Config
     -> GameVars.Vars
@@ -632,7 +632,7 @@ bb2a48d1f25e7199d93b96c1bc5eb5c8
                        @ GHC.Types.Bool
                        (GHC.Prim.ltFloat# dt3 0.0#) } },
                      eta) #)) -}
-07154024955d41023ae164f6020b14ba
+b7b06311b5c2e4e6907d034cd71d2a65
   $fPlayerManagerMahppyBird5 ::
     GameVars.Config
     -> GameVars.Vars
@@ -673,7 +673,7 @@ bb2a48d1f25e7199d93b96c1bc5eb5c8
                        x4
                        dt1
                        dt2) #) } }) -}
-60341e363cfbf36a6864b27602b9bc8f
+2dd59e5c3452b9e7f5f4b05d7654b659
   $fPlayerManagerMahppyBird6 ::
     GameVars.Config
     -> GameVars.Vars
@@ -691,7 +691,7 @@ bb2a48d1f25e7199d93b96c1bc5eb5c8
                      case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                      dt8 } },
                      eta) #)) -}
-d633670f84248fbf288412c9ed124ea4
+f079120f889f78b5fd19db5bcd9def4c
   $fPlayerManagerMahppyBird7 ::
     GHC.Types.Bool
     -> GameVars.Config
@@ -735,7 +735,7 @@ d633670f84248fbf288412c9ed124ea4
                        x4
                        dt1
                        dt2 }) #)) -}
-0252d26a509ab857036b06226df4aa6e
+dc23ddac56d00863c83e701c9f3fdb01
   $fPlayerManagerMahppyBird8 ::
     Linear.V2.V2 GHC.Types.Float
     -> GameVars.Config
@@ -792,7 +792,7 @@ d633670f84248fbf288412c9ed124ea4
                        x4
                        dt1
                        dt2) #) } }) -}
-434eb1261adcba1c132d625e0933d7ca
+d854919c4f3333b0a80763e8721057ed
   $fPlayerManagerMahppyBird9 ::
     GHC.Types.Float
     -> GameVars.Config
@@ -919,7 +919,7 @@ ad5f203d9fd10ba88835de24f542fece
                        (GHC.Types.F# (GHC.Prim.plusFloat# ww7 ww14))
                        (GHC.Types.F# (GHC.Prim.plusFloat# ww9 ww16)) } } } } } } } },
                      w) #)) -}
-848ee61a9056a9b20a824f25f60c47da
+6545e3f8eb0ac641e42ed8093f9a9539
   class GHC.Base.Monad m => PlayerManager (m :: * -> *) where
     getPlayerPos :: m (Linear.Affine.Point
                          Linear.V2.V2 GHC.Types.Float)

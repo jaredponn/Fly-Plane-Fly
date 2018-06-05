@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:36.807147819 UTC
+2018-06-05 00:36:03.533476781 UTC
 
 interface main:CameraManager 8022
-  interface hash: 5e687a494bf024c6db7421c0ded9b8c1
-  ABI hash: bce9939a6263a138be09bdc9e4ab2fc0
+  interface hash: 4ffbde225f12a42662bc99ba835d562f
+  ABI hash: 4a3629dcca1cd6a4a9a9befbf2188ae5
   export-list hash: 112cd2acaa8c34d282eabc28f7fedc85
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -124,9 +124,9 @@ import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
 import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
 import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   camOffset ed0bf55fc46a21b0b5f77c5461c4614c
   cameraPos fcc3502fbff7c1d4610130d0e0afa18d
@@ -138,7 +138,7 @@ import  -/  mtl-2.2.2:Control.Monad.Reader 8d63edf5dfaf25ad085eae4468bdd77e
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
 import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
-5fbacda7e44e96481f0ac368d7f1045a
+d16eef61f6af70903e3a612d17ffd25c
   $fCameraManagerMahppyBird ::
     CameraManager.CameraManager GameVars.MahppyBird
   DFunId
@@ -210,7 +210,7 @@ import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
                             (Sym (GameVars.N:MahppyBird[0]) <Linear.Affine.Point
                                                                Linear.V2.V2
                                                                Foreign.C.Types.CInt>_N))) -}
-55a109f532b930dbbf077f3398175585
+86746c761d768ae75c740aa85b31ff57
   $fCameraManagerMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -232,7 +232,7 @@ import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
                      (Sym (Linear.Affine.N:Point[0]
                                <Linear.V2.V2>_R) <Foreign.C.Types.CInt>_N) } },
                      eta) #)) -}
-b4102183370011c3333efe43a4a12b13
+5b5c5c79f0939ad59cb60351a968676b
   $fCameraManagerMahppyBird2 ::
     Linear.V2.V2 Foreign.C.Types.CInt
     -> GameVars.Config
@@ -248,7 +248,7 @@ b4102183370011c3333efe43a4a12b13
                    (w2 :: GameVars.Vars)
                    (w3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  CameraManager.$w$cmoveCameraBy w w2 w3) -}
-ae8f6e64b2c7524e2bc6f6bf01e93075
+acd65fe15ef9653d295ad43fcae44655
   $fCameraManagerMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -266,7 +266,7 @@ ae8f6e64b2c7524e2bc6f6bf01e93075
                      case x3 of wild1 { GameVars.RenderingVars x7 dt4 dt5 dt3 dt6 dt7 ->
                      Linear.V2.V2 @ GHC.Types.Float dt3 dt6 } },
                      eta) #)) -}
-389e3b2c40431cf4e768da83be9bbca1
+f774df5b8a15fb73ef605290387d10a6
   $fCameraManagerMahppyBird_$csetCameraPos ::
     Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
     -> GameVars.MahppyBird ()
@@ -433,7 +433,7 @@ e17718a7065710cfafeeb569aa63ac19
                        x4
                        dt1
                        dt2 }) #)) -}
-5fbacda7e44e96481f0ac368d7f1045a
+d16eef61f6af70903e3a612d17ffd25c
   class GHC.Base.Monad m => CameraManager (m :: * -> *) where
     getCameraOffset :: m (Linear.V2.V2 GHC.Types.Float)
     setCameraPos :: Linear.Affine.Point Linear.V2.V2 GHC.Types.Float

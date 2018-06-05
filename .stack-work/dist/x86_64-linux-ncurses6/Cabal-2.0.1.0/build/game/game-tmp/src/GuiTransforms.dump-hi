@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 18:19:46.093322899 UTC
+2018-06-05 00:36:03.0599244 UTC
 
 interface main:GuiTransforms 8022
-  interface hash: f99f31a13de1cc7821f3d65db79a3355
-  ABI hash: 45bb5f8eff3ca1d177e51377a93f20f5
+  interface hash: e8b80bfeeb4a0e6315ed90923d44c436
+  ABI hash: e2db9ba277a4f977ddcd90a5635f8391
   export-list hash: f9dcd83a9df04834bf7cc3c940782a98
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -125,11 +125,11 @@ import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
 import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
 import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
-  MahppyBird fb5607b55373083b420634b0454a4ddb
-  cWindow e44e7628e39bfe67c0571be38f0cb139
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
+  cWindow 7d37304089f01776096e2dc8d6f690c8
 import  -/  mtl-2.2.2:Control.Monad.Reader 8d63edf5dfaf25ad085eae4468bdd77e
 import  -/  mtl-2.2.2:Control.Monad.Reader.Class 6d33756d93a5919f9374afec232249f4
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
@@ -137,7 +137,7 @@ import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
 import  -/  sdl2-2.4.0.1:SDL.Video d45fd583608f97209f87f6e4859b5c5c
 import  -/  sdl2-2.4.0.1:SDL.Video.OpenGL 59b5238e510eda4d79d17333257db7d7
 import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
-bdcfe4d5d5dcc377f267d071dde75fe1
+2fd14cc1a80d141e758ca9f9f3e06ff8
   $fGuiTransformsMahppyBird ::
     GuiTransforms.GuiTransforms GameVars.MahppyBird
   DFunId
@@ -281,7 +281,7 @@ bdcfe4d5d5dcc377f267d071dde75fe1
                                       <Linear.V2.V2 GHC.Types.Float>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <Linear.V2.V2
                                                                GHC.Types.Float>_N))) -}
-ad9d0576797edbf363274928d7202e5b
+7838a89c5c9da198a0ff221735373a76
   $fGuiTransformsMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -328,7 +328,7 @@ ad9d0576797edbf363274928d7202e5b
                        (GHC.Types.F# (GHC.Prim.int2Float# x#))
                        (GHC.Types.F# (GHC.Prim.int2Float# x#1)) } } } },
                      case ipv1 of wild { (,) a1 s' -> s' }) #) }) -}
-478768ca32bbf6d0816250146f1a241b
+28ce38ba2ffb912031c839154db10d16
   $fGuiTransformsMahppyBird2 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -403,7 +403,7 @@ ad9d0576797edbf363274928d7202e5b
                         case height of dt1 { GHC.Types.F# ipv3 ->
                         Linear.V2.V2 @ GHC.Types.Float dt dt1 } } }),
                      s') #) } } } }) -}
-6237251b69f71742234c60cecaf8016a
+8f517d52c2df0997e08e0846f7ca424d
   $fGuiTransformsMahppyBird3 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -478,7 +478,7 @@ ad9d0576797edbf363274928d7202e5b
                         case height of dt1 { GHC.Types.F# ipv3 ->
                         Linear.V2.V2 @ GHC.Types.Float dt dt1 } } }),
                      s') #) } } } }) -}
-640c923f3641aae5d67bd64ec73db791
+344e7e75c179be9e632f4f04ede27f2f
   $fGuiTransformsMahppyBird4 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -498,7 +498,7 @@ ad9d0576797edbf363274928d7202e5b
 a13abf178d5510e86cf38e8312e34309
   $fGuiTransformsMahppyBird5 :: GHC.Types.Float
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
-ab0b7cdd78dc39f17d765ed61d584ad0
+eb9c27e63446f332acf13215675a1e0d
   $fGuiTransformsMahppyBird6 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -576,7 +576,7 @@ ab0b7cdd78dc39f17d765ed61d584ad0
                         case height of dt1 { GHC.Types.F# ipv3 ->
                         Linear.V2.V2 @ GHC.Types.Float dt dt1 } } }),
                      s') #) } } } }) -}
-bf58e839120d00665505701c6db97884
+a2b24972dee546107855ecec920b3e64
   $fGuiTransformsMahppyBird7 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -748,7 +748,7 @@ a6ed6db91ee6c4a59f1bbb858d3fda38
                         case height of dt1 { GHC.Types.F# ipv1 ->
                         Linear.V2.V2 @ GHC.Types.Float dt dt1 } } }),
                      w1) #)) -}
-bdcfe4d5d5dcc377f267d071dde75fe1
+2fd14cc1a80d141e758ca9f9f3e06ff8
   class GHC.Base.Monad m => GuiTransforms (m :: * -> *) where
     xCenterRectangle :: SDL.Video.Renderer.Rectangle GHC.Types.Float
                         -> m (SDL.Video.Renderer.Rectangle GHC.Types.Float)
@@ -763,7 +763,7 @@ bdcfe4d5d5dcc377f267d071dde75fe1
     getWindowSize :: m (Linear.V2.V2 GHC.Types.Float)
     {-# MINIMAL xCenterRectangle, yCenterRectangle, alignToLeftEdge,
                 alignToRightEdge, alignToBottomEdge, getWindowSize #-}
-dbc8905213511d9585faf1fabe404d6d
+6bbe798570c7dfa0e487a5c3354aa6a1
   centerRectangle ::
     GuiTransforms.GuiTransforms m =>
     SDL.Video.Renderer.Rectangle GHC.Types.Float

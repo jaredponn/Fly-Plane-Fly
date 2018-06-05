@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 20:34:34.227119096 UTC
+2018-06-05 00:36:06.071598936 UTC
 
 interface main:Main 8022
-  interface hash: 566e2c3bc6269552852a5320a7fa0031
-  ABI hash: b6d74e9c047d98f2e63a783503728b2e
+  interface hash: ffc7948fef32d9bba99e8bfb8d225636
+  ABI hash: d022694ff0a16b2a405fe823067cae3b
   export-list hash: 9e197cb7266afa5cf1f694f91ddb65bf
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 915147110c011d1ab474c72b54b9e3dc
@@ -126,21 +126,21 @@ import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  Animations ed8ac26f601711059133f19a17b8411f
   exports: 1b514af753d69c9c6476a9810faf24f0
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  cRenderer e44e7628e39bfe67c0571be38f0cb139
-  cResources e678b7b654c8cae60a2d1262461e631a
-  cSound 6043d13d4f328aac12ba36cf9cfd043f
-  cWindow e44e7628e39bfe67c0571be38f0cb139
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  cRenderer 7d37304089f01776096e2dc8d6f690c8
+  cResources b04d36993ee1ee6e042ac28bc0eb61e1
+  cSound 59a33c64917b259aef8c17e374b9e5e9
+  cWindow 7d37304089f01776096e2dc8d6f690c8
   jumpFx d5b1328f33af34462912ac47c2c34f97
-import  -/  InitGameVars 684ff3c12b6644a1cb5c633033aa88bb
+import  -/  InitGameVars a2e7718a52756cddcc338d51597aa219
   exports: fbc9364d5ab5298ae16518b83d74060c
-  initConf 376dd241ff4956220df56d578225a4ea
+  initConf 215677d5cac3ca91d2866f433ea599da
   initVars 30e3b4546006792f2681e27a2ca0a0fd
-import  -/  MahppyBird efccf3867a29e9c6e150c1455c32aa82
-  exports: 4eab83f709ea71fcf7fa5db20898acc2
-  loop fac4e069f2a4131e81b5d22537562f2c
-  runMahppyBird f87ba7f95a432163350921f3526ac44f
+import  -/  MahppyBird 3445e2649efd26e8da04f64be8d4ee9c
+  exports: a38502fa03c8c23b93cca96706eb6fff
+  loop 9495cc5070ef2241a45e85261e6c1c51
+  runMahppyBird 6c6dd772f89638c363e9d759f65bc2d7
 import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
   exports: 9a82a9ead6771cc6b661267f6167d45d
 import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
@@ -167,7 +167,7 @@ e5875966b74dad2d29772660b8a75e33
 d026be77cb9ced20e35a61514e0458aa
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-0b9e396f9a54ab263ee7c595f18d2e51
+94cce2a754cc6d8f096b5cbe2619a8ea
   $w$j ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -290,12 +290,12 @@ d026be77cb9ced20e35a61514e0458aa
                                                    -> (# GHC.Prim.State# GHC.Prim.RealWorld #)}
                         ds21 of wild11 { Unit# ds22 ->
                  (# ds22, GHC.Tuple.() #) } } } } } } } } } } } } } } } } } }) -}
-e73c6f6148b10c048ae5f74ce96a43c2
+f655219227aec15d06542464ef5bfeb8
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-5ebd2aeaf1dd0079d3c49f479640a9d9
+6f7e879f27bf001c3802643457808b8b
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -338,7 +338,7 @@ e73c6f6148b10c048ae5f74ce96a43c2
                              SDL.Mixer.openAudio_eta1
                              ds9 of ds3 { (#,#) ipv4 ipv5 ->
                       Main.$w$j ipv4 } } } } }) -}
-c5b181df90991653f1deb99398698e4b
+e500074dc709cb85d653456b24babf13
   main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:35.894803533 UTC
+2018-06-05 00:36:02.318960254 UTC
 
 interface main:ScoreManager 8022
-  interface hash: 64cf1a8f2afb012708d6f488d1b12764
-  ABI hash: 0955763b12813388df618f32aee1a497
+  interface hash: 2f850740ee064fc4accfc4d40052a0e2
+  ABI hash: 879794ddf423ff4c9dc5591200a3c62e
   export-list hash: 3f42ff92e5da3f9a7eb6a2cabff3ca72
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -120,16 +120,16 @@ import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
 import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   highScore 065a2dc19a04707991d5216288f73ef0
   score 8ba7b7f7f1331f435b9dd7fece044d0a
   vPlayVars dbef10ec54712962f546a8d4b473ed09
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
-6c33549276da942a8ff8f7c07d85fd2b
+ede30ede90ba44a2fd7ff42d80929ab7
   $fScoreManagerMahppyBird ::
     ScoreManager.ScoreManager GameVars.MahppyBird
   DFunId
@@ -256,7 +256,7 @@ import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
                                          GameVars.Vars GHC.Types.IO>_R
                                       <GHC.Types.Int>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <GHC.Types.Int>_N))) -}
-cadcbe42243431e8b8b482eae65fd716
+28d6162e728be808542b3c3023fd2bdc
   $fScoreManagerMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -273,7 +273,7 @@ cadcbe42243431e8b8b482eae65fd716
                     (case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
                      GHC.Types.I# dt2 },
                      eta) #)) -}
-e6d2f26312fdb0bb5d8b986dad06cf59
+112d2241443c7dd3c1daef6fe7dce60e
   $fScoreManagerMahppyBird2 ::
     GHC.Types.Int
     -> GameVars.Config
@@ -292,7 +292,7 @@ e6d2f26312fdb0bb5d8b986dad06cf59
                      case eta1 of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
                      case score of dt { GHC.Types.I# dt4 ->
                      GameVars.Vars x1 x2 x3 x4 dt1 dt4 } }) #)) -}
-e13f30bcbe86f10159b90e6ceec8df82
+886e59f1360621db89429f698b8c19b8
   $fScoreManagerMahppyBird3 ::
     GHC.Types.Int
     -> GameVars.Config
@@ -312,7 +312,7 @@ e13f30bcbe86f10159b90e6ceec8df82
                      case score of wild1 { GHC.Types.I# y ->
                      GHC.Prim.tagToEnum# @ GHC.Types.Bool (GHC.Prim.<# dt2 y) } },
                      eta1) #)) -}
-30f25c530f17fd7d38451957e4c95dc4
+c30710232ac7db60cfe3f3bc019995cb
   $fScoreManagerMahppyBird4 ::
     GameVars.Config
     -> GameVars.Vars
@@ -353,7 +353,7 @@ e13f30bcbe86f10159b90e6ceec8df82
                        x4
                        dt1
                        dt2 }) #)) -}
-7b6b16789202221d2ca82786c0ba4c35
+708071da3db28c075e8d2260b5188a3e
   $fScoreManagerMahppyBird5 ::
     GameVars.Config
     -> GameVars.Vars
@@ -371,7 +371,7 @@ e13f30bcbe86f10159b90e6ceec8df82
                      case x2 of wild1 { GameVars.PlayVars dt4 dt5 dt3 dt6 dt7 dt8 dt9 x7 dt10 dt11 dt12 dt13 dt14 dt15 dt16 dt17 dt18 dt19 ->
                      GHC.Types.I# dt19 } },
                      eta) #)) -}
-0831de6022b6e8d1350e4d841fadcdf6
+accb080fe232f94ec3da401618db2613
   $fScoreManagerMahppyBird6 ::
     GameVars.Config
     -> GameVars.Vars
@@ -465,7 +465,7 @@ bc5603366d400b052e88b41b07004145
 7decbf88afee55a48edae865a59ad36e
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-6c33549276da942a8ff8f7c07d85fd2b
+ede30ede90ba44a2fd7ff42d80929ab7
   class GHC.Base.Monad m => ScoreManager (m :: * -> *) where
     incrementScore :: m ()
     getScore :: m GHC.Types.Int

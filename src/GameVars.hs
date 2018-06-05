@@ -26,7 +26,9 @@ data GUITextures = GUITextures { _playBtnTexture :: SDL.Texture
                                , _quitGameOverBtnTexture :: SDL.Texture
                                , _gameOverWindowTexture :: SDL.Texture
                                , _pressSpacetoJumpTexture :: SDL.Texture
-                               , _titleTextTexture :: SDL.Texture}
+                               , _titleScreenbg :: SDL.Texture
+                               , _mutedTexture :: SDL.Texture
+                               , _muteTexture :: SDL.Texture}
 makeLenses ''GUITextures
 
 data Textures = Textures { _bgTexture :: SDL.Texture

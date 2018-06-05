@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 20:35:21.971592011 UTC
+2018-06-05 00:37:31.402279288 UTC
 
 interface main:InitGameVars 8022
-  interface hash: ce0a1a26a620025dd4720fe285fdc287
-  ABI hash: 684ff3c12b6644a1cb5c633033aa88bb
+  interface hash: 5bb1051c52b3f6473b465ddec29168c9
+  ABI hash: a2e7718a52756cddcc338d51597aa219
   export-list hash: fbc9364d5ab5298ae16518b83d74060c
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 788e424068b393658ec3b6041402b51a
@@ -140,15 +140,15 @@ import  -/  Animations ed8ac26f601711059133f19a17b8411f
   createAnimationHandler 10af5fcc52286eba6e955ee0b297b43e
   generateSrcRectStream a4bc7b838e14c35f4d52b3a518e99298
   generateSrcRects e0d301a5ae235656afa7da9abe8b39bf
-import  -/  GameStateManager b3a1d140e6b3d11f54cbacec2e0264a8
+import  -/  GameStateManager ccbeed6e4a039e9548d0e336726c3043
   exports: 31a22b4a25b84d92d55314f503d3c92f
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
   Animations 30f11177157f153fdbee5359a31f5a1c
-  Config 0eb811f4d91ea41f0c6754719ae802dc
-  Config e44e7628e39bfe67c0571be38f0cb139
+  Config 9c51c0e58fa1523c46059651a5981d2a
+  Config 7d37304089f01776096e2dc8d6f690c8
   Fonts ae5054e403c4f2d0019977825d840507
-  GUITextures aa05c3962adf85bbd46c9b487a40e974
+  GUITextures 621af3c87e3d75fcea8a6af820271aea
   Input 2b358ec8c687e8f33c55a4723db9e95a
   Input 14baa3ae6b26e7d8a8967e8549c7576d
   Menu c93e18feadbb490b363082d606e5efdd
@@ -158,30 +158,30 @@ import  -/  GameVars 95546c61036798381255e3d7e11311b2
   Player 36914763174f19a2f02a4dc6ef3432f7
   RenderingVars 64815b4ef3fe3fdd941400078b4f4938
   RenderingVars ac97681929c8648b7947e304c501ec6a
-  Resources 30972247818b622f021382b538dcf0a6
+  Resources 892fb714a7dea4cd8d04464a14f63c43
   Sound 5b02ec1fff184a39ba42184e76145203
-  Textures 0f357d81fad747cb2a590c9b8650ca52
+  Textures 91b4fc18ea32b56d485343745f00b005
   Vars 4cfec49c42f5878a965a4c2adc366f4b
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   _angle 36914763174f19a2f02a4dc6ef3432f7
   _attributes 36914763174f19a2f02a4dc6ef3432f7
   _bgMusicChannel 5f201986779c9c0ba6901d357d52f9fe
-  _bgTexture bc0895f78ba7a6f8ea4aeb2608f6529b
-  _botWallTexture bc0895f78ba7a6f8ea4aeb2608f6529b
-  _cAnimations 5245c4107042b952bbc99248e9f0c042
-  _cFont 5245c4107042b952bbc99248e9f0c042
+  _bgTexture 5e14338e57873739908d32ba506eaa9e
+  _botWallTexture 5e14338e57873739908d32ba506eaa9e
+  _cAnimations 403f3d6581905f68ba656abc39ec924d
+  _cFont 403f3d6581905f68ba656abc39ec924d
   _cGrav 25f3834dc4dee20a203f7a0126c24d7f
   _cJumpHeight 36914763174f19a2f02a4dc6ef3432f7
-  _cResources e44e7628e39bfe67c0571be38f0cb139
-  _cSound 5245c4107042b952bbc99248e9f0c042
-  _cTextures 5245c4107042b952bbc99248e9f0c042
+  _cResources 7d37304089f01776096e2dc8d6f690c8
+  _cSound 403f3d6581905f68ba656abc39ec924d
+  _cTextures 403f3d6581905f68ba656abc39ec924d
   _cWallConf 25f3834dc4dee20a203f7a0126c24d7f
   _camOffset ac97681929c8648b7947e304c501ec6a
   _cameraPos ac97681929c8648b7947e304c501ec6a
   _crashFx 5f201986779c9c0ba6901d357d52f9fe
   _dt 5829ea20be4fb9a24ab87f3fe067aa3c
-  _gameOverWindowTexture bc622934b9ca39e380dfe788c418e5bd
-  _guiTextures bc0895f78ba7a6f8ea4aeb2608f6529b
+  _gameOverWindowTexture 9f608cb593c2f72eeb1c5704b65f511b
+  _guiTextures 5e14338e57873739908d32ba506eaa9e
   _highScore 5829ea20be4fb9a24ab87f3fe067aa3c
   _highScoreFont 5a464f5c7bff2eae896998b908658507
   _isEsc 14baa3ae6b26e7d8a8967e8549c7576d
@@ -191,21 +191,23 @@ import  -/  GameVars 95546c61036798381255e3d7e11311b2
   _kInput 5829ea20be4fb9a24ab87f3fe067aa3c
   _mousePos 14baa3ae6b26e7d8a8967e8549c7576d
   _mousePress 14baa3ae6b26e7d8a8967e8549c7576d
-  _playAgainBtnTexture bc622934b9ca39e380dfe788c418e5bd
-  _playBtnTexture bc622934b9ca39e380dfe788c418e5bd
+  _muteTexture 9f608cb593c2f72eeb1c5704b65f511b
+  _mutedTexture 9f608cb593c2f72eeb1c5704b65f511b
+  _playAgainBtnTexture 9f608cb593c2f72eeb1c5704b65f511b
+  _playBtnTexture 9f608cb593c2f72eeb1c5704b65f511b
   _player 25f3834dc4dee20a203f7a0126c24d7f
   _playerAnimationHandler ac97681929c8648b7947e304c501ec6a
   _playerDeathAnimation 2b1e70dc5d2cf0fae1f292c9db001c5f
   _playerIdleAnimation 2b1e70dc5d2cf0fae1f292c9db001c5f
   _playerJumpAnimation 2b1e70dc5d2cf0fae1f292c9db001c5f
-  _playerSpriteSheet bc0895f78ba7a6f8ea4aeb2608f6529b
-  _pressSpacetoJumpTexture bc622934b9ca39e380dfe788c418e5bd
-  _quitBtnTexture bc622934b9ca39e380dfe788c418e5bd
-  _quitGameOverBtnTexture bc622934b9ca39e380dfe788c418e5bd
+  _playerSpriteSheet 5e14338e57873739908d32ba506eaa9e
+  _pressSpacetoJumpTexture 9f608cb593c2f72eeb1c5704b65f511b
+  _quitBtnTexture 9f608cb593c2f72eeb1c5704b65f511b
+  _quitGameOverBtnTexture 9f608cb593c2f72eeb1c5704b65f511b
   _score 25f3834dc4dee20a203f7a0126c24d7f
   _scoreFont 5a464f5c7bff2eae896998b908658507
-  _titleTextTexture bc622934b9ca39e380dfe788c418e5bd
-  _topWallTexture bc0895f78ba7a6f8ea4aeb2608f6529b
+  _titleScreenbg 9f608cb593c2f72eeb1c5704b65f511b
+  _topWallTexture 5e14338e57873739908d32ba506eaa9e
   _transitionOpacity ac97681929c8648b7947e304c501ec6a
   _vGameStateStack 5829ea20be4fb9a24ab87f3fe067aa3c
   _vPlayVars 5829ea20be4fb9a24ab87f3fe067aa3c
@@ -213,8 +215,8 @@ import  -/  GameVars 95546c61036798381255e3d7e11311b2
   _wallStream 25f3834dc4dee20a203f7a0126c24d7f
   _xvel 36914763174f19a2f02a4dc6ef3432f7
   _yvel 36914763174f19a2f02a4dc6ef3432f7
-  cRenderer e44e7628e39bfe67c0571be38f0cb139
-  cWindow e44e7628e39bfe67c0571be38f0cb139
+  cRenderer 7d37304089f01776096e2dc8d6f690c8
+  cWindow 7d37304089f01776096e2dc8d6f690c8
 import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
   exports: 9a82a9ead6771cc6b661267f6167d45d
   Wall 0489472b2e8cbbdc29c5c06003041655
@@ -306,14 +308,14 @@ f768b3405a70c869f451cad28be46e66
 1f5379941a7ae7d47882d77e62c0126d
   defaultPlayerVars6 :: GHC.Types.Float
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
-376dd241ff4956220df56d578225a4ea
+215677d5cac3ca91d2866f433ea599da
   initConf :: GHC.Types.IO GameVars.Config
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 InitGameVars.initConf1
                   `cast`
                 (Sym (GHC.Types.N:IO[0] <GameVars.Config>_R)) -}
-a89f9127b045601d6a113a29d823d5ee
+7610e9400572b7c43220d693bede7573
   initConf1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, GameVars.Config #)

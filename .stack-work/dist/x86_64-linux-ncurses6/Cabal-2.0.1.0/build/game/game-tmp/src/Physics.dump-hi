@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:38.088603768 UTC
+2018-06-05 00:36:04.95278439 UTC
 
 interface main:Physics 8022
-  interface hash: ad5d6c373f3d11e051293a5f633686d8
-  ABI hash: 9fef5200bac6e7f9e26adde587a20f17
+  interface hash: 27f57e07d74f914bf9ae2a69f50e524e
+  ABI hash: b9e2d4bce28db23d3a2a79d5a15480fb
   export-list hash: 351c7a3cc081ac564329eb8cf05ccdc3
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -123,30 +123,30 @@ import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
 import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   cGrav 2a8c373e7c82c3c47207141ae2901a0f
   vPlayVars dbef10ec54712962f546a8d4b473ed09
-import  -/  Logger de91407b46dc2af6570ae0f0d44f5bb4
+import  -/  Logger 8440c95053026489c9281e4e9e175c09
   exports: c7f6c47792388de1970a4c43887f8fdc
-  Logger 77ad9183556b8f37f2d10bd5f3bb788c
-import  -/  PlayerManager 6410674bd76f72a678b626b327e31876
+  Logger 33185071f9a092c50e0368c71838eca3
+import  -/  PlayerManager 9868e35f2483697ab3ba877365241301
   exports: 90666d388c993bafd900a62a82f9ea2a
-  PlayerManager 848ee61a9056a9b20a824f25f60c47da
-  getPlayerXVel 79d63ef80b42bae2d579d4ed80c3eece
-  getPlayerYVel a7c135cb6d78b07f06157943088ef5ee
-  setPlayerYVel d91388458ea803bc4f14a5209d0585c7
-  translatePlayer 97617b215b0b081f649a71bb641d5071
-import  -/  TimeManager c5a6185a6f35cba82cca87bc7827c727
-  exports: 8b2c0f72e07dc8e418f06d3a9f6510ae
-  TimeManager 11f819b14b751ed055082b44f160b76d
-  getdt e6fb864aaca5b697f52669c64cf5945c
+  PlayerManager 6545e3f8eb0ac641e42ed8093f9a9539
+  getPlayerXVel 5f5be5b8a92568d8cea3f777c2e2bc75
+  getPlayerYVel d481f27b26e46302bf9b46df16ad54ec
+  setPlayerYVel 7fd64e20a53b7d218d378191bd613843
+  translatePlayer fef3f65837ebd5aa96b559059fb9e0e9
+import  -/  TimeManager 6917e8576ee854ed7f928bd2c7cdda2f
+  exports: 1444a12543659cbb43ece9f99bc0f223
+  TimeManager 3f466474e9f7b0f2ba00315fed57edeb
+  getdt b59dc952a65b4efc7573533255248ed0
 import  -/  mtl-2.2.2:Control.Monad.Reader 8d63edf5dfaf25ad085eae4468bdd77e
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
-cf87dad5941d01bbf83f863fdf7550b1
+d90e58b7cee3024f0f1b555e462546bb
   $fPhysicsMahppyBird :: Physics.Physics GameVars.MahppyBird
   DFunId
   {- Strictness: m, Inline: CONLIKE,
@@ -258,7 +258,7 @@ cf87dad5941d01bbf83f863fdf7550b1
                                          GameVars.Vars GHC.Types.IO>_R
                                       <()>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <()>_N))) -}
-d9487fca6da2be9e35424f5d0dd21e47
+0887ba2b4890d4850d1af5e0021b4f74
   $fPhysicsMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -283,7 +283,7 @@ d9487fca6da2be9e35424f5d0dd21e47
 fc928aba6988a0a7f70ee8ecc5ed04a0
   $fPhysicsMahppyBird2 :: GHC.Types.Float
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
-0571a4dbb415d5a38ae9b16c37084618
+59799093cd954b21f2531100bf12e885
   $fPhysicsMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -305,7 +305,7 @@ fc928aba6988a0a7f70ee8ecc5ed04a0
                    r1
                    eta
                    eta1) -}
-32a1187040c19be87505fd2f1d49b59e
+ac9c549943dc30edfb2e9c977f1b18d3
   $fPhysicsMahppyBird4 ::
     GHC.Types.Float
     -> GameVars.Config
@@ -349,7 +349,7 @@ fc928aba6988a0a7f70ee8ecc5ed04a0
                        x4
                        dt1
                        dt2 }) #)) -}
-ef6f0a178f48d094bbb2927aa3650593
+a8e5872c46e1336e4f99ac4c6e6f39bc
   $fPhysicsMahppyBird5 ::
     GHC.Types.Float
     -> GameVars.Config
@@ -393,7 +393,7 @@ ef6f0a178f48d094bbb2927aa3650593
                        x4
                        dt1
                        dt2 }) #)) -}
-07b3376d7eb34118c71d5f5a7d96977e
+81bc1ee0eeeeff9376411523c432da39
   $fPhysicsMahppyBird6 ::
     GameVars.Config
     -> GameVars.Vars
@@ -487,7 +487,7 @@ eaab7e54187ecf1cbfdb98bec11e54e5
 4eb639dd750e13dd55584b2c0c24f59a
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-cf87dad5941d01bbf83f863fdf7550b1
+d90e58b7cee3024f0f1b555e462546bb
   class GHC.Base.Monad m => Physics (m :: * -> *) where
     applyGrav :: m ()
     setGrav :: GHC.Types.Float -> m ()

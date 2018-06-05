@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:36.571322313 UTC
+2018-06-05 00:36:03.192908519 UTC
 
 interface main:GameStateManager 8022
-  interface hash: 54fb881efc98926c36e7e2b07ebfe63c
-  ABI hash: b3a1d140e6b3d11f54cbacec2e0264a8
+  interface hash: 52609a2d5b89ed148fa2d0349d9f6c5f
+  ABI hash: ccbeed6e4a039e9548d0e336726c3043
   export-list hash: 31a22b4a25b84d92d55314f503d3c92f
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 839f3f975377d929d6342740155f98f2
@@ -121,15 +121,15 @@ import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
 import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
   GameState 862115caec0cc090e3ab2e897cce53f2
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   vGameStateStack a9c0714db857d750c16387ceb110452d
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
-8420014c9a352ffa5caa89c2c48c940a
+324b55f11cd0fe2360a2e9874ea026b9
   $fGameStateManagerMahppyBird ::
     GameStateManager.GameStateManager GameVars.MahppyBird
   DFunId
@@ -212,7 +212,7 @@ import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
                                          GameVars.Vars GHC.Types.IO>_R
                                       <GameVars.GameState>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <GameVars.GameState>_N))) -}
-53fc9be1e150162d573a111122c040da
+116cc3cbe68bc45a1dcb67a99a3085fe
   $fGameStateManagerMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -252,7 +252,7 @@ import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
                             ww4
                             ww5
                             ww6) #) } } } }) -}
-4e48b854531951c39ab2ff3853e13360
+9d0eb58877aa94d3292fb5a7128fbc97
   $fGameStateManagerMahppyBird10 ::
     GameVars.GameState
     -> GameVars.Config
@@ -284,7 +284,7 @@ c3ceeb214623904b5cdf1ea687d205db
   $fGameStateManagerMahppyBird3 :: GHC.Prim.Addr#
   {- HasNoCafRefs,
      Unfolding: ("Pattern match failure in do expression at src/GameStateManager.hs:43:17-34"#) -}
-1eee0985e1b702f409878207ee6c831b
+59c8767df07d0e41b3dd7f892ab70774
   $fGameStateManagerMahppyBird4 ::
     GameVars.Config
     -> GameVars.Vars
@@ -325,7 +325,7 @@ c8a65bbc2a8388b72bbe0fa073b3010a
   $fGameStateManagerMahppyBird6 :: GHC.Prim.Addr#
   {- HasNoCafRefs,
      Unfolding: ("Pattern match failure in do expression at src/GameStateManager.hs:38:17-34"#) -}
-e7dbaae9cafdfc589a437040b99289cd
+a2d4ecbde785195c28d5703d3975c63d
   $fGameStateManagerMahppyBird7 ::
     GameVars.Config
     -> GameVars.Vars
@@ -420,7 +420,7 @@ a2122d81754f4c97d90886dba35d9b5f
 1a512e3fd7d2556d9273f94b598a1070
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-8420014c9a352ffa5caa89c2c48c940a
+324b55f11cd0fe2360a2e9874ea026b9
   class GHC.Base.Monad m => GameStateManager (m :: * -> *) where
     pushGameState :: GameVars.GameState -> m ()
     popGameState :: m GameVars.GameState

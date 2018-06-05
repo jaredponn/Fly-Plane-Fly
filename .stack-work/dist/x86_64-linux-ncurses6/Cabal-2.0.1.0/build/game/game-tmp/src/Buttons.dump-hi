@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 18:32:55.432314845 UTC
+2018-06-05 00:36:03.642966045 UTC
 
 interface main:Buttons 8022
-  interface hash: 693b2b2222d5cecdd2b4a00841488a83
-  ABI hash: 3ec218fc829f1172505d8f13038748ce
+  interface hash: 19ddfa57125dfb04647d57958ea96c26
+  ABI hash: eb5ee8bed5c3803d702090bd75709be5
   export-list hash: 2f3907c0af37ac9fc752c2492d57e9d5
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: c3d080cdf3a45f880096629af0ba9355
@@ -139,18 +139,18 @@ import  -/  Aabb 02207cce2d794346ceccf4ae11a9988d
   Aabb 4bc4d1c45ad2d3871f1050d664e236c2
   aabbToRectangle a013c5a0e0aff215b89a8afb6e04557e
   rectangleToAabb 4601f07974c6b4c563a1e869ff1fdd84
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-import  -/  GuiTransforms 45bb5f8eff3ca1d177e51377a93f20f5
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+import  -/  GuiTransforms e2db9ba277a4f977ddcd90a5635f8391
   exports: f9dcd83a9df04834bf7cc3c940782a98
-  GuiTransforms bdcfe4d5d5dcc377f267d071dde75fe1
-  alignToBottomEdge 4f866f271fa5527514dd68ed48fd1a0c
-  alignToLeftEdge 8ca8dc647dfaf42191e0333d3cd72bdd
-  alignToRightEdge 0a687832ac98dbfd708b7173b8051f7b
+  GuiTransforms 2fd14cc1a80d141e758ca9f9f3e06ff8
+  alignToBottomEdge ea64d8fea0c0cb55c5f764de5ce999a4
+  alignToLeftEdge 1cb42eda8238cfd28aadce17377c7db4
+  alignToRightEdge a598b5af1e208bb665b4cf1fce71c7db
   translate 8df0f20a9af8b27115b4172f5904e382
-  xCenterRectangle 3b89eda481da69e2689350f81ab32ef0
-  yCenterRectangle 184ccb8c7752491b064f7aec4da8f5ae
-import  -/  Logger de91407b46dc2af6570ae0f0d44f5bb4
+  xCenterRectangle ccf03f990a1933f6a7c163f17a0dcfa4
+  yCenterRectangle 7bb5678d2589e5a23628d1b6000717a2
+import  -/  Logger 8440c95053026489c9281e4e9e175c09
   exports: c7f6c47792388de1970a4c43887f8fdc
 import  -/  Util 04dd18c408cec1d861350946bb6e7df1
   exports: 01755414b1287618f45750309b35edae
@@ -232,7 +232,7 @@ ed42b97136823455baa17e14617cf2b4
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Buttons.ButtonAttr) ->
                  case ds of wild { Buttons.ButtonAttr ds1 ds2 ds3 -> ds2 }) -}
-da635b55e33f506105ecdac4fa33f255
+f595479cd76915c6c3dd89987e7782ec
   alignToBottomEdgeButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     Buttons.ButtonAttr -> m Buttons.ButtonAttr
@@ -278,7 +278,7 @@ da635b55e33f506105ecdac4fa33f255
                             (GHC.Types.F# (GHC.Prim.plusFloat# ww7 ww14))
                             (GHC.Types.F# (GHC.Prim.plusFloat# ww9 ww16)) } } } } } } })
                          ds2 }))) -}
-309ec0463d7f06155ba7bfa3e2cb0797
+f9d183ab69418b488c241643f6f47e15
   alignToLeftEdgeButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     Buttons.ButtonAttr -> m Buttons.ButtonAttr
@@ -324,7 +324,7 @@ da635b55e33f506105ecdac4fa33f255
                             (GHC.Types.F# (GHC.Prim.plusFloat# ww7 ww14))
                             (GHC.Types.F# (GHC.Prim.plusFloat# ww9 ww16)) } } } } } } })
                          ds2 }))) -}
-db6b54a7efd07b2d9ecd93c773806166
+ace1049b6d7456d3915cb91568b08b3b
   alignToRightEdgeButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     Buttons.ButtonAttr -> m Buttons.ButtonAttr
@@ -388,7 +388,7 @@ effc2f988a97d22156f9ef2481c83619
                 (\ (nrect :: SDL.Video.Renderer.Rectangle GHC.Types.Float)
                    (texture1 :: SDL.Video.Renderer.Texture) ->
                  Buttons.ButtonAttr nrect (Aabb.rectangleToAabb nrect) texture1) -}
-0bb278431d109f278eaa3520c1bcc65d
+c09a1414775e4423cbf66a7e93d1aa86
   createCenteredButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     Linear.V2.V2 GHC.Types.Float
@@ -436,7 +436,7 @@ effc2f988a97d22156f9ef2481c83619
                    @ GHC.Types.Float
                    Buttons.createCenteredButtonAttr2
                    Buttons.createCenteredButtonAttr2) -}
-a5e53c1e42a54cf8d5793abca25ef1a8
+650b31c7d79d4922d97b3d11602308d3
   createLeftEdgeAlignedButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     GHC.Types.Float
@@ -468,7 +468,7 @@ a5e53c1e42a54cf8d5793abca25ef1a8
                          lengths)
                       Buttons.createCenteredButtonAttr1
                       texture1)) -}
-4cfe19163fb433de61bbcd2f263f4fd9
+4e094196368bedc57f6a35c1e7f21d8b
   createRightEdgeAlignedButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     GHC.Types.Float
@@ -500,7 +500,7 @@ a5e53c1e42a54cf8d5793abca25ef1a8
                          lengths)
                       Buttons.createCenteredButtonAttr1
                       texture1)) -}
-a97f3805afb8558dafb7883d0c343caf
+061e2da352970e66dd8b7141731e3a00
   createXCenteredButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     GHC.Types.Float
@@ -582,7 +582,7 @@ a97f3805afb8558dafb7883d0c343caf
                        ww13 } } } } } } }
                  } in
                  Buttons.ButtonAttr nrect (Aabb.rectangleToAabb nrect) ww3 }) -}
-1fc4399ddd280bec392d91d380ea2dce
+33a57e656f74d9a0dd45d364394e2426
   xCenterButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     Buttons.ButtonAttr -> m Buttons.ButtonAttr
@@ -628,7 +628,7 @@ a97f3805afb8558dafb7883d0c343caf
                             (GHC.Types.F# (GHC.Prim.plusFloat# ww7 ww14))
                             (GHC.Types.F# (GHC.Prim.plusFloat# ww9 ww16)) } } } } } } })
                          ds2 }))) -}
-255c816ef0ad7260f487f9934940e4a4
+2ba43a51eb4b630e55d03e14316c7765
   yCenterButtonAttr ::
     GuiTransforms.GuiTransforms m =>
     Buttons.ButtonAttr -> m Buttons.ButtonAttr

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:36.353515807 UTC
+2018-06-05 00:36:02.905045836 UTC
 
 interface main:Input 8022
-  interface hash: 3dd7b03763539e082d3ad33f2a93a301
-  ABI hash: 76eb390ccd5c295d1d88c0d46ecfa5a8
+  interface hash: 653714ce496279c900bf4217097931ba
+  ABI hash: 56e539d2b22425f97c9c19a695bc89a3
   export-list hash: 05cbb0277d9c9d8e0986644624bd40b0
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -121,18 +121,17 @@ import  -/  base-4.10.1.0:Control.Monad.IO.Class 9d78cd0f73a837f3c00753bd212b9f2
 import  -/  base-4.10.1.0:Data.Foldable 9ed87455d68e87ff2b5b8725eae9897e
 import  -/  base-4.10.1.0:Foreign.C.Types 936c0db027291520097b61fd8686710a
 import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
-import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
 import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
 import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
 import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
   Input 2b358ec8c687e8f33c55a4723db9e95a
   Input 14baa3ae6b26e7d8a8967e8549c7576d
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   _isEsc 14baa3ae6b26e7d8a8967e8549c7576d
   _isSpace 14baa3ae6b26e7d8a8967e8549c7576d
@@ -147,7 +146,7 @@ import  -/  sdl2-2.4.0.1:SDL.Event aa9ec7b765d277cb0619d5ae590748b4
 import  -/  sdl2-2.4.0.1:SDL.Input.Keyboard 105c312429e53f56d62615f024ff8a66
 import  -/  sdl2-2.4.0.1:SDL.Input.Keyboard.Codes 7090cc5797bf17ee2663487619600f20
 import  -/  sdl2-2.4.0.1:SDL.Input.Mouse fa14812892af6cd814bcd15a9064fa6c
-25eb96b841a209921c81bdb348d16ff5
+16315d0f5b666f9602f148cc4651e589
   $fHasInputMahppyBird :: Input.HasInput GameVars.MahppyBird
   DFunId
   {- Strictness: m, Inline: CONLIKE,
@@ -199,7 +198,7 @@ import  -/  sdl2-2.4.0.1:SDL.Input.Mouse fa14812892af6cd814bcd15a9064fa6c
                                          GameVars.Vars GHC.Types.IO>_R
                                       <GameVars.Input>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <GameVars.Input>_N))) -}
-c5f5fde9241243cbc2dbf187a6e533d4
+813e3c084942b097dfa7e39b092207be
   $fHasInputMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -215,7 +214,7 @@ c5f5fde9241243cbc2dbf187a6e533d4
                  (# eta1,
                     (case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 -> x4 },
                      eta) #)) -}
-d177809a5049379f29281a02cb224b44
+0c15f0fcce0ec6316d698d1f1e29ea77
   $fHasInputMahppyBird2 ::
     GameVars.Input
     -> GameVars.Config
@@ -233,7 +232,7 @@ d177809a5049379f29281a02cb224b44
                     (GHC.Tuple.(),
                      case eta1 of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
                      GameVars.Vars x1 x2 x3 input dt1 dt2 }) #)) -}
-0ac22e25af8c7e6c8f2fd41fba0c974c
+6cb40d7b9f6d60f75e150eefa1be14c2
   $fHasInputMahppyBird3 ::
     GameVars.Config
     -> Control.Monad.Trans.State.Lazy.StateT
@@ -243,7 +242,7 @@ d177809a5049379f29281a02cb224b44
                  let {
                    m2 :: Control.Monad.Trans.State.Lazy.StateT
                            GameVars.Vars GHC.Types.IO [SDL.Event.Event]
-                   = Input.$fHasInputMahppyBird5
+                   = Input.$fHasInputMahppyBird4
                        `cast`
                      (Trans
                           (GameVars.N:MahppyBird[0] <[SDL.Event.Event]>_N)
@@ -354,24 +353,20 @@ d177809a5049379f29281a02cb224b44
                                     dt5
                                     GHC.Types.False
                                : y ys
-                               -> case y of ww { SDL.Event.Event ww1 ww2 ->
-                                  case ww2 of wild3 {
+                               -> case y of wild3 { SDL.Event.Event ds3 ds4 ->
+                                  case ds4 of wild4 {
                                     DEFAULT -> go ys
                                     SDL.Event.MouseButtonEvent mouseEvent
-                                    -> case mouseEvent of wild4 { SDL.Event.MouseButtonEventData ds3 ds4 ds5 ds6 dt6 ds7 ->
-                                       case GHC.Integer.Type.gtInteger#
-                                              (GHC.Integer.Type.smallInteger
-                                                 (GHC.Prim.word2Int# dt6))
-                                              Input.$fHasInputMahppyBird4 of wild5 { DEFAULT ->
-                                       case GHC.Prim.tagToEnum# @ GHC.Types.Bool wild5 of wild6 {
-                                         GHC.Types.False -> go ys
-                                         GHC.Types.True
+                                    -> case mouseEvent of wild5 { SDL.Event.MouseButtonEventData ds5 ds6 ds7 ds8 dt6 ds9 ->
+                                       case ds6 of wild6 {
+                                         SDL.Event.Released
                                          -> GameVars.Input
                                               (Input.$fHasInputMahppyBird_go1 a1)
                                               (Input.$fHasInputMahppyBird_go a1)
                                               dt4
                                               dt5
-                                              GHC.Types.True } } } } } }
+                                              GHC.Types.True
+                                         SDL.Event.Pressed -> go ys } } } } }
                          } in
                          go a1 })
                         dt1
@@ -394,11 +389,8 @@ d177809a5049379f29281a02cb224b44
                                             GameVars.Vars GHC.Types.IO ()>_R
                                  ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))))) -}
-0307f0495397d85bf1cd8c9ef1b9f4a2
-  $fHasInputMahppyBird4 :: GHC.Integer.Type.Integer
-  {- HasNoCafRefs, Unfolding: (0) -}
-f7f0bcf3127b20e86f16141671ddd4bb
-  $fHasInputMahppyBird5 :: GameVars.MahppyBird [SDL.Event.Event]
+305e01542e54ae0e99eeac4b5017ce93
+  $fHasInputMahppyBird4 :: GameVars.MahppyBird [SDL.Event.Event]
   {- Unfolding: (SDL.Event.$wpollEvents
                    @ GameVars.MahppyBird
                    GameVars.$fMonadIOMahppyBird) -}
@@ -466,18 +458,6 @@ e020fcd4516f340774f177768fce53a8
 c20feb5968c06591d12cdc25d07c08c6
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-745f5865ceb6e2ef60b8a12294e6c875
-  $wisMouseTap :: SDL.Event.EventPayload -> GHC.Types.Bool
-  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0],
-     Unfolding: (\ (ww :: SDL.Event.EventPayload) ->
-                 case ww of wild {
-                   DEFAULT -> GHC.Types.False
-                   SDL.Event.MouseButtonEvent mouseEvent
-                   -> case mouseEvent of wild1 { SDL.Event.MouseButtonEventData ds1 ds2 ds3 ds4 dt ds5 ->
-                      case GHC.Integer.Type.gtInteger#
-                             (GHC.Integer.Type.smallInteger (GHC.Prim.word2Int# dt))
-                             Input.$fHasInputMahppyBird4 of wild2 { DEFAULT ->
-                      GHC.Prim.tagToEnum# @ GHC.Types.Bool wild2 } } }) -}
 1949aafb9e3655651db86746b4b7dfe6
   $wisSpaceTap :: SDL.Event.EventPayload -> GHC.Types.Bool
   {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0],
@@ -518,20 +498,25 @@ b1e5047e03ae66c72fd258113e247707
                         -> GHC.Int.eqInt32
                              ds8 `cast` (SDL.Input.Keyboard.Codes.N:Keycode[0])
                              w `cast` (SDL.Input.Keyboard.Codes.N:Keycode[0]) } } } }) -}
-25eb96b841a209921c81bdb348d16ff5
+16315d0f5b666f9602f148cc4651e589
   class GHC.Base.Monad m => HasInput (m :: * -> *) where
     updateInput :: m ()
     setInput :: GameVars.Input -> m ()
     getInput :: m GameVars.Input
     {-# MINIMAL updateInput, setInput, getInput #-}
-2d3d0baf22051c0a72106ad759951ed7
+b2fe0c09071f90781c9ccca1c3846c41
   isMouseTap :: SDL.Event.Event -> GHC.Types.Bool
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
-     Inline: [0],
      Unfolding: InlineRule (1, True, False)
-                (\ (w :: SDL.Event.Event) ->
-                 case w of ww { SDL.Event.Event ww1 ww2 ->
-                 Input.$wisMouseTap ww2 }) -}
+                (\ (event :: SDL.Event.Event) ->
+                 case event of wild { SDL.Event.Event ds1 ds2 ->
+                 case ds2 of wild1 {
+                   DEFAULT -> GHC.Types.False
+                   SDL.Event.MouseButtonEvent mouseEvent
+                   -> case mouseEvent of wild2 { SDL.Event.MouseButtonEventData ds4 ds5 ds3 ds6 dt ds7 ->
+                      case ds5 of wild3 {
+                        SDL.Event.Released -> GHC.Types.True
+                        SDL.Event.Pressed -> GHC.Types.False } } } }) -}
 813583105a2d40f2981b35c5acf64db7
   isSpaceTap :: SDL.Event.Event -> GHC.Types.Bool
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,

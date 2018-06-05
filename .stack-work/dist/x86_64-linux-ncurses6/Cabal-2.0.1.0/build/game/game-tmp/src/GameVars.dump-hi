@@ -1,11 +1,11 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:34.855900058 UTC
+2018-06-05 00:36:00.047552729 UTC
 
 interface main:GameVars 8022
-  interface hash: 83914700fa6682ad15f7be7bf96067a0
-  ABI hash: 95546c61036798381255e3d7e11311b2
-  export-list hash: bffadec9649d88993fa5a790487d46e7
+  interface hash: 9873706c27f982a9c3511fd14d13c23a
+  ABI hash: c97b478d52eb65df6d94cfdf494ea2ce
+  export-list hash: 54748b09c2a15e9d35b796e54eb1daea
   orphan hash: 28316747aa4b432175e9a21af98ed300
   flag hash: cbff3560d053af8dd0d5e41e681edbe6
   sig of: Nothing
@@ -40,6 +40,8 @@ exports:
   GameVars.kInput
   GameVars.mousePos
   GameVars.mousePress
+  GameVars.muteTexture
+  GameVars.mutedTexture
   GameVars.playAgainBtnTexture
   GameVars.playBtnTexture
   GameVars.player
@@ -53,7 +55,7 @@ exports:
   GameVars.quitGameOverBtnTexture
   GameVars.score
   GameVars.scoreFont
-  GameVars.titleTextTexture
+  GameVars.titleScreenbg
   GameVars.topWallTexture
   GameVars.transitionOpacity
   GameVars.vGameStateStack
@@ -65,7 +67,7 @@ exports:
   GameVars.Animations{GameVars.Animations _playerDeathAnimation _playerIdleAnimation _playerJumpAnimation}
   GameVars.Config{GameVars.Config _cResources cRenderer cWindow}
   GameVars.Fonts{GameVars.Fonts _highScoreFont _scoreFont}
-  GameVars.GUITextures{GameVars.GUITextures _gameOverWindowTexture _playAgainBtnTexture _playBtnTexture _pressSpacetoJumpTexture _quitBtnTexture _quitGameOverBtnTexture _titleTextTexture}
+  GameVars.GUITextures{GameVars.GUITextures _gameOverWindowTexture _muteTexture _mutedTexture _playAgainBtnTexture _playBtnTexture _pressSpacetoJumpTexture _quitBtnTexture _quitGameOverBtnTexture _titleScreenbg}
   GameVars.GameStack
   GameVars.GameState{GameVars.GameOver GameVars.Menu GameVars.Pause GameVars.Play GameVars.PrePlay GameVars.Quit}
   GameVars.Input{GameVars.Input _isEsc _isSpace _mousePos _mousePress}
@@ -212,7 +214,7 @@ import  -/  sdl2-mixer-1.1.0:SDL.Mixer 168817304425963102e0e8491840829c
 import  -/  sdl2-ttf-2.0.2:SDL.Font 44c9d73e1da8a9f90d50e498341d19f1
 import  -/  transformers-0.5.2.0:Control.Monad.Trans.Reader cc12564dc0d2121844a0316ee821dfff
 import  -/  transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 1a80bdb936666c1b8faf2f03f91a48cc
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   $fApplicativeMahppyBird :: GHC.Base.Applicative GameVars.MahppyBird
   DFunId
   {- Strictness: m, Inline: CONLIKE,
@@ -310,7 +312,7 @@ fb5607b55373083b420634b0454a4ddb
                        (Sym (GameVars.N:MahppyBird[0]) <a>_N
                         ->_R Sym (GameVars.N:MahppyBird[0]) <b>_N
                         ->_R Sym (GameVars.N:MahppyBird[0]) <a>_N)) -}
-887e3241b41a1cef02ba5b6a4608b4ea
+ab709fa8fe647cd2ad73f730cb03d27b
   $fApplicativeMahppyBird1 ::
     Control.Monad.Trans.Reader.ReaderT
       GameVars.Config
@@ -389,7 +391,7 @@ fb5607b55373083b420634b0454a4ddb
                        ->_R Sym (GHC.Types.N:IO[0] <(a, GameVars.Vars)>_R))
                       (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                 <GameVars.Vars>_N <GHC.Types.IO>_R <a>_N)))) -}
-c27acff8ce18111f4e0e2c120c306bf3
+1d629fd7300a11044f88ecb9f183a9de
   $fApplicativeMahppyBird2 ::
     Control.Monad.Trans.Reader.ReaderT
       GameVars.Config
@@ -468,7 +470,7 @@ c27acff8ce18111f4e0e2c120c306bf3
                        ->_R Sym (GHC.Types.N:IO[0] <(b, GameVars.Vars)>_R))
                       (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                 <GameVars.Vars>_N <GHC.Types.IO>_R <b>_N)))) -}
-b8809e7398ba3fb373d5f9782341cc5d
+21fa489c5b5de42aaf09d412d008c60d
   $fApplicativeMahppyBird3 ::
     (a -> b -> c)
     -> Control.Monad.Trans.Reader.ReaderT
@@ -552,7 +554,7 @@ b8809e7398ba3fb373d5f9782341cc5d
                        ->_R Sym (GHC.Types.N:IO[0] <(c, GameVars.Vars)>_R))
                       (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                 <GameVars.Vars>_N <GHC.Types.IO>_R <c>_N)))) -}
-b571cd75a08976e4c22aebf23b0ba8e5
+452a8b17597b0c26dbedcae8e7794799
   $fApplicativeMahppyBird4 ::
     a
     -> GameVars.Config
@@ -768,7 +770,7 @@ a65f962b6fd3f698e101695debe677e1
                    GameVars.Quit
                    -> case ds1 of wild1 {
                         DEFAULT -> GHC.Types.False GameVars.Quit -> GHC.Types.True } }) -}
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   $fFunctorMahppyBird :: GHC.Base.Functor GameVars.MahppyBird
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: CONLIKE,
@@ -799,7 +801,7 @@ fb5607b55373083b420634b0454a4ddb
                        (<a>_R
                         ->_R Sym (GameVars.N:MahppyBird[0]) <b>_N
                         ->_R Sym (GameVars.N:MahppyBird[0]) <a>_N)) -}
-40d46fa3eb7755b65ab9fe287aba0e4b
+09c6ed3fe0962c35a4632ee9614c737c
   $fFunctorMahppyBird1 ::
     a
     -> Control.Monad.Trans.Reader.ReaderT
@@ -919,7 +921,7 @@ fb5607b55373083b420634b0454a4ddb
                       ->_R <Control.Monad.Trans.State.Lazy.StateT s GHC.Types.IO a>_R
                       ->_R Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
                                     <s>_N <GHC.Types.IO>_R <b>_N))) -}
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   $fMonadIOMahppyBird ::
     Control.Monad.IO.Class.MonadIO GameVars.MahppyBird
   DFunId
@@ -946,7 +948,7 @@ fb5607b55373083b420634b0454a4ddb
                                               GameVars.Vars GHC.Types.IO>_R
                                            <a>_N)))
                        (<GHC.Types.IO a>_R ->_R Sym (GameVars.N:MahppyBird[0]) <a>_N)) -}
-507903f2cca00420316dad2d84cd7fd3
+cf96b70dc7366be7cfe45cfd850f215e
   $fMonadIOMahppyBird1 ::
     GHC.Types.IO a
     -> GameVars.Config
@@ -964,7 +966,7 @@ fb5607b55373083b420634b0454a4ddb
                  case x `cast` (GHC.Types.N:IO[0] <a>_R)
                         eta2 of ds1 { (#,#) ipv ipv1 ->
                  (# ipv, (ipv1, eta1) #) }) -}
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   $fMonadMahppyBird :: GHC.Base.Monad GameVars.MahppyBird
   DFunId
   {- Strictness: m, Inline: CONLIKE,
@@ -1286,7 +1288,7 @@ ddd7b3c1e877013f576754c805109eab
                                 <Control.Monad.Trans.State.Lazy.StateT
                                    GameVars.Vars GHC.Types.IO>_R
                                 <a>_N)))) -}
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   $fMonadReaderMahppyBird ::
     Control.Monad.Reader.Class.MonadReader
       GameVars.Config GameVars.MahppyBird
@@ -1330,7 +1332,7 @@ fb5607b55373083b420634b0454a4ddb
                   (forall (a :: <*>_N).
                    <GameVars.Config -> a>_R
                    ->_R Sym (GameVars.N:MahppyBird[0]) <a>_N) -}
-7d345a44536bbe17c45558351956e824
+e1c393ac3d9c58247a00ce10cfda0566
   $fMonadReaderMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -1378,7 +1380,7 @@ fb5607b55373083b420634b0454a4ddb
                                <Control.Monad.Trans.State.Lazy.StateT
                                   GameVars.Vars GHC.Types.IO>_R
                                <a>_N)) -}
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   $fMonadStateMahppyBird ::
     Control.Monad.State.Class.MonadState
       GameVars.Vars GameVars.MahppyBird
@@ -1443,7 +1445,7 @@ fb5607b55373083b420634b0454a4ddb
                                            <a>_N)))
                        (<GameVars.Vars -> (a, GameVars.Vars)>_R
                         ->_R Sym (GameVars.N:MahppyBird[0]) <a>_N)) -}
-03ea39471b6f68e780a17d5a2e921c67
+86cb8229c9d1aa9923146bfdeab2c020
   $fMonadStateMahppyBird1 ::
     (GameVars.Vars -> (a, GameVars.Vars))
     -> GameVars.Config
@@ -1458,7 +1460,7 @@ fb5607b55373083b420634b0454a4ddb
                    (eta2 :: GameVars.Vars)
                    (eta3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  (# eta3, eta eta2 #)) -}
-448cffa4213a358f6d1ff39f3a3455bb
+002fad636775a804d29f753c100f0b27
   $fMonadStateMahppyBird2 ::
     GameVars.Vars
     -> GameVars.Config
@@ -1472,7 +1474,7 @@ fb5607b55373083b420634b0454a4ddb
                    (eta2 :: GameVars.Vars)
                    (eta3 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  (# eta3, (GHC.Tuple.(), eta) #)) -}
-c28a48833ddee0f58099f7b72151634f
+be00b5e8c11a9ea4ebb77f9e6b1bc16c
   $fMonadStateMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -2520,7 +2522,7 @@ c50fcc3ca3cdb545439f55988ff2d3af
     = Animations {_playerIdleAnimation :: [Animations.AnimationSrcRect],
                   _playerJumpAnimation :: [Animations.AnimationSrcRect],
                   _playerDeathAnimation :: [Animations.AnimationSrcRect]}
-e44e7628e39bfe67c0571be38f0cb139
+7d37304089f01776096e2dc8d6f690c8
   data Config
     = Config {cWindow :: SDL.Internal.Types.Window,
               cRenderer :: SDL.Internal.Types.Renderer,
@@ -2529,7 +2531,7 @@ e44e7628e39bfe67c0571be38f0cb139
   data Fonts
     = Fonts {_scoreFont :: SDL.Font.Font,
              _highScoreFont :: SDL.Font.Font}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
   data GUITextures
     = GUITextures {_playBtnTexture :: SDL.Video.Renderer.Texture,
                    _quitBtnTexture :: SDL.Video.Renderer.Texture,
@@ -2537,7 +2539,9 @@ bc622934b9ca39e380dfe788c418e5bd
                    _quitGameOverBtnTexture :: SDL.Video.Renderer.Texture,
                    _gameOverWindowTexture :: SDL.Video.Renderer.Texture,
                    _pressSpacetoJumpTexture :: SDL.Video.Renderer.Texture,
-                   _titleTextTexture :: SDL.Video.Renderer.Texture}
+                   _titleScreenbg :: SDL.Video.Renderer.Texture,
+                   _mutedTexture :: SDL.Video.Renderer.Texture,
+                   _muteTexture :: SDL.Video.Renderer.Texture}
 3662a17f39626bc31dea84fa169e8adb
   type GameStack = Data.Stack.Stack GameVars.GameState
 862115caec0cc090e3ab2e897cce53f2
@@ -2549,7 +2553,7 @@ bc622934b9ca39e380dfe788c418e5bd
              _isEsc :: GHC.Types.Bool,
              _mousePos :: {-# UNPACK #-}Linear.V2.V2 Foreign.C.Types.CInt,
              _mousePress :: !GHC.Types.Bool}
-fb5607b55373083b420634b0454a4ddb
+1989f26957dc34ff4b450af06c2d546d
   type role MahppyBird nominal
   newtype MahppyBird a
     = MahppyBird (Control.Monad.Trans.Reader.ReaderT
@@ -2581,7 +2585,7 @@ ac97681929c8648b7947e304c501ec6a
                                                                                                     Foreign.C.Types.CInt,
                      _camOffset :: {-# UNPACK #-}Linear.V2.V2 GHC.Types.Float,
                      _transitionOpacity :: {-# UNPACK #-}GHC.Word.Word8}
-5245c4107042b952bbc99248e9f0c042
+403f3d6581905f68ba656abc39ec924d
   data Resources
     = Resources {_cFont :: GameVars.Fonts,
                  _cTextures :: GameVars.Textures,
@@ -2592,7 +2596,7 @@ ac97681929c8648b7947e304c501ec6a
     = Sound {_bgMusicChannel :: SDL.Mixer.Channel,
              _jumpFx :: SDL.Mixer.Chunk,
              _crashFx :: SDL.Mixer.Chunk}
-bc0895f78ba7a6f8ea4aeb2608f6529b
+5e14338e57873739908d32ba506eaa9e
   data Textures
     = Textures {_bgTexture :: SDL.Video.Renderer.Texture,
                 _playerSpriteSheet :: SDL.Video.Renderer.Texture,
@@ -2634,7 +2638,7 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Sound) ->
                  case ds of wild { GameVars.Sound ds1 ds2 ds3 -> ds1 }) -}
-bc0895f78ba7a6f8ea4aeb2608f6529b
+5e14338e57873739908d32ba506eaa9e
   _bgTexture :: GameVars.Textures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.Textures
   {- Arity: 1, HasNoCafRefs,
@@ -2643,7 +2647,7 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
                 (\ (ds :: GameVars.Textures) ->
                  case ds of wild { GameVars.Textures ds1 ds2 ds3 ds4 ds5 ->
                  ds1 }) -}
-bc0895f78ba7a6f8ea4aeb2608f6529b
+5e14338e57873739908d32ba506eaa9e
   _botWallTexture :: GameVars.Textures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.Textures
   {- Arity: 1, HasNoCafRefs,
@@ -2652,7 +2656,7 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
                 (\ (ds :: GameVars.Textures) ->
                  case ds of wild { GameVars.Textures ds1 ds2 ds3 ds4 ds5 ->
                  ds3 }) -}
-5245c4107042b952bbc99248e9f0c042
+403f3d6581905f68ba656abc39ec924d
   _cAnimations :: GameVars.Resources -> GameVars.Animations
   RecSel Left GameVars.Resources
   {- Arity: 1, HasNoCafRefs,
@@ -2660,7 +2664,7 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Resources) ->
                  case ds of wild { GameVars.Resources ds1 ds2 ds3 ds4 -> ds3 }) -}
-5245c4107042b952bbc99248e9f0c042
+403f3d6581905f68ba656abc39ec924d
   _cFont :: GameVars.Resources -> GameVars.Fonts
   RecSel Left GameVars.Resources
   {- Arity: 1, HasNoCafRefs,
@@ -2686,7 +2690,7 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
                 (\ (ds :: GameVars.Player) ->
                  case ds of wild { GameVars.Player dt1 dt2 dt3 dt4 dt5 ds1 dt6 ->
                  GHC.Types.F# dt5 }) -}
-e44e7628e39bfe67c0571be38f0cb139
+7d37304089f01776096e2dc8d6f690c8
   _cResources :: GameVars.Config -> GameVars.Resources
   RecSel Left GameVars.Config
   {- Arity: 1, HasNoCafRefs,
@@ -2694,7 +2698,7 @@ e44e7628e39bfe67c0571be38f0cb139
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Config) ->
                  case ds of wild { GameVars.Config ds1 ds2 ds3 -> ds3 }) -}
-5245c4107042b952bbc99248e9f0c042
+403f3d6581905f68ba656abc39ec924d
   _cSound :: GameVars.Resources -> GameVars.Sound
   RecSel Left GameVars.Resources
   {- Arity: 1, HasNoCafRefs,
@@ -2702,7 +2706,7 @@ e44e7628e39bfe67c0571be38f0cb139
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Resources) ->
                  case ds of wild { GameVars.Resources ds1 ds2 ds3 ds4 -> ds4 }) -}
-5245c4107042b952bbc99248e9f0c042
+403f3d6581905f68ba656abc39ec924d
   _cTextures :: GameVars.Resources -> GameVars.Textures
   RecSel Left GameVars.Resources
   {- Arity: 1, HasNoCafRefs,
@@ -2759,21 +2763,21 @@ ac97681929c8648b7947e304c501ec6a
                 (\ (ds :: GameVars.Vars) ->
                  case ds of wild { GameVars.Vars ds1 ds2 ds3 ds4 dt1 dt2 ->
                  GHC.Types.F# dt1 }) -}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
   _gameOverWindowTexture ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LLLLSLL),1*U(A,A,A,A,1*U(U),A,A)>m,
+     Strictness: <S(LLLLSLLLL),1*U(A,A,A,A,1*U(U),A,A,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds5 }) -}
-bc0895f78ba7a6f8ea4aeb2608f6529b
+5e14338e57873739908d32ba506eaa9e
   _guiTextures :: GameVars.Textures -> GameVars.GUITextures
   RecSel Left GameVars.Textures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LLLLS),1*U(A,A,A,A,1*U(U,U,U,U,U,U,U))>m,
+     Strictness: <S(LLLLS),1*U(A,A,A,A,1*U(U,U,U,U,U,U,U,U,U))>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Textures) ->
                  case ds of wild { GameVars.Textures ds1 ds2 ds3 ds4 ds5 ->
@@ -2848,25 +2852,43 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Input) ->
                  case ds of wild { GameVars.Input ds1 ds2 dt1 dt2 ds3 -> ds3 }) -}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
+  _muteTexture :: GameVars.GUITextures -> SDL.Video.Renderer.Texture
+  RecSel Left GameVars.GUITextures
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLLLLLS),1*U(A,A,A,A,A,A,A,A,1*U(U))>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
+                 ds9 }) -}
+9f608cb593c2f72eeb1c5704b65f511b
+  _mutedTexture :: GameVars.GUITextures -> SDL.Video.Renderer.Texture
+  RecSel Left GameVars.GUITextures
+  {- Arity: 1, HasNoCafRefs,
+     Strictness: <S(LLLLLLLSL),1*U(A,A,A,A,A,A,A,1*U(U),A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
+                 ds8 }) -}
+9f608cb593c2f72eeb1c5704b65f511b
   _playAgainBtnTexture ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LLSLLLL),1*U(A,A,1*U(U),A,A,A,A)>m,
+     Strictness: <S(LLSLLLLLL),1*U(A,A,1*U(U),A,A,A,A,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds3 }) -}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
   _playBtnTexture ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(SLLLLLL),1*U(1*U(U),A,A,A,A,A,A)>m,
+     Strictness: <S(SLLLLLLLL),1*U(1*U(U),A,A,A,A,A,A,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds1 }) -}
 25f3834dc4dee20a203f7a0126c24d7f
   _player :: GameVars.PlayVars -> GameVars.Player
@@ -2911,7 +2933,7 @@ ac97681929c8648b7947e304c501ec6a
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Animations) ->
                  case ds of wild { GameVars.Animations ds1 ds2 ds3 -> ds2 }) -}
-bc0895f78ba7a6f8ea4aeb2608f6529b
+5e14338e57873739908d32ba506eaa9e
   _playerSpriteSheet ::
     GameVars.Textures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.Textures
@@ -2921,35 +2943,35 @@ bc0895f78ba7a6f8ea4aeb2608f6529b
                 (\ (ds :: GameVars.Textures) ->
                  case ds of wild { GameVars.Textures ds1 ds2 ds3 ds4 ds5 ->
                  ds2 }) -}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
   _pressSpacetoJumpTexture ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LLLLLSL),1*U(A,A,A,A,A,1*U(U),A)>m,
+     Strictness: <S(LLLLLSLLL),1*U(A,A,A,A,A,1*U(U),A,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds6 }) -}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
   _quitBtnTexture ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LSLLLLL),1*U(A,1*U(U),A,A,A,A,A)>m,
+     Strictness: <S(LSLLLLLLL),1*U(A,1*U(U),A,A,A,A,A,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds2 }) -}
-bc622934b9ca39e380dfe788c418e5bd
+9f608cb593c2f72eeb1c5704b65f511b
   _quitGameOverBtnTexture ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LLLSLLL),1*U(A,A,A,1*U(U),A,A,A)>m,
+     Strictness: <S(LLLSLLLLL),1*U(A,A,A,1*U(U),A,A,A,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds4 }) -}
 25f3834dc4dee20a203f7a0126c24d7f
   _score :: GameVars.PlayVars -> GHC.Types.Int
@@ -2967,17 +2989,17 @@ bc622934b9ca39e380dfe788c418e5bd
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Fonts) ->
                  case ds of wild { GameVars.Fonts ds1 ds2 -> ds1 }) -}
-bc622934b9ca39e380dfe788c418e5bd
-  _titleTextTexture ::
+9f608cb593c2f72eeb1c5704b65f511b
+  _titleScreenbg ::
     GameVars.GUITextures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.GUITextures
   {- Arity: 1, HasNoCafRefs,
-     Strictness: <S(LLLLLLS),1*U(A,A,A,A,A,A,1*U(U))>m,
+     Strictness: <S(LLLLLLSLL),1*U(A,A,A,A,A,A,1*U(U),A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ->
+                 case ds of wild { GameVars.GUITextures ds1 ds2 ds3 ds4 ds5 ds6 ds7 ds8 ds9 ->
                  ds7 }) -}
-bc0895f78ba7a6f8ea4aeb2608f6529b
+5e14338e57873739908d32ba506eaa9e
   _topWallTexture :: GameVars.Textures -> SDL.Video.Renderer.Texture
   RecSel Left GameVars.Textures
   {- Arity: 1, HasNoCafRefs,
@@ -3144,7 +3166,7 @@ f6bc13c9b59ea991ef88afd5bf65ef48
                    @ GameVars.Sound
                    (\ (y1 :: SDL.Mixer.Channel) -> GameVars.Sound y1 x2 x3)
                    (f7 x1) }) -}
-642f73193f978c436801ce2ebd59a6b5
+517d338878c76752fb31d67b44d0262f
   bgTexture ::
     Control.Lens.Type.Lens'
       GameVars.Textures SDL.Video.Renderer.Texture
@@ -3165,7 +3187,7 @@ f6bc13c9b59ea991ef88afd5bf65ef48
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
                     GameVars.Textures y1 x2 x3 x4 x5)
                    (f7 x1) }) -}
-6f8bd2811ad274409063068a8fc901cd
+cea8d9a3d93445c71831f77c0691f890
   botWallTexture ::
     Control.Lens.Type.Lens'
       GameVars.Textures SDL.Video.Renderer.Texture
@@ -3186,7 +3208,7 @@ f6bc13c9b59ea991ef88afd5bf65ef48
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
                     GameVars.Textures x1 x2 y1 x4 x5)
                    (f7 x3) }) -}
-3fd248e2074d61cf52350271315c2ced
+274f811ff19250bf36e042224fec3125
   cAnimations ::
     Control.Lens.Type.Lens' GameVars.Resources GameVars.Animations
   {- Arity: 3, HasNoCafRefs,
@@ -3205,7 +3227,7 @@ f6bc13c9b59ea991ef88afd5bf65ef48
                    @ GameVars.Resources
                    (\ (y1 :: GameVars.Animations) -> GameVars.Resources x1 x2 y1 x4)
                    (f7 x3) }) -}
-e63f249dad0873111769c015a8e72b91
+6eea812d52df63380a21b9e14308d8f0
   cFont :: Control.Lens.Type.Lens' GameVars.Resources GameVars.Fonts
   {- Arity: 3, HasNoCafRefs,
      Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U)>,
@@ -3290,14 +3312,14 @@ e63f249dad0873111769c015a8e72b91
                       x5
                       x6 `cast` (Sym (Foreign.C.Types.N:CDouble[0])))
                    (f7 (GHC.Types.F# dt5)) }) -}
-e44e7628e39bfe67c0571be38f0cb139
+7d37304089f01776096e2dc8d6f690c8
   cRenderer :: GameVars.Config -> SDL.Internal.Types.Renderer
   RecSel Left GameVars.Config
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U(U),A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: GameVars.Config) ->
                  case ds of wild { GameVars.Config ds1 ds2 ds3 -> ds2 }) -}
-e678b7b654c8cae60a2d1262461e631a
+b04d36993ee1ee6e042ac28bc0eb61e1
   cResources ::
     Control.Lens.Type.Lens' GameVars.Config GameVars.Resources
   {- Arity: 3, HasNoCafRefs,
@@ -3316,7 +3338,7 @@ e678b7b654c8cae60a2d1262461e631a
                    @ GameVars.Config
                    (\ (y1 :: GameVars.Resources) -> GameVars.Config x1 x2 y1)
                    (f7 x3) }) -}
-6043d13d4f328aac12ba36cf9cfd043f
+59a33c64917b259aef8c17e374b9e5e9
   cSound :: Control.Lens.Type.Lens' GameVars.Resources GameVars.Sound
   {- Arity: 3, HasNoCafRefs,
      Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U)>,
@@ -3334,7 +3356,7 @@ e678b7b654c8cae60a2d1262461e631a
                    @ GameVars.Resources
                    (\ (y1 :: GameVars.Sound) -> GameVars.Resources x1 x2 x3 y1)
                    (f7 x4) }) -}
-21cea555a8a5370bdd5412add72ac161
+d5266101a8a1109787f149679f99a311
   cTextures ::
     Control.Lens.Type.Lens' GameVars.Resources GameVars.Textures
   {- Arity: 3, HasNoCafRefs,
@@ -3382,7 +3404,7 @@ e678b7b654c8cae60a2d1262461e631a
                    (\ (y1 :: Walls.WallConfig) -> GameVars.$WPlayVars x1 x2 x3 y1 x5)
                    (f7
                       (Walls.WallConfig dt9 dt10 dt11 dt12 dt13 dt14 dt15 dt16)) }) -}
-e44e7628e39bfe67c0571be38f0cb139
+7d37304089f01776096e2dc8d6f690c8
   cWindow :: GameVars.Config -> SDL.Internal.Types.Window
   RecSel Left GameVars.Config
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U(U),A,A)>m,
@@ -3498,28 +3520,28 @@ fcc3502fbff7c1d4610130d0e0afa18d
                    @ GameVars.Vars
                    (\ (y1 :: GHC.Types.Float) -> GameVars.$WVars x1 x2 x3 x4 y1 x6)
                    (f7 (GHC.Types.F# dt1)) }) -}
-acef9f716c3517978efe05bde07fe7ca
+ab8c65a3721cb9d35ab6a011f9d8f88b
   gameOverWindowTexture ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures x1 x2 x3 x4 y1 x6 x7)
+                    GameVars.GUITextures x1 x2 x3 x4 y1 x6 x7 x8 x9)
                    (f7 x5) }) -}
-769144a4b996ae8df0968ef1ea8c454b
+eac494f378a0b289c29f925f7ff7594f
   guiTextures ::
     Control.Lens.Type.Lens' GameVars.Textures GameVars.GUITextures
   {- Arity: 3, HasNoCafRefs,
@@ -3751,47 +3773,89 @@ ba090ea6dd439bccdd61f0b7038e42a1
                    @ GameVars.Input
                    (\ (y1 :: GHC.Types.Bool) -> GameVars.$WInput x1 x2 x3 y1)
                    (f7 x4) }) -}
-532af0e9ba26487d2c2fd223f0f14c16
+b7aa094ce350a24eceeee74a6e74ca48
+  muteTexture ::
+    Control.Lens.Type.Lens'
+      GameVars.GUITextures SDL.Video.Renderer.Texture
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ f6 :: * -> *
+                   ($dFunctor :: GHC.Base.Functor f6)
+                   (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
+                   (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
+                 GHC.Base.fmap
+                   @ f6
+                   $dFunctor
+                   @ SDL.Video.Renderer.Texture
+                   @ GameVars.GUITextures
+                   (\ (y1 :: SDL.Video.Renderer.Texture) ->
+                    GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 y1)
+                   (f7 x9) }) -}
+edf150d798b8ee917b33f66f17a05dc8
+  mutedTexture ::
+    Control.Lens.Type.Lens'
+      GameVars.GUITextures SDL.Video.Renderer.Texture
+  {- Arity: 3, HasNoCafRefs,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (3, False, False)
+                (\ @ f6 :: * -> *
+                   ($dFunctor :: GHC.Base.Functor f6)
+                   (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
+                   (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
+                 GHC.Base.fmap
+                   @ f6
+                   $dFunctor
+                   @ SDL.Video.Renderer.Texture
+                   @ GameVars.GUITextures
+                   (\ (y1 :: SDL.Video.Renderer.Texture) ->
+                    GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 y1 x9)
+                   (f7 x8) }) -}
+e7a73c1322bb5a22503c84b75d84167c
   playAgainBtnTexture ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures x1 x2 y1 x4 x5 x6 x7)
+                    GameVars.GUITextures x1 x2 y1 x4 x5 x6 x7 x8 x9)
                    (f7 x3) }) -}
-5de22824b30ca5588b45ad845b84f6a2
+6c01d88673580d6d4607c9c61d3158e5
   playBtnTexture ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures y1 x2 x3 x4 x5 x6 x7)
+                    GameVars.GUITextures y1 x2 x3 x4 x5 x6 x7 x8 x9)
                    (f7 x1) }) -}
 fa7aa3fc5076bb661df40db074a47567
   player :: Control.Lens.Type.Lens' GameVars.PlayVars GameVars.Player
@@ -3927,7 +3991,7 @@ c0a8016eeb612375fb1f7452100c651c
                    (\ (y1 :: [Animations.AnimationSrcRect]) ->
                     GameVars.Animations x1 y1 x3)
                    (f7 x2) }) -}
-531aea2e3a195004bf38c1639a63131a
+493bbe54e885a04e0d145eb545e9593b
   playerSpriteSheet ::
     Control.Lens.Type.Lens'
       GameVars.Textures SDL.Video.Renderer.Texture
@@ -3948,68 +4012,68 @@ c0a8016eeb612375fb1f7452100c651c
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
                     GameVars.Textures x1 y1 x3 x4 x5)
                    (f7 x2) }) -}
-91f2a64a4a8dfe29cbe648deb8f6ba9c
+37f61b2897f2fcc93b5ce8a2c071fdc5
   pressSpacetoJumpTexture ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures x1 x2 x3 x4 x5 y1 x7)
+                    GameVars.GUITextures x1 x2 x3 x4 x5 y1 x7 x8 x9)
                    (f7 x6) }) -}
-f56a64e49114299d791db0b2ebe087d1
+7c4f23a6c9467d21d67592c3cac85142
   quitBtnTexture ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures x1 y1 x3 x4 x5 x6 x7)
+                    GameVars.GUITextures x1 y1 x3 x4 x5 x6 x7 x8 x9)
                    (f7 x2) }) -}
-be68ac5d1dba686d3d36602a5c6e8060
+faf22816378f5922353f1722dfd0f62d
   quitGameOverBtnTexture ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures x1 x2 x3 y1 x5 x6 x7)
+                    GameVars.GUITextures x1 x2 x3 y1 x5 x6 x7 x8 x9)
                    (f7 x4) }) -}
 8ba7b7f7f1331f435b9dd7fece044d0a
   score :: Control.Lens.Type.Lens' GameVars.PlayVars GHC.Types.Int
@@ -4057,28 +4121,28 @@ be68ac5d1dba686d3d36602a5c6e8060
                    @ GameVars.Fonts
                    (\ (y1 :: SDL.Font.Font) -> GameVars.Fonts y1 x2)
                    (f7 x1) }) -}
-1cf01e7a30b511f863f8f04601c3015b
-  titleTextTexture ::
+1597263a8cceded749d3017d2be8ec4c
+  titleScreenbg ::
     Control.Lens.Type.Lens'
       GameVars.GUITextures SDL.Video.Renderer.Texture
   {- Arity: 3, HasNoCafRefs,
-     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U)>,
+     Strictness: <S(C(C(S))L),1*U(1*C1(C1(U)),A)><L,1*C1(U)><S,1*U(U,U,U,U,U,U,U,U,U)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (3, False, False)
                 (\ @ f6 :: * -> *
                    ($dFunctor :: GHC.Base.Functor f6)
                    (f7 :: SDL.Video.Renderer.Texture -> f6 SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  GHC.Base.fmap
                    @ f6
                    $dFunctor
                    @ SDL.Video.Renderer.Texture
                    @ GameVars.GUITextures
                    (\ (y1 :: SDL.Video.Renderer.Texture) ->
-                    GameVars.GUITextures x1 x2 x3 x4 x5 x6 y1)
+                    GameVars.GUITextures x1 x2 x3 x4 x5 x6 y1 x8 x9)
                    (f7 x7) }) -}
-9bea67624e5412c0cb11d1c829f76474
+bbbb97372ea796920b29162b8940df61
   topWallTexture ::
     Control.Lens.Type.Lens'
       GameVars.Textures SDL.Video.Renderer.Texture

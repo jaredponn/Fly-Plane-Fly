@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 18:10:19.257964545 UTC
+2018-06-05 00:36:04.740567633 UTC
 
 interface main:Renderer 8022
-  interface hash: cc52a851f34dcfcfbf52eca85d31c786
-  ABI hash: 785bbc0357f146ca46489bfa58a32a88
+  interface hash: 99c10f8346dbceb90df59175328c5fa9
+  ABI hash: 75e1d8af9aea988a4b749bb2c62642fe
   export-list hash: 12249b92f8ba4308c004e3f97d45a860
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 28d311eb40bc72404e7ce86744f46594
@@ -138,66 +138,65 @@ import  -/  linear-1.20.7:Linear.V4 316a77d05c749a3da274eba99cc77a95
 import  -/  Animations ed8ac26f601711059133f19a17b8411f
   exports: 1b514af753d69c9c6476a9810faf24f0
   srcRect bec91fea7b73f18603dba410b765ef72
-import  -/  AnimationsManager cbf8705999ca4b50005279e8fbbfc640
+import  -/  AnimationsManager d650d562ace7f9bcb6645a5ec1b845b5
   exports: 870ab299162042bfa1955a3278127f9e
-  AnimationsManager c8e0f589a92aeed99bff1d8d3702265e
-  getPlayerAnimationSrc a25b00ce3c6e97fc998f22047cd06dc9
-import  -/  Buttons 3ec218fc829f1172505d8f13038748ce
+  AnimationsManager 1300b0f8b825f26c0c0bd424b5660e12
+  getPlayerAnimationSrc b3463fe8dde7127630fc8ff7e700b4ac
+import  -/  Buttons eb5ee8bed5c3803d702090bd75709be5
   exports: 2f3907c0af37ac9fc752c2492d57e9d5
   ButtonAttr 6b0715224ad83cf733833a908fe45de8
   rect 6b0715224ad83cf733833a908fe45de8
   texture 6b0715224ad83cf733833a908fe45de8
-import  -/  CameraManager bce9939a6263a138be09bdc9e4ab2fc0
+import  -/  CameraManager 4a3629dcca1cd6a4a9a9befbf2188ae5
   exports: 112cd2acaa8c34d282eabc28f7fedc85
-  CameraManager 5fbacda7e44e96481f0ac368d7f1045a
-  getCameraPos 49e821156ec414ae5318b78a81350101
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+  CameraManager d16eef61f6af70903e3a612d17ffd25c
+  getCameraPos 854dbdf57a8f372b76976a3451fd4c21
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
-  bgTexture 642f73193f978c436801ce2ebd59a6b5
-  botWallTexture 6f8bd2811ad274409063068a8fc901cd
-  cFont e63f249dad0873111769c015a8e72b91
-  cRenderer e44e7628e39bfe67c0571be38f0cb139
-  cResources e678b7b654c8cae60a2d1262461e631a
-  cTextures 21cea555a8a5370bdd5412add72ac161
-  cWindow e44e7628e39bfe67c0571be38f0cb139
-  playerSpriteSheet 531aea2e3a195004bf38c1639a63131a
+  botWallTexture cea8d9a3d93445c71831f77c0691f890
+  cFont 6eea812d52df63380a21b9e14308d8f0
+  cRenderer 7d37304089f01776096e2dc8d6f690c8
+  cResources b04d36993ee1ee6e042ac28bc0eb61e1
+  cTextures d5266101a8a1109787f149679f99a311
+  cWindow 7d37304089f01776096e2dc8d6f690c8
+  playerSpriteSheet 493bbe54e885a04e0d145eb545e9593b
   scoreFont 5f2633e933d68e24238ace640a6fb545
-  topWallTexture 9bea67624e5412c0cb11d1c829f76474
-import  -/  GuiTransforms 45bb5f8eff3ca1d177e51377a93f20f5
+  topWallTexture bbbb97372ea796920b29162b8940df61
+import  -/  GuiTransforms e2db9ba277a4f977ddcd90a5635f8391
   exports: f9dcd83a9df04834bf7cc3c940782a98
-  GuiTransforms bdcfe4d5d5dcc377f267d071dde75fe1
-  getWindowSize 74ba2797e87dbac12ed1847ef73e1a64
-  xCenterRectangle 3b89eda481da69e2689350f81ab32ef0
-  yCenterRectangle 184ccb8c7752491b064f7aec4da8f5ae
-import  -/  Logger de91407b46dc2af6570ae0f0d44f5bb4
+  GuiTransforms 2fd14cc1a80d141e758ca9f9f3e06ff8
+  getWindowSize 7c55e0bd38762ad5bd584c63e844ee51
+  xCenterRectangle ccf03f990a1933f6a7c163f17a0dcfa4
+  yCenterRectangle 7bb5678d2589e5a23628d1b6000717a2
+import  -/  Logger 8440c95053026489c9281e4e9e175c09
   exports: c7f6c47792388de1970a4c43887f8fdc
-  Logger 77ad9183556b8f37f2d10bd5f3bb788c
-import  -/  PlayerManager 6410674bd76f72a678b626b327e31876
+  Logger 33185071f9a092c50e0368c71838eca3
+import  -/  PlayerManager 9868e35f2483697ab3ba877365241301
   exports: 90666d388c993bafd900a62a82f9ea2a
-  PlayerManager 848ee61a9056a9b20a824f25f60c47da
-  getPlayerAngle 96fcfcec8e816e67dbc74ef17c6ff23a
-  getPlayerAttributes 40f27cec19b2593a7db141807769f391
-import  -/  ScoreManager 0955763b12813388df618f32aee1a497
+  PlayerManager 6545e3f8eb0ac641e42ed8093f9a9539
+  getPlayerAngle 31cb8c05e618c8073ed67a7183d522f7
+  getPlayerAttributes 8eee0362b6deffc6a341f20724b8cdf3
+import  -/  ScoreManager 879794ddf423ff4c9dc5591200a3c62e
   exports: 3f42ff92e5da3f9a7eb6a2cabff3ca72
-  ScoreManager 6c33549276da942a8ff8f7c07d85fd2b
-  getScore b425a5a0ad100e893dd6d7442dbde8d1
-import  -/  TimeManager c5a6185a6f35cba82cca87bc7827c727
-  exports: 8b2c0f72e07dc8e418f06d3a9f6510ae
-  TimeManager 11f819b14b751ed055082b44f160b76d
-  getRealTime 59f73b0eb62d3e22760cfa13fd446ede
-  setdt 455dc350fda73416a1ca42367620cbee
-  threadDelay cbc6cb1912846eaa35ccd30a4d1e9569
+  ScoreManager ede30ede90ba44a2fd7ff42d80929ab7
+  getScore 8e8c2c5e65a6da42249be13fc68a364d
+import  -/  TimeManager 6917e8576ee854ed7f928bd2c7cdda2f
+  exports: 1444a12543659cbb43ece9f99bc0f223
+  TimeManager 3f466474e9f7b0f2ba00315fed57edeb
+  getRealTime 1c155add559fb1eb5e11ad2d0bb63f46
+  setdt 864004504f1f9f5fe7234ac44bc16266
+  threadDelay 715263bcfb1e51bcb09542ef297e1114
 import  -/  Util 04dd18c408cec1d861350946bb6e7df1
   exports: 01755414b1287618f45750309b35edae
   convertToSeconds 64f234d3f86665d369be3b594eceb7c4
   roundV2 0d8151353e8580dd1c39b2d8ab7106b2
-import  -/  WallManager b5bd3d99322415f51ede188af63e5727
+import  -/  WallManager cb1c751b982aa16d5f5d6e0072158759
   exports: 67e9f1c1c7089cdef3d6912a9d52dd41
-  WallManager 0af5d5681a31766b019ff90b35f67036
-  getWallsInScreen c16cf44d31d212610c6e5d054402ff82
+  WallManager 6362104a3af6d543fd392d41a9935369
+  getWallsInScreen de06adfa3dc1445278fa17ac6efd898b
 import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
   exports: 9a82a9ead6771cc6b661267f6167d45d
   Wall 0489472b2e8cbbdc29c5c06003041655
@@ -217,7 +216,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
 import  -/  sdl2-ttf-2.0.2:SDL.Font 44c9d73e1da8a9f90d50e498341d19f1
 import  -/  text-1.2.3.0:Data.Text 0519455f2b04d2a7315c2959461dd14e
 import  -/  text-1.2.3.0:Data.Text.Internal 5d98ec4bb692174ed69de0b9299773d5
-185eee8bdf18b8e33e3728180dd1fc7b
+30c5dfcbb2b1b64eb833c43738ed8174
   $fRendererMahppyBird :: Renderer.Renderer GameVars.MahppyBird
   DFunId
   {- Inline: CONLIKE,
@@ -262,21 +261,22 @@ import  -/  text-1.2.3.0:Data.Text.Internal 5d98ec4bb692174ed69de0b9299773d5
                                  (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
                   Renderer.$fRendererMahppyBird25
                     `cast`
-                  (Trans
-                       (<GameVars.Config>_R
-                        ->_R Trans
-                                 (<GameVars.Vars>_R
-                                  ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
-                                 (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
-                                           <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
-                       (Trans
-                            (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
-                                      <*>_N
-                                      <GameVars.Config>_R
-                                      <Control.Monad.Trans.State.Lazy.StateT
-                                         GameVars.Vars GHC.Types.IO>_R
-                                      <()>_N))
-                            (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
+                  (<SDL.Video.Renderer.Texture>_R
+                   ->_R Trans
+                            (<GameVars.Config>_R
+                             ->_R Trans
+                                      (<GameVars.Vars>_R
+                                       ->_R Sym (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R))
+                                      (Sym (Control.Monad.Trans.State.Lazy.N:StateT[0]
+                                                <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)))
+                            (Trans
+                                 (Sym (Control.Monad.Trans.Reader.N:ReaderT[0]
+                                           <*>_N
+                                           <GameVars.Config>_R
+                                           <Control.Monad.Trans.State.Lazy.StateT
+                                              GameVars.Vars GHC.Types.IO>_R
+                                           <()>_N))
+                                 (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
                   Renderer.$fRendererMahppyBird23
                     `cast`
                   (Trans
@@ -475,7 +475,7 @@ import  -/  text-1.2.3.0:Data.Text.Internal 5d98ec4bb692174ed69de0b9299773d5
                             (Sym (GameVars.N:MahppyBird[0]) <()>_N)))
                   Renderer.$fRendererMahppyBird_$ctoScreenCord
                   Renderer.$fRendererMahppyBird_$ctoScreenRect -}
-957a8a07a2a224255653431cf30e0239
+353e6112b9398dc5bddbef7a63a9de17
   $fRendererMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -516,7 +516,7 @@ f934e42e20238e6632af99c17775a294
 aee68fbbc3bc4dff984a67980575323e
   $fRendererMahppyBird11 :: GHC.Int.Int32
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Int.I32# 0#) -}
-faee01ad8000815cad09864dba7c1cc7
+91013ce6b388aae7fd6238fcc9494a54
   $fRendererMahppyBird12 ::
     Walls.Wall
     -> GameVars.Config
@@ -737,7 +737,7 @@ faee01ad8000815cad09864dba7c1cc7
                                                                         GameVars.Vars)>_R)))))) } } } } } } } } } })
                         lengths),
                      s') #) } } }) -}
-3c48b24e9e0bcb303e936de8aaea77c4
+48397726ba7029e8772ad25a8b6a73b7
   $fRendererMahppyBird13 ::
     GameVars.Config
     -> GameVars.Vars
@@ -865,7 +865,7 @@ faee01ad8000815cad09864dba7c1cc7
                           go ys eta2 (case ipv9 of wild4 { (,) a3 s'2 -> s'2 }) ipv8 } } } }
                  } in
                  go a2 r1 s'1 ipv2 } } } }) -}
-e05d488748377870555085024e02b140
+c55e5d7f4cf0704153705207801aa67d
   $fRendererMahppyBird14 ::
     [Walls.Wall]
     -> GameVars.Config
@@ -876,7 +876,7 @@ e05d488748377870555085024e02b140
              SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt)],
            GameVars.Vars) #)
   {- Arity: 4, Strictness: <S,1*U><L,U(U(U),U,U)><L,U><S,U> -}
-9b941d6b50a93b9c7e81464375230f34
+23d014e9362c4bbdab81db5fb26bfa12
   $fRendererMahppyBird15 ::
     GameVars.Config
     -> GameVars.Vars
@@ -945,7 +945,7 @@ e05d488748377870555085024e02b140
                    r1
                    eta
                    eta1) -}
-fbfc05cedbf59a4402a7bc0d35d40132
+dde0d8aff6f2370ba0e2a20261e2c22a
   $fRendererMahppyBird16 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -985,7 +985,7 @@ bbf5c978900d9e96c42fb58bbb9a5373
 62d8577277f3c2a8f105a40490744ac1
   $fRendererMahppyBird19 :: GHC.Word.Word8
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Word.W8# 55##) -}
-4e53188297e27957c78b79405928eafe
+ce9956b818391c099b14b01236fdee8c
   $fRendererMahppyBird2 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> SDL.Video.Renderer.Texture
@@ -1041,7 +1041,7 @@ ab5997352092c867d9694a0004ee5275
 7701030af7ed5022e18cd974b9d580e4
   $fRendererMahppyBird22 :: GHC.Types.Float
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
-02c633ae3ae133d29ad8ec9e068a8a89
+8928312ae1a44d8553e4e61f8b3043ec
   $fRendererMahppyBird23 ::
     GameVars.Config
     -> GameVars.Vars
@@ -1170,24 +1170,24 @@ e31ecd59bb039ae12e03f9a7f80211ba
                    @ GHC.Types.Bool
                    GHC.Types.False
                    GHC.Types.False) -}
-eb348203ee7c823532be055cb960b60b
+1f5761f9d7181753be4f8693e860f195
   $fRendererMahppyBird25 ::
-    GameVars.Config
+    SDL.Video.Renderer.Texture
+    -> GameVars.Config
     -> GameVars.Vars
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
-  {- Arity: 3,
-     Strictness: <L,U(U,U(U),U(U,U(U(U),U,U,U,U),U,U))><L,U><S,U>,
-     Unfolding: (\ (r1 :: GameVars.Config)
-                   (eta :: GameVars.Vars)
-                   (eta1 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+  {- Arity: 4, Strictness: <L,U(U)><L,U(U,U(U),U)><L,U><S,U>,
+     Unfolding: InlineRule (4, True, False)
+                (\ (bgtexture :: SDL.Video.Renderer.Texture)
+                   (eta :: GameVars.Config)
+                   (eta1 :: GameVars.Vars)
+                   (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  (((SDL.Video.Renderer.copy
                       @ GameVars.MahppyBird
                       GameVars.$fMonadIOMahppyBird
-                      (case r1 of wild { GameVars.Config ds1 ds2 ds3 -> ds2 })
-                      (case r1 of wild { GameVars.Config x1 x2 x3 ->
-                       case x3 of wild1 { GameVars.Resources x4 x5 x6 x7 ->
-                       case x5 of wild2 { GameVars.Textures x8 x9 x10 x11 x12 -> x8 } } })
+                      (case eta of wild { GameVars.Config ds1 ds2 ds3 -> ds2 })
+                      bgtexture
                       (GHC.Base.Nothing
                          @ (SDL.Video.Renderer.Rectangle Foreign.C.Types.CInt))
                       (GHC.Base.Nothing
@@ -1201,15 +1201,15 @@ eb348203ee7c823532be055cb960b60b
                              <Control.Monad.Trans.State.Lazy.StateT
                                 GameVars.Vars GHC.Types.IO>_R
                              <()>_N))
-                     r1)
+                     eta)
                     `cast`
                   (Control.Monad.Trans.State.Lazy.N:StateT[0]
                        <GameVars.Vars>_N <GHC.Types.IO>_R <()>_N)
-                    eta)
+                    eta1)
                    `cast`
                  (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R)
-                   eta1) -}
-a8cbc6726ffc8df9263e52f632e9688a
+                   eta2) -}
+147708fd70effbc9994c1c60d1156775
   $fRendererMahppyBird26 ::
     [GameVars.MahppyBird ()]
     -> GameVars.Config
@@ -1274,7 +1274,7 @@ a8cbc6726ffc8df9263e52f632e9688a
                                  (GHC.Prim.>=# ww2 y) of wild6 {
                             GHC.Types.False -> $j ww1 ww2 GHC.Types.True -> $j1 } }
                        GHC.Types.True -> $j1 } } } } }) #) } } }) -}
-7b702b20900278108f755deda99e3f65
+9c2832eb609a186fd68d52e0a170ecce
   $fRendererMahppyBird27 ::
     [GameVars.MahppyBird ()]
     -> GameVars.Config
@@ -1343,7 +1343,7 @@ a8cbc6726ffc8df9263e52f632e9688a
                       (# ds8,
                          (GHC.Tuple.(),
                           case ipv1 of wild4 { (,) a1 s'1 -> s'1 }) #) } } } } } } }) -}
-caf53d2f170e8f5c7d7fed53fd4ca891
+3f624e20b549b37ffd074b268ca47ade
   $fRendererMahppyBird28 ::
     [GameVars.MahppyBird ()]
     -> GameVars.Config
@@ -1351,7 +1351,7 @@ caf53d2f170e8f5c7d7fed53fd4ca891
     -> GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, ((), GameVars.Vars) #)
   {- Arity: 4, HasNoCafRefs, Strictness: <S,1*U><L,U><L,U><S,U> -}
-bc4a9bb9d1e2f4fa8d48b10874761e0b
+b8e82cc6fe771ef55dbe9be01ad7816b
   $fRendererMahppyBird3 ::
     Buttons.ButtonAttr
     -> GameVars.Config
@@ -1410,7 +1410,7 @@ bc4a9bb9d1e2f4fa8d48b10874761e0b
                    `cast`
                  (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R)
                    eta2) -}
-c75798f66798de0e391beffdf1572539
+e8ffb4f191301d5d8431ed4e8b2750bf
   $fRendererMahppyBird4 ::
     SDL.Font.Font
     -> Data.Text.Internal.Text
@@ -1658,7 +1658,7 @@ c75798f66798de0e391beffdf1572539
                    `cast`
                  (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R)
                    ipv6 } } } } } } } } } } } } } } }) -}
-2af194a869e078422141bf1aa5805922
+2842de66829d3705553f3ac6765021dc
   $fRendererMahppyBird5 ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.Config
@@ -1690,7 +1690,7 @@ c75798f66798de0e391beffdf1572539
 626d2e96c689f096c0ebf2fbea40bddc
   $fRendererMahppyBird8 :: GHC.Word.Word8
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Word.W8# 0##) -}
-7f6e1854b2ceb7fbfd48de7c2599c066
+05d269fa302a8057c40f61ef0a4888f4
   $fRendererMahppyBird9 ::
     Linear.V4.V4 GHC.Word.Word8
     -> GameVars.Config
@@ -1767,7 +1767,7 @@ c75798f66798de0e391beffdf1572539
                    `cast`
                  (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R)
                    ipv2 } } }) -}
-4bff7527266d763e41982645ac659e1e
+503e0dac2cd6243e9fbac76aee67bf7f
   $fRendererMahppyBird_$ctoScreenCord ::
     Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
     -> GameVars.MahppyBird
@@ -1885,7 +1885,7 @@ c75798f66798de0e391beffdf1572539
                            (Sym (GameVars.N:MahppyBird[0]) <Linear.Affine.Point
                                                               Linear.V2.V2
                                                               Foreign.C.Types.CInt>_N)))) -}
-fa1e58da64c11a46a7954e3e554d1179
+d16af1dfcb63fbf2a89f4d3106dee863
   $fRendererMahppyBird_$ctoScreenRect ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float
     -> GameVars.MahppyBird
@@ -1952,7 +1952,7 @@ e29bdf84f3996480183357d54b57cbe7
 7c072f779f4bf5efbfe0294e3e0a4719
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-6bc938feab5d7c122b83367705fbc860
+16707f9293f8431cb7041f3297441036
   $w$cdrawRectToScreen ::
     Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
     -> Linear.V2.V2 GHC.Types.Float
@@ -2033,7 +2033,7 @@ e29bdf84f3996480183357d54b57cbe7
                    `cast`
                  (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R)
                    ipv } }) -}
-2162045ac4385b7ed6ecfdde72e2e8ec
+39da6360d0ff1d177b0a7203d9a68105
   $w$ctoScreenRect ::
     Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
     -> Linear.V2.V2 GHC.Types.Float
@@ -2245,11 +2245,11 @@ e29bdf84f3996480183357d54b57cbe7
                       @ Foreign.C.Types.CInt
                       nt `cast` (Sym (Foreign.C.Types.N:CInt[0]))
                       nt1 `cast` (Sym (Foreign.C.Types.N:CInt[0])) } } #)) -}
-185eee8bdf18b8e33e3728180dd1fc7b
+30c5dfcbb2b1b64eb833c43738ed8174
   class GHC.Base.Monad m => Renderer (m :: * -> *) where
     drawObjects :: [m ()] -> m ()
     drawObjectsWithDt :: [m ()] -> m ()
-    drawBg :: m ()
+    drawBg :: SDL.Video.Renderer.Texture -> m ()
     drawPlayer :: m ()
     drawScore :: m ()
     drawWalls :: m ()

@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 20:35:22.530525716 UTC
+2018-06-05 00:37:32.128475801 UTC
 
 interface main:MahppyBird 8022
-  interface hash: a39369e86f99f95cc775495a047d4bb7
-  ABI hash: efccf3867a29e9c6e150c1455c32aa82
-  export-list hash: 4eab83f709ea71fcf7fa5db20898acc2
-  orphan hash: fe0a3b3edf509d4d3d1e092092b8b70d
+  interface hash: d1c23612fc57f2bc8d38174291aa3ba2
+  ABI hash: 3445e2649efd26e8da04f64be8d4ee9c
+  export-list hash: a38502fa03c8c23b93cca96706eb6fff
+  orphan hash: e494f76a8661a5045de97cdf360acefa
   flag hash: c5e2e909636c33a525d7032af0f021a5
   sig of: Nothing
   used TH splices: False
@@ -16,22 +16,23 @@ exports:
   MahppyBird.runMahppyBird
   GameVars.MahppyBird{GameVars.MahppyBird}
 module dependencies: Aabb Animations AnimationsManager Buttons
-                     CameraManager GameStateManager GameVars GuiTransforms Input Logger
-                     Physics PlayerManager Renderer ScoreManager SoundManager
-                     TimeManager Util WallManager Walls
+                     CameraManager GameStateManager GameVars GuiTransforms InitGameVars
+                     Input Logger Physics PlayerManager Renderer ScoreManager
+                     SoundManager TimeManager Util WallManager Walls
 package dependencies: QuickCheck-2.10.1 Stack-0.3.2
                       StateVar-1.1.1.0 Stream-0.4.7.2 adjunctions-4.4 array-0.5.2.0
                       base-4.10.1.0 base-orphans-0.7 bifunctors-5.5.2 binary-0.8.5.1
                       bytes-0.15.4 bytestring-0.10.8.2 call-stack-0.1.0 cereal-0.5.5.0
                       clock-0.7.2 comonad-5.0.3 containers-0.5.10.2 contravariant-1.4.1
                       data-default-class-0.1.2.0 deepseq-1.4.3.0 distributive-0.5.3
-                      exceptions-0.8.3 free-5.0.2 ghc-boot-th-8.2.2 ghc-prim-0.5.1.1
-                      hashable-1.2.7.0 integer-gmp-1.0.1.0 integer-logarithms-1.0.2.1
-                      kan-extensions-5.1 lazysmallcheck-0.6 lens-4.16.1
-                      lifted-base-0.2.3.12 linear-1.20.7 monad-control-1.0.2.3 mtl-2.2.2
-                      pretty-1.1.3.3 primitive-0.6.3.0 profunctors-5.2.2 random-1.1
-                      reflection-2.1.3 scientific-0.3.6.0 sdl2-2.4.0.1 sdl2-mixer-1.1.0
-                      sdl2-ttf-2.0.2 semigroupoids-5.2.2 stm-2.4.5.0 tagged-0.8.5
+                      exceptions-0.8.3 filepath-1.4.1.2 free-5.0.2 ghc-boot-th-8.2.2
+                      ghc-prim-0.5.1.1 hashable-1.2.7.0 integer-gmp-1.0.1.0
+                      integer-logarithms-1.0.2.1 kan-extensions-5.1 lazysmallcheck-0.6
+                      lens-4.16.1 lifted-base-0.2.3.12 linear-1.20.7
+                      monad-control-1.0.2.3 mtl-2.2.2 pretty-1.1.3.3 primitive-0.6.3.0
+                      profunctors-5.2.2 random-1.1 reflection-2.1.3 scientific-0.3.6.0
+                      sdl2-2.4.0.1 sdl2-image-2.0.0 sdl2-mixer-1.1.0 sdl2-ttf-2.0.2
+                      semigroupoids-5.2.2 stm-2.4.5.0 tagged-0.8.5
                       template-haskell-2.12.0.0 text-1.2.3.0 tf-random-0.5
                       th-abstraction-0.2.6.0 time-1.8.0.2 transformers-0.5.2.0
                       transformers-base-0.4.4 transformers-compat-0.5.1.4
@@ -109,7 +110,8 @@ family instance modules: adjunctions-4.4:Data.Functor.Rep
                          sdl2-2.4.0.1:SDL.Internal.Types sdl2-2.4.0.1:SDL.Power
                          sdl2-2.4.0.1:SDL.Time sdl2-2.4.0.1:SDL.Video
                          sdl2-2.4.0.1:SDL.Video.OpenGL sdl2-2.4.0.1:SDL.Video.Renderer
-                         sdl2-ttf-2.0.2:SDL.Font tagged-0.8.5:Data.Tagged
+                         sdl2-image-2.0.0:SDL.Image sdl2-ttf-2.0.2:SDL.Font
+                         tagged-0.8.5:Data.Tagged
                          template-haskell-2.12.0.0:Language.Haskell.TH.Syntax
                          text-1.2.3.0:Data.Text text-1.2.3.0:Data.Text.Lazy
                          th-abstraction-0.2.6.0:Language.Haskell.TH.Datatype
@@ -148,42 +150,42 @@ import  -/  Aabb 02207cce2d794346ceccf4ae11a9988d
 import  -/  Animations ed8ac26f601711059133f19a17b8411f
   exports: 1b514af753d69c9c6476a9810faf24f0
   AnimationType'Idle 053d7b999a4a72927414591d605eb1c5
-import  -/  AnimationsManager cbf8705999ca4b50005279e8fbbfc640
+import  -/  AnimationsManager d650d562ace7f9bcb6645a5ec1b845b5
   exports: 870ab299162042bfa1955a3278127f9e
-  AnimationsManager c8e0f589a92aeed99bff1d8d3702265e
-  getPlayerDeathAnimation 316ff894083e26dea5fb617c298885a9
-  getPlayerIdleAnimation 8e175ffc1682ba6de6f303215a094617
-  prependToPlayerAnimation 9c4c8c1ebd8eba0bea10cb1744bb2619
-  removePlayerAnimationsUpto 6c11a382c137aba15d5ae245f13ed5c1
-  replacePlayerAnimation ac666382aa91dc3697b1f63967524ac7
-  updatePlayerAnimation 546ff3a8d57eddd039baa06791bc43a3
-import  -/  Buttons 3ec218fc829f1172505d8f13038748ce
+  AnimationsManager 1300b0f8b825f26c0c0bd424b5660e12
+  getPlayerDeathAnimation 6610220a0d06dcf1742fb4ce14563d92
+  getPlayerIdleAnimation 1bc28715d96c8c38ed9865458f55b3a4
+  prependToPlayerAnimation e06680aa56454eefce90b7f19ec50c68
+  removePlayerAnimationsUpto 7c8101cd033f7069a5f8df57f48f9374
+  replacePlayerAnimation becddc6e4612adf4668f8fd47f757bf0
+  updatePlayerAnimation 22eb439866396534fd42ef2dee056580
+import  -/  Buttons eb5ee8bed5c3803d702090bd75709be5
   exports: 2f3907c0af37ac9fc752c2492d57e9d5
   Button ed42b97136823455baa17e14617cf2b4
   aabb 6b0715224ad83cf733833a908fe45de8
-  alignToBottomEdgeButtonAttr da635b55e33f506105ecdac4fa33f255
-  createCenteredButtonAttr 0bb278431d109f278eaa3520c1bcc65d
-  createRightEdgeAlignedButtonAttr 4cfe19163fb433de61bbcd2f263f4fd9
+  alignToBottomEdgeButtonAttr f595479cd76915c6c3dd89987e7782ec
+  createCenteredButtonAttr c09a1414775e4423cbf66a7e93d1aa86
+  createRightEdgeAlignedButtonAttr 4e094196368bedc57f6a35c1e7f21d8b
   translateButtonAttr 953f609e835bb610b2b81ecd8b9bfde9
-import  -/  CameraManager bce9939a6263a138be09bdc9e4ab2fc0
+import  -/  CameraManager 4a3629dcca1cd6a4a9a9befbf2188ae5
   exports: 112cd2acaa8c34d282eabc28f7fedc85
-  CameraManager 5fbacda7e44e96481f0ac368d7f1045a
-  getCameraOffset 3ed0d149fd3a4528436279687dba7945
-  setCameraPos b681ccf86e628952b5992d9de75410a6
-import  -/  GameStateManager b3a1d140e6b3d11f54cbacec2e0264a8
+  CameraManager d16eef61f6af70903e3a612d17ffd25c
+  getCameraOffset ff8baed5a7a2be8b87a2ebff9049a7d0
+  setCameraPos 7532d2529fa4060d4c9e0080874c7532
+import  -/  GameStateManager ccbeed6e4a039e9548d0e336726c3043
   exports: 31a22b4a25b84d92d55314f503d3c92f
-  GameStateManager 8420014c9a352ffa5caa89c2c48c940a
-  peekGameState 485ea01e2d22345fe669f7e26ebf8e35
-  popGameState_ 5e01c4cc7841dbda929ce3e23b8763fa
-  pushGameState b45286bf9b93b09695d147f45273ba6f
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
+  GameStateManager 324b55f11cd0fe2360a2e9874ea026b9
+  peekGameState 655aac3a14a65bccbe6a448ed58092d5
+  popGameState_ ddf07b0097504cde5a70fb899c41d3af
+  pushGameState 779b48d0c75ee47469e09eaf064cf11a
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
   GameOver d5de0be57826e8d044e3b711775e232f
   GameState 862115caec0cc090e3ab2e897cce53f2
   Input 14baa3ae6b26e7d8a8967e8549c7576d
-  MahppyBird d3bb134355951a5ecee51301a637af16
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+  MahppyBird c09a81eb550f4240742ed546a74e9517
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Menu c93e18feadbb490b363082d606e5efdd
   Pause afc590b2ab47d17b75d0124812eb3a2a
   Play 9ea9aa6ada49b383b9d31b7ff74b7145
@@ -194,97 +196,103 @@ import  -/  GameVars 95546c61036798381255e3d7e11311b2
   _isSpace 14baa3ae6b26e7d8a8967e8549c7576d
   _mousePos 14baa3ae6b26e7d8a8967e8549c7576d
   _mousePress 14baa3ae6b26e7d8a8967e8549c7576d
-  cAnimations 3fd248e2074d61cf52350271315c2ced
-  cFont e63f249dad0873111769c015a8e72b91
-  cResources e678b7b654c8cae60a2d1262461e631a
-  cTextures 21cea555a8a5370bdd5412add72ac161
-  gameOverWindowTexture acef9f716c3517978efe05bde07fe7ca
-  guiTextures 769144a4b996ae8df0968ef1ea8c454b
+  bgTexture 517d338878c76752fb31d67b44d0262f
+  cAnimations 274f811ff19250bf36e042224fec3125
+  cFont 6eea812d52df63380a21b9e14308d8f0
+  cResources b04d36993ee1ee6e042ac28bc0eb61e1
+  cTextures d5266101a8a1109787f149679f99a311
+  gameOverWindowTexture ab8c65a3721cb9d35ab6a011f9d8f88b
+  guiTextures eac494f378a0b289c29f925f7ff7594f
   highScoreFont 1ea24e51de83317aaebc34b09661ed73
-  playAgainBtnTexture 532af0e9ba26487d2c2fd223f0f14c16
-  playBtnTexture 5de22824b30ca5588b45ad845b84f6a2
+  muteTexture b7aa094ce350a24eceeee74a6e74ca48
+  mutedTexture edf150d798b8ee917b33f66f17a05dc8
+  playAgainBtnTexture e7a73c1322bb5a22503c84b75d84167c
+  playBtnTexture 6c01d88673580d6d4607c9c61d3158e5
   playerJumpAnimation 41aad7e466f7e7e4a245f84c07c1c830
-  pressSpacetoJumpTexture 91f2a64a4a8dfe29cbe648deb8f6ba9c
-  quitBtnTexture f56a64e49114299d791db0b2ebe087d1
-  quitGameOverBtnTexture be68ac5d1dba686d3d36602a5c6e8060
+  pressSpacetoJumpTexture 37f61b2897f2fcc93b5ce8a2c071fdc5
+  quitBtnTexture 7c4f23a6c9467d21d67592c3cac85142
+  quitGameOverBtnTexture faf22816378f5922353f1722dfd0f62d
   scoreFont 5f2633e933d68e24238ace640a6fb545
-import  -/  GuiTransforms 45bb5f8eff3ca1d177e51377a93f20f5
+  titleScreenbg 1597263a8cceded749d3017d2be8ec4c
+import  -/  GuiTransforms e2db9ba277a4f977ddcd90a5635f8391
   exports: f9dcd83a9df04834bf7cc3c940782a98
-  GuiTransforms bdcfe4d5d5dcc377f267d071dde75fe1
+  GuiTransforms 2fd14cc1a80d141e758ca9f9f3e06ff8
   translate 8df0f20a9af8b27115b4172f5904e382
-  xCenterRectangle 3b89eda481da69e2689350f81ab32ef0
-  yCenterRectangle 184ccb8c7752491b064f7aec4da8f5ae
-import  -/  Input 76eb390ccd5c295d1d88c0d46ecfa5a8
+  xCenterRectangle ccf03f990a1933f6a7c163f17a0dcfa4
+  yCenterRectangle 7bb5678d2589e5a23628d1b6000717a2
+import  -/  InitGameVars a2e7718a52756cddcc338d51597aa219
+  exports: fbc9364d5ab5298ae16518b83d74060c
+import  -/  Input 56e539d2b22425f97c9c19a695bc89a3
   exports: 05cbb0277d9c9d8e0986644624bd40b0
-  HasInput 25eb96b841a209921c81bdb348d16ff5
-  getInput f62d484f823b326a0a1a07a6d46879d8
-  updateInput 2e1533127cb488803cdfe1f0bcd86132
-import  -/  Logger de91407b46dc2af6570ae0f0d44f5bb4
+  HasInput 16315d0f5b666f9602f148cc4651e589
+  getInput 02ba476bfc7b48dc45bcb010f37636c9
+  updateInput c130b0d2892fa2f0110dad3fb1b78a22
+import  -/  Logger 8440c95053026489c9281e4e9e175c09
   exports: c7f6c47792388de1970a4c43887f8fdc
-  Logger 77ad9183556b8f37f2d10bd5f3bb788c
-  logText 8c5f744a5986baf2ffae20839972e4ad
-import  -/  Physics 9fef5200bac6e7f9e26adde587a20f17
+  Logger 33185071f9a092c50e0368c71838eca3
+  logText f70b8542443b0a171bb0e0b29a78e9d0
+import  -/  Physics b9e2d4bce28db23d3a2a79d5a15480fb
   exports: 351c7a3cc081ac564329eb8cf05ccdc3
-  Physics cf87dad5941d01bbf83f863fdf7550b1
-  applyGrav 985edfcefff181167806a3b29ee8cbc0
-  applyXVel 6e0bfcd336d545407a7a9596233bf778
-  applyYVel dc5eb5f2af4fce2ba70f4b2a446b148b
-  setGrav cabc5f85fd5ab59fe524257e7b7ef2e0
-import  -/  PlayerManager 6410674bd76f72a678b626b327e31876
+  Physics d90e58b7cee3024f0f1b555e462546bb
+  applyGrav 13e9897fbbddfa2509b83dcadfab5d82
+  applyXVel 769305e41bcb75a245a2d84945d23c74
+  applyYVel 7e4b3b23e0600b0dbf2ff23ad981fe3f
+  setGrav 5263bf14f9a7235e6f4dadfcce575783
+import  -/  PlayerManager 9868e35f2483697ab3ba877365241301
   exports: 90666d388c993bafd900a62a82f9ea2a
-  PlayerManager 848ee61a9056a9b20a824f25f60c47da
-  getIsPassingWall 9d122d5896b1836cd520be33c5325f47
-  getPlayerAabb 30b962cae842effb29f9ff11df112af8
-  getPlayerAngle 96fcfcec8e816e67dbc74ef17c6ff23a
-  getPlayerPos 4e44ef3538aaa5e2c72173e1d18ce815
-  getPlayerYVel a7c135cb6d78b07f06157943088ef5ee
-  jumpPlayer 7e7f692fbc0b630306ff7f54a765c2c1
-  setIsPassingWall 7ec37101be99e9a60d538dfebacf5211
-  setPlayerAngle 7258bdcbad46096072dc6734144d2385
-  setPlayerPos 30aee81c998a798e54640342325e84bc
-  setPlayerYVel d91388458ea803bc4f14a5209d0585c7
-import  -/  Renderer 785bbc0357f146ca46489bfa58a32a88
+  PlayerManager 6545e3f8eb0ac641e42ed8093f9a9539
+  getIsPassingWall db0a745e03efaae3169d6908cfe53c30
+  getPlayerAabb a6edcbde0b94459bad337f3ee6ebd626
+  getPlayerAngle 31cb8c05e618c8073ed67a7183d522f7
+  getPlayerPos a64a9eb2d341b7182e8c682f970aac19
+  getPlayerYVel d481f27b26e46302bf9b46df16ad54ec
+  jumpPlayer 03c90b052609ff94ed57bfc17579aff3
+  setIsPassingWall 273c8074e34bb08361884cb83f8b36d8
+  setPlayerAngle 19181f41bd0e46a42be7c511db8625e8
+  setPlayerPos 7d422f1b0a0aa2a4716fc40742f90fa5
+  setPlayerYVel 7fd64e20a53b7d218d378191bd613843
+import  -/  Renderer 75e1d8af9aea988a4b749bb2c62642fe
   exports: 12249b92f8ba4308c004e3f97d45a860
-  Renderer 185eee8bdf18b8e33e3728180dd1fc7b
-  drawBg 603abf5cbb6fc4376be018017370c2bb
-  drawBtnToScreen db2bf6e02ba5f9787e14e043e259f873
-  drawObjectsWithDt 9a22664de89e55f5f0c8b030f236bd60
-  drawPlayer 2cb532b4bf5c2e59ec7d85b522e6a9b5
-  drawScore c24728a5998fcb1c548a1fbd1407332a
-  drawScreenOverlay ecc77f7a06dd4663db2f6ef967fe8e26
-  drawTextToScreen 47e92f4b7701e8438da5a1983de64bad
-  drawTextureToScreen 391b5972113ef27a46460525644b6762
-  drawWalls 1e3d1a252a5cdd35998fc19d74ce5fb2
-import  -/  ScoreManager 0955763b12813388df618f32aee1a497
+  Renderer 30c5dfcbb2b1b64eb833c43738ed8174
+  drawBg b6ac0f75df6b6a546669389eb134e692
+  drawBtnToScreen c0e0b3227d605e7c5024c303f1c64ec5
+  drawObjectsWithDt 75d26bff4e6962bf95735211b0c0189e
+  drawPlayer c36124329b6d12df1ec89e94e6b8d86f
+  drawScore 0b3a09ad2f2626ac9ae107d29b7c421a
+  drawScreenOverlay dcbb90d6fabd6bc2e976ad6af22b5fcb
+  drawTextToScreen 0b54ff769ccfaa97e97eba1832877b21
+  drawTextureToScreen a759ad3bef89df0f460330476a2d92a3
+  drawWalls 5b99e1bc0397dc38afee1d00476ae4ac
+import  -/  ScoreManager 879794ddf423ff4c9dc5591200a3c62e
   exports: 3f42ff92e5da3f9a7eb6a2cabff3ca72
-  ScoreManager 6c33549276da942a8ff8f7c07d85fd2b
-  getHighScore f05bb03c3a5f1e55bcc1fe42e1a59923
-  getScore b425a5a0ad100e893dd6d7442dbde8d1
-  incrementScore 97b701082838eaf692bb2d192135885e
-  isHighScore 71bf659962a5f8a771f6e076663b3ec7
-  modifyHighScore 93f47821678a2d063961de96ae3bca0d
-  resetScore 18ab336fdfc29b9b4f3b30c621f8bb54
-import  -/  SoundManager 15a75b498fe7d8db2e40b5fa4f95e333
-  exports: 8c2e19846d532df58bb6e65c35893349
-  SoundManager 14f6e9bc4905bd261949db297bc23ed6
-  areChannelsPlaying 459a12399838f2c25d77a381f6b61e73
-  pauseAll 23e15efd1545ca6704345b71c7285cc1
-  playCrashFx 88f1436806269460499521fbfbabbeae
-  playJumpFx 8e491cd1054f7a00fa9758486dac1c3e
-  resumeAll 650c70a5df81ed5990ab16ed7b6291b2
-import  -/  TimeManager c5a6185a6f35cba82cca87bc7827c727
-  exports: 8b2c0f72e07dc8e418f06d3a9f6510ae
-  TimeManager 11f819b14b751ed055082b44f160b76d
-import  -/  WallManager b5bd3d99322415f51ede188af63e5727
+  ScoreManager ede30ede90ba44a2fd7ff42d80929ab7
+  getHighScore 6ab0bd0ee871d7b75cb15e9ddf9213e7
+  getScore 8e8c2c5e65a6da42249be13fc68a364d
+  incrementScore 18687a4f0e4f3adb02e72efcd8f4e00e
+  isHighScore ae7aca7e3f5130193958b9240586a3be
+  modifyHighScore 60c8669312872fe79a1a86ccc905bc43
+  resetScore 2117073568530fce3eebfdc92f375bcf
+import  -/  SoundManager 1010a93932bfc8dbb36d5ad8736a2bb6
+  exports: 2682bf98cf9562134007a2e59b3ed39b
+  SoundManager 231bf9fbb0ef1c04a8736ec0d1ad558e
+  areChannelsPlaying 1dd6103f244d1494f0a69dc3eab841d4
+  muteAll b268e4f3a640de58cc216d40d6bcaa45
+  playCrashFx 2c4ea533e9db34aca75c7b516b7e3f5b
+  playJumpFx 315321a50c81094c1c654b7395f578a5
+  resumeAll 7d232d1e3e7433e49fc8305c74af93a7
+import  -/  TimeManager 6917e8576ee854ed7f928bd2c7cdda2f
+  exports: 1444a12543659cbb43ece9f99bc0f223
+  TimeManager 3f466474e9f7b0f2ba00315fed57edeb
+import  -/  WallManager cb1c751b982aa16d5f5d6e0072158759
   exports: 67e9f1c1c7089cdef3d6912a9d52dd41
-  WallManager 0af5d5681a31766b019ff90b35f67036
-  changeWallConfStartingPosition c965fa68d2295d77c95ecb4f7917b779
-  getFirstLowerWallAabb 759cd68cf8a5ca53b2a6a59bb0f09494
-  getFirstUpperWallAabb cc9d5cdba5828a3b600fcd0cda64e4b6
-  getFirstWall 39b402003e3fb1c70122a114acb6563e
-  getFirstWallGapAabb ebd4706fb1fa099be7388cb269939949
-  popWall_ c4130c77fb7ae8e26363ecbac627f851
-  resetWalls b59218ae0cd0a5acf3c6f158b8d7ca4e
+  WallManager 6362104a3af6d543fd392d41a9935369
+  changeWallConfStartingPosition 0327fc59a3741dac189cc7112e3455a7
+  getFirstLowerWallAabb 4095f934610d45d191261ae87700df16
+  getFirstUpperWallAabb 8ebe1c6501d72b777f79e358697e6c2d
+  getFirstWall 5645d3b46b9229a912cd5c4854ac4a92
+  getFirstWallGapAabb d1a77dddad73011c2c52a513faf59e87
+  popWall_ d2a29f46844d26d44c2e8a121bb7bcfa
+  resetWalls f7b4a5852d98eb55ebfe92fe823aea93
 import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
   exports: 9a82a9ead6771cc6b661267f6167d45d
   wallWidth 0489472b2e8cbbdc29c5c06003041655
@@ -300,7 +308,33 @@ import  -/  text-1.2.3.0:Data.Text 0519455f2b04d2a7315c2959461dd14e
 import  -/  transformers-0.5.2.0:Control.Monad.Trans.Class 4bfa8c2d5ed6a6a465f9f6f92f7ab1d4
 import  -/  transformers-0.5.2.0:Control.Monad.Trans.Reader cc12564dc0d2121844a0316ee821dfff
 import  -/  transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 1a80bdb936666c1b8faf2f03f91a48cc
-5d8e4c2adcc00164ecb9b89157c2f55e
+940e6f42ce33a182637151f095c226a1
+  $sbgTexture ::
+    (SDL.Video.Renderer.Texture
+     -> Data.Functor.Const.Const
+          SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+    -> GameVars.Textures
+    -> Data.Functor.Const.Const
+         SDL.Video.Renderer.Texture GameVars.Textures
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(U,A,A,A,A)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (f7 :: SDL.Video.Renderer.Texture
+                          -> Data.Functor.Const.Const
+                               SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+                   (ds :: GameVars.Textures) ->
+                 case ds of wild { GameVars.Textures x1 x2 x3 x4 x5 ->
+                 (f7 x1)
+                   `cast`
+                 (Trans
+                      (Data.Functor.Const.N:Const[0]
+                           <*>_N
+                           <SDL.Video.Renderer.Texture>_R
+                           <SDL.Video.Renderer.Texture>_P)
+                      (Sym (Data.Functor.Const.N:Const[0]
+                                <*>_N <SDL.Video.Renderer.Texture>_R <GameVars.Textures>_P))) }) -}
+97918658ca3aee7fe92bfd59477ceb0a
   $scFont ::
     (GameVars.Fonts
      -> Data.Functor.Const.Const SDL.Font.Font GameVars.Fonts)
@@ -321,7 +355,7 @@ import  -/  transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 1a80bdb936666c1b
                            <*>_N <SDL.Font.Font>_R <GameVars.Fonts>_P)
                       (Sym (Data.Functor.Const.N:Const[0]
                                 <*>_N <SDL.Font.Font>_R <GameVars.Resources>_P))) }) -}
-312f2b7eaec1a00fab6df717e18ac711
+047a80d9b06a8679c57821d1324dd7ca
   $scResources ::
     (GameVars.Resources
      -> Data.Functor.Const.Const SDL.Font.Font GameVars.Resources)
@@ -341,7 +375,7 @@ import  -/  transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 1a80bdb936666c1b
                            <*>_N <SDL.Font.Font>_R <GameVars.Resources>_P)
                       (Sym (Data.Functor.Const.N:Const[0]
                                 <*>_N <SDL.Font.Font>_R <GameVars.Config>_P))) }) -}
-18df9052674bd0631b43d9bc0d27250b
+9b1f9681bc25a933baf94a9a2145cb01
   $scResources1 ::
     (GameVars.Resources
      -> Data.Functor.Const.Const
@@ -364,7 +398,7 @@ import  -/  transformers-0.5.2.0:Control.Monad.Trans.State.Lazy 1a80bdb936666c1b
                            <*>_N <SDL.Video.Renderer.Texture>_R <GameVars.Resources>_P)
                       (Sym (Data.Functor.Const.N:Const[0]
                                 <*>_N <SDL.Video.Renderer.Texture>_R <GameVars.Config>_P))) }) -}
-a0be651680081ef5056f906510c5953d
+3d5f20ab60d126cbb1f0c74dbd2def64
   $scTextures ::
     (GameVars.Textures
      -> Data.Functor.Const.Const
@@ -390,7 +424,7 @@ a0be651680081ef5056f906510c5953d
                                 <*>_N
                                 <SDL.Video.Renderer.Texture>_R
                                 <GameVars.Resources>_P))) }) -}
-23d94d4c88f7bbe23d9e228ed9c3208b
+8ceb067349437bd6eb7a9ea6256257a8
   $sgameOverWindowTexture ::
     (SDL.Video.Renderer.Texture
      -> Data.Functor.Const.Const
@@ -399,14 +433,14 @@ a0be651680081ef5056f906510c5953d
     -> Data.Functor.Const.Const
          SDL.Video.Renderer.Texture GameVars.GUITextures
   {- Arity: 2, HasNoCafRefs,
-     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,U,A,A)>,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,U,A,A,A,A)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (f7 :: SDL.Video.Renderer.Texture
                           -> Data.Functor.Const.Const
                                SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  (f7 x5)
                    `cast`
                  (Trans
@@ -418,7 +452,7 @@ a0be651680081ef5056f906510c5953d
                                 <*>_N
                                 <SDL.Video.Renderer.Texture>_R
                                 <GameVars.GUITextures>_P))) }) -}
-064491020c5b88f2e757228388f75003
+83ed260c7f37b64479658bc5ceab443b
   $sguiTextures ::
     (GameVars.GUITextures
      -> Data.Functor.Const.Const
@@ -462,7 +496,63 @@ e1f4840df1985f6b33b523a5ab573e4b
                            <*>_N <SDL.Font.Font>_R <SDL.Font.Font>_P)
                       (Sym (Data.Functor.Const.N:Const[0]
                                 <*>_N <SDL.Font.Font>_R <GameVars.Fonts>_P))) }) -}
-79a4da0f523e4b5cbe2f035c215016a5
+c61b87f0f2775b61b3983c3421a2877c
+  $smuteTexture ::
+    (SDL.Video.Renderer.Texture
+     -> Data.Functor.Const.Const
+          SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+    -> GameVars.GUITextures
+    -> Data.Functor.Const.Const
+         SDL.Video.Renderer.Texture GameVars.GUITextures
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,A,A,A,A,U)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (f7 :: SDL.Video.Renderer.Texture
+                          -> Data.Functor.Const.Const
+                               SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+                   (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
+                 (f7 x9)
+                   `cast`
+                 (Trans
+                      (Data.Functor.Const.N:Const[0]
+                           <*>_N
+                           <SDL.Video.Renderer.Texture>_R
+                           <SDL.Video.Renderer.Texture>_P)
+                      (Sym (Data.Functor.Const.N:Const[0]
+                                <*>_N
+                                <SDL.Video.Renderer.Texture>_R
+                                <GameVars.GUITextures>_P))) }) -}
+4fb38550d9edfc665cffdfadbeaf3d2c
+  $smutedTexture ::
+    (SDL.Video.Renderer.Texture
+     -> Data.Functor.Const.Const
+          SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+    -> GameVars.GUITextures
+    -> Data.Functor.Const.Const
+         SDL.Video.Renderer.Texture GameVars.GUITextures
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,A,A,A,U,A)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (f7 :: SDL.Video.Renderer.Texture
+                          -> Data.Functor.Const.Const
+                               SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+                   (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
+                 (f7 x8)
+                   `cast`
+                 (Trans
+                      (Data.Functor.Const.N:Const[0]
+                           <*>_N
+                           <SDL.Video.Renderer.Texture>_R
+                           <SDL.Video.Renderer.Texture>_P)
+                      (Sym (Data.Functor.Const.N:Const[0]
+                                <*>_N
+                                <SDL.Video.Renderer.Texture>_R
+                                <GameVars.GUITextures>_P))) }) -}
+0362a6f3ffaa9e3a10fb86bab702324e
   $splayAgainBtnTexture ::
     (SDL.Video.Renderer.Texture
      -> Data.Functor.Const.Const
@@ -471,14 +561,14 @@ e1f4840df1985f6b33b523a5ab573e4b
     -> Data.Functor.Const.Const
          SDL.Video.Renderer.Texture GameVars.GUITextures
   {- Arity: 2, HasNoCafRefs,
-     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,U,A,A,A,A)>,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,U,A,A,A,A,A,A)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (f7 :: SDL.Video.Renderer.Texture
                           -> Data.Functor.Const.Const
                                SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  (f7 x3)
                    `cast`
                  (Trans
@@ -490,7 +580,7 @@ e1f4840df1985f6b33b523a5ab573e4b
                                 <*>_N
                                 <SDL.Video.Renderer.Texture>_R
                                 <GameVars.GUITextures>_P))) }) -}
-cf96baa0b7bafd1ea3a69da076fc8bf9
+b889347fbc5d31e317b29726f675423b
   $splayBtnTexture ::
     (SDL.Video.Renderer.Texture
      -> Data.Functor.Const.Const
@@ -499,14 +589,14 @@ cf96baa0b7bafd1ea3a69da076fc8bf9
     -> Data.Functor.Const.Const
          SDL.Video.Renderer.Texture GameVars.GUITextures
   {- Arity: 2, HasNoCafRefs,
-     Strictness: <C(S),1*C1(U(U))><S,1*U(U,A,A,A,A,A,A)>,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(U,A,A,A,A,A,A,A,A)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (f7 :: SDL.Video.Renderer.Texture
                           -> Data.Functor.Const.Const
                                SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  (f7 x1)
                    `cast`
                  (Trans
@@ -518,7 +608,7 @@ cf96baa0b7bafd1ea3a69da076fc8bf9
                                 <*>_N
                                 <SDL.Video.Renderer.Texture>_R
                                 <GameVars.GUITextures>_P))) }) -}
-e00ac90033d5a43d1dcb5aa151120d9e
+ba08cc399c3cd08d37f9d2a114f6a235
   $spressSpacetoJumpTexture ::
     (SDL.Video.Renderer.Texture
      -> Data.Functor.Const.Const
@@ -527,14 +617,14 @@ e00ac90033d5a43d1dcb5aa151120d9e
     -> Data.Functor.Const.Const
          SDL.Video.Renderer.Texture GameVars.GUITextures
   {- Arity: 2, HasNoCafRefs,
-     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,A,U,A)>,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,A,U,A,A,A)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (f7 :: SDL.Video.Renderer.Texture
                           -> Data.Functor.Const.Const
                                SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  (f7 x6)
                    `cast`
                  (Trans
@@ -546,7 +636,7 @@ e00ac90033d5a43d1dcb5aa151120d9e
                                 <*>_N
                                 <SDL.Video.Renderer.Texture>_R
                                 <GameVars.GUITextures>_P))) }) -}
-bd122b1c9c9954358ea6a5caf13e9bb1
+a2568fa263485fdb5b28fa85d06cb76f
   $squitBtnTexture ::
     (SDL.Video.Renderer.Texture
      -> Data.Functor.Const.Const
@@ -555,14 +645,14 @@ bd122b1c9c9954358ea6a5caf13e9bb1
     -> Data.Functor.Const.Const
          SDL.Video.Renderer.Texture GameVars.GUITextures
   {- Arity: 2, HasNoCafRefs,
-     Strictness: <C(S),1*C1(U(U))><S,1*U(A,U,A,A,A,A,A)>,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,U,A,A,A,A,A,A,A)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (f7 :: SDL.Video.Renderer.Texture
                           -> Data.Functor.Const.Const
                                SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  (f7 x2)
                    `cast`
                  (Trans
@@ -574,7 +664,7 @@ bd122b1c9c9954358ea6a5caf13e9bb1
                                 <*>_N
                                 <SDL.Video.Renderer.Texture>_R
                                 <GameVars.GUITextures>_P))) }) -}
-d9da6be8ddf8089cc6467a1eae5fe78d
+920685bcf65730cca4aea1fb5b8ac658
   $squitGameOverBtnTexture ::
     (SDL.Video.Renderer.Texture
      -> Data.Functor.Const.Const
@@ -583,14 +673,14 @@ d9da6be8ddf8089cc6467a1eae5fe78d
     -> Data.Functor.Const.Const
          SDL.Video.Renderer.Texture GameVars.GUITextures
   {- Arity: 2, HasNoCafRefs,
-     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,U,A,A,A)>,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,U,A,A,A,A,A)>,
      Inline: (sat-args=2),
      Unfolding: InlineRule (2, False, False)
                 (\ (f7 :: SDL.Video.Renderer.Texture
                           -> Data.Functor.Const.Const
                                SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
                    (ds :: GameVars.GUITextures) ->
-                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
                  (f7 x4)
                    `cast`
                  (Trans
@@ -622,6 +712,34 @@ d9da6be8ddf8089cc6467a1eae5fe78d
                            <*>_N <SDL.Font.Font>_R <SDL.Font.Font>_P)
                       (Sym (Data.Functor.Const.N:Const[0]
                                 <*>_N <SDL.Font.Font>_R <GameVars.Fonts>_P))) }) -}
+f46333d5140b2389225a08d8c224feeb
+  $stitleScreenbg ::
+    (SDL.Video.Renderer.Texture
+     -> Data.Functor.Const.Const
+          SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+    -> GameVars.GUITextures
+    -> Data.Functor.Const.Const
+         SDL.Video.Renderer.Texture GameVars.GUITextures
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <C(S),1*C1(U(U))><S,1*U(A,A,A,A,A,A,U,A,A)>,
+     Inline: (sat-args=2),
+     Unfolding: InlineRule (2, False, False)
+                (\ (f7 :: SDL.Video.Renderer.Texture
+                          -> Data.Functor.Const.Const
+                               SDL.Video.Renderer.Texture SDL.Video.Renderer.Texture)
+                   (ds :: GameVars.GUITextures) ->
+                 case ds of wild { GameVars.GUITextures x1 x2 x3 x4 x5 x6 x7 x8 x9 ->
+                 (f7 x7)
+                   `cast`
+                 (Trans
+                      (Data.Functor.Const.N:Const[0]
+                           <*>_N
+                           <SDL.Video.Renderer.Texture>_R
+                           <SDL.Video.Renderer.Texture>_P)
+                      (Sym (Data.Functor.Const.N:Const[0]
+                                <*>_N
+                                <SDL.Video.Renderer.Texture>_R
+                                <GameVars.GUITextures>_P))) }) -}
 10f1ff18f80e7c6a55944dcd05603387
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -642,7 +760,7 @@ bffa44f79b2ce49aa9777d990da2a412
 ca7f809605f46946ecf1c378d076d708
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-fac4e069f2a4131e81b5d22537562f2c
+9495cc5070ef2241a45e85261e6c1c51
   loop ::
     (Logger.Logger m, Renderer.Renderer m,
      Control.Monad.Reader.Class.MonadReader GameVars.Config m,
@@ -655,8 +773,8 @@ fac4e069f2a4131e81b5d22537562f2c
      AnimationsManager.AnimationsManager m) =>
     m ()
   {- Arity: 15,
-     Strictness: <S(S(LC(C(S))LLL)LL),U(U(U(U(C(C1(U)),A),C(U),A,A,A,A),C(C1(U)),C(C1(U)),C(U),A),C(U),A)><L,U(U(A,C(C1(U)),C(C1(U)),C(U),A),A,C(U),U,U,U,U,A,C(U),A,C(C1(C1(C1(C1(U))))),C(U),C(C1(U)),A,A,A)><L,U(U(A,C(C1(U)),C(C1(U)),C(U),A),A,A,C(U))><L,U(U(U(U(C(C1(U)),A),C(U),A,A,A,A),C(C1(U)),A,C(U),A),U,A,U)><L,U(U(A,A,C(C1(U)),A,A),U,C(U),A,A,U,U)><L,U(U(A,C(C1(U)),C(C1(U)),A,A),A,U,U,U,A,U,A,U,C(U),U)><L,U(U(U(U(C(C1(U)),A),A,A,A,A,A),C(C1(U)),A,C(U),A),U,A,U,A,C(U),C(U),A,C(U),U,U,A,U,U,C(U))><L,U(A,U,U,U,C(U),C(U),U)><L,U(A,U,C(U),A,A)><L,A><L,U(U(U(U(C(C1(U)),A),A,A,A,A,A),C(C1(U)),C(C1(U)),C(U),A),U,U,U,U,U,A,A)><L,A><L,U(U(A,C(C1(U)),A,C(U),A),U,U,A,C(U),C(U),A)><L,U(U(A,A,C(C1(U)),A,A),C(U),A,U,U)><L,U(U(A,C(C1(U)),C(C1(U)),C(U),A),A,U,C(U),C(U),U,A,U,U)> -}
-f87ba7f95a432163350921f3526ac44f
+     Strictness: <S(S(LC(C(S))LLL)LL),U(U(U(U(C(C1(U)),A),C(U),A,A,A,A),C(C1(U)),C(C1(U)),C(U),A),C(U),A)><L,U(U(A,C(C1(U)),C(C1(U)),C(U),A),A,C(U),C(U),U,U,U,A,C(U),A,C(C1(C1(C1(C1(U))))),C(U),C(C1(U)),A,A,A)><L,U(U(A,C(C1(U)),C(C1(U)),C(U),A),A,A,C(U))><L,U(U(U(U(C(C1(U)),A),C(U),A,A,A,A),C(C1(U)),A,C(U),A),U,A,U)><L,U(U(A,A,C(C1(U)),A,A),U,C(U),A,A,U,U)><L,U(U(A,C(C1(U)),C(C1(U)),A,A),A,U,U,U,A,U,A,U,C(U),U)><L,U(U(U(U(C(C1(U)),A),A,A,A,A,A),C(C1(U)),A,C(U),A),U,A,U,A,C(U),C(U),A,C(U),U,U,A,U,U,C(U))><L,U(A,U,U,U,C(U),C(U),U)><L,U(A,U,C(U),A,A)><L,A><L,U(U(U(U(C(C1(U)),A),A,A,A,A,A),C(C1(U)),C(C1(U)),C(U),A),U,U,U,U,U,A,A)><L,A><L,U(U(A,C(C1(U)),A,C(U),A),U,U,A,C(U),C(U),A)><L,U(U(A,A,C(C1(U)),A,A),C(U),A,U,U)><L,U(U(A,C(C1(U)),C(C1(U)),C(U),A),A,U,C(U),C(U),U,A,U,U)> -}
+6c6dd772f89638c363e9d759f65bc2d7
   runMahppyBird ::
     GameVars.Config
     -> GameVars.Vars -> GameVars.MahppyBird a -> GHC.Types.IO a
@@ -670,7 +788,7 @@ f87ba7f95a432163350921f3526ac44f
                  ->_R <GameVars.Vars>_R
                  ->_R <GameVars.MahppyBird a>_R
                  ->_R Sym (GHC.Types.N:IO[0] <a>_R)) -}
-6888ef2945d7bc861ddd8ac19f234ad8
+c65b77fe3321f6c485eec9ac142acaca
   runMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -704,6 +822,13 @@ f87ba7f95a432163350921f3526ac44f
                       (GHC.Types.N:IO[0] <(a, GameVars.Vars)>_R)
                         s of ds1 { (#,#) ipv ipv1 ->
                  (# ipv, case ipv1 of wild { (,) a1 ds2 -> a1 } #) }) -}
+"SPEC/MahppyBird bgTexture @ (Const Texture)" [orphan] forall ($dFunctor :: GHC.Base.Functor
+                                                                              (Data.Functor.Const.Const
+                                                                                 SDL.Video.Renderer.Texture))
+  GameVars.bgTexture @ (Data.Functor.Const.Const
+                          SDL.Video.Renderer.Texture)
+                     $dFunctor
+  = MahppyBird.$sbgTexture
 "SPEC/MahppyBird cFont @ (Const Font)" [orphan] forall ($dFunctor :: GHC.Base.Functor
                                                                        (Data.Functor.Const.Const
                                                                           SDL.Font.Font))
@@ -749,6 +874,20 @@ f87ba7f95a432163350921f3526ac44f
   GameVars.highScoreFont @ (Data.Functor.Const.Const SDL.Font.Font)
                          $dFunctor
   = MahppyBird.$shighScoreFont
+"SPEC/MahppyBird muteTexture @ (Const Texture)" [orphan] forall ($dFunctor :: GHC.Base.Functor
+                                                                                (Data.Functor.Const.Const
+                                                                                   SDL.Video.Renderer.Texture))
+  GameVars.muteTexture @ (Data.Functor.Const.Const
+                            SDL.Video.Renderer.Texture)
+                       $dFunctor
+  = MahppyBird.$smuteTexture
+"SPEC/MahppyBird mutedTexture @ (Const Texture)" [orphan] forall ($dFunctor :: GHC.Base.Functor
+                                                                                 (Data.Functor.Const.Const
+                                                                                    SDL.Video.Renderer.Texture))
+  GameVars.mutedTexture @ (Data.Functor.Const.Const
+                             SDL.Video.Renderer.Texture)
+                        $dFunctor
+  = MahppyBird.$smutedTexture
 "SPEC/MahppyBird playAgainBtnTexture @ (Const Texture)" [orphan] forall ($dFunctor :: GHC.Base.Functor
                                                                                         (Data.Functor.Const.Const
                                                                                            SDL.Video.Renderer.Texture))
@@ -790,6 +929,13 @@ f87ba7f95a432163350921f3526ac44f
   GameVars.scoreFont @ (Data.Functor.Const.Const SDL.Font.Font)
                      $dFunctor
   = MahppyBird.$sscoreFont
+"SPEC/MahppyBird titleScreenbg @ (Const Texture)" [orphan] forall ($dFunctor :: GHC.Base.Functor
+                                                                                  (Data.Functor.Const.Const
+                                                                                     SDL.Video.Renderer.Texture))
+  GameVars.titleScreenbg @ (Data.Functor.Const.Const
+                              SDL.Video.Renderer.Texture)
+                         $dFunctor
+  = MahppyBird.$stitleScreenbg
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

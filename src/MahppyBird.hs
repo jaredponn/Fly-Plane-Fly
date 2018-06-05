@@ -37,6 +37,7 @@ import GameVars
 import WallManager
 import PlayerManager
 import AnimationsManager
+import InitGameVars
 import ScoreManager
 import TimeManager
 import GameStateManager
@@ -103,11 +104,15 @@ runScene input Menu = do
         quitbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
-        pausemusicbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
-        pausemusicbtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> (createRightEdgeAlignedButtonAttr 0 (V2 20 20) quitbtntexture) >>= alignToBottomEdgeButtonAttr
-        runReaderT pausemusicbtneffect pausemusicbtnattr
+        arechannelsplaying <- areChannelsPlaying
+        mutebtntexture <- if arechannelsplaying
+                             then view $ cResources.cTextures.guiTextures.muteTexture
+                             else view $ cResources.cTextures.guiTextures.mutedTexture
 
-        renderactions <- (++[drawBtnToScreen playbtnattr, drawBtnToScreen quitbtnattr, drawBtnToScreen pausemusicbtnattr]) <$> updatedRenderMenuActions  
+        mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> ((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr)
+        runReaderT mutebtneffect mutebtnattr
+
+        renderactions <- (++[drawBtnToScreen playbtnattr, drawBtnToScreen quitbtnattr, drawBtnToScreen mutebtnattr]) <$> updatedRenderMenuActions  
         drawObjectsWithDt renderactions
 
         where
@@ -120,10 +125,10 @@ runScene input Menu = do
                                 , HasInput m ) => Button m
                 quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
 
-                pausemusicbtneffect :: ( SoundManager m
+                mutebtneffect :: ( SoundManager m
                                        , HasInput m
                                        , Logger m) => Button m
-                pausemusicbtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
+                mutebtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
 
 runScene input PrePlay = do
         pressspacetoplay <- view $ cResources.cTextures.guiTextures.pressSpacetoJumpTexture
@@ -220,11 +225,26 @@ runScene input Play = do
                         else return ()
 
 runScene input Pause = do
-        renderactions <- updatedRenderPauseActions
+        arechannelsplaying <- areChannelsPlaying
+        mutebtntexture <- if arechannelsplaying
+                             then view $ cResources.cTextures.guiTextures.muteTexture
+                             else view $ cResources.cTextures.guiTextures.mutedTexture
+        mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> ((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr)
+        runReaderT mutebtneffect mutebtnattr
+
+        renderactions <- (++[drawBtnToScreen mutebtnattr])<$> updatedRenderPauseActions
+
         drawObjectsWithDt renderactions
+
         if _isEsc input || _isSpace input
            then popGameState_
            else return ()
+
+        where
+                mutebtneffect :: ( SoundManager m
+                                       , HasInput m
+                                       , Logger m) => Button m
+                mutebtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
 
 runScene input (GameOver _) = do
         playagainbtntexture <- view $ cResources.cTextures.guiTextures.playAgainBtnTexture
@@ -235,10 +255,17 @@ runScene input (GameOver _) = do
         quitbtnattr <- translateButtonAttr (V2 (125) 150) <$> createCenteredButtonAttr (V2 200 50) quitbtntexture
         runReaderT quitbtneffect quitbtnattr
 
+        arechannelsplaying <- areChannelsPlaying
+        mutebtntexture <- if arechannelsplaying
+                             then view $ cResources.cTextures.guiTextures.muteTexture
+                             else view $ cResources.cTextures.guiTextures.mutedTexture
+        mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> (((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr))
+        runReaderT mutebtneffect mutebtnattr
+
         gameoverwindowtexture <- view $ cResources.cTextures.guiTextures.gameOverWindowTexture
         gameoverwindowrect <- GuiTransforms.translate (V2 0 (-50)) <$> ((xCenterRectangle >=> yCenterRectangle) (SDL.Rectangle (SDL.P (V2 0 0)) (V2 450 300)))
 
-        renderactions <- (++[updatedRenderScoresAction]) <$> (++[drawBtnToScreen playagainbtnattr, drawBtnToScreen quitbtnattr, drawTextureToScreen gameoverwindowrect gameoverwindowtexture]) <$> updatedRenderGameOverActions
+        renderactions <- (++[updatedRenderScoresAction]) <$> (++[drawBtnToScreen playagainbtnattr, drawBtnToScreen quitbtnattr, drawTextureToScreen gameoverwindowrect gameoverwindowtexture, drawBtnToScreen mutebtnattr]) <$> updatedRenderGameOverActions
 
         drawObjectsWithDt renderactions
 
@@ -257,6 +284,11 @@ runScene input (GameOver _) = do
                                 , SoundManager m) => Button m
                 quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
 
+                mutebtneffect :: ( SoundManager m
+                                       , HasInput m
+                                       , Logger m) => Button m
+                mutebtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
+
 runScene input Quit = return ()
 
 {- updatedRender<..> functions include some of the render functions necassary to render the game for that scene -}
@@ -264,17 +296,20 @@ updatedRenderMenuActions :: (AnimationsManager m, Renderer m, PlayerManager m, C
 updatedRenderMenuActions = do
         updateCameraPos
         updatePlayerAnimation
+        titlebgpic <- view $ cResources.cTextures.guiTextures.titleScreenbg
 
-        return $ [drawBg, drawWalls, drawPlayer]
+        return $ [drawBg titlebgpic, drawWalls, drawPlayer]
 
 
 updatedRenderPrePlayActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, GuiTransforms m, MonadReader Config m) => m ([m ()])
 updatedRenderPrePlayActions = do
         updateCameraPos
         updatePlayerAnimation
-        return [drawBg, drawPlayer, drawWalls] 
 
-updatedRenderPlayActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m) => m [m ()]
+        bgpic <- view $ cResources.cTextures.bgTexture
+        return [drawBg bgpic, drawPlayer, drawWalls] 
+
+updatedRenderPlayActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m) => m [m ()]
 updatedRenderPlayActions = do
         updateCameraPos
         updatePlayerAngle
@@ -285,20 +320,23 @@ updatedRenderPlayActions = do
            then removePlayerAnimationsUpto AnimationType'Idle
            else return ()
 
-        return [drawBg, drawScore, drawWalls, drawPlayer]
+        bgpic <- view $ cResources.cTextures.bgTexture
+        return [drawBg bgpic, drawScore, drawWalls, drawPlayer]
 
         
 updatedRenderPauseActions :: (Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m) => m ([m ()])
 updatedRenderPauseActions = do
         updateCameraPos
         font <- view $ cResources.cFont.scoreFont
-        return [drawBg, drawScore, drawWalls, drawPlayer, drawScreenOverlay $ SDL.V4 0 0 0 95, drawTextToScreen font "paused" (SDL.P $ SDL.V2 0 0) (SDL.V4 155 98 0 100) (yCenterRectangle >=> xCenterRectangle)] 
+        bgpic <- view $ cResources.cTextures.bgTexture
+        return [drawBg bgpic, drawScore, drawWalls, drawPlayer, drawScreenOverlay $ SDL.V4 0 0 0 95, drawTextToScreen font "paused" (SDL.P $ SDL.V2 0 0) (SDL.V4 155 98 0 100) (yCenterRectangle >=> xCenterRectangle)] 
 
 updatedRenderGameOverActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m, ScoreManager m) => m [m ()]
 updatedRenderGameOverActions = do
         updateCameraPos
         updatePlayerAnimation
-        return [drawBg, drawScore, drawWalls, drawPlayer] 
+        bgpic <- view $ cResources.cTextures.bgTexture
+        return [drawBg bgpic, drawScore, drawWalls, drawPlayer] 
 
 updatedRenderScoresAction :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
 updatedRenderScoresAction = do 
@@ -351,6 +389,7 @@ buttonGameStateModifierFromMouse f = do
            then lift f
            else return () 
 
+
 getMouseAttrib :: HasInput m => m (Bool, V2 Float)
 getMouseAttrib = do
         mousepos <- (\(V2 a b) -> V2 (fromIntegral a) (fromIntegral b)) <$> _mousePos <$> getInput
@@ -363,9 +402,9 @@ updateCameraPos = do
         camoffset <- getCameraOffset
         setCameraPos . SDL.P $ (V2 x 0) + camoffset
 
-pauseOrPlaySounds :: (SoundManager m, Logger m) => m ()
+pauseOrPlaySounds :: (SoundManager m, Logger m, HasInput m) => m ()
 pauseOrPlaySounds = do
         arechannelsplaying <- areChannelsPlaying
-        if arechannelsplaying 
-           then pauseAll
-           else resumeAll 
+        if not arechannelsplaying 
+           then resumeAll
+           else muteAll 

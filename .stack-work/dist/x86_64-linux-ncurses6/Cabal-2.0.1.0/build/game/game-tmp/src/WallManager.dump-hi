@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:36.204925099 UTC
+2018-06-05 00:36:02.728455481 UTC
 
 interface main:WallManager 8022
-  interface hash: 6467c5ad0ab76b9bc89cdf9d3802c0c0
-  ABI hash: b5bd3d99322415f51ede188af63e5727
+  interface hash: 53eef126273b8ada2b8ae5b5856cbfb5
+  ABI hash: cb1c751b982aa16d5f5d6e0072158759
   export-list hash: 67e9f1c1c7089cdef3d6912a9d52dd41
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
@@ -133,18 +133,18 @@ import  -/  Aabb 02207cce2d794346ceccf4ae11a9988d
   exports: 74498893d79e07cfc6b7864a88f8a517
   Aabb d17fcb637a1ff42f123a8d7e03514c43
   Aabb 4bc4d1c45ad2d3871f1050d664e236c2
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  Config e44e7628e39bfe67c0571be38f0cb139
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  Config 7d37304089f01776096e2dc8d6f690c8
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   cWallConf 8f47264007ce9ac541ce061fc2a087ff
-  cWindow e44e7628e39bfe67c0571be38f0cb139
+  cWindow 7d37304089f01776096e2dc8d6f690c8
   vPlayVars dbef10ec54712962f546a8d4b473ed09
   wallStream ec585c4eef5b4147b27283d5d9c17e95
-import  -/  Logger de91407b46dc2af6570ae0f0d44f5bb4
+import  -/  Logger 8440c95053026489c9281e4e9e175c09
   exports: c7f6c47792388de1970a4c43887f8fdc
-  Logger 77ad9183556b8f37f2d10bd5f3bb788c
+  Logger 33185071f9a092c50e0368c71838eca3
 import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
   exports: 9a82a9ead6771cc6b661267f6167d45d
   Wall 7740c9e106d07a929a4b2fea5762545e
@@ -164,7 +164,7 @@ import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
 import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
 import  -/  sdl2-2.4.0.1:SDL.Video.OpenGL 59b5238e510eda4d79d17333257db7d7
-0af5d5681a31766b019ff90b35f67036
+6362104a3af6d543fd392d41a9935369
   $fWallManagerMahppyBird ::
     WallManager.WallManager GameVars.MahppyBird
   DFunId
@@ -344,7 +344,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.OpenGL 59b5238e510eda4d79d17333257db7d7
                                          GameVars.Vars GHC.Types.IO>_R
                                       <()>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <()>_N))) -}
-e14fb496c0f975876bfcd7a631923e4b
+a6cfb883c72750a2dfbde9929d294200
   $fWallManagerMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -358,7 +358,7 @@ e14fb496c0f975876bfcd7a631923e4b
                    (w1 :: GameVars.Vars)
                    (w2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  WallManager.$w$cresetWalls w1 w2) -}
-fb90ec1f193d16d88ca78b5571c0ae4c
+810d024268d0a8af447a2803cfbd8c88
   $fWallManagerMahppyBird10 ::
     GameVars.Config
     -> GameVars.Vars
@@ -392,7 +392,7 @@ fb90ec1f193d16d88ca78b5571c0ae4c
                        (GHC.Types.F#
                           (GHC.Prim.plusFloat# (GHC.Prim.plusFloat# y x) y1)) } } } } } } },
                      case ipv1 of wild { (,) a1 s' -> s' }) #) }) -}
-2a7683f311636c38c629b8527c3db380
+cf4622c79fcbce640e10e6206a9ececd
   $fWallManagerMahppyBird11 ::
     GameVars.Config
     -> GameVars.Vars
@@ -426,7 +426,7 @@ fb90ec1f193d16d88ca78b5571c0ae4c
 31084d0735e5ab50b7fa2c0d89f6bac9
   $fWallManagerMahppyBird12 :: GHC.Types.Float
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.F# 0.0#) -}
-8940d78d8d9627f7811b769aa0776157
+78575f9cbf268b50d3e011571fe8988a
   $fWallManagerMahppyBird2 ::
     GHC.Types.Float
     -> GameVars.Config
@@ -470,7 +470,7 @@ fb90ec1f193d16d88ca78b5571c0ae4c
                        x4
                        dt1
                        dt2 }) #)) -}
-6e984e93e6882645759f568eaf2f9aaa
+2f4e8cf86fc2afa94afab1178a10f493
   $fWallManagerMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -511,7 +511,7 @@ fb90ec1f193d16d88ca78b5571c0ae4c
                        x4
                        dt1
                        dt2 }) #)) -}
-f607304fbb6888e3e5f5da03b6f505cb
+cfabfc786765ac3145d658a2e01a4074
   $fWallManagerMahppyBird4 ::
     GameVars.Config
     -> GameVars.Vars
@@ -560,7 +560,7 @@ f607304fbb6888e3e5f5da03b6f505cb
                        x4
                        dt1
                        dt2 } }) #) }) -}
-5e963488e15cf4dc8367a018e4fdc8e0
+3fb4f3fba56fb4598fc58a6c8138429e
   $fWallManagerMahppyBird5 ::
     Walls.Wall
     -> GameVars.Config
@@ -643,7 +643,7 @@ f607304fbb6888e3e5f5da03b6f505cb
                        (Walls.xPos wall)
                        (Walls.wallWidth wall),
                      s') #) } } } }) -}
-fcae27d0e59efc65f40062efc660bb58
+15b152ddd962e452d620edea525bce5c
   $fWallManagerMahppyBird6 ::
     GameVars.Config
     -> GameVars.Vars
@@ -663,7 +663,7 @@ fcae27d0e59efc65f40062efc660bb58
                    r1
                    eta
                    eta1) -}
-2f48bf58249d7186c582930fea23c29d
+7fd4f9e565123e69ace7024a37b778f2
   $fWallManagerMahppyBird7 ::
     GameVars.Config
     -> GameVars.Vars
@@ -748,7 +748,7 @@ fcae27d0e59efc65f40062efc660bb58
                    r1
                    s'
                    ipv } } } }) -}
-f43078b0799c6be6507926314134c113
+50f733301e79d2358ef5818e05b087f5
   $fWallManagerMahppyBird8 ::
     [Walls.Wall]
     -> GameVars.Config
@@ -757,7 +757,7 @@ f43078b0799c6be6507926314134c113
     -> (# GHC.Prim.State# GHC.Prim.RealWorld,
           ([Walls.Wall], GameVars.Vars) #)
   {- Arity: 4, Strictness: <S,1*U><L,U(U(U),U,U)><L,U><S,U> -}
-ebaeb7d5aac5e72685c99a3970d47b94
+e5e2d3158eb2856d187e68b0431ad01a
   $fWallManagerMahppyBird9 ::
     GameVars.Config
     -> GameVars.Vars
@@ -890,7 +890,7 @@ cc88219a212a0298b9ec09bb2719aec7
                        x4
                        dt1
                        dt2 }) #) }) -}
-0af5d5681a31766b019ff90b35f67036
+6362104a3af6d543fd392d41a9935369
   class GHC.Base.Monad m => WallManager (m :: * -> *) where
     transformWallLengthsToWorldVals :: Walls.Wall -> m Walls.Wall
     getFirstUpperWallAabb :: m Aabb.Aabb

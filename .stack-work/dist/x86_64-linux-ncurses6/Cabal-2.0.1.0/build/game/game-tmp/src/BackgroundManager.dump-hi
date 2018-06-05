@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:36.979588253 UTC
+2018-06-05 00:36:03.730594592 UTC
 
 interface main:BackgroundManager 8022
-  interface hash: 5366a967541dff98a9b2182af3a1fabb
+  interface hash: a05366027887c59131c5ec8231b43239
   ABI hash: 14f0e66e578cbdcf663e3c88343d9f8e
   export-list hash: 092e78403679ae6bf1d06390c36faf16
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -119,8 +119,8 @@ import  -/  base-4.10.1.0:Foreign.C.Types 936c0db027291520097b61fd8686710a
 import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
 import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
 import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937

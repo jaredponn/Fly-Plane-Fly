@@ -50,8 +50,12 @@ initConf = do
         playerpic <- Image.load (resourcePath </> "playerspritesheet.png") >>= SDL.createTextureFromSurface renderer 
         botwallpic <- Image.load (resourcePath </> "botwall.png") >>= SDL.createTextureFromSurface renderer 
         topwallpic <- Image.load (resourcePath </> "topwall.png") >>= SDL.createTextureFromSurface renderer 
-        bgpic <- Image.load (resourcePath </> "nbg.png") >>= SDL.createTextureFromSurface renderer 
+        bgpic <- Image.load (resourcePath </> "bg.png") >>= SDL.createTextureFromSurface renderer 
+        titlebgpic <- Image.load (resourcePath </> "titlebg.png") >>= SDL.createTextureFromSurface renderer 
         pressspacetojumppic <- Image.load (resourcePath </> "pressspacetojump.png") >>= SDL.createTextureFromSurface renderer 
+
+        mutepic <- Image.load (resourcePath </> "mute.png") >>= SDL.createTextureFromSurface renderer 
+        mutedpic <- Image.load (resourcePath </> "muted.png") >>= SDL.createTextureFromSurface renderer 
 
         playmainmenupic <- Image.load (resourcePath </> "playmainmenu.png") >>= SDL.createTextureFromSurface renderer 
         quitmainmenupic <- Image.load (resourcePath </> "quitmainmenu.png") >>= SDL.createTextureFromSurface renderer 
@@ -72,7 +76,9 @@ initConf = do
                                       , _quitGameOverBtnTexture = quitgameoverpic
                                       , _gameOverWindowTexture = gameoverwindowpic
                                       , _pressSpacetoJumpTexture = pressspacetojumppic 
-                                      , _titleTextTexture = titletextpic}
+                                      , _titleScreenbg = titlebgpic
+                                     , _muteTexture = mutepic
+                                     , _mutedTexture = mutedpic }
             textures = Textures {_bgTexture = bgpic
                                 , _playerSpriteSheet = playerpic
                                 , _botWallTexture = botwallpic

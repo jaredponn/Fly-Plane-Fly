@@ -1,12 +1,12 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:45:35.678801319 UTC
+2018-06-05 00:36:02.035737872 UTC
 
 interface main:TimeManager 8022
-  interface hash: 5856d2873d55eae09209ce3880d3c1c2
-  ABI hash: c5a6185a6f35cba82cca87bc7827c727
-  export-list hash: 8b2c0f72e07dc8e418f06d3a9f6510ae
-  orphan hash: cbd7ecb3ed3cbbc425f04941784e580f
+  interface hash: 365cca670e413b5b3be9c3b80c4d2add
+  ABI hash: 6917e8576ee854ed7f928bd2c7cdda2f
+  export-list hash: 1444a12543659cbb43ece9f99bc0f223
+  orphan hash: 0a83e3ec5a1b0cfb19c5398809eed889
   flag hash: fbfc9b4f0124b3a129b4a2321798f29f
   sig of: Nothing
   used TH splices: False
@@ -123,14 +123,14 @@ import  -/  clock-0.7.2:System.Clock 056d9486cb81fc87e6657deb7d2591d2
 import  -/  lens-4.16.1:Control.Lens d35b54db874b2147b5ffe1d3cd39d59d
 import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
-import  -/  GameVars 95546c61036798381255e3d7e11311b2
-  exports: bffadec9649d88993fa5a790487d46e7
-  MahppyBird fb5607b55373083b420634b0454a4ddb
+import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce
+  exports: 54748b09c2a15e9d35b796e54eb1daea
+  MahppyBird 1989f26957dc34ff4b450af06c2d546d
   Vars 5829ea20be4fb9a24ab87f3fe067aa3c
   dt 1e9e5f1193610a43c195fa5133f876db
 import  -/  mtl-2.2.2:Control.Monad.State 4acb2e6037f370fa4b91900d626e6406
 import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
-11f819b14b751ed055082b44f160b76d
+3f466474e9f7b0f2ba00315fed57edeb
   $fTimeManagerMahppyBird ::
     TimeManager.TimeManager GameVars.MahppyBird
   DFunId
@@ -198,7 +198,7 @@ import  -/  mtl-2.2.2:Control.Monad.State.Class de8813e114276746770717ab3ee06916
                                          GameVars.Vars GHC.Types.IO>_R
                                       <GHC.Types.Float>_N))
                             (Sym (GameVars.N:MahppyBird[0]) <GHC.Types.Float>_N))) -}
-f4838ce46a9ecb661ee3fae500724bfc
+98d085b86b14983988cfde866a3e78c8
   $fTimeManagerMahppyBird1 ::
     GameVars.Config
     -> GameVars.Vars
@@ -215,7 +215,7 @@ f4838ce46a9ecb661ee3fae500724bfc
                     (case eta of wild { GameVars.Vars x1 x2 x3 x4 dt1 dt2 ->
                      GHC.Types.F# dt1 },
                      eta) #)) -}
-99f34751b96fc48cd98a65a21d746cd9
+7ba3f5b66b1485a259295a7ee05fc202
   $fTimeManagerMahppyBird2 ::
     GHC.Types.Int
     -> GameVars.Config
@@ -245,7 +245,7 @@ f4838ce46a9ecb661ee3fae500724bfc
                              time#
                              eta2 of s' { DEFAULT ->
                       (# s', (GHC.Tuple.(), eta1) #) } } } }) -}
-62c2fc896991c2dc26b37eea4610991a
+4017a021cdc0a72a0bda251ee9c18d35
   $fTimeManagerMahppyBird3 ::
     GameVars.Config
     -> GameVars.Vars
@@ -259,7 +259,7 @@ f4838ce46a9ecb661ee3fae500724bfc
                    (eta2 :: GHC.Prim.State# GHC.Prim.RealWorld) ->
                  case System.Clock.$w$j1 0# eta2 of ds1 { (#,#) ipv ipv1 ->
                  (# ipv, (ipv1, eta1) #) }) -}
-0fdf0346381bc70f5ccfe29f4ed5b764
+fc20d110aaa48809ea9f6aaff694a7a3
   $fTimeManagerMahppyBird_$csetdt ::
     GHC.Types.Float -> GameVars.MahppyBird ()
   {- Arity: 1, HasNoCafRefs,
@@ -267,7 +267,7 @@ f4838ce46a9ecb661ee3fae500724bfc
                    @ GHC.Types.Float
                    @ GHC.Types.Float
                    TimeManager.$fTimeManagerMahppyBird_$sdt) -}
-97ff90241aabcb24424e9bd20458f689
+62bf6aac23366d66704db962d20814c6
   $fTimeManagerMahppyBird_$s.= ::
     Control.Lens.Setter.ASetter GameVars.Vars GameVars.Vars a b
     -> b -> GameVars.MahppyBird ()
@@ -390,7 +390,7 @@ e4d376bb5ba4265dcda989c0c396a919
 617481847035cf9cb29fef3d123a2746
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-11f819b14b751ed055082b44f160b76d
+3f466474e9f7b0f2ba00315fed57edeb
   class GHC.Base.Monad m => TimeManager (m :: * -> *) where
     getRealTime :: m System.Clock.TimeSpec
     threadDelay :: GHC.Types.Int -> m ()

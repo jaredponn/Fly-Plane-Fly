@@ -25,7 +25,7 @@ keyEventIs key event =
 isMouseTap :: Event -> Bool
 isMouseTap event = 
         case SDL.eventPayload event of
-          MouseButtonEvent mouseEvent -> toInteger (mouseButtonEventClicks mouseEvent) > 0
+          MouseButtonEvent mouseEvent -> mouseButtonEventMotion mouseEvent == Released
           _ -> False
 
 isSpaceTap :: Event -> Bool

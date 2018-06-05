@@ -18,7 +18,7 @@ class Monad m => SoundManager m where
         playJumpFx :: m ()
         playCrashFx :: m ()
 
-        pauseAll :: m ()
+        muteAll :: m ()
         resumeAll :: m ()
         areChannelsPlaying :: m (Bool)
 
@@ -38,16 +38,16 @@ instance SoundManager MahppyBird where
         playCrashFx :: (MonadReader Config m, MonadIO m) => m ()
         playCrashFx = do
                 jumpfx <- view $ cResources.cSound.crashFx
-                -- it will play the sound on the channel above the music channel
+                -- it will play the sound on 2 channels above the music channel
                 jumpfxchannel <- views (cResources.cSound.bgMusicChannel) (+2)
                 _ <- Mixer.playOn jumpfxchannel Mixer.Once jumpfx
                 return ()
 
-        pauseAll :: (MonadIO m, MonadReader Config m) => m ()
-        pauseAll = Mixer.pause Mixer.AllChannels
+        muteAll :: (MonadIO m, MonadReader Config m) => m ()
+        muteAll = Mixer.setVolume 0 Mixer.AllChannels
 
         resumeAll :: (MonadIO m, MonadReader Config m) => m ()
-        resumeAll = Mixer.resume Mixer.AllChannels
+        resumeAll = Mixer.setVolume 100 Mixer.AllChannels
 
         setBgMusicVolume ::(MonadIO m, MonadReader Config m) => Mixer.Volume -> m ()
         setBgMusicVolume volume = join $ views (cResources.cSound.bgMusicChannel) (Mixer.setVolume volume)
@@ -56,6 +56,5 @@ instance SoundManager MahppyBird where
         getBgMusicVolume = join $ views (cResources.cSound.bgMusicChannel) Mixer.getVolume
 
         areChannelsPlaying :: MonadIO m => m (Bool)
-        areChannelsPlaying = do
-                Mixer.playing Mixer.AllChannels
+        areChannelsPlaying = (>0) <$> Mixer.getVolume Mixer.AllChannels 
 
