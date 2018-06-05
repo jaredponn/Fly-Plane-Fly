@@ -1,7 +1,21 @@
-# Mahppybird
+# Fly Plane Fly - A Flappy Bird Spin Off
+This is a re-texture of Flappy Bird written in Haskell.
 
+## Gameplay
+TODO
 
-# Attributions
+## Installation
+TODO
+
+## Project
+Supervisor: \_\_\_ 
+This project was a highschool senior year end project for the Pre-Engineering class.
+
+## Implementation details
+Please refer to the blog post for an indepth analysis of the architecture.
+TODO
+
+## Attributions
 All images were marked free to share use and modify. They may be found below: 
 
 https://commons.wikimedia.org/wiki/File:P47M_Gerippe.jpg
