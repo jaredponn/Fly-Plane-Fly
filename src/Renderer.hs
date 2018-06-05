@@ -66,7 +66,7 @@ class Monad m => Renderer m where
 instance Renderer MahppyBird where
         drawObjects :: (Logger m, Renderer m, TimeManager m) => [m ()] -> m ()
         drawObjects drawactions = do
-                threadDelay 2000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
+                threadDelay 3000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
                 mapM_ id drawactions
                 presentRenderer
 

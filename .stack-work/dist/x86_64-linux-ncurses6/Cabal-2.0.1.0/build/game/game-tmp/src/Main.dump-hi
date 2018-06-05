@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-05 00:36:06.071598936 UTC
+2018-06-05 00:46:31.46259645 UTC
 
 interface main:Main 8022
-  interface hash: ffc7948fef32d9bba99e8bfb8d225636
-  ABI hash: d022694ff0a16b2a405fe823067cae3b
+  interface hash: caf40e4ef843291deee777ed636d9e38
+  ABI hash: a3179691d7e0eaab985a62ce581b5729
   export-list hash: 9e197cb7266afa5cf1f694f91ddb65bf
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 915147110c011d1ab474c72b54b9e3dc
@@ -137,9 +137,9 @@ import  -/  InitGameVars a2e7718a52756cddcc338d51597aa219
   exports: fbc9364d5ab5298ae16518b83d74060c
   initConf 215677d5cac3ca91d2866f433ea599da
   initVars 30e3b4546006792f2681e27a2ca0a0fd
-import  -/  MahppyBird 3445e2649efd26e8da04f64be8d4ee9c
+import  -/  MahppyBird aa2e94cd293b7b5319059c8983617605
   exports: a38502fa03c8c23b93cca96706eb6fff
-  loop 9495cc5070ef2241a45e85261e6c1c51
+  loop 99bdf5f86d1c9ff6a602f839f807a846
   runMahppyBird 6c6dd772f89638c363e9d759f65bc2d7
 import  -/  Walls b13a13e2c4e3ef97855d945c5af1fb26
   exports: 9a82a9ead6771cc6b661267f6167d45d
@@ -167,7 +167,7 @@ e5875966b74dad2d29772660b8a75e33
 d026be77cb9ced20e35a61514e0458aa
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-94cce2a754cc6d8f096b5cbe2619a8ea
+6dd132ba95dd858019230d448be2022d
   $w$j ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -290,12 +290,12 @@ d026be77cb9ced20e35a61514e0458aa
                                                    -> (# GHC.Prim.State# GHC.Prim.RealWorld #)}
                         ds21 of wild11 { Unit# ds22 ->
                  (# ds22, GHC.Tuple.() #) } } } } } } } } } } } } } } } } } }) -}
-f655219227aec15d06542464ef5bfeb8
+e2f79e7668888b705d7f4032ecd96b2f
   main :: GHC.Types.IO ()
   {- Arity: 1, Strictness: <S,U>,
      Unfolding: InlineRule (0, True, True)
                 Main.main1 `cast` (Sym (GHC.Types.N:IO[0] <()>_R)) -}
-6f7e879f27bf001c3802643457808b8b
+87397c8399fd22b7c7bb700c20113414
   main1 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
@@ -338,7 +338,7 @@ f655219227aec15d06542464ef5bfeb8
                              SDL.Mixer.openAudio_eta1
                              ds9 of ds3 { (#,#) ipv4 ipv5 ->
                       Main.$w$j ipv4 } } } } }) -}
-e500074dc709cb85d653456b24babf13
+3bd6b8701d65a7ce76b8180ecb8ed6c9
   main2 ::
     GHC.Prim.State# GHC.Prim.RealWorld
     -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)

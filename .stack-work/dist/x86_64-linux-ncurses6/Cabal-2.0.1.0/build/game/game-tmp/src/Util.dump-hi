@@ -1,13 +1,13 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:00:35.332483888 UTC
+2018-06-05 00:44:42.83243414 UTC
 
-interface main:Util [hpc] 8022
-  interface hash: 1eaaffd5236ea84962eb5aa75a61ab95
-  ABI hash: 106981bc01870b6f40182711259e7416
-  export-list hash: f61f30242ab7d3539a806c19f4b8d83f
+interface main:Util 8022
+  interface hash: 747e73c3d82fb1229fd1c3ebd4ebb461
+  ABI hash: 04dd18c408cec1d861350946bb6e7df1
+  export-list hash: 01755414b1287618f45750309b35edae
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
-  flag hash: 252e2e51efdfaca011fc25a9634d1926
+  flag hash: c3d080cdf3a45f880096629af0ba9355
   sig of: Nothing
   used TH splices: False
   where
@@ -117,10 +117,10 @@ import  -/  base-4.10.1.0:Foreign.C.Types 936c0db027291520097b61fd8686710a
 import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
 import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
-import  -/  clock-0.7.2:System.Clock bc880f7c79f0de332c5b2f6eb1008f46
-import  -/  linear-1.20.7:Linear.V2 e87779d762688f70d36f27b366e56018
-import  -/  Aabb 2c0af13250239aca55f38b7395535cc8
-  exports: a854e68b54afb90233efb6db6d076340
+import  -/  clock-0.7.2:System.Clock 056d9486cb81fc87e6657deb7d2591d2
+import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
+import  -/  Aabb b7a7d3159eb6c7bd142ca3a110d80f17
+  exports: 9db632369713723d5116f71697687a26
 928878a57c429fe8ad8008c5ec64b283
   $trModule :: GHC.Types.Module
   {- HasNoCafRefs, Strictness: m,
@@ -141,20 +141,19 @@ f8adc5a478af1e43217e228de2156d6f
   {- HasNoCafRefs, Unfolding: ("main"#) -}
 44a60084147866a451d7236c4b593b33
   type Time = GHC.Types.Float
-cc6ec649e0102574cb6af963bba7886b
+64f234d3f86665d369be3b594eceb7c4
   convertToSeconds :: System.Clock.TimeSpec -> GHC.Types.Float
-  {- Unfolding: ({__scc {main:Util.convertToSeconds} True False} \ (x :: System.Clock.TimeSpec) ->
-                                                                 {__scc {main:Util.convertToSeconds} False True} case x of ww { System.Clock.TimeSpec ww1 ww2 ->
-                                                                                                                 case GHC.Integer.Type.doubleFromInteger
-                                                                                                                        (System.Clock.$wtoNanoSecs
-                                                                                                                           ww1
-                                                                                                                           ww2) of wild2 { DEFAULT ->
-                                                                                                                 GHC.Types.F#
-                                                                                                                   (GHC.Prim.divideFloat#
-                                                                                                                      (GHC.Prim.double2Float#
-                                                                                                                         wild2)
-                                                                                                                      1.0e9#) } }) -}
-8be8877b378edb0df1e66aa85f0b3cdf
+  {- Arity: 1, Strictness: <S(SS),1*U(U,U)>m, Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: System.Clock.TimeSpec) ->
+                 case w of ww { System.Clock.TimeSpec ww1 ww2 ->
+                 case GHC.Integer.Type.doubleFromInteger
+                        (System.Clock.$wtoNanoSecs ww1 ww2) of wild2 { DEFAULT ->
+                 GHC.Types.F#
+                   (GHC.Prim.divideFloat#
+                      (GHC.Prim.double2Float# wild2)
+                      1.0e9#) } }) -}
+0d8151353e8580dd1c39b2d8ab7106b2
   roundV2 ::
     Linear.V2.V2 GHC.Types.Float -> Linear.V2.V2 Foreign.C.Types.CInt
   {- Arity: 1, Strictness: <S(S(S)S(S)),1*U(U(U),U(U))>m,
@@ -164,26 +163,22 @@ cc6ec649e0102574cb6af963bba7886b
                  case w of ww { Linear.V2.V2 ww1 ww2 ->
                  case ww1 of ww3 { GHC.Types.F# ww4 ->
                  case ww2 of ww5 { GHC.Types.F# ww6 ->
-                 {__scc {main:Util.roundV2} True False} case {__scc {main:Util.roundV2} False True} GHC.Float.$w$cround1
-                                                                                                      @ GHC.Types.Int
-                                                                                                      GHC.Real.$fIntegralInt
-                                                                                                      ww4 of wild { GHC.Types.I# x# ->
-                                                        case {__scc {main:Util.roundV2} False True} GHC.Float.$w$cround1
-                                                                                                      @ GHC.Types.Int
-                                                                                                      GHC.Real.$fIntegralInt
-                                                                                                      ww6 of wild1 { GHC.Types.I# x#1 ->
-                                                        Linear.V2.V2
-                                                          @ Foreign.C.Types.CInt
-                                                          (GHC.Int.I32#
-                                                             ({__scc {main:Util.roundV2} False True} GHC.Prim.narrow32Int#
-                                                                                                       x#))
-                                                            `cast`
-                                                          (Sym (Foreign.C.Types.N:CInt[0]))
-                                                          (GHC.Int.I32#
-                                                             ({__scc {main:Util.roundV2} False True} GHC.Prim.narrow32Int#
-                                                                                                       x#1))
-                                                            `cast`
-                                                          (Sym (Foreign.C.Types.N:CInt[0])) } } } } }) -}
+                 case GHC.Float.$w$cround1
+                        @ GHC.Types.Int
+                        GHC.Real.$fIntegralInt
+                        ww4 of wild { GHC.Types.I# x# ->
+                 case GHC.Float.$w$cround1
+                        @ GHC.Types.Int
+                        GHC.Real.$fIntegralInt
+                        ww6 of wild1 { GHC.Types.I# x#1 ->
+                 Linear.V2.V2
+                   @ Foreign.C.Types.CInt
+                   (GHC.Int.I32# (GHC.Prim.narrow32Int# x#))
+                     `cast`
+                   (Sym (Foreign.C.Types.N:CInt[0]))
+                   (GHC.Int.I32# (GHC.Prim.narrow32Int# x#1))
+                     `cast`
+                   (Sym (Foreign.C.Types.N:CInt[0])) } } } } }) -}
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:

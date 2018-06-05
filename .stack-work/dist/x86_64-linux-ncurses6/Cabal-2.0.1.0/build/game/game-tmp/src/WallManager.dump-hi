@@ -1,9 +1,9 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-05 00:36:02.728455481 UTC
+2018-06-05 00:44:43.065983936 UTC
 
 interface main:WallManager 8022
-  interface hash: 53eef126273b8ada2b8ae5b5856cbfb5
+  interface hash: 5027ab6e3dd3c4d87147909eed68f02e
   ABI hash: cb1c751b982aa16d5f5d6e0072158759
   export-list hash: 67e9f1c1c7089cdef3d6912a9d52dd41
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
@@ -129,8 +129,8 @@ import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  lens-4.16.1:Control.Lens.Setter 31b5ab0739c579bd36402b436aadb7a0
 import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
 import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
-import  -/  Aabb 02207cce2d794346ceccf4ae11a9988d
-  exports: 74498893d79e07cfc6b7864a88f8a517
+import  -/  Aabb b7a7d3159eb6c7bd142ca3a110d80f17
+  exports: 9db632369713723d5116f71697687a26
   Aabb d17fcb637a1ff42f123a8d7e03514c43
   Aabb 4bc4d1c45ad2d3871f1050d664e236c2
 import  -/  GameVars c97b478d52eb65df6d94cfdf494ea2ce

@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-05 00:36:04.740567633 UTC
+2018-06-05 00:46:30.254093496 UTC
 
 interface main:Renderer 8022
-  interface hash: 99c10f8346dbceb90df59175328c5fa9
-  ABI hash: 75e1d8af9aea988a4b749bb2c62642fe
+  interface hash: 41c7d8cc19262154ec0278d03e940b51
+  ABI hash: 4270beb5216e831d8c2353994975b077
   export-list hash: 12249b92f8ba4308c004e3f97d45a860
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 28d311eb40bc72404e7ce86744f46594
@@ -216,7 +216,7 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
 import  -/  sdl2-ttf-2.0.2:SDL.Font 44c9d73e1da8a9f90d50e498341d19f1
 import  -/  text-1.2.3.0:Data.Text 0519455f2b04d2a7315c2959461dd14e
 import  -/  text-1.2.3.0:Data.Text.Internal 5d98ec4bb692174ed69de0b9299773d5
-30c5dfcbb2b1b64eb833c43738ed8174
+f9d1400cf22a1e72e67a274d9973e681
   $fRendererMahppyBird :: Renderer.Renderer GameVars.MahppyBird
   DFunId
   {- Inline: CONLIKE,
@@ -1209,7 +1209,7 @@ e31ecd59bb039ae12e03f9a7f80211ba
                    `cast`
                  (GHC.Types.N:IO[0] <((), GameVars.Vars)>_R)
                    eta2) -}
-147708fd70effbc9994c1c60d1156775
+a8eb74f64904b8e7329369e6628232bb
   $fRendererMahppyBird26 ::
     [GameVars.MahppyBird ()]
     -> GameVars.Config
@@ -1274,7 +1274,7 @@ e31ecd59bb039ae12e03f9a7f80211ba
                                  (GHC.Prim.>=# ww2 y) of wild6 {
                             GHC.Types.False -> $j ww1 ww2 GHC.Types.True -> $j1 } }
                        GHC.Types.True -> $j1 } } } } }) #) } } }) -}
-9c2832eb609a186fd68d52e0a170ecce
+952a7b8276a90a2709ece908518a588b
   $fRendererMahppyBird27 ::
     [GameVars.MahppyBird ()]
     -> GameVars.Config
@@ -1319,7 +1319,7 @@ e31ecd59bb039ae12e03f9a7f80211ba
                    0#
                    -> case GHC.Prim.delay#
                              @ GHC.Prim.RealWorld
-                             2000#
+                             3000#
                              eta2 of s' { DEFAULT ->
                       case Renderer.$fRendererMahppyBird28
                              drawactions
@@ -1896,9 +1896,9 @@ d16af1dfcb63fbf2a89f4d3106dee863
                 (\ (w :: SDL.Video.Renderer.Rectangle GHC.Types.Float) ->
                  case w of ww { SDL.Video.Renderer.Rectangle ww1 ww2 ->
                  Renderer.$w$ctoScreenRect ww1 ww2 }) -}
-61a7f731404638c712776c32734c453b
+126a9ae5df6d21fe3cd1dc5977029ee9
   $fRendererMahppyBird_x :: GHC.Types.Int
-  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 2000#) -}
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 3000#) -}
 004886caee130075225124f323487878
   $tc'C:Renderer :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -2245,7 +2245,7 @@ e29bdf84f3996480183357d54b57cbe7
                       @ Foreign.C.Types.CInt
                       nt `cast` (Sym (Foreign.C.Types.N:CInt[0]))
                       nt1 `cast` (Sym (Foreign.C.Types.N:CInt[0])) } } #)) -}
-30c5dfcbb2b1b64eb833c43738ed8174
+f9d1400cf22a1e72e67a274d9973e681
   class GHC.Base.Monad m => Renderer (m :: * -> *) where
     drawObjects :: [m ()] -> m ()
     drawObjectsWithDt :: [m ()] -> m ()

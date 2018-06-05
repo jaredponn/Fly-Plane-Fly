@@ -8,6 +8,7 @@ module Aabb ( Aabb (..)
             , floorAabb
             , ceilingAabb
             , shiftAabb
+            , addCushiontoAabb 
             ) where
 
 import Linear.V2
@@ -88,3 +89,6 @@ ceilingAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymin
 
 shiftAabb :: V2 Float -> Aabb-> Aabb
 shiftAabb  (V2 xshift yshift) (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 (xmin + xshift) (ymin + yshift))) (P (V2 (xmax + xshift) (ymin + yshift)))
+
+addCushiontoAabb :: V2 Float -> Aabb -> Aabb
+addCushiontoAabb (V2 xcushion ycushion) (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 (xmin - xcushion) (ymin - ycushion))) (P (V2 (xmax + xcushion) (ymin + ycushion)))

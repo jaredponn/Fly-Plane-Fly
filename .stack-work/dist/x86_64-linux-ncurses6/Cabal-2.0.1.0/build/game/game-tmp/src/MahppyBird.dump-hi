@@ -1,10 +1,10 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-05 00:37:32.128475801 UTC
+2018-06-05 00:46:31.032121032 UTC
 
 interface main:MahppyBird 8022
-  interface hash: d1c23612fc57f2bc8d38174291aa3ba2
-  ABI hash: 3445e2649efd26e8da04f64be8d4ee9c
+  interface hash: bf83169d2172e4f492eec21dadf58cd1
+  ABI hash: aa2e94cd293b7b5319059c8983617605
   export-list hash: a38502fa03c8c23b93cca96706eb6fff
   orphan hash: e494f76a8661a5045de97cdf360acefa
   flag hash: c5e2e909636c33a525d7032af0f021a5
@@ -139,8 +139,9 @@ import  -/  lens-4.16.1:Control.Lens.Getter be8fceadc62581701bcf558f995a8aa3
 import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
 import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
 import  -/  linear-1.20.7:Linear.V4 316a77d05c749a3da274eba99cc77a95
-import  -/  Aabb 02207cce2d794346ceccf4ae11a9988d
-  exports: 74498893d79e07cfc6b7864a88f8a517
+import  -/  Aabb b7a7d3159eb6c7bd142ca3a110d80f17
+  exports: 9db632369713723d5116f71697687a26
+  addCushiontoAabb 4e12a7a1ca48d93fb91b42fe754fe4f1
   ceilingAabb 1ba3ef3c8c0c371877b206b3c919194f
   floorAabb 478629363c5055b2d6751d56dfc2a997
   hitTestAbove 9ed9dee95f74560c95d02c5273993c59
@@ -251,18 +252,18 @@ import  -/  PlayerManager 9868e35f2483697ab3ba877365241301
   setPlayerAngle 19181f41bd0e46a42be7c511db8625e8
   setPlayerPos 7d422f1b0a0aa2a4716fc40742f90fa5
   setPlayerYVel 7fd64e20a53b7d218d378191bd613843
-import  -/  Renderer 75e1d8af9aea988a4b749bb2c62642fe
+import  -/  Renderer 4270beb5216e831d8c2353994975b077
   exports: 12249b92f8ba4308c004e3f97d45a860
-  Renderer 30c5dfcbb2b1b64eb833c43738ed8174
-  drawBg b6ac0f75df6b6a546669389eb134e692
-  drawBtnToScreen c0e0b3227d605e7c5024c303f1c64ec5
-  drawObjectsWithDt 75d26bff4e6962bf95735211b0c0189e
-  drawPlayer c36124329b6d12df1ec89e94e6b8d86f
-  drawScore 0b3a09ad2f2626ac9ae107d29b7c421a
-  drawScreenOverlay dcbb90d6fabd6bc2e976ad6af22b5fcb
-  drawTextToScreen 0b54ff769ccfaa97e97eba1832877b21
-  drawTextureToScreen a759ad3bef89df0f460330476a2d92a3
-  drawWalls 5b99e1bc0397dc38afee1d00476ae4ac
+  Renderer f9d1400cf22a1e72e67a274d9973e681
+  drawBg b6dcc9d2c2853f491c69f094f24eba81
+  drawBtnToScreen 3bf5dd64914eb12c4c5f85122d7110e0
+  drawObjectsWithDt 64e5c4190fdb7033e343b0a97927e92f
+  drawPlayer 995863c011d8bbd6d26cc4ec5c83b5cd
+  drawScore bd3c25ade64f06b23b4a52e5604aac8c
+  drawScreenOverlay 46039edaabc3ecb8d0c4be3ccf2c52d6
+  drawTextToScreen 78cdc072626acfa2c3641ce7e555432f
+  drawTextureToScreen fd390fa1fb670ea31f3667f620df1eca
+  drawWalls f3185e4783b22bb8267978aea74a9760
 import  -/  ScoreManager 879794ddf423ff4c9dc5591200a3c62e
   exports: 3f42ff92e5da3f9a7eb6a2cabff3ca72
   ScoreManager ede30ede90ba44a2fd7ff42d80929ab7
@@ -760,7 +761,7 @@ bffa44f79b2ce49aa9777d990da2a412
 ca7f809605f46946ecf1c378d076d708
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-9495cc5070ef2241a45e85261e6c1c51
+99bdf5f86d1c9ff6a602f839f807a846
   loop ::
     (Logger.Logger m, Renderer.Renderer m,
      Control.Monad.Reader.Class.MonadReader GameVars.Config m,

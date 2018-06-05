@@ -1,18 +1,19 @@
 
 ==================== FINAL INTERFACE ====================
-2018-06-04 17:00:34.638399996 UTC
+2018-06-05 00:44:42.267284689 UTC
 
-interface main:Aabb [hpc] 8022
-  interface hash: 4557c9f04e13bff1984d9a37a68dc203
-  ABI hash: 2c0af13250239aca55f38b7395535cc8
-  export-list hash: a854e68b54afb90233efb6db6d076340
-  orphan hash: d3d0acba4f2afdab1be6b0ed2099c821
-  flag hash: 252e2e51efdfaca011fc25a9634d1926
+interface main:Aabb 8022
+  interface hash: b82616c9c1fb1a26b2571ce4de97d98f
+  ABI hash: b7a7d3159eb6c7bd142ca3a110d80f17
+  export-list hash: 9db632369713723d5116f71697687a26
+  orphan hash: b0acb04a8c88cb8f146778097bfb13ca
+  flag hash: c3d080cdf3a45f880096629af0ba9355
   sig of: Nothing
   used TH splices: False
   where
 exports:
   Aabb.aabbToRectangle
+  Aabb.addCushiontoAabb
   Aabb.ceilingAabb
   Aabb.floorAabb
   Aabb.hitTest
@@ -125,11 +126,11 @@ import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
 import  -/  base-4.10.1.0:GHC.Show 0a8ce2b5e533d1c2cfb7954e6736be45
 import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
 import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
-import  -/  linear-1.20.7:Linear.Affine 37bd5da38e258025de91487067b52df8
-import  -/  linear-1.20.7:Linear.V2 e87779d762688f70d36f27b366e56018
-import  -/  sdl2-2.4.0.1:SDL 39875bad24bf9a1ac102b247c3d07175
-import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 30f2126ab87e3eaa3a6c27bf0c30395b
-9d7a2408ff56a0a40a0052e9b66086e2
+import  -/  linear-1.20.7:Linear.Affine f4ed1aa58b28d63beac82829593554b3
+import  -/  linear-1.20.7:Linear.V2 ee409e3e067ada9faf9fdda331749bf4
+import  -/  sdl2-2.4.0.1:SDL 24b907aeafb5c6d95ad8ce8f19ccd6b3
+import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 05fa9f919fc1b42de89d6ed9d3439937
+4bc4d1c45ad2d3871f1050d664e236c2
   $fShowAabb :: GHC.Show.Show Aabb.Aabb
   DFunId
   {- Strictness: m, Inline: CONLIKE,
@@ -138,54 +139,41 @@ import  -/  sdl2-2.4.0.1:SDL.Video.Renderer 30f2126ab87e3eaa3a6c27bf0c30395b
                   Aabb.$fShowAabb_$cshowsPrec
                   Aabb.$fShowAabb_$cshow
                   Aabb.$fShowAabb_$cshowList -}
-9d7a2408ff56a0a40a0052e9b66086e2
+4bc4d1c45ad2d3871f1050d664e236c2
   $fShowAabb1 :: Aabb.Aabb -> GHC.Show.ShowS
   {- Arity: 1, Strictness: <S(SSSS),1*U(U,U,U,U)>,
      Unfolding: (\ (w :: Aabb.Aabb) ->
-                 {__scc {main:Aabb.showList} False True} case w of ww { Aabb.Aabb ww1 ww2 ww3 ww4 ->
-                                                         Aabb.$w$cshowsPrec 0# ww1 ww2 ww3 ww4 }) -}
-46df0d3101a9f0b752ec0f613e0955ba
-  $fShowAabb10 :: GHC.Types.Int
-  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
-221f3ff25fdefe4c419d0ce23cd50a9b
-  $fShowAabb2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# Aabb.$fShowAabb3) -}
-9abbd463b3cb7a52100425639fcdb0ef
-  $fShowAabb3 :: GHC.Prim.Addr#
+                 case w of ww { Aabb.Aabb ww1 ww2 ww3 ww4 ->
+                 Aabb.$w$cshowsPrec 0# ww1 ww2 ww3 ww4 }) -}
+91d0400eead872392c62974687bd7b32
+  $fShowAabb2 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("}"#) -}
-a360416daeb7010355d520f614eaef91
-  $fShowAabb4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# Aabb.$fShowAabb5) -}
-19b24476183f582d0dedeae269166abf
-  $fShowAabb5 :: GHC.Prim.Addr#
+7d2acb79251260395a203515b295e602
+  $fShowAabb3 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("pMax = "#) -}
-73e302b15396c16253af4e57cc8306fa
-  $fShowAabb6 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# Aabb.$fShowAabb7) -}
-416a0f62da60aae1549d5bef8ae2ec29
-  $fShowAabb7 :: GHC.Prim.Addr#
+a7775f91d64be2a1dec9a3554ea86392
+  $fShowAabb4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("pMin = "#) -}
-d6285bb03045adbaebd12d6477443147
-  $fShowAabb8 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# Aabb.$fShowAabb9) -}
-3556af369713b35b54363a524b8b83ed
-  $fShowAabb9 :: GHC.Prim.Addr#
+51bfe368ab22ff0030157403245742ba
+  $fShowAabb5 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("Aabb {"#) -}
-9d7a2408ff56a0a40a0052e9b66086e2
+9fddcbe4240b2bbb4d0636ca9fb275f9
+  $fShowAabb6 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
+4bc4d1c45ad2d3871f1050d664e236c2
   $fShowAabb_$cshow :: Aabb.Aabb -> GHC.Base.String
   {- Arity: 1, Strictness: <S(SSSS),1*U(U,U,U,U)>,
      Unfolding: InlineRule (1, True, False)
                 (\ (x :: Aabb.Aabb) ->
                  Aabb.$fShowAabb_$cshowsPrec
-                   Aabb.$fShowAabb10
+                   Aabb.$fShowAabb6
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-9d7a2408ff56a0a40a0052e9b66086e2
+4bc4d1c45ad2d3871f1050d664e236c2
   $fShowAabb_$cshowList :: [Aabb.Aabb] -> GHC.Show.ShowS
-  {- Unfolding: ({__scc {main:Aabb.showList} True True} GHC.Show.showList__
-                                                          @ Aabb.Aabb
-                                                          Aabb.$fShowAabb1) -}
-9d7a2408ff56a0a40a0052e9b66086e2
+  {- Arity: 2,
+     Unfolding: (GHC.Show.showList__ @ Aabb.Aabb Aabb.$fShowAabb1) -}
+4bc4d1c45ad2d3871f1050d664e236c2
   $fShowAabb_$cshowsPrec ::
     GHC.Types.Int -> Aabb.Aabb -> GHC.Show.ShowS
   {- Arity: 2, Strictness: <S(S),1*U(U)><S(SSSS),1*U(U,U,U,U)>,
@@ -195,7 +183,7 @@ d6285bb03045adbaebd12d6477443147
                  case w of ww { GHC.Types.I# ww1 ->
                  case w1 of ww2 { Aabb.Aabb ww3 ww4 ww5 ww6 ->
                  Aabb.$w$cshowsPrec ww1 ww3 ww4 ww5 ww6 } }) -}
-7670e8fdc83af34dc2b4b670ff7c3a77
+3e8e0bf62077741424d83d17cc76a88b
   $fShowAabb_$s$fShowV2 ::
     GHC.Show.Show (Linear.V2.V2 GHC.Types.Float)
   {- Strictness: m, Inline: CONLIKE,
@@ -208,16 +196,19 @@ d6285bb03045adbaebd12d6477443147
                    Linear.V2.$fShowV2_$cshowsPrec
                      @ GHC.Types.Float
                      GHC.Float.$fShowFloat
-                     Linear.V2.$fFoldableV4
+                     Linear.V2.$fRead1V3
                      eta
                      (GHC.Types.[] @ GHC.Types.Char))
-                  ({__scc {linear-1.20.7:Linear.V2.showList} True True} GHC.Show.showList__
-                                                                          @ (Linear.V2.V2
-                                                                               GHC.Types.Float)
-                                                                          (Linear.V2.$fShowV2_$cshowsPrec
-                                                                             @ GHC.Types.Float
-                                                                             GHC.Float.$fShowFloat
-                                                                             Linear.V2.$fFoldableV4)) -}
+                  (\ (eta :: [Linear.V2.V2 GHC.Types.Float])
+                     (eta1 :: GHC.Base.String) ->
+                   GHC.Show.showList__
+                     @ (Linear.V2.V2 GHC.Types.Float)
+                     (Linear.V2.$fShowV2_$cshowsPrec
+                        @ GHC.Types.Float
+                        GHC.Float.$fShowFloat
+                        Linear.V2.$fRead1V3)
+                     eta
+                     eta1) -}
 86d0f034e8768a3ddccf38a7198d65a6
   $tc'Aabb :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -266,7 +257,7 @@ b289de6e185278fb37ab090020380691
 d9b372789cb6e5197ee98a74578400b0
   $trModule4 :: GHC.Prim.Addr#
   {- HasNoCafRefs, Unfolding: ("main"#) -}
-0bfff0b4371b44841c52ff4ee1ee0633
+a7958ab9631ad23d98fe3798e6fda9c4
   $w$cshowsPrec ::
     GHC.Prim.Int#
     -> GHC.Types.Float
@@ -280,84 +271,67 @@ d9b372789cb6e5197ee98a74578400b0
                    (ww2 :: GHC.Types.Float)
                    (ww3 :: GHC.Types.Float)
                    (ww4 :: GHC.Types.Float) ->
-                 {__scc {main:Aabb.showsPrec} True True} let {
-                                                           f :: GHC.Base.String -> GHC.Base.String
-                                                           = Linear.Affine.$w$cshowsPrec
-                                                               @ Linear.V2.V2
-                                                               @ GHC.Types.Float
-                                                               Aabb.$fShowAabb_$s$fShowV2
-                                                               0#
-                                                               (Linear.V2.V2
-                                                                  @ GHC.Types.Float
-                                                                  ww1
-                                                                  ww2)
-                                                                 `cast`
-                                                               (Sym (Linear.Affine.N:Point[0]
-                                                                         <Linear.V2.V2>_R) <GHC.Types.Float>_N)
-                                                         } in
-                                                         let {
-                                                           f1 :: GHC.Base.String -> GHC.Base.String
-                                                           = Linear.Affine.$w$cshowsPrec
-                                                               @ Linear.V2.V2
-                                                               @ GHC.Types.Float
-                                                               Aabb.$fShowAabb_$s$fShowV2
-                                                               0#
-                                                               (Linear.V2.V2
-                                                                  @ GHC.Types.Float
-                                                                  ww3
-                                                                  ww4)
-                                                                 `cast`
-                                                               (Sym (Linear.Affine.N:Point[0]
-                                                                         <Linear.V2.V2>_R) <GHC.Types.Float>_N)
-                                                         } in
-                                                         case GHC.Prim.tagToEnum#
-                                                                @ GHC.Types.Bool
-                                                                (GHC.Prim.>=# ww 11#) of wild {
-                                                           GHC.Types.False
-                                                           -> \ (x :: GHC.Base.String) ->
-                                                              GHC.Base.++
-                                                                @ GHC.Types.Char
-                                                                Aabb.$fShowAabb8
-                                                                (GHC.Base.++
-                                                                   @ GHC.Types.Char
-                                                                   Aabb.$fShowAabb6
-                                                                   (f (GHC.Base.++
-                                                                         @ GHC.Types.Char
-                                                                         GHC.Show.showCommaSpace1
-                                                                         (GHC.Base.++
-                                                                            @ GHC.Types.Char
-                                                                            Aabb.$fShowAabb4
-                                                                            (f1
-                                                                               (GHC.Base.++
-                                                                                  @ GHC.Types.Char
-                                                                                  Aabb.$fShowAabb2
-                                                                                  x))))))
-                                                           GHC.Types.True
-                                                           -> \ (x :: GHC.Base.String) ->
-                                                              GHC.Types.:
-                                                                @ GHC.Types.Char
-                                                                GHC.Show.$fShow(,)4
-                                                                (GHC.Base.++
-                                                                   @ GHC.Types.Char
-                                                                   Aabb.$fShowAabb8
-                                                                   (GHC.Base.++
-                                                                      @ GHC.Types.Char
-                                                                      Aabb.$fShowAabb6
-                                                                      (f (GHC.Base.++
-                                                                            @ GHC.Types.Char
-                                                                            GHC.Show.showCommaSpace1
-                                                                            (GHC.Base.++
-                                                                               @ GHC.Types.Char
-                                                                               Aabb.$fShowAabb4
-                                                                               (f1
-                                                                                  (GHC.Base.++
-                                                                                     @ GHC.Types.Char
-                                                                                     Aabb.$fShowAabb2
-                                                                                     (GHC.Types.:
-                                                                                        @ GHC.Types.Char
-                                                                                        GHC.Show.$fShow(,)2
-                                                                                        x)))))))) }) -}
-9d7a2408ff56a0a40a0052e9b66086e2
+                 let {
+                   f :: GHC.Base.String -> GHC.Base.String
+                   = Linear.Affine.$w$cshowsPrec
+                       @ Linear.V2.V2
+                       @ GHC.Types.Float
+                       Aabb.$fShowAabb_$s$fShowV2
+                       0#
+                       (Linear.V2.V2 @ GHC.Types.Float ww1 ww2)
+                         `cast`
+                       (Sym (Linear.Affine.N:Point[0]
+                                 <Linear.V2.V2>_R) <GHC.Types.Float>_N)
+                 } in
+                 let {
+                   f1 :: GHC.Base.String -> GHC.Base.String
+                   = Linear.Affine.$w$cshowsPrec
+                       @ Linear.V2.V2
+                       @ GHC.Types.Float
+                       Aabb.$fShowAabb_$s$fShowV2
+                       0#
+                       (Linear.V2.V2 @ GHC.Types.Float ww3 ww4)
+                         `cast`
+                       (Sym (Linear.Affine.N:Point[0]
+                                 <Linear.V2.V2>_R) <GHC.Types.Float>_N)
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11#) of wild {
+                   GHC.Types.False
+                   -> \ (x :: GHC.Base.String) ->
+                      GHC.CString.unpackAppendCString#
+                        Aabb.$fShowAabb5
+                        (GHC.CString.unpackAppendCString#
+                           Aabb.$fShowAabb4
+                           (f (GHC.Base.++
+                                 @ GHC.Types.Char
+                                 GHC.Show.showCommaSpace1
+                                 (GHC.CString.unpackAppendCString#
+                                    Aabb.$fShowAabb3
+                                    (f1 (GHC.CString.unpackAppendCString# Aabb.$fShowAabb2 x))))))
+                   GHC.Types.True
+                   -> \ (x :: GHC.Base.String) ->
+                      GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.$fShow(,)4
+                        (GHC.CString.unpackAppendCString#
+                           Aabb.$fShowAabb5
+                           (GHC.CString.unpackAppendCString#
+                              Aabb.$fShowAabb4
+                              (f (GHC.Base.++
+                                    @ GHC.Types.Char
+                                    GHC.Show.showCommaSpace1
+                                    (GHC.CString.unpackAppendCString#
+                                       Aabb.$fShowAabb3
+                                       (f1
+                                          (GHC.CString.unpackAppendCString#
+                                             Aabb.$fShowAabb2
+                                             (GHC.Types.:
+                                                @ GHC.Types.Char
+                                                GHC.Show.$fShow(,)2
+                                                x)))))))) }) -}
+4bc4d1c45ad2d3871f1050d664e236c2
   data Aabb
     = Aabb {pMin :: ! {-# UNPACK #-}(Linear.Affine.N:Point[0]
                                          <Linear.V2.V2>_R <GHC.Types.Float>_N)Linear.Affine.Point
@@ -367,7 +341,7 @@ d9b372789cb6e5197ee98a74578400b0
                                          <Linear.V2.V2>_R <GHC.Types.Float>_N)Linear.Affine.Point
                                                                                 Linear.V2.V2
                                                                                 GHC.Types.Float}
-dfe85d0ac7b62b85efec84f365f2f779
+a013c5a0e0aff215b89a8afb6e04557e
   aabbToRectangle ::
     Aabb.Aabb -> SDL.Video.Renderer.Rectangle GHC.Types.Float
   {- Arity: 1, HasNoCafRefs,
@@ -379,40 +353,54 @@ dfe85d0ac7b62b85efec84f365f2f779
                  case ww2 of ww7 { GHC.Types.F# ww8 ->
                  case ww3 of ww9 { GHC.Types.F# ww10 ->
                  case ww4 of ww11 { GHC.Types.F# ww12 ->
-                 {__scc {main:Aabb.aabbToRectangle} True False} SDL.Video.Renderer.Rectangle
-                                                                  @ GHC.Types.Float
-                                                                  (Linear.V2.V2
-                                                                     @ GHC.Types.Float
-                                                                     (GHC.Types.F# ww6)
-                                                                     (GHC.Types.F# ww8))
-                                                                    `cast`
-                                                                  (Sym (Linear.Affine.N:Point[0]
-                                                                            <Linear.V2.V2>_R) <GHC.Types.Float>_N)
-                                                                  (Linear.V2.V2
-                                                                     @ GHC.Types.Float
-                                                                     (GHC.Types.F#
-                                                                        ({__scc {main:Aabb.aabbToRectangle} False True} GHC.Prim.minusFloat#
-                                                                                                                          ww10
-                                                                                                                          ww6))
-                                                                     (GHC.Types.F#
-                                                                        ({__scc {main:Aabb.aabbToRectangle} False True} GHC.Prim.minusFloat#
-                                                                                                                          ww12
-                                                                                                                          ww8))) } } } } }) -}
-80bd67db66b23a91a0e29f01d4a1fa2d
+                 SDL.Video.Renderer.Rectangle
+                   @ GHC.Types.Float
+                   (Linear.V2.V2
+                      @ GHC.Types.Float
+                      (GHC.Types.F# ww6)
+                      (GHC.Types.F# ww8))
+                     `cast`
+                   (Sym (Linear.Affine.N:Point[0]
+                             <Linear.V2.V2>_R) <GHC.Types.Float>_N)
+                   (Linear.V2.V2
+                      @ GHC.Types.Float
+                      (GHC.Types.F# (GHC.Prim.minusFloat# ww10 ww6))
+                      (GHC.Types.F# (GHC.Prim.minusFloat# ww12 ww8))) } } } } }) -}
+4e12a7a1ca48d93fb91b42fe754fe4f1
+  addCushiontoAabb ::
+    Linear.V2.V2 GHC.Types.Float -> Aabb.Aabb -> Aabb.Aabb
+  {- Arity: 2, HasNoCafRefs,
+     Strictness: <S(SS),1*U(U(U),U(U))><S(SSSL),1*U(U(U),U(U),U(U),A)>m,
+     Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: Linear.V2.V2 GHC.Types.Float) (w1 :: Aabb.Aabb) ->
+                 case w of ww { Linear.V2.V2 ww1 ww2 ->
+                 case ww1 of ww3 { GHC.Types.F# ww4 ->
+                 case ww2 of ww5 { GHC.Types.F# ww6 ->
+                 case w1 of ww7 { Aabb.Aabb ww8 ww9 ww10 ww11 ->
+                 case ww8 of ww12 { GHC.Types.F# ww13 ->
+                 case ww9 of ww14 { GHC.Types.F# ww15 ->
+                 case ww10 of ww16 { GHC.Types.F# ww17 ->
+                 Aabb.Aabb
+                   (GHC.Types.F# (GHC.Prim.minusFloat# ww13 ww4))
+                   (GHC.Types.F# (GHC.Prim.minusFloat# ww15 ww6))
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww17 ww4))
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww15 ww6)) } } } } } } }) -}
+1ba3ef3c8c0c371877b206b3c919194f
   ceilingAabb :: Aabb.Aabb -> Aabb.Aabb
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SSSL),1*U(U,U,U,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Aabb.Aabb) ->
-                 {__scc {main:Aabb.ceilingAabb} True True} case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
-                                                           Aabb.Aabb dt dt1 dt2 dt1 }) -}
-186897a38514f6810d91492824ed5333
+                 case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
+                 Aabb.Aabb dt dt1 dt2 dt1 }) -}
+478629363c5055b2d6751d56dfc2a997
   floorAabb :: Aabb.Aabb -> Aabb.Aabb
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SLSS),1*U(U,A,U,U)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Aabb.Aabb) ->
-                 {__scc {main:Aabb.floorAabb} True True} case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
-                                                         Aabb.Aabb dt dt3 dt2 dt3 }) -}
-e8c3497473beb4a0506d551da6f60ead
+                 case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
+                 Aabb.Aabb dt dt3 dt2 dt3 }) -}
+e81da0c7b38bba1e8952c6a0149b2f5d
   hitTest :: Aabb.Aabb -> Aabb.Aabb -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs,
      Strictness: <S(S(S)SSS),1*U(U(U),U(U),U(U),U(U))><S(SSS(S)S),1*U(U(U),U(U),U(U),U(U))>,
@@ -429,32 +417,25 @@ e8c3497473beb4a0506d551da6f60ead
                  case ww15 of ww20 { GHC.Types.F# ww21 ->
                  case ww16 of ww22 { GHC.Types.F# ww23 ->
                  case ww17 of ww24 { GHC.Types.F# ww25 ->
-                 {__scc {main:Aabb.hitTest} True True} case GHC.Prim.tagToEnum#
-                                                              @ GHC.Types.Bool
-                                                              (GHC.Prim.leFloat# ww6 ww23) of wild {
-                                                         GHC.Types.False -> GHC.Types.False
-                                                         GHC.Types.True
-                                                         -> case GHC.Prim.tagToEnum#
-                                                                   @ GHC.Types.Bool
-                                                                   (GHC.Prim.geFloat#
-                                                                      ww10
-                                                                      ww19) of wild1 {
-                                                              GHC.Types.False -> GHC.Types.False
-                                                              GHC.Types.True
-                                                              -> case GHC.Prim.tagToEnum#
-                                                                        @ GHC.Types.Bool
-                                                                        (GHC.Prim.leFloat#
-                                                                           ww8
-                                                                           ww25) of wild2 {
-                                                                   GHC.Types.False
-                                                                   -> GHC.Types.False
-                                                                   GHC.Types.True
-                                                                   -> GHC.Prim.tagToEnum#
-                                                                        @ GHC.Types.Bool
-                                                                        (GHC.Prim.geFloat#
-                                                                           ww12
-                                                                           ww21) } } } } } } } } } } } } }) -}
-5a228dcb5a7d2ad0e8f9b2b3f0e6e4e1
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.leFloat# ww6 ww23) of wild {
+                   GHC.Types.False -> GHC.Types.False
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.geFloat# ww10 ww19) of wild1 {
+                        GHC.Types.False -> GHC.Types.False
+                        GHC.Types.True
+                        -> case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leFloat# ww8 ww25) of wild2 {
+                             GHC.Types.False -> GHC.Types.False
+                             GHC.Types.True
+                             -> GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.geFloat# ww12 ww21) } } } } } } } } } } } } }) -}
+9ed9dee95f74560c95d02c5273993c59
   hitTestAbove :: Aabb.Aabb -> Aabb.Aabb -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs,
      Strictness: <S(S(S)SSS),1*U(U(U),U(U),U(U),U(U))><S(SSS(S)S),1*U(U(U),U(U),U(U),U(U))>,
@@ -471,35 +452,25 @@ e8c3497473beb4a0506d551da6f60ead
                  case ww15 of ww20 { GHC.Types.F# ww21 ->
                  case ww16 of ww22 { GHC.Types.F# ww23 ->
                  case ww17 of ww24 { GHC.Types.F# ww25 ->
-                 {__scc {main:Aabb.hitTestAbove} True True} case GHC.Prim.tagToEnum#
-                                                                   @ GHC.Types.Bool
-                                                                   (GHC.Prim.leFloat#
-                                                                      ww6
-                                                                      ww23) of wild {
-                                                              GHC.Types.False -> GHC.Types.False
-                                                              GHC.Types.True
-                                                              -> case GHC.Prim.tagToEnum#
-                                                                        @ GHC.Types.Bool
-                                                                        (GHC.Prim.geFloat#
-                                                                           ww10
-                                                                           ww19) of wild1 {
-                                                                   GHC.Types.False
-                                                                   -> GHC.Types.False
-                                                                   GHC.Types.True
-                                                                   -> case GHC.Prim.tagToEnum#
-                                                                             @ GHC.Types.Bool
-                                                                             (GHC.Prim.leFloat#
-                                                                                ww8
-                                                                                ww21) of wild2 {
-                                                                        GHC.Types.False
-                                                                        -> GHC.Prim.tagToEnum#
-                                                                             @ GHC.Types.Bool
-                                                                             (GHC.Prim.leFloat#
-                                                                                ww12
-                                                                                ww25)
-                                                                        GHC.Types.True
-                                                                        -> GHC.Types.True } } } } } } } } } } } } }) -}
-2b52524c14a0b775cc292c4fac16ec5e
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.leFloat# ww6 ww23) of wild {
+                   GHC.Types.False -> GHC.Types.False
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.geFloat# ww10 ww19) of wild1 {
+                        GHC.Types.False -> GHC.Types.False
+                        GHC.Types.True
+                        -> case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leFloat# ww8 ww21) of wild2 {
+                             GHC.Types.False
+                             -> GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leFloat# ww12 ww25)
+                             GHC.Types.True -> GHC.Types.True } } } } } } } } } } } } }) -}
+d23345d5ff2b0ba76d5f27cd5cd9d34a
   hitTestBelow :: Aabb.Aabb -> Aabb.Aabb -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs,
      Strictness: <S(S(S)SSS),1*U(U(U),U(U),U(U),U(U))><S(SSS(S)S),1*U(U(U),U(U),U(U),U(U))>,
@@ -516,59 +487,49 @@ e8c3497473beb4a0506d551da6f60ead
                  case ww15 of ww20 { GHC.Types.F# ww21 ->
                  case ww16 of ww22 { GHC.Types.F# ww23 ->
                  case ww17 of ww24 { GHC.Types.F# ww25 ->
-                 {__scc {main:Aabb.hitTestBelow} True True} case GHC.Prim.tagToEnum#
-                                                                   @ GHC.Types.Bool
-                                                                   (GHC.Prim.leFloat#
-                                                                      ww6
-                                                                      ww23) of wild {
-                                                              GHC.Types.False -> GHC.Types.False
-                                                              GHC.Types.True
-                                                              -> case GHC.Prim.tagToEnum#
-                                                                        @ GHC.Types.Bool
-                                                                        (GHC.Prim.geFloat#
-                                                                           ww10
-                                                                           ww19) of wild1 {
-                                                                   GHC.Types.False
-                                                                   -> GHC.Types.False
-                                                                   GHC.Types.True
-                                                                   -> case GHC.Prim.tagToEnum#
-                                                                             @ GHC.Types.Bool
-                                                                             (GHC.Prim.geFloat#
-                                                                                ww8
-                                                                                ww21) of wild2 {
-                                                                        GHC.Types.False
-                                                                        -> GHC.Prim.tagToEnum#
-                                                                             @ GHC.Types.Bool
-                                                                             (GHC.Prim.geFloat#
-                                                                                ww12
-                                                                                ww25)
-                                                                        GHC.Types.True
-                                                                        -> GHC.Types.True } } } } } } } } } } } } }) -}
-9d7a2408ff56a0a40a0052e9b66086e2
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.leFloat# ww6 ww23) of wild {
+                   GHC.Types.False -> GHC.Types.False
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.geFloat# ww10 ww19) of wild1 {
+                        GHC.Types.False -> GHC.Types.False
+                        GHC.Types.True
+                        -> case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.geFloat# ww8 ww21) of wild2 {
+                             GHC.Types.False
+                             -> GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.geFloat# ww12 ww25)
+                             GHC.Types.True -> GHC.Types.True } } } } } } } } } } } } }) -}
+4bc4d1c45ad2d3871f1050d664e236c2
   pMax ::
     Aabb.Aabb -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
   RecSel Left Aabb.Aabb
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LLSS),1*U(A,A,U,U)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Aabb.Aabb) ->
-                 {__scc {main:Aabb.pMax} True True} case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
-                                                    (Linear.V2.V2 @ GHC.Types.Float dt2 dt3)
-                                                      `cast`
-                                                    (Sym (Linear.Affine.N:Point[0]
-                                                              <Linear.V2.V2>_R) <GHC.Types.Float>_N) }) -}
-9d7a2408ff56a0a40a0052e9b66086e2
+                 case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
+                 (Linear.V2.V2 @ GHC.Types.Float dt2 dt3)
+                   `cast`
+                 (Sym (Linear.Affine.N:Point[0]
+                           <Linear.V2.V2>_R) <GHC.Types.Float>_N) }) -}
+4bc4d1c45ad2d3871f1050d664e236c2
   pMin ::
     Aabb.Aabb -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
   RecSel Left Aabb.Aabb
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SSLL),1*U(U,U,A,A)>m,
      Unfolding: InlineRule (1, True, False)
                 (\ (ds :: Aabb.Aabb) ->
-                 {__scc {main:Aabb.pMin} True True} case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
-                                                    (Linear.V2.V2 @ GHC.Types.Float dt dt1)
-                                                      `cast`
-                                                    (Sym (Linear.Affine.N:Point[0]
-                                                              <Linear.V2.V2>_R) <GHC.Types.Float>_N) }) -}
-6f104df1e153a62ee383769f518fd906
+                 case ds of wild { Aabb.Aabb dt dt1 dt2 dt3 ->
+                 (Linear.V2.V2 @ GHC.Types.Float dt dt1)
+                   `cast`
+                 (Sym (Linear.Affine.N:Point[0]
+                           <Linear.V2.V2>_R) <GHC.Types.Float>_N) }) -}
+2525c64f7376fe813a21fdf5183f73dd
   pointHitTest ::
     Linear.Affine.Point Linear.V2.V2 GHC.Types.Float
     -> Aabb.Aabb -> GHC.Types.Bool
@@ -588,35 +549,25 @@ e8c3497473beb4a0506d551da6f60ead
                  case ww9 of ww14 { GHC.Types.F# ww15 ->
                  case ww10 of ww16 { GHC.Types.F# ww17 ->
                  case ww11 of ww18 { GHC.Types.F# ww19 ->
-                 {__scc {main:Aabb.pointHitTest} True True} case GHC.Prim.tagToEnum#
-                                                                   @ GHC.Types.Bool
-                                                                   (GHC.Prim.geFloat#
-                                                                      ww4
-                                                                      ww13) of wild {
-                                                              GHC.Types.False -> GHC.Types.False
-                                                              GHC.Types.True
-                                                              -> case GHC.Prim.tagToEnum#
-                                                                        @ GHC.Types.Bool
-                                                                        (GHC.Prim.leFloat#
-                                                                           ww4
-                                                                           ww17) of wild1 {
-                                                                   GHC.Types.False
-                                                                   -> GHC.Types.False
-                                                                   GHC.Types.True
-                                                                   -> case GHC.Prim.tagToEnum#
-                                                                             @ GHC.Types.Bool
-                                                                             (GHC.Prim.geFloat#
-                                                                                ww6
-                                                                                ww15) of wild2 {
-                                                                        GHC.Types.False
-                                                                        -> GHC.Types.False
-                                                                        GHC.Types.True
-                                                                        -> GHC.Prim.tagToEnum#
-                                                                             @ GHC.Types.Bool
-                                                                             (GHC.Prim.leFloat#
-                                                                                ww6
-                                                                                ww19) } } } } } } } } } } }) -}
-914c5fe7ddede4ae0d31955feebbdf9b
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.geFloat# ww4 ww13) of wild {
+                   GHC.Types.False -> GHC.Types.False
+                   GHC.Types.True
+                   -> case GHC.Prim.tagToEnum#
+                             @ GHC.Types.Bool
+                             (GHC.Prim.leFloat# ww4 ww17) of wild1 {
+                        GHC.Types.False -> GHC.Types.False
+                        GHC.Types.True
+                        -> case GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.geFloat# ww6 ww15) of wild2 {
+                             GHC.Types.False -> GHC.Types.False
+                             GHC.Types.True
+                             -> GHC.Prim.tagToEnum#
+                                  @ GHC.Types.Bool
+                                  (GHC.Prim.leFloat# ww6 ww19) } } } } } } } } } } }) -}
+4601f07974c6b4c563a1e869ff1fdd84
   rectangleToAabb ::
     SDL.Video.Renderer.Rectangle GHC.Types.Float -> Aabb.Aabb
   {- Arity: 1, HasNoCafRefs,
@@ -634,18 +585,12 @@ e8c3497473beb4a0506d551da6f60ead
                  case ww2 of ww10 { Linear.V2.V2 ww11 ww12 ->
                  case ww11 of ww13 { GHC.Types.F# ww14 ->
                  case ww12 of ww15 { GHC.Types.F# ww16 ->
-                 {__scc {main:Aabb.rectangleToAabb} True False} Aabb.Aabb
-                                                                  (GHC.Types.F# ww7)
-                                                                  (GHC.Types.F# ww9)
-                                                                  (GHC.Types.F#
-                                                                     ({__scc {main:Aabb.rectangleToAabb} False True} GHC.Prim.plusFloat#
-                                                                                                                       ww7
-                                                                                                                       ww14))
-                                                                  (GHC.Types.F#
-                                                                     ({__scc {main:Aabb.rectangleToAabb} False True} GHC.Prim.plusFloat#
-                                                                                                                       ww9
-                                                                                                                       ww16)) } } } } } } }) -}
-c854b7bf6f652348574147b84e03d823
+                 Aabb.Aabb
+                   (GHC.Types.F# ww7)
+                   (GHC.Types.F# ww9)
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww7 ww14))
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww9 ww16)) } } } } } } }) -}
+8476ef5074ef8ca67cd7c9d51f04423a
   shiftAabb :: Linear.V2.V2 GHC.Types.Float -> Aabb.Aabb -> Aabb.Aabb
   {- Arity: 2, HasNoCafRefs,
      Strictness: <S(SS),1*U(U(U),U(U))><S(SSSL),1*U(U(U),U(U),U(U),A)>m,
@@ -659,23 +604,11 @@ c854b7bf6f652348574147b84e03d823
                  case ww8 of ww12 { GHC.Types.F# ww13 ->
                  case ww9 of ww14 { GHC.Types.F# ww15 ->
                  case ww10 of ww16 { GHC.Types.F# ww17 ->
-                 {__scc {main:Aabb.shiftAabb} True False} Aabb.Aabb
-                                                            (GHC.Types.F#
-                                                               ({__scc {main:Aabb.shiftAabb} False True} GHC.Prim.plusFloat#
-                                                                                                           ww13
-                                                                                                           ww4))
-                                                            (GHC.Types.F#
-                                                               ({__scc {main:Aabb.shiftAabb} False True} GHC.Prim.plusFloat#
-                                                                                                           ww15
-                                                                                                           ww6))
-                                                            (GHC.Types.F#
-                                                               ({__scc {main:Aabb.shiftAabb} False True} GHC.Prim.plusFloat#
-                                                                                                           ww17
-                                                                                                           ww4))
-                                                            (GHC.Types.F#
-                                                               ({__scc {main:Aabb.shiftAabb} False True} GHC.Prim.plusFloat#
-                                                                                                           ww15
-                                                                                                           ww6)) } } } } } } }) -}
+                 Aabb.Aabb
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww13 ww4))
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww15 ww6))
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww17 ww4))
+                   (GHC.Types.F# (GHC.Prim.plusFloat# ww15 ww6)) } } } } } } }) -}
 instance GHC.Show.Show [Aabb.Aabb] = Aabb.$fShowAabb
 "SPEC/Aabb $fShowV2 @ Float" [orphan] forall (v :: GHC.Show.Show
                                                      GHC.Types.Float)

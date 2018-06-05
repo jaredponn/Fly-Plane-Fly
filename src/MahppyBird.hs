@@ -204,8 +204,8 @@ runScene input Play = do
                 collisionTest :: (SoundManager m, AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
                 collisionTest = do
                         playerAabb <- getPlayerAabb
-                        upperWallAabb <- shiftAabb (V2 0 (-25)) <$> floorAabb <$> getFirstUpperWallAabb
-                        lowerWallAabb <- shiftAabb (V2 0 (25)) <$> ceilingAabb <$> getFirstLowerWallAabb
+                        upperWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (-25)) <$> floorAabb <$> getFirstUpperWallAabb
+                        lowerWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (25)) <$> ceilingAabb <$> getFirstLowerWallAabb
                         if (hitTestAbove playerAabb upperWallAabb) || (hitTestBelow playerAabb lowerWallAabb)
                         then do 
                                 curscore <- getScore
