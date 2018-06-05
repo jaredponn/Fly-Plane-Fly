@@ -1,9 +1,0 @@
-Configuring base-orphans-0.7...
-Preprocessing library for base-orphans-0.7..
-Building library for base-orphans-0.7..
-[1 of 2] Compiling Data.Orphans.Prelude ( src/Data/Orphans/Prelude.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Orphans/Prelude.o )
-[2 of 2] Compiling Data.Orphans     ( src/Data/Orphans.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Orphans.o )
-[1 of 2] Compiling Data.Orphans.Prelude ( src/Data/Orphans/Prelude.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Orphans/Prelude.p_o )
-[2 of 2] Compiling Data.Orphans     ( src/Data/Orphans.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Orphans.p_o )
-Installing library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/base-orphans-0.7-CqEfBQ2VoSwBto5sloaJI4
-Registering library for base-orphans-0.7..

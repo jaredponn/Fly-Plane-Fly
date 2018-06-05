@@ -1,9 +1,0 @@
-Configuring Stack-0.3.2...
-Preprocessing library for Stack-0.3.2..
-Building library for Stack-0.3.2..
-[1 of 4] Compiling Data.Stack       ( src/Data/Stack.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Stack.o )
-[2 of 4] Compiling Control.Concurrent.STM.Stack ( src/Control/Concurrent/STM/Stack.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Concurrent/STM/Stack.o )
-[3 of 4] Compiling Control.Concurrent.Stack ( src/Control/Concurrent/Stack.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Control/Concurrent/Stack.o )
-[4 of 4] Compiling Data.Stack.ST    ( src/Data/Stack/ST.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Stack/ST.o )
-Installing library in /home/jared/Programs/Fly-Plane-Fly/.stack-work/install/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/Stack-0.3.2-5igJRfmx2XME1wgcSlKKIG
-Registering library for Stack-0.3.2..

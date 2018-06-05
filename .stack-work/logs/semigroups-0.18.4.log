@@ -1,7 +1,0 @@
-Configuring semigroups-0.18.4...
-Preprocessing library for semigroups-0.18.4..
-Building library for semigroups-0.18.4..
-[1 of 1] Compiling Data.Semigroup.Generic ( src/Data/Semigroup/Generic.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Semigroup/Generic.o )
-[1 of 1] Compiling Data.Semigroup.Generic ( src/Data/Semigroup/Generic.hs, .stack-work/dist/x86_64-linux-ncurses6/Cabal-2.0.1.0/build/Data/Semigroup/Generic.p_o )
-Installing library in /home/jared/.stack/snapshots/x86_64-linux-ncurses6/lts-11.8/8.2.2/lib/x86_64-linux-ghc-8.2.2/semigroups-0.18.4-mxkGq2xNPcBC0dj8uuk3q
-Registering library for semigroups-0.18.4..
