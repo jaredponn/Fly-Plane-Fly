@@ -22,7 +22,7 @@ class Monad m => Physics m where
         applyYVel :: m ()
         applyXVel :: m ()
 
-instance Physics MahppyBird where
+instance Physics FlyPlaneFly where
         -- converts the gravity into velocity 
         applyGrav :: (MonadState Vars m, PlayerManager m, TimeManager m) => m  ()
         applyGrav = do 

@@ -17,7 +17,7 @@ class Monad m => ScoreManager m where
         setHighScore :: Int -> m ()
         getHighScore :: m Int
 
-instance ScoreManager MahppyBird where
+instance ScoreManager FlyPlaneFly where
         getScore :: MonadState Vars m => m (Int)
         getScore = use $ vPlayVars.score
 

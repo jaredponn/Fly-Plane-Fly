@@ -17,7 +17,7 @@ class Monad m => TimeManager m where
         setdt :: Float -> m ()
         getdt :: m (Float)
 
-instance TimeManager MahppyBird where
+instance TimeManager FlyPlaneFly where
         getRealTime :: MonadIO m => m (System.Clock.TimeSpec)
         getRealTime = liftIO . System.Clock.getTime $ System.Clock.Realtime
 

@@ -14,7 +14,7 @@ class Monad m => SceneStateManager m where
         viewSceneState :: m (SceneState)
 
 
-instance SceneStateManager MahppyBird where
+instance SceneStateManager FlyPlaneFly where
         setSceneState :: (MonadState Vars m, Logger m) => SceneState -> m ()
         setSceneState !nstate = do
                 vSceneState .= nstate  

@@ -23,7 +23,7 @@ class Monad m => AnimationsManager m where
         getPlayerDeathAnimation :: m ([AnimationSrcRect])
         getPlayerIdleAnimation :: m ([AnimationSrcRect])
 
-instance AnimationsManager MahppyBird where
+instance AnimationsManager FlyPlaneFly where
         getPlayerAnimationSrc :: MonadState Vars m => m (AnimationSrcRect)
         getPlayerAnimationSrc = headAnimation <$> use (vRenderingVars.playerAnimationHandler) 
 

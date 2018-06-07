@@ -24,7 +24,7 @@ class Monad m => SoundManager m where
         getBgMusicVolume :: m (Mixer.Volume)
 
 
-instance SoundManager MahppyBird where
+instance SoundManager FlyPlaneFly where
         playJumpFx :: (MonadReader Config m, MonadIO m) => m ()
         playJumpFx = do
                 jumpfx <- view $ cResources.cSound.jumpFx

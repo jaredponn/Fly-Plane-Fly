@@ -21,7 +21,7 @@ class Monad m => CameraManager m where
 
         getCameraPos :: m (Point V2 CInt)
 
-instance CameraManager MahppyBird where
+instance CameraManager FlyPlaneFly where
         moveCameraBy :: (MonadState Vars m) => V2 CInt -> m ()
         moveCameraBy !n = vRenderingVars.cameraPos %= (+ (P n))
 

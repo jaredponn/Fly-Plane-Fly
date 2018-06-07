@@ -65,7 +65,7 @@ class Monad m => Renderer m where
         toScreenRect :: SDL.Rectangle Float -> m (SDL.Rectangle CInt)
 
 
-instance Renderer MahppyBird where
+instance Renderer FlyPlaneFly where
         drawObjects :: (Logger m, Renderer m, TimeManager m, MonadIO m) => [m ()] -> m ()
         drawObjects drawactions = do
                 {- liftIO System.Mem.performGC -}

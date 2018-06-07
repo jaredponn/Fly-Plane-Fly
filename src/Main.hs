@@ -23,7 +23,7 @@ main = do
         initconf <- initConf
         initvars <- initVars
 
-        runMahppyBird initconf initvars loop
+        runFlyPlaneFly initconf initvars loop
 
         SDL.destroyRenderer $ cRenderer initconf
         SDL.destroyWindow $ cWindow initconf

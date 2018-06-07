@@ -14,7 +14,7 @@ class Monad m => Logger m where
         logToFile :: FilePath -> String -> m ()
 
 
-instance Logger MahppyBird where
+instance Logger FlyPlaneFly where
         logText :: (MonadIO m, TimeManager m) => String -> m ()
         logText str = do
                 t <- convertToSeconds <$> getRealTime

@@ -119,5 +119,5 @@ data Vars = Vars { _vSceneState :: SceneState
 makeLenses ''Vars
 
 -- ReaderT Environment Monad ReturnedVal
-newtype MahppyBird a = MahppyBird (ReaderT Config (StateT Vars IO) a) 
+newtype FlyPlaneFly a = FlyPlaneFly (ReaderT Config (StateT Vars IO) a) 
         deriving (Functor, Applicative, Monad, MonadReader Config, MonadState Vars, MonadIO)

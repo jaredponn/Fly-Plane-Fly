@@ -6,7 +6,7 @@
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE OverloadedStrings #-} 
 module FlyPlaneFly ( loop
-                   , runMahppyBird
+                   , runFlyPlaneFly
                    ) where
 
 import qualified SDL
@@ -36,8 +36,8 @@ import SoundManager
 import CameraManager
 import GuiTransforms
 
-runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a 
-runMahppyBird conf vars (MahppyBird m) = evalStateT (runReaderT m conf) vars
+runFlyPlaneFly :: Config -> Vars -> FlyPlaneFly a -> IO a 
+runFlyPlaneFly conf vars (FlyPlaneFly m) = evalStateT (runReaderT m conf) vars
 
 loop :: ( Logger m
         , Renderer m

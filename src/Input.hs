@@ -40,7 +40,7 @@ class Monad m => HasInput m where
         setInput :: Input -> m ()
         getInput :: m Input
 
-instance HasInput MahppyBird where
+instance HasInput FlyPlaneFly where
         updateInput :: (HasInput m, MonadIO m, MonadState Vars m) => m ()
         updateInput = do
                 events <- SDL.pollEvents

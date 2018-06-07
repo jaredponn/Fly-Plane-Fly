@@ -17,7 +17,7 @@ class Monad m => GuiTransforms m where
 
         getWindowSize :: m (V2 Float)
 
-instance GuiTransforms MahppyBird where
+instance GuiTransforms FlyPlaneFly where
         getWindowSize :: (MonadReader Config m, MonadIO m) => m (V2 Float)
         getWindowSize = do
                 window <- asks cWindow 

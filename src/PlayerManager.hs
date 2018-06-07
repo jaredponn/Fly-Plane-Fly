@@ -36,7 +36,7 @@ class Monad m => PlayerManager m where
         getPlayerAngle :: m (CDouble)
         setPlayerAngle :: CDouble -> m ()
 
-instance PlayerManager MahppyBird where
+instance PlayerManager FlyPlaneFly where
         getPlayerPos ::(MonadState Vars m) => m (SDL.Point V2 Float)
         getPlayerPos = do
                 SDL.Rectangle pos _  <- use $ vPlayVars.player.attributes

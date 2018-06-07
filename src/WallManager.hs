@@ -33,7 +33,7 @@ class Monad m => WallManager m where
         changeWallConfStartingPosition :: Float -> m ()
         resetWalls :: m ()
 
-instance WallManager MahppyBird where
+instance WallManager FlyPlaneFly where
         transformWallLengthsToWorldVals :: (MonadReader Config m, MonadIO m) => Wall -> m Wall
         transformWallLengthsToWorldVals wall = do
                 window <- asks cWindow 
