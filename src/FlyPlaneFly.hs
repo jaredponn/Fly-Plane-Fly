@@ -5,10 +5,9 @@
 {-# LANGUAGE BangPatterns #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE OverloadedStrings #-} 
-module MahppyBird (MahppyBird (..)
-            , loop
-            , runMahppyBird
-            ) where
+module FlyPlaneFly ( loop
+                   , runMahppyBird
+                   ) where
 
 import qualified SDL
 import Control.Monad.Reader

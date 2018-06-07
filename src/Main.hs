@@ -8,7 +8,7 @@ import qualified SDL.Image as Image
 import qualified SDL.Mixer as Mixer
 import Control.Lens
 
-import MahppyBird
+import FlyPlaneFly
 import GameVars
 
 import InitGameVars
