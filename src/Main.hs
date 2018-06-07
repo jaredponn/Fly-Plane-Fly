@@ -9,9 +9,7 @@ import qualified SDL.Mixer as Mixer
 import Control.Lens
 
 import MahppyBird
-import Walls
 import GameVars
-import Animations
 
 import InitGameVars
 
@@ -30,9 +28,8 @@ main = do
         SDL.destroyRenderer $ cRenderer initconf
         SDL.destroyWindow $ cWindow initconf
 
-        Mixer.closeAudio
-        {- Mixer.free $ view (cResources.cSound.bgMusicChannel) initconf -}
         Mixer.free $ view (cResources.cSound.jumpFx) initconf 
+        Mixer.closeAudio
         Mixer.quit
 
         Image.quit

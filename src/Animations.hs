@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 module Animations ( AnimationHandler (..)
                   , AnimationSrcRect (..)
                   , AnimationType (..)
@@ -18,8 +19,8 @@ import Foreign.C.Types
 import SDL
 
 data AnimationHandler = AnimationHandler { srcRectStream :: S.Stream AnimationSrcRect -- stream of the default animation
-                           , frameDuration :: Float  -- duration of each sprite visual
-                           , accTime :: Float } deriving Show
+                           , frameDuration :: !Float  -- duration of each sprite visual
+                           , accTime :: !Float } deriving Show
 
 data AnimationSrcRect = AnimationSrcRect { srcRect :: Rectangle CInt
                                          , animationType :: AnimationType} deriving Show
@@ -32,9 +33,9 @@ data AnimationType = AnimationType'Idle
 createAnimationHandler :: S.Stream AnimationSrcRect -- srcRectStream
                 -> Float -- frameDuration
                 -> AnimationHandler
-createAnimationHandler stream frameduration = AnimationHandler { srcRectStream = stream
-                                                                       , frameDuration = frameduration
-                                                                       , accTime = 0 }
+createAnimationHandler stream !frameduration = AnimationHandler { srcRectStream = stream
+                                                                , frameDuration = frameduration
+                                                                , accTime = 0 }
 
 generateSrcRectStream :: [AnimationSrcRect]
                       -> S.Stream AnimationSrcRect
@@ -46,17 +47,17 @@ generateSrcRects :: Point V2 CInt -- initial idle starting position
                  -> CInt -- Number of sprites
                  -> AnimationType
                  -> [AnimationSrcRect]
-generateSrcRects (P (V2 initx inity)) (V2 width height) (V2 xstride ystride) numsprites animationtype = map f $ [0..(numsprites - 1)]
+generateSrcRects !(P (V2 initx inity)) !(V2 width height) !(V2 xstride ystride) !numsprites !animationtype = map f $ [0..(numsprites - 1)]
         where
                 f :: CInt -> AnimationSrcRect 
                 f n = AnimationSrcRect { srcRect = Rectangle (P ((V2 initx inity) + (V2 (xstride*n) (ystride*n))) ) (V2 width height)
                                        , animationType = animationtype }
 
 addTimeToAnimationHandler :: AnimationHandler -> Float -> AnimationHandler
-addTimeToAnimationHandler animation t = animation { accTime = t + accTime animation }
+addTimeToAnimationHandler !animation !t = animation { accTime = t + accTime animation }
 
 updateAnimationHandler :: AnimationHandler -> AnimationHandler
-updateAnimationHandler animation = if accTime animation >= frameDuration animation
+updateAnimationHandler !animation = if accTime animation >= frameDuration animation
                                      then (popAnimation_ animation) { accTime = 0 }
                                      else animation
 
@@ -73,17 +74,17 @@ popAnimation_ animation = animation { srcRectStream = pop_ . srcRectStream $ ani
 
 -- prefixes animations for the stream
 prefixAnimation :: [AnimationSrcRect] -> AnimationHandler -> AnimationHandler
-prefixAnimation newanimations animation = animation { srcRectStream = prefix newanimations $ srcRectStream animation  }
+prefixAnimation !newanimations animation = animation { srcRectStream = prefix newanimations $ srcRectStream animation  }
 
 -- replaces all animations in the stream
 replaceAnimation :: [AnimationSrcRect] -> AnimationHandler -> AnimationHandler
-replaceAnimation newanimations animation = animation { srcRectStream = prefix (cycle newanimations) $ srcRectStream animation  }
+replaceAnimation !newanimations animation = animation { srcRectStream = prefix (cycle newanimations) $ srcRectStream animation  }
 
 removeAnimations :: AnimationType -> AnimationHandler -> AnimationHandler
-removeAnimations animationtype animation = animation { srcRectStream = Animations.dropWhile (==animationtype) $ srcRectStream animation }
+removeAnimations !animationtype animation = animation { srcRectStream = Animations.dropWhile (==animationtype) $ srcRectStream animation }
 
 removeAnimationsUpto :: AnimationType -> AnimationHandler -> AnimationHandler
-removeAnimationsUpto animationtype animation = animation { srcRectStream = Animations.dropWhile (/=animationtype) $ srcRectStream animation }
+removeAnimationsUpto !animationtype animation = animation { srcRectStream = Animations.dropWhile (/=animationtype) $ srcRectStream animation }
 
 {- STANDARD FUNCTIONS  -}
 head :: S.Stream AnimationSrcRect -> AnimationSrcRect

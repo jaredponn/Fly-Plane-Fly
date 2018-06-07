@@ -3,7 +3,6 @@
 {-# LANGUAGE FlexibleContexts #-} 
 module Physics where
 
-import Control.Monad.Reader
 import Control.Monad.State
 import Control.Lens
 import Linear.V2

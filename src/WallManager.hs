@@ -37,8 +37,7 @@ instance WallManager MahppyBird where
         transformWallLengthsToWorldVals :: (MonadReader Config m, MonadIO m) => Wall -> m Wall
         transformWallLengthsToWorldVals wall = do
                 window <- asks cWindow 
-                V2 winW winH <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
-
+                V2 _ winH <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
                 return Wall { upperWall = winH * upperWall wall
                             , gap = winH * gap wall
                             , lowerWall = winH * lowerWall wall
@@ -48,7 +47,7 @@ instance WallManager MahppyBird where
         getWallsInScreen :: (MonadState Vars m, MonadReader Config m, WallManager m, MonadIO m) => m ([Wall])
         getWallsInScreen = do
                 window <- asks cWindow 
-                V2 winW winH <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
+                V2 winW _ <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
                 wallconf <- use $ vPlayVars.cWallConf
                 wallstream <- use $ vPlayVars.wallStream
                 let wallstorender = S.take (ceiling (winW / (allWallWidth wallconf + allWallSpacing wallconf))) wallstream

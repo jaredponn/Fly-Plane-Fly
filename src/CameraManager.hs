@@ -1,12 +1,12 @@
 {-# LANGUAGE InstanceSigs #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE FlexibleContexts #-} 
+{-# LANGUAGE BangPatterns #-} 
 module CameraManager where
 
 import Linear.V2
 import SDL
 import Foreign.C.Types
-import Control.Monad.Reader
 import Control.Monad.State
 import Control.Lens
 
@@ -23,7 +23,7 @@ class Monad m => CameraManager m where
 
 instance CameraManager MahppyBird where
         moveCameraBy :: (MonadState Vars m) => V2 CInt -> m ()
-        moveCameraBy transform = vRenderingVars.cameraPos %= (+ (P transform))
+        moveCameraBy !n = vRenderingVars.cameraPos %= (+ (P n))
 
         setCameraPos :: (MonadState Vars m) => Point V2 Float -> m ()
         setCameraPos (P npos) = vRenderingVars.cameraPos .= (P (roundV2 npos))

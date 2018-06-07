@@ -1,5 +1,6 @@
 {-# LANGUAGE InstanceSigs #-} 
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE BangPatterns #-}
 
 module AnimationsManager where
 
@@ -30,18 +31,18 @@ instance AnimationsManager MahppyBird where
         updatePlayerAnimation = do
                 playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
                 -- adds the dt to the accumlated time of the animation
-                dt <- getdt
-                let nplayeranimationhandler = addTimeToAnimationHandler playeranimationhandler dt
+                curdt <- getdt
+                let nplayeranimationhandler = addTimeToAnimationHandler playeranimationhandler curdt
                 -- iterates to the next animation if enough time has elapsed
                 vRenderingVars.playerAnimationHandler .= updateAnimationHandler nplayeranimationhandler
 
         removePlayerAnimationsUpto :: MonadState Vars m => AnimationType -> m ()
-        removePlayerAnimationsUpto animationtype = do
+        removePlayerAnimationsUpto !animationtype = do
                 playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
                 vRenderingVars.playerAnimationHandler .= removeAnimationsUpto animationtype playeranimationhandler
 
         prependToPlayerAnimation :: MonadState Vars m => [AnimationSrcRect] -> m ()
-        prependToPlayerAnimation animations = do
+        prependToPlayerAnimation !animations = do
                 playeranimationhandler <- use $ vRenderingVars.playerAnimationHandler
                 vRenderingVars.playerAnimationHandler .= prefixAnimation animations playeranimationhandler
 

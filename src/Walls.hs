@@ -1,3 +1,4 @@
+{-# LANGUAGE BangPatterns #-}
 module Walls 
         ( Wall (..)
         , WallConfig (..) 
@@ -21,11 +22,11 @@ import Control.Monad.State.Lazy
 -}
 
 -- The percents of the sizes will be converted to the actual sizes in the game. The actual sizes depend on the window size, so here, it is abstractly expressed in terms of a percent
-data Wall = Wall { upperWall :: Float -- percent of the size
-                 , gap :: Float -- percent of the size
-                 , lowerWall :: Float -- percent of the size
-                 , xPos :: Float -- actual position
-                 , wallWidth :: Float } -- actual width
+data Wall = Wall { upperWall :: {-# UNPACK #-} !Float -- percent of the size
+                 , gap :: {-# UNPACK #-} !Float -- percent of the size
+                 , lowerWall ::{-# UNPACK #-} !Float -- percent of the size
+                 , xPos :: {-# UNPACK #-} !Float -- actual position
+                 , wallWidth :: {-# UNPACK #-} !Float } -- actual width
                  deriving Show
 
 data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float, Float)
@@ -41,7 +42,7 @@ data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float,
 -- used to make random percents. E.g. (0, 1) -> 0.56
 randPercent :: RandomGen g => (Float, Float) 
       -> State g Float
-randPercent (lowerBound, upperBound) = do 
+randPercent !(lowerBound, upperBound) = do 
         generator <- get 
         let intBounds = (round (100 * lowerBound) :: Int, round (100 * upperBound) :: Int)
             (val, generator') = randomR intBounds generator
@@ -52,7 +53,7 @@ createWall :: RandomGen g => WallConfig
            -> Float -- starting wall position
            -> g -- initial rng generator
            -> (Wall, g)
-createWall conf startPos g = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
+createWall !conf !startPos !g = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
                               in ( Wall { upperWall = val
                                         , gap = startingGapSize conf
                                         , lowerWall = 1 - (val + startingGapSize conf)
@@ -63,38 +64,21 @@ createWall conf startPos g = let (val, g') = runState (randPercent (allUppperWal
 createNextWall :: RandomGen g => WallConfig
                -> (Wall, g) -- old wall
                -> (Wall, g)
-createNextWall conf (old, g) = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
-                                   gapsize = if gap old + gapSizeChangeRate conf <= finalGapSize conf
+createNextWall !conf !(old, g) = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
+                                     gapsize = if gap old + gapSizeChangeRate conf <= finalGapSize conf
                                                 then finalGapSize conf
                                                 else gap old + gapSizeChangeRate conf
-                                in ( Wall { upperWall = val
-                                          , gap = gapsize
-                                          , lowerWall = 1 - (val + gapsize)
-                                          , xPos = (allWallSpacing conf) + (xPos old) + (wallWidth old) 
-                                          , wallWidth = allWallWidth conf}
+                                 in ( Wall { upperWall = val
+                                           , gap = gapsize
+                                           , lowerWall = 1 - (val + gapsize)
+                                           , xPos = (allWallSpacing conf) + (xPos old) + (wallWidth old) 
+                                           , wallWidth = allWallWidth conf}
                                    , g' )
 
 createWallStream :: WallConfig
                  -> IO (Stream Wall)
-createWallStream conf = do
+createWallStream !conf = do
         seed <- getStdGen
         let firstWall = createWall conf (startingPos conf) seed
         setStdGen . snd $ firstWall -- sets a new global rng generator so each new wall stream created will be unique
         return . S.map fst $ S.iterate (createNextWall conf) firstWall 
-
-
-{- FUNCTIONS TO HELP WITH TESTING -}
-testCreateWallStream conf = do
-        a <- createWallStream conf
-        return $ S.take 4 a
-
-
-testWallConf :: WallConfig
-testWallConf =  WallConfig { allUppperWallRngBounds = (0, 0.6)
-                           , startingGapSize = 0.4
-                           , gapSizeChangeRate = (-0.05)
-                           , finalGapSize = 0.22
-                           , allWallWidth = 30
-                           , allWallSpacing = 30
-                           , startingPos = 30 }
-

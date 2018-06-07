@@ -4,7 +4,6 @@
 module Logger where
 
 import Control.Monad.IO.Class (MonadIO(..))
-import System.Clock as Clock
 
 import TimeManager
 import GameVars

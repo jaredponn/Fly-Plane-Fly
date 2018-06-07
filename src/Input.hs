@@ -4,9 +4,7 @@
 module Input where
 
 import SDL
-import Foreign.C.Types
 import Control.Monad.IO.Class (MonadIO(..))
-import Control.Monad.Reader
 import Control.Monad.State
 import Control.Lens
 

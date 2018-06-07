@@ -5,7 +5,6 @@ module GameVars where
 import Data.Stream
 import Linear.V2
 import Foreign.C.Types
-import Data.Stack
 import qualified GHC.Word
 import qualified SDL
 import qualified SDL.Font as TTF
@@ -69,7 +68,8 @@ data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
                      , _yvel ::{-# UNPACK #-} !Float 
                      , _xvel ::{-# UNPACK #-} !Float
                      , _cJumpHeight ::{-# UNPACK #-} !Float
-                     , _isPassingWall ::{-# UNPACK #-} !Bool
+                     {- , _isPassingWall ::{-# UNPACK #-} !Bool -}
+                     , _isPassingWall :: !Bool
                      , _angle ::{-# UNPACK #-} !CDouble
                      } deriving Show
 makeLenses ''Player
@@ -88,7 +88,8 @@ makeLenses ''PlayVars
 data Input = Input { _isSpace :: Bool 
                    , _isEsc :: Bool
                    , _mousePos ::{-# UNPACK #-} !(V2 CInt)
-                   , _mousePress ::{-# UNPACK #-} !(Bool) }
+                   , _mousePress :: !(Bool) }
+                   {- , _mousePress ::{-# UNPACK #-} !(Bool) } -}
                    deriving Show
 makeLenses ''Input
 
@@ -99,34 +100,15 @@ data RenderingVars = RenderingVars { _playerAnimationHandler :: AnimationHandler
                                    } deriving Show
 makeLenses ''RenderingVars
 
-data GameState = Menu
+data SceneState = Menu
                | PrePlay
                | Play 
                | Pause 
-               | GameOver Bool -- bool to know if there was a new high score
+               | GameOver 
                | Quit
+               deriving (Eq, Show)
 
-instance Show GameState where
-        show Menu = "Menu"
-        show PrePlay = "PrePlay"
-        show Play = "Play"
-        show Pause = "Pause"
-        show (GameOver _) = "GameOver"
-        show Quit = "Quit"
-
-instance Eq GameState where
-        (==) Menu Menu = True
-        (==) PrePlay PrePlay = True
-        (==) Play Play = True
-        (==) Pause Pause = True
-        (==) (GameOver _) (GameOver _) = True
-        (==) Quit Quit = True
-        (==) _ _ = False
-
-
-type GameStack = Stack GameState
-
-data Vars = Vars { _vGameStateStack :: GameStack 
+data Vars = Vars { _vSceneState :: SceneState 
                  , _vPlayVars :: PlayVars
                  , _vRenderingVars :: RenderingVars 
                  , _kInput :: Input 

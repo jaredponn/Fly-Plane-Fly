@@ -3,7 +3,6 @@ module Util where
 import Foreign.C.Types
 import Linear.V2
 import System.Clock
-import Aabb
 
 type Time = Float
 

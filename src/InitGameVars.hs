@@ -14,13 +14,11 @@ import qualified SDL.Image as Image
 import qualified SDL.Mixer as Mixer
 import System.FilePath
 import Foreign.C.Types
-import Data.Stack
 import Data.Stream as S
 
 import GameVars 
 import Walls
 import Animations
-import GameStateManager
 
 resourcePath :: FilePath
 resourcePath = "/home/jared/Programs/Fly-Plane-Fly/Resources/" 
@@ -32,7 +30,7 @@ screenHeight = 720
 initVars :: IO Vars
 initVars = do
         playvars <- initPlayVars
-        return Vars { _vGameStateStack = stackPush stackNew Menu
+        return Vars { _vSceneState = Menu
                     , _vPlayVars = playvars
                     , _vRenderingVars = defaultRenderingVars
                     , _kInput = defaultInput
@@ -63,7 +61,6 @@ initConf = do
         playagaingameoverpic <- Image.load (resourcePath </> "playagaingameover.png") >>= SDL.createTextureFromSurface renderer 
         quitgameoverpic <- Image.load (resourcePath </> "quitgameover.png") >>= SDL.createTextureFromSurface renderer 
         gameoverwindowpic <- Image.load (resourcePath </> "gameoverwindow.png") >>= SDL.createTextureFromSurface renderer 
-        titletextpic <- Image.load (resourcePath </> "titletext.png") >>= SDL.createTextureFromSurface renderer 
 
         (jumpsfx :: Mixer.Chunk) <- Mixer.load (resourcePath </> "fx.wav")
         (crashfx :: Mixer.Chunk) <- Mixer.load (resourcePath </> "crash.wav")

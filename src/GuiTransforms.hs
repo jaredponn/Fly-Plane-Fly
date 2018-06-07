@@ -4,9 +4,7 @@
 module GuiTransforms where
 
 import SDL
-import SDL.Video 
 import Control.Monad.Reader
-import Control.Monad.State
 import GameVars
 
 class Monad m => GuiTransforms m where
@@ -27,7 +25,7 @@ instance GuiTransforms MahppyBird where
 
         xCenterRectangle :: GuiTransforms m => Rectangle Float-> m (Rectangle Float)
         xCenterRectangle rect = do
-                V2 winW winH <- getWindowSize
+                V2 winW _ <- getWindowSize
                 let Rectangle (P (V2 _ y)) (V2 width height) = rect
                     topleftpt = V2 ((winW / 2) - (width / 2)) y
                     nrect = Rectangle (P topleftpt) (V2 width height) 
@@ -35,7 +33,7 @@ instance GuiTransforms MahppyBird where
 
         yCenterRectangle :: GuiTransforms m => Rectangle Float -> m (Rectangle Float)
         yCenterRectangle rect = do
-                V2 winW winH <- getWindowSize
+                V2 _ winH <- getWindowSize
                 let Rectangle (P (V2 x _)) (V2 width height) = rect 
                     topleftpt = V2 x ((winH / 2) - (height / 2))
                     nrect = Rectangle (P topleftpt) (V2 width height)
@@ -50,7 +48,7 @@ instance GuiTransforms MahppyBird where
 
         alignToRightEdge :: GuiTransforms m => Rectangle Float -> m (Rectangle Float)
         alignToRightEdge rect = do
-                V2 winW winH <- getWindowSize
+                V2 winW _ <- getWindowSize
                 let Rectangle (P (V2 _ y)) (V2 width height) = rect
                     topleftpt = (P (V2 (winW - width) y))
                     nrect = Rectangle topleftpt (V2 width height)
@@ -58,7 +56,7 @@ instance GuiTransforms MahppyBird where
 
         alignToBottomEdge :: GuiTransforms m => Rectangle Float -> m (Rectangle Float)
         alignToBottomEdge rect = do
-                V2 winW winH <- getWindowSize
+                V2 _ winH <- getWindowSize
                 let Rectangle (P (V2 x _)) (V2 width height) = rect
                     topleftpt = (P (V2 x (winH - height)))
                     nrect = Rectangle topleftpt (V2 width height)

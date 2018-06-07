@@ -1,6 +1,7 @@
 {-# LANGUAGE InstanceSigs #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE FlexibleContexts #-} 
+{-# LANGUAGE BangPatterns #-} 
 {-# LANGUAGE OverloadedStrings #-}
 module Renderer where
 
@@ -16,6 +17,7 @@ import qualified SDL.Font as TTF
 import Data.StateVar (($=))
 import System.Clock
 import qualified Data.Text as T
+import qualified System.Mem
 
 import PlayerManager
 import Buttons
@@ -64,8 +66,9 @@ class Monad m => Renderer m where
 
 
 instance Renderer MahppyBird where
-        drawObjects :: (Logger m, Renderer m, TimeManager m) => [m ()] -> m ()
+        drawObjects :: (Logger m, Renderer m, TimeManager m, MonadIO m) => [m ()] -> m ()
         drawObjects drawactions = do
+                liftIO System.Mem.performGC
                 threadDelay 3000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
                 mapM_ id drawactions
                 presentRenderer
@@ -84,7 +87,7 @@ instance Renderer MahppyBird where
 
         drawScreenOverlay :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m, GuiTransforms m) => SDL.V4 Word8
                           -> m ()
-        drawScreenOverlay color = do
+        drawScreenOverlay !color = do
                 renderer <- asks cRenderer 
                 lengths <- roundV2 <$> getWindowSize
                 SDL.rendererDrawColor renderer $= color
@@ -96,13 +99,14 @@ instance Renderer MahppyBird where
                 renderer <- asks cRenderer 
                 playerspritesheet <- view $ cResources.cTextures.playerSpriteSheet
 
-                player <- getPlayerAttributes
-                player' <- toScreenRect player
+                curplayer <- getPlayerAttributes
+                curplayer' <- toScreenRect curplayer
+
                 ang <- getPlayerAngle
 
                 srcrect <- srcRect <$> getPlayerAnimationSrc
 
-                SDL.copyEx renderer playerspritesheet (Just srcrect) (Just player') ang Nothing (V2 False False)
+                SDL.copyEx renderer playerspritesheet (Just srcrect) (Just curplayer') ang Nothing (V2 False False)
 
 
         drawWalls :: (Renderer m, WallManager m, MonadIO m, MonadReader Config m) => m ()
@@ -158,12 +162,12 @@ instance Renderer MahppyBird where
                          -> m ()
         drawTextToScreen font str pos color f = do
                 renderer <- asks cRenderer 
-                texture <- TTF.blended font color str >>= SDL.createTextureFromSurface renderer
+                curtexture <- TTF.blended font color str >>= SDL.createTextureFromSurface renderer
                 (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> TTF.size font str
                 SDL.Rectangle (SDL.P npos) lengths <- f $ SDL.Rectangle pos (V2 width height)
                 let npos' = roundV2 npos
                     lengths' = roundV2 lengths
-                SDL.copy renderer texture Nothing . Just $ SDL.Rectangle (SDL.P npos') lengths'
+                SDL.copy renderer curtexture Nothing . Just $ SDL.Rectangle (SDL.P npos') lengths'
 
         drawBtnToScreen :: (MonadIO m, MonadReader Config m) => ButtonAttr -> m ()
         drawBtnToScreen btnattr = do
@@ -172,10 +176,10 @@ instance Renderer MahppyBird where
                 SDL.copy renderer (texture btnattr) Nothing $ Just nrect
 
         drawTextureToScreen :: (MonadIO m, MonadReader Config m) => SDL.Rectangle Float -> SDL.Texture -> m ()
-        drawTextureToScreen rect texture = do
+        drawTextureToScreen !nrect ntexture = do
                 renderer <- asks cRenderer
-                let nrect = roundSDLRect rect
-                SDL.copy renderer texture Nothing $ Just nrect
+                let nrect' = roundSDLRect nrect
+                SDL.copy renderer ntexture Nothing $ Just nrect'
 
 
         presentRenderer :: (MonadReader Config m, MonadIO m) => m ()

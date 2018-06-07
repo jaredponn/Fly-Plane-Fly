@@ -76,7 +76,7 @@ hitTestBelow (Aabb (P (V2 xmin0 ymin0)) (P (V2 xmax0 ymax0))) (Aabb (P (V2 xmin1
    |____|        ____
 -}
 floorAabb :: Aabb -> Aabb
-floorAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymax)) (P (V2 xmax ymax))
+floorAabb (Aabb (P (V2 xmin _)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymax)) (P (V2 xmax ymax))
 
 {- ceilingAabb would transform the following Aabb into a line of the lower side: 
     ____         ____
@@ -85,10 +85,10 @@ floorAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymax))
    |____|       
 -}
 ceilingAabb :: Aabb -> Aabb
-ceilingAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 xmin ymin)) (P (V2 xmax ymin))
+ceilingAabb (Aabb (P (V2 xmin ymin)) (P (V2 xmax _))) = Aabb (P (V2 xmin ymin)) (P (V2 xmax ymin))
 
 shiftAabb :: V2 Float -> Aabb-> Aabb
-shiftAabb  (V2 xshift yshift) (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 (xmin + xshift) (ymin + yshift))) (P (V2 (xmax + xshift) (ymin + yshift)))
+shiftAabb  (V2 xshift yshift) (Aabb (P (V2 xmin ymin)) (P (V2 xmax _))) = Aabb (P (V2 (xmin + xshift) (ymin + yshift))) (P (V2 (xmax + xshift) (ymin + yshift)))
 
 addCushiontoAabb :: V2 Float -> Aabb -> Aabb
-addCushiontoAabb (V2 xcushion ycushion) (Aabb (P (V2 xmin ymin)) (P (V2 xmax ymax))) = Aabb (P (V2 (xmin - xcushion) (ymin - ycushion))) (P (V2 (xmax + xcushion) (ymin + ycushion)))
+addCushiontoAabb (V2 xcushion ycushion) (Aabb (P (V2 xmin ymin)) (P (V2 xmax _))) = Aabb (P (V2 (xmin - xcushion) (ymin - ycushion))) (P (V2 (xmax + xcushion) (ymin + ycushion)))

@@ -5,8 +5,6 @@ module SoundManager where
 
 import qualified SDL.Mixer as Mixer
 import Control.Monad.Reader (MonadReader (..)
-                            , ReaderT (..)
-                            , asks
                             , join)
 import Control.Monad.IO.Class (MonadIO(..))
 import Control.Lens

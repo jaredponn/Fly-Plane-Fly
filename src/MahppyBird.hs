@@ -11,17 +11,11 @@ module MahppyBird (MahppyBird (..)
             ) where
 
 import qualified SDL
-import qualified SDL.Font as Font
-
-import Data.StateVar (($=))
 import Control.Monad.Reader
 import Control.Monad.State
 import Control.Lens
-import Foreign.C.Types
 import Control.Monad (unless)
 import Linear.V2
-import Data.Stack
-import qualified System.Clock
 import qualified Data.Text as T
 
 import Aabb
@@ -32,26 +26,19 @@ import Logger
 import Input
 import Renderer
 import Physics
-import Walls
 import GameVars
 import WallManager
 import PlayerManager
 import AnimationsManager
-import InitGameVars
 import ScoreManager
 import TimeManager
-import GameStateManager
+import SceneStateManager
 import SoundManager
 import CameraManager
 import GuiTransforms
 
 runMahppyBird :: Config -> Vars -> MahppyBird a -> IO a 
 runMahppyBird conf vars (MahppyBird m) = evalStateT (runReaderT m conf) vars
-
-acquireInput :: (Logger m, HasInput m) => m Input
-acquireInput = do
-        updateInput
-        getInput
 
 loop :: ( Logger m
         , Renderer m
@@ -66,16 +53,12 @@ loop :: ( Logger m
         , SoundManager m 
         , TimeManager m
         , GuiTransforms m
-        , GameStateManager m
+        , SceneStateManager m
         , AnimationsManager m) => m ()
 loop = do
-        input <- acquireInput
-        curgamestate <- peekGameState
-
-        runScene input curgamestate
-
-        {- playState <- get -}
-        {- logToFile "/home/jared/Programs/mahppybird/log.txt" . show $ playState -}
+        updateInput
+        curgamestate <- viewSceneState
+        runScene curgamestate
 
         unless (curgamestate == Quit) loop 
 
@@ -90,12 +73,10 @@ runScene :: ( Logger m
             , CameraManager m
             , TimeManager m
             , GuiTransforms m 
-            , GameStateManager m
+            , SceneStateManager m
             , SoundManager m
-            , AnimationsManager m) => Input -> GameState -> m ()
-runScene input Menu = do
-        (mousepress, mousepos) <- getMouseAttrib
-        
+            , AnimationsManager m) => SceneState -> m ()
+runScene Menu = do
         playbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
         playbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 150 (V2 600 300) playbtntexture
         runReaderT playbtneffect playbtnattr
@@ -116,50 +97,52 @@ runScene input Menu = do
         drawObjectsWithDt renderactions
 
         where
-                playbtneffect ::( GameStateManager m
+                playbtneffect ::( SceneStateManager m
                                 , HasInput m
                                 , PlayerManager m ) => Button m
-                playbtneffect = buttonGameStateModifierFromMouse $ pushGameState PrePlay 
+                playbtneffect = buttonEffectFromMouse $ setSceneState PrePlay 
 
-                quitbtneffect ::( GameStateManager m
+                quitbtneffect ::( SceneStateManager m
                                 , HasInput m ) => Button m
-                quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
+                quitbtneffect = buttonEffectFromMouse $ setSceneState Quit
 
                 mutebtneffect :: ( SoundManager m
                                        , HasInput m
                                        , Logger m) => Button m
-                mutebtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
+                mutebtneffect = buttonEffectFromMouse pauseOrPlaySounds
 
-runScene input PrePlay = do
+runScene PrePlay = do
+        input <- getInput
         pressspacetoplay <- view $ cResources.cTextures.guiTextures.pressSpacetoJumpTexture
         pressspacetoplayrect <- (xCenterRectangle >=> yCenterRectangle) $ SDL.Rectangle (SDL.P (V2 0 0)) (V2 550 194)
-        pressspacetoplayrect <- (xCenterRectangle >=> yCenterRectangle) $ SDL.Rectangle (SDL.P (V2 0 0)) (V2 550 194)
-        
+
         renderactions <- (++[drawTextureToScreen pressspacetoplayrect pressspacetoplay]) <$> updatedRenderPrePlayActions
         drawObjectsWithDt renderactions
 
-        if _isSpace input 
+        if _isSpace input
            then do
-                   jumpPlayer 
-                   setGrav 2900 
-                   popGameState_ 
-                   pushGameState Play
-
+                   jumpPlayer
+                   setGrav 2900
+                   setSceneState Play
            else return ()
 
 
-runScene input Play = do
+runScene Play = do
+        input <- getInput
         renderactions <- updatedRenderPlayActions
         drawObjectsWithDt renderactions
 
         inputHandler input
-        updatePhysics 
+        updatePhysics
 
         collisionTest
         updateWalls
         updateScore
+
+        return ()
+
         where
-                inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, GameStateManager m) => Input -> m ()
+                inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, SceneStateManager m) => Input -> m ()
                 inputHandler input = do
                         if _isSpace input 
                            then do jumpPlayer
@@ -177,8 +160,8 @@ runScene input Play = do
                         applyYVel
                         applyXVel
 
-                pauseGame :: GameStateManager m => m ()
-                pauseGame = pushGameState Pause
+                pauseGame :: SceneStateManager m => m ()
+                pauseGame = setSceneState Pause
 
                 updateWalls :: (PlayerManager m, WallManager m, CameraManager m) => m ()
                 updateWalls = do
@@ -201,11 +184,11 @@ runScene input Play = do
                            else return ()
                         setIsPassingWall (pointHitTest playerpos gapaabb)
 
-                collisionTest :: (SoundManager m, AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, GameStateManager m) => m ()
+                collisionTest :: (SoundManager m, AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, SceneStateManager m) => m ()
                 collisionTest = do
                         playerAabb <- getPlayerAabb
-                        upperWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (-25)) <$> floorAabb <$> getFirstUpperWallAabb
-                        lowerWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (25)) <$> ceilingAabb <$> getFirstLowerWallAabb
+                        upperWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (-15)) <$> floorAabb <$> getFirstUpperWallAabb
+                        lowerWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (15)) <$> ceilingAabb <$> getFirstLowerWallAabb
                         if (hitTestAbove playerAabb upperWallAabb) || (hitTestBelow playerAabb lowerWallAabb)
                         then do 
                                 curscore <- getScore
@@ -213,18 +196,19 @@ runScene input Play = do
                                 if ishighscore 
                                    then do
                                            logText $ "CONGRATS NEW HIGH SCORE: " ++ (show curscore)
-                                           modifyHighScore curscore
+                                           setHighScore curscore
                                            getHighScore >>= logText . show  
                                    else do
                                            logText $ "YOUR FINAL SCORE:" ++ (show curscore)
 
                                 getPlayerDeathAnimation >>= replacePlayerAnimation 
                                 playCrashFx
-                                pushGameState (GameOver True)
+                                setSceneState GameOver 
 
                         else return ()
 
-runScene input Pause = do
+runScene Pause = do
+        input <- getInput
         arechannelsplaying <- areChannelsPlaying
         mutebtntexture <- if arechannelsplaying
                              then view $ cResources.cTextures.guiTextures.muteTexture
@@ -237,16 +221,16 @@ runScene input Pause = do
         drawObjectsWithDt renderactions
 
         if _isEsc input || _isSpace input
-           then popGameState_
+           then setSceneState Play
            else return ()
 
         where
                 mutebtneffect :: ( SoundManager m
                                        , HasInput m
                                        , Logger m) => Button m
-                mutebtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
+                mutebtneffect = buttonEffectFromMouse pauseOrPlaySounds
 
-runScene input (GameOver _) = do
+runScene GameOver = do
         playagainbtntexture <- view $ cResources.cTextures.guiTextures.playAgainBtnTexture
         playagainbtnattr <- translateButtonAttr (V2 (-125) 150) <$> createCenteredButtonAttr (V2 200 50) playagainbtntexture
         runReaderT playagainbtneffect playagainbtnattr
@@ -270,26 +254,26 @@ runScene input (GameOver _) = do
         drawObjectsWithDt renderactions
 
         where
-                playagainbtneffect ::( GameStateManager m
+                playagainbtneffect ::( SceneStateManager m
                                      , HasInput m
                                      , WallManager m
                                      , PlayerManager m
                                      , AnimationsManager m
                                      , ScoreManager m
                                      , SoundManager m) => Button m
-                playagainbtneffect = buttonGameStateModifierFromMouse $ popGameState_ >> pushGameState PrePlay >> resetGame
+                playagainbtneffect = buttonEffectFromMouse $ setSceneState PrePlay >> resetGame
 
-                quitbtneffect ::( GameStateManager m
+                quitbtneffect ::( SceneStateManager m
                                 , HasInput m
                                 , SoundManager m) => Button m
-                quitbtneffect = buttonGameStateModifierFromMouse . pushGameState $ Quit
+                quitbtneffect = buttonEffectFromMouse $ setSceneState Quit
 
                 mutebtneffect :: ( SoundManager m
                                        , HasInput m
                                        , Logger m) => Button m
-                mutebtneffect = buttonGameStateModifierFromMouse pauseOrPlaySounds
+                mutebtneffect = buttonEffectFromMouse pauseOrPlaySounds
 
-runScene input Quit = return ()
+runScene Quit = return ()
 
 {- updatedRender<..> functions include some of the render functions necassary to render the game for that scene -}
 updatedRenderMenuActions :: (AnimationsManager m, Renderer m, PlayerManager m, CameraManager m, MonadReader Config m, GuiTransforms m) => m [m()]
@@ -362,9 +346,9 @@ resetGame = do
 
 updatePlayerAngle :: PlayerManager m => m ()
 updatePlayerAngle = do
-        yvel <- getPlayerYVel
+        curyvel <- getPlayerYVel
         ang <- getPlayerAngle
-        if yvel < 0 && ang >= (-10)
+        if curyvel < 0 && ang >= (-10)
            then setPlayerAngle (ang - 1)
            else if ang <= 0
            then setPlayerAngle (ang + 1)
@@ -377,9 +361,9 @@ resetPlayerAngle :: PlayerManager m => m ()
 resetPlayerAngle = setPlayerAngle 0
 
 -- if the button is pressed, then execute the modifier to the game state
-buttonGameStateModifierFromMouse :: ( HasInput m ) => m ()  -- action to modify the game
+buttonEffectFromMouse :: ( HasInput m ) => m ()  -- action to modify the game
                                                       -> Button m
-buttonGameStateModifierFromMouse f = do
+buttonEffectFromMouse f = do
         mousepos <- lift $ (\(V2 a b) -> (SDL.P (V2 (fromIntegral a) (fromIntegral b)))) <$> _mousePos <$> getInput
         mousepress <- lift $ _mousePress <$> getInput
 

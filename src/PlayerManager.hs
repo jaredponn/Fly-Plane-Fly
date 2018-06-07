@@ -1,6 +1,7 @@
 {-# LANGUAGE InstanceSigs #-} 
 {-# LANGUAGE FlexibleInstances #-} 
 {-# LANGUAGE FlexibleContexts #-} 
+{-# LANGUAGE BangPatterns #-} 
 module PlayerManager where
 
 import Linear.V2
@@ -46,8 +47,8 @@ instance PlayerManager MahppyBird where
 
         getPlayerAabb :: PlayerManager m => m (Aabb)
         getPlayerAabb = do
-                player <- getPlayerAttributes
-                return $ rectangleToAabb player
+                curplayer <- getPlayerAttributes
+                return $ rectangleToAabb curplayer
 
 
         getPlayerYVel :: MonadState Vars m => m (Float)
@@ -68,15 +69,15 @@ instance PlayerManager MahppyBird where
         jumpPlayer = join $ uses (vPlayVars.player.cJumpHeight) setPlayerYVel 
 
         translatePlayer :: PlayerManager m => V2 Float -> m ()
-        translatePlayer transform = do
+        translatePlayer !n = do
                 SDL.P curpos <- getPlayerPos
-                setPlayerPos . SDL.P $ transform + curpos
+                setPlayerPos . SDL.P $ n + curpos
 
         isPlayerJumping :: PlayerManager m => m (Bool)
         isPlayerJumping = (<0) <$> getPlayerYVel 
 
         setIsPassingWall :: MonadState Vars m => Bool -> m ()
-        setIsPassingWall passing = vPlayVars.player.isPassingWall .= passing
+        setIsPassingWall !n = vPlayVars.player.isPassingWall .= n
 
         getIsPassingWall :: MonadState Vars m => m (Bool)
         getIsPassingWall = use $ vPlayVars.player.isPassingWall
@@ -85,6 +86,4 @@ instance PlayerManager MahppyBird where
         getPlayerAngle = use $ vPlayVars.player.GameVars.angle
 
         setPlayerAngle :: MonadState Vars m => CDouble -> m ()
-        setPlayerAngle nangle = vPlayVars.player.GameVars.angle .= nangle
-
-
+        setPlayerAngle !n= vPlayVars.player.GameVars.angle .= n

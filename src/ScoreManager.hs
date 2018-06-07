@@ -14,8 +14,7 @@ class Monad m => ScoreManager m where
         resetScore :: m ()
 
         isHighScore :: Int -> m (Bool)
-        -- takes the score it replaces and modifies the internal state
-        modifyHighScore :: Int -> m ()
+        setHighScore :: Int -> m ()
         getHighScore :: m Int
 
 instance ScoreManager MahppyBird where
@@ -29,11 +28,11 @@ instance ScoreManager MahppyBird where
         resetScore = vPlayVars.score .= 0
 
         isHighScore :: MonadState Vars m => Int -> m (Bool)
-        isHighScore score = uses highScore (<score)
+        isHighScore curscore = uses highScore (<curscore)
 
 
-        modifyHighScore :: MonadState Vars m => Int -> m ()
-        modifyHighScore score = highScore .= score
+        setHighScore :: MonadState Vars m => Int -> m ()
+        setHighScore curscore = highScore .= curscore
 
         getHighScore :: MonadState Vars m => m Int
         getHighScore = use highScore
