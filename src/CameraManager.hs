@@ -10,6 +10,7 @@ import Foreign.C.Types
 import Control.Monad.State
 import Control.Lens
 
+import PlayerManager 
 import GameVars
 import Util
 
@@ -33,3 +34,9 @@ instance CameraManager FlyPlaneFly where
 
         getCameraOffset :: MonadState Vars m => m (V2 Float)
         getCameraOffset = use $ vRenderingVars.camOffset
+
+updateCameraPos :: (PlayerManager m, CameraManager m) => m ()
+updateCameraPos = do
+        SDL.P (V2 x _) <- getPlayerPos
+        camoffset <- getCameraOffset
+        setCameraPos . SDL.P $ (V2 x 0) + camoffset

@@ -28,8 +28,8 @@ class Monad m => PlayerManager m where
         setIsPassingWall :: Bool -> m ()
         getIsPassingWall :: m (Bool)
 
-        jumpPlayer :: m ()
         isPlayerJumping :: m (Bool)
+        getPlayerJumpHeight :: m (Float)
 
         getPlayerAabb :: m Aabb 
 
@@ -65,9 +65,6 @@ instance PlayerManager FlyPlaneFly where
         setPlayerYVel :: MonadState Vars m => Float -> m ()
         setPlayerYVel nvel = vPlayVars.player.yvel .= nvel
 
-        jumpPlayer :: (MonadState Vars m, MonadReader Config m, PlayerManager m, AnimationsManager m) => m ()
-        jumpPlayer = join $ uses (vPlayVars.player.cJumpHeight) setPlayerYVel 
-
         translatePlayer :: PlayerManager m => V2 Float -> m ()
         translatePlayer !n = do
                 SDL.P curpos <- getPlayerPos
@@ -75,6 +72,9 @@ instance PlayerManager FlyPlaneFly where
 
         isPlayerJumping :: PlayerManager m => m (Bool)
         isPlayerJumping = (<0) <$> getPlayerYVel 
+
+        getPlayerJumpHeight :: MonadState Vars m => m (Float)
+        getPlayerJumpHeight = use $ vPlayVars.player.cJumpHeight
 
         setIsPassingWall :: MonadState Vars m => Bool -> m ()
         setIsPassingWall !n = vPlayVars.player.isPassingWall .= n
@@ -87,3 +87,23 @@ instance PlayerManager FlyPlaneFly where
 
         setPlayerAngle :: MonadState Vars m => CDouble -> m ()
         setPlayerAngle !n= vPlayVars.player.GameVars.angle .= n
+
+
+updatePlayerAngle :: PlayerManager m => m ()
+updatePlayerAngle = do
+        curyvel <- getPlayerYVel
+        ang <- getPlayerAngle
+        if curyvel < 0 && ang >= (-10)
+           then setPlayerAngle (ang - 1)
+           else if ang <= 0
+           then setPlayerAngle (ang + 1)
+           else return ()
+
+resetPlayerPos :: (PlayerManager m) => m ()
+resetPlayerPos = setPlayerPos $ SDL.P $ V2 0 260
+
+resetPlayerAngle :: PlayerManager m => m ()
+resetPlayerAngle = setPlayerAngle 0
+
+jumpPlayer :: (MonadReader Config m, PlayerManager m) => m ()
+jumpPlayer =  setPlayerYVel =<< getPlayerJumpHeight

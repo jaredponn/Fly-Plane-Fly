@@ -8,6 +8,7 @@ import SDL
 
 import Aabb
 import GuiTransforms
+import GameVars
 
 data ButtonAttr = ButtonAttr { rect :: {-# UNPACK #-} !(Rectangle Float)
                              , aabb :: {-# UNPACK #-} !Aabb
@@ -15,6 +16,22 @@ data ButtonAttr = ButtonAttr { rect :: {-# UNPACK #-} !(Rectangle Float)
 
 type Button m = ReaderT (ButtonAttr) m ()
 
+
+-- buttonEffectFromMouse takes an action and the current input and will apply that function if the mouse is over the button and clicking it
+buttonEffectFromMouse :: Monad m => m ()  -- action to modify the game
+                                 -> Input  -- current input of the game
+                                 -> Button m
+buttonEffectFromMouse f input = do
+        let mousepos = (\(V2 a b) -> (SDL.P (V2 (fromIntegral a) (fromIntegral b)))) . _mousePos $ input
+            mousepress = _mousePress input
+
+        btnattr <- ask 
+
+        if pointHitTest mousepos (aabb btnattr) && mousepress
+           then lift f
+           else return () 
+
+{- FUNCTIONS TO CREATE BUTTONS -}
 createButtonAttrFromAabb :: Aabb -> Texture -> ButtonAttr
 createButtonAttrFromAabb !naabb !ntexture = ButtonAttr { rect = aabbToRectangle naabb
                                                        , aabb = naabb 
@@ -64,6 +81,7 @@ createRightEdgeAlignedButtonAttr !ypos !lengths !ntexture = do
                                     , aabb = Aabb (P (V2 0 0)) (P (V2 0 0))
                                     , texture = ntexture}
         alignToRightEdgeButtonAttr tmpbtnattr
+
 
 {- TRANSFORMS TO BUTTON ATTRIBUTES -}
 xCenterButtonAttr :: (GuiTransforms m ) => ButtonAttr -> m ButtonAttr  

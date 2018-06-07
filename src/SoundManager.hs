@@ -56,3 +56,10 @@ instance SoundManager FlyPlaneFly where
         areChannelsPlaying :: MonadIO m => m (Bool)
         areChannelsPlaying = (>0) <$> Mixer.getVolume Mixer.AllChannels 
 
+
+pauseOrPlaySounds :: SoundManager m => m ()
+pauseOrPlaySounds = do
+        arechannelsplaying <- areChannelsPlaying
+        if not arechannelsplaying 
+           then resumeAll
+           else muteAll 

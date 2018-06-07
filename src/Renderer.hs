@@ -26,6 +26,7 @@ import Animations
 import GuiTransforms
 import Logger
 import TimeManager
+import SoundManager
 import ScoreManager
 import CameraManager
 import GameVars
@@ -197,6 +198,21 @@ instance Renderer FlyPlaneFly where
                 let lengths' = roundV2 lengths
                 return $ SDL.Rectangle pos' lengths'
 
-roundSDLRect :: SDL.Rectangle Float -> SDL.Rectangle CInt
-roundSDLRect = (\(SDL.Rectangle (SDL.P (V2 x y)) (V2 w h)) -> SDL.Rectangle (SDL.P (V2 (round x) (round y))) (V2 (round w) (round h)))
 
+renderHighScores :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
+renderHighScores = do 
+        highscore <- getHighScore
+        highscorefont <- view $ cResources.cFont.highScoreFont
+        drawTextToScreen highscorefont (T.pack . show $ highscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 100) ((liftM (GuiTransforms.translate (V2 (0) (70)))) <$> (yCenterRectangle >=> xCenterRectangle))
+        
+        curscore <- getScore
+        scorefont <- view $ cResources.cFont.scoreFont
+        drawTextToScreen scorefont (T.pack . show $ curscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (140) (-70)))) <$> (yCenterRectangle >=> xCenterRectangle))
+
+getMuteBtnTexture :: (MonadReader Config m, SoundManager m) => m (SDL.Texture)
+getMuteBtnTexture = do
+        arechannelsplaying <- areChannelsPlaying
+        mutebtntexture <- if arechannelsplaying
+                             then view $ cResources.cTextures.guiTextures.muteTexture
+                             else view $ cResources.cTextures.guiTextures.mutedTexture
+        return mutebtntexture
