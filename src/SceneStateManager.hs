@@ -4,7 +4,6 @@
 module SceneStateManager where
 
 import GameVars
-import Logger
 
 import Control.Monad.State
 import Control.Lens
@@ -15,10 +14,8 @@ class Monad m => SceneStateManager m where
 
 
 instance SceneStateManager FlyPlaneFly where
-        setSceneState :: (MonadState Vars m, Logger m) => SceneState -> m ()
-        setSceneState !nstate = do
-                vSceneState .= nstate  
-                logText . show $ nstate
+        setSceneState :: MonadState Vars m => SceneState -> m ()
+        setSceneState !nstate = vSceneState .= nstate  
 
         viewSceneState :: (MonadState Vars m) => m (SceneState)
         viewSceneState = use vSceneState
