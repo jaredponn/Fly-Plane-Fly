@@ -38,13 +38,15 @@ sudo xbps-install -S SDL2 SDL2-devel SDL2_image SDL2_image-devel SDL2_mixer SDL2
 Be sure to download the developer libraries as well.
 
 ### Installing the game
-Run:
+To build the project, issue the following commands
 ```
 git clone https://github.com/jaredponn/Fly-Plane-Fly.git
 cd Fly-Plane-Fly
 stack build
 ```
-This will build the project. While you are in the Fly-Plane-Fly folder, run the following command to start playing:
+That will build the project. 
+
+While you are in the Fly-Plane-Fly folder, run the following command to start playing:
 ```
 stack exec fly-plane-fly
 ```
