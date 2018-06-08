@@ -93,7 +93,7 @@ makeLenses ''Input
 
 data RenderingVars = RenderingVars { _playerAnimationHandler :: AnimationHandler
                                    , _cameraPos :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
-                                   , _camOffset :: {-# UNPACK #-} !(V2 Float)
+                                   , _cameraOffset :: {-# UNPACK #-} !(V2 Float)
                                    , _transitionOpacity :: {-# UNPACK #-} !GHC.Word.Word8
                                    } deriving Show
 makeLenses ''RenderingVars

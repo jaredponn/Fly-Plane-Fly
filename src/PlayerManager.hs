@@ -13,7 +13,6 @@ import Foreign.C.Types
 
 import Aabb
 import GameVars
-import AnimationsManager
 
 class Monad m => PlayerManager m where
         getPlayerPos :: m (SDL.Point V2 Float)
