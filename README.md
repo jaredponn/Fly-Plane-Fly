@@ -2,8 +2,8 @@
 This is a spin off of Flappy Bird written in Haskell.
 
 ## Gameplay
-![gameplay](https://github.com/jaredponn/Fly-Plane-Fly/blob/master/gameplay.gif)
-*just imagine it runs smoother because gifs don't provide the smoothest video experience ;)*
+![gameplay.gif](https://github.com/jaredponn/Fly-Plane-Fly/blob/master/gameplay.gif)
+
 ## Installation
 
 ### Prerequisites
@@ -23,10 +23,17 @@ to install Stack.
 
 Refer to the Stack's [readme](https://docs.haskellstack.org/en/stable/README/) for more details
 
-In addition, this game requires various SDL2 libraries. This depends on the Linux distribution. In Void Linux, for example, they would be installed by running:
+In addition, this game requires the following SDL2 libraries:
+* SDL2
+* SDL2 image
+* SDL2 mixer
+* SDL2 ttf
+
+Installation of these libraries depends on the Linux distribution. In Void Linux, for example, they would be installed by running:
 ```
 sudo xbps-install -S SDL2 SDL2-devel SDL2_image SDL2_image-devel SDL2_mixer SDL2_mixer-devel SDL2_ttf SDL2_ttf-devel 
 ```
+Be sure to download the developer library as well.
 
 ### Installing the game
 Run:
