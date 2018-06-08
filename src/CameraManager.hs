@@ -35,6 +35,7 @@ instance CameraManager FlyPlaneFly where
         getCameraOffset :: MonadState Vars m => m (V2 Float)
         getCameraOffset = use $ vRenderingVars.camOffset
 
+-- updateCameraPos updates the camera postion by the "cameraOffset" and the current position of the player
 updateCameraPos :: (PlayerManager m, CameraManager m) => m ()
 updateCameraPos = do
         SDL.P (V2 x _) <- getPlayerPos
