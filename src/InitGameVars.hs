@@ -21,7 +21,7 @@ import Walls
 import Animations
 
 resourcePath :: FilePath
-resourcePath = "/home/jared/Programs/Fly-Plane-Fly/Resources/" 
+resourcePath = "./Resources/" 
 
 screenWidth, screenHeight :: CInt
 screenWidth = 1280
