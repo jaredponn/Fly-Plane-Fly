@@ -7,6 +7,7 @@ This is a spin off of Flappy Bird written in Haskell.
 ## Installation
 
 ### Prerequisites
+#### Installing Stack
 This project uses Stack. If you have Stack installed already skip to the next section. 
 
 Note: This has only been tested on Un\*x operating systems.
@@ -23,6 +24,7 @@ to install Stack.
 
 Refer to the Stack's [readme](https://docs.haskellstack.org/en/stable/README/) for more details
 
+#### Installing the SDL2 Libraries
 In addition, this game requires the following SDL2 libraries:
 * SDL2
 * SDL2 image
