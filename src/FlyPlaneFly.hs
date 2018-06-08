@@ -266,7 +266,6 @@ runScene GameOver = do
         gameoverwindowtexture <- view $ cResources.cTextures.guiTextures.gameOverWindowTexture
         gameoverwindowrect <- GuiTransforms.translate (V2 0 (-50)) <$> ((xCenterRectangle >=> yCenterRectangle) (SDL.Rectangle (SDL.P (V2 0 0)) (V2 450 300)))
 
-
         updateCameraPos
         updatePlayerAnimation
         bgpic <- view $ cResources.cTextures.bgTexture
@@ -291,7 +290,6 @@ runScene GameOver = do
                 mutebtneffect = buttonEffectFromMouse pauseOrPlaySounds
 
 runScene Quit = return ()
-
             
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m, AnimationsManager m) => m ()
 resetGame = do
