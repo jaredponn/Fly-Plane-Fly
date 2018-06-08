@@ -2,9 +2,10 @@
 This is a spin off of Flappy Bird written in Haskell.
 
 ## Gameplay
-TODO
-
+![Alt Text](https://github.com/{user}/{repo}/gameplay.gif)
+*just imagine it runs smoother because gifs don't provide the smoothest video experience ;)*
 ## Installation
+
 ### Prerequisites
 This project uses Stack. If you have Stack installed already skip to the next section. 
 
@@ -21,6 +22,11 @@ wget -qO- https://get.haskellstack.org/ | sh
 to install Stack.
 
 Refer to the Stack's [readme](https://docs.haskellstack.org/en/stable/README/) for more details
+
+In addition, this game requires various SDL2 libraries. This depends on the Linux distribution. In Void Linux, for example, they would be installed by running:
+```
+sudo xbps-install -S SDL2 SDL2-devel SDL2_image SDL2_image-devel SDL2_mixer SDL2_mixer-devel SDL2_ttf SDL2_ttf-devel 
+```
 
 ### Installing the game
 Run:

@@ -5,9 +5,9 @@ version:             0.1.0.0
 homepage:            https://github.com/githubuser/mahppybird#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
+author:              Jared Pon
 maintainer:          example@example.com
-copyright:           2018 Author name here
+copyright:           2018 Jared Pon
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
