@@ -35,7 +35,7 @@ Installation of these libraries depends on the Linux distribution. In Void Linux
 ```
 sudo xbps-install -S SDL2 SDL2-devel SDL2_image SDL2_image-devel SDL2_mixer SDL2_mixer-devel SDL2_ttf SDL2_ttf-devel 
 ```
-Be sure to download the developer library as well.
+Be sure to download the developer libraries as well.
 
 ### Installing the game
 Run:
@@ -43,19 +43,23 @@ Run:
 git clone https://github.com/jaredponn/Fly-Plane-Fly.git
 cd Fly-Plane-Fly
 stack build
+```
+This will build the project. While you are in the Fly-Plane-Fly folder, run the following command to start playing:
+```
 stack exec fly-plane-fly
 ```
-And the game should run.
+And you should be playing the game.
 
 ## Implementation details
 Please refer to the blog post for an in-depth analysis of the architecture.
-TODO
+
+[Read it here](https://jaredponn.github.io/2018/06/07/Write-Me-A-FlappyBird-In-Haskell.html).
 
 ## Project
 This project was a high-school project for the Pre-Engineering class. Students may choose to work individually or in groups. Some other projects include Rube Goldberg machines, Quad-copters, and Pancake cookers.
 
 ## Issues
-The CPU usage is a bit ridiculously high. It takes up more than 50% cpu while running. If you can find the shortcomings in the system that leads to this issue, I would be happy to hear about it.
+The CPU usage is a ridiculously high. On my computer, it takes up more than 50% CPU while running. If you can find the shortcomings in the system that leads to this issue, I would be happy to hear about it.
 
 ## Acknowledgments
 All the images came from the following sources and were marked free to share use and modify:
@@ -68,4 +72,4 @@ All the images came from the following sources and were marked free to share use
 
 The font [FFFForward](http://www.1001fonts.com/fff-forward-font.html) was used.
 
-The sound effects are from various authors from [freesound](https://freesound.org/)
+The sound effects are from various authors from [freesound](https://freesound.org/).
