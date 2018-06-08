@@ -65,10 +65,9 @@ data Config = Config { cWindow :: SDL.Window
 makeLenses ''Config
 
 data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
-                     , _yvel ::{-# UNPACK #-} !Float 
-                     , _xvel ::{-# UNPACK #-} !Float
+                     , _yvel :: {-# UNPACK #-} !Float 
+                     , _xvel :: {-# UNPACK #-} !Float
                      , _cJumpHeight ::{-# UNPACK #-} !Float
-                     {- , _isPassingWall ::{-# UNPACK #-} !Bool -}
                      , _isPassingWall :: !Bool
                      , _angle ::{-# UNPACK #-} !CDouble
                      } deriving Show
@@ -89,7 +88,6 @@ data Input = Input { _isSpace :: Bool
                    , _isEsc :: Bool
                    , _mousePos ::{-# UNPACK #-} !(V2 CInt)
                    , _mousePress :: !(Bool) }
-                   {- , _mousePress ::{-# UNPACK #-} !(Bool) } -}
                    deriving Show
 makeLenses ''Input
 

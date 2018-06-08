@@ -77,16 +77,18 @@ runScene :: ( Logger m
 runScene Menu = do
         input <- getInput
 
+        -- setting up the play button
         playbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
         playbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 150 (V2 600 300) playbtntexture
         runReaderT (playbtneffect input) playbtnattr
 
+        -- setting up the quit button
         quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
         quitbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
         runReaderT (quitbtneffect input) quitbtnattr
 
+        -- setting up the mute button
         mutebtntexture <- getMuteBtnTexture
-
         mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> ((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr)
         runReaderT (mutebtneffect input) mutebtnattr
 
@@ -224,6 +226,7 @@ runScene Play = do
 runScene Pause = do
         input <- getInput
 
+        -- setting up the mute button
         mutebtntexture <- getMuteBtnTexture
         mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> ((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr)
         runReaderT (mutebtneffect input) mutebtnattr
@@ -249,14 +252,17 @@ runScene Pause = do
 runScene GameOver = do
         input <- getInput
 
+        -- setting up the play again button
         playagainbtntexture <- view $ cResources.cTextures.guiTextures.playAgainBtnTexture
         playagainbtnattr <- translateButtonAttr (V2 (-125) 150) <$> createCenteredButtonAttr (V2 200 50) playagainbtntexture
         runReaderT (playagainbtneffect input) playagainbtnattr
 
+        -- setting up the quit button
         quitbtntexture <- view $ cResources.cTextures.guiTextures.quitGameOverBtnTexture
         quitbtnattr <- translateButtonAttr (V2 (125) 150) <$> createCenteredButtonAttr (V2 200 50) quitbtntexture
         runReaderT (quitbtneffect input) quitbtnattr
 
+        -- setting up the mute button
         mutebtntexture <- getMuteBtnTexture
         mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> (((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr))
         runReaderT (mutebtneffect input) mutebtnattr
