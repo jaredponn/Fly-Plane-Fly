@@ -17,7 +17,6 @@ import qualified SDL.Font as TTF
 import Data.StateVar (($=))
 import System.Clock
 import qualified Data.Text as T
-import qualified System.Mem
 
 import PlayerManager
 import Buttons
@@ -56,20 +55,17 @@ class Monad m => Renderer m where
         toScreenCord :: SDL.Point V2 Float -> m (SDL.Point V2 CInt)
         toScreenRect :: SDL.Rectangle Float -> m (SDL.Rectangle CInt)
 
-        launchMissiles :: m ()
-
         {- Wrappers:  -}
         -- SDL.present renderer
         presentRenderer :: m ()
         -- SDL.copy
         copy :: SDL.Renderer -> SDL.Texture -> Maybe (SDL.Rectangle CInt) -> Maybe (SDL.Rectangle CInt) -> m ()
+        -- SDL.copyEx
         copyEx :: SDL.Renderer -> SDL.Texture -> Maybe (SDL.Rectangle CInt) -> Maybe (SDL.Rectangle CInt) -> CDouble -> Maybe (SDL.Point V2 CInt) -> V2 Bool -> m ()
 
 
-instance Renderer FlyPlaneFly where
-        launchMissiles :: MonadIO m => m ()
-        launchMissiles = liftIO System.Mem.performGC
 
+instance Renderer FlyPlaneFly where
         drawObjects :: (Logger m, Renderer m, TimeManager m, MonadIO m) => [m ()] -> m ()
         drawObjects drawactions = do
                 threadDelay 2000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
@@ -112,12 +108,15 @@ instance Renderer FlyPlaneFly where
                          -> m ()
         drawTextToScreen font str pos color f = do
                 renderer <- asks cRenderer 
-                curtexture <- TTF.blended font color str >>= SDL.createTextureFromSurface renderer
+                tmpsurface <- TTF.blended font color str
+                curtexture <- SDL.createTextureFromSurface renderer tmpsurface
+                SDL.freeSurface tmpsurface
                 (width, height) <- (\(a,b) -> (fromIntegral a, fromIntegral b)) <$> TTF.size font str
                 SDL.Rectangle (SDL.P npos) lengths <- f $ SDL.Rectangle pos (V2 width height)
                 let npos' = roundV2 npos
                     lengths' = roundV2 lengths
                 copy renderer curtexture Nothing . Just $ SDL.Rectangle (SDL.P npos') lengths'
+                SDL.destroyTexture curtexture
 
         drawBtnToScreen :: (Renderer m, MonadReader Config m) => ButtonAttr -> m ()
         drawBtnToScreen btnattr = do
@@ -154,8 +153,8 @@ instance Renderer FlyPlaneFly where
                 return $ SDL.Rectangle pos' lengths'
 
 
-renderHighScores :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
-renderHighScores = do 
+drawHighScores :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
+drawHighScores = do 
         highscore <- getHighScore
         highscorefont <- view $ cResources.cFont.highScoreFont
         drawTextToScreen highscorefont (T.pack . show $ highscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 100) ((liftM (GuiTransforms.translate (V2 (0) (70)))) <$> (yCenterRectangle >=> xCenterRectangle))

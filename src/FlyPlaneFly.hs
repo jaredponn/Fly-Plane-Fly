@@ -148,8 +148,6 @@ runScene Play = do
         updateWalls
         updateScore
 
-        return ()
-
         where
                 inputHandler :: (MonadReader Config m ,AnimationsManager m, Physics m, PlayerManager m, TimeManager m, SoundManager m, SceneStateManager m) => Input -> m ()
                 inputHandler input = do
@@ -217,9 +215,9 @@ runScene Play = do
                                    then setHighScore curscore
                                    else return ()
 
-                                getPlayerDeathAnimation >>= replacePlayerAnimation 
+                                getPlayerDeathAnimation >>= replacePlayerAnimation
                                 playCrashFx
-                                setSceneState GameOver 
+                                setSceneState GameOver
 
                         else return ()
 
@@ -270,7 +268,7 @@ runScene GameOver = do
         updatePlayerAnimation
         bgpic <- view $ cResources.cTextures.bgTexture
 
-        drawObjectsWithDt [drawBg bgpic, drawScore, drawWalls, drawPlayer, drawBtnToScreen playagainbtnattr, drawBtnToScreen quitbtnattr, drawTextureToScreen gameoverwindowrect gameoverwindowtexture, drawBtnToScreen mutebtnattr, renderHighScores]
+        drawObjectsWithDt [drawBg bgpic, drawScore, drawWalls, drawPlayer, drawBtnToScreen playagainbtnattr, drawBtnToScreen quitbtnattr, drawTextureToScreen gameoverwindowrect gameoverwindowtexture, drawBtnToScreen mutebtnattr, drawHighScores]
 
         where
                 playagainbtneffect :: ( SceneStateManager m
