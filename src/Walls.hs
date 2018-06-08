@@ -21,7 +21,9 @@ import Control.Monad.State.Lazy
    |space|
 -}
 
--- The percents of the sizes will be converted to the actual sizes in the game. The actual sizes depend on the window size, so here, it is abstractly expressed in terms of a percent
+{- When generating the walls, the wall sizes (upperWall, gap, lowerWall) will be expressed as percents. When put in the WallManager, those sizes will be converted into the real world sizes -}
+
+
 data Wall = Wall { upperWall :: {-# UNPACK #-} !Float -- percent of the size
                  , gap :: {-# UNPACK #-} !Float -- percent of the size
                  , lowerWall ::{-# UNPACK #-} !Float -- percent of the size
@@ -52,7 +54,7 @@ randPercent !(lowerBound, upperBound) = do
 createWall :: RandomGen g => WallConfig
            -> Float -- starting wall position
            -> g -- initial rng generator
-           -> (Wall, g)
+           -> (Wall, g) -- (wall, new rng generator)
 createWall !conf !startPos !g = let (val, g') = runState (randPercent (allUppperWallRngBounds conf)) g
                               in ( Wall { upperWall = val
                                         , gap = startingGapSize conf

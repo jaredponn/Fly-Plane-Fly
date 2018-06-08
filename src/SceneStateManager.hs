@@ -16,8 +16,7 @@ class Monad m => SceneStateManager m where
 
 instance SceneStateManager FlyPlaneFly where
         setSceneState :: (MonadState Vars m, Logger m) => SceneState -> m ()
-        setSceneState !nstate = do vSceneState .= nstate  
-                                   logText . show $ nstate
+        setSceneState !nstate = vSceneState .= nstate  
 
         viewSceneState :: (MonadState Vars m) => m (SceneState)
         viewSceneState = use vSceneState
