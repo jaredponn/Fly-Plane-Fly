@@ -5,7 +5,6 @@ module GameVars where
 import Data.Stream
 import Linear.V2
 import Foreign.C.Types
-import qualified GHC.Word
 import qualified SDL
 import qualified SDL.Font as TTF
 import qualified SDL.Mixer as Mixer
@@ -15,6 +14,7 @@ import Control.Monad.State (MonadState (..)
                            , StateT (..))
 import Control.Monad.IO.Class (MonadIO(..))
 import Control.Lens
+import qualified Data.Stream as S
 
 import Animations 
 import Walls
@@ -67,7 +67,7 @@ makeLenses ''Config
 data Player = Player { _attributes ::{-# UNPACK #-} !(SDL.Rectangle Float)
                      , _yvel :: {-# UNPACK #-} !Float 
                      , _xvel :: {-# UNPACK #-} !Float
-                     , _cJumpHeight ::{-# UNPACK #-} !Float
+                     , _jumpHeight ::{-# UNPACK #-} !Float
                      , _isPassingWall :: !Bool
                      , _angle ::{-# UNPACK #-} !CDouble
                      } deriving Show
@@ -75,26 +75,30 @@ makeLenses ''Player
 
 data PlayVars = PlayVars { _player ::{-# UNPACK #-} !Player
                          , _wallStream :: Stream Wall
-                         , _cGrav ::{-# UNPACK #-} !Float
-                         , _cWallConf ::{-# UNPACK #-} !WallConfig
                          , _score ::{-# UNPACK #-} !Int
+                         , _gravity ::{-# UNPACK #-} !Float
+                         , _wallConf ::{-# UNPACK #-} !WallConfig
                          } 
+
 instance Show PlayVars where
-        show _ = ""
+        show val = "_player: " ++ (show . _player $ val) ++ "\n" ++
+                "_wallStream" ++ (show . S.take 3 . _wallStream $ val) ++ "\n" ++
+                "_score" ++ (show . _score $ val) ++ "\n" ++
+                "_gravity" ++ (show . _gravity $ val) ++ "\n" ++
+                "_wallConf" ++ (show . _wallConf $ val) ++ "\n"
 
 makeLenses ''PlayVars
 
 data Input = Input { _isSpace :: Bool 
                    , _isEsc :: Bool
                    , _mousePos ::{-# UNPACK #-} !(V2 CInt)
-                   , _mousePress :: !(Bool) }
-                   deriving Show
+                   , _mousePress :: !(Bool) 
+                   } deriving Show
 makeLenses ''Input
 
 data RenderingVars = RenderingVars { _playerAnimationHandler :: AnimationHandler
                                    , _cameraPos :: {-# UNPACK #-} !(SDL.Point V2 CInt) -- camera position
-                                   , _cameraOffset :: {-# UNPACK #-} !(V2 Float)
-                                   , _transitionOpacity :: {-# UNPACK #-} !GHC.Word.Word8
+                                   , _cameraOffset :: {-# UNPACK #-} !(V2 Float) 
                                    } deriving Show
 makeLenses ''RenderingVars
 

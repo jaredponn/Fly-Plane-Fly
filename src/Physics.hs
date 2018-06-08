@@ -26,14 +26,14 @@ instance Physics FlyPlaneFly where
         -- converts the gravity into velocity 
         applyGrav :: (MonadState Vars m, PlayerManager m, TimeManager m) => m  ()
         applyGrav = do 
-                acc <- use $ vPlayVars.cGrav
+                acc <- use $ vPlayVars.gravity
                 ndt <- getdt
                 curvel <- getPlayerYVel
                 setPlayerYVel $ curvel + ndt * acc
 
         setGrav :: MonadState Vars m => Float -> m ()
         setGrav ngrav = do 
-                vPlayVars.cGrav .= ngrav
+                vPlayVars.gravity .= ngrav
 
         -- allows the addition of any given velocity number to the current velocity
         addYVel :: PlayerManager m => Float -> m  ()

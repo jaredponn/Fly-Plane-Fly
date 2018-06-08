@@ -1,9 +1,10 @@
 {-# LANGUAGE ScopedTypeVariables#-}
 {-# LANGUAGE OverloadedStrings#-}
-module InitGameVars ( initConf
+module Resources ( initConf
                     , initVars
                     , defaultInput 
-                    , defaultPlayerVars) where
+                    , defaultPlayerVars
+                    , freeResources ) where
 
 import SDL ( V2 (..)
            , Point (..)
@@ -15,6 +16,7 @@ import qualified SDL.Mixer as Mixer
 import System.FilePath
 import Foreign.C.Types
 import Data.Stream as S
+import Control.Lens
 
 import GameVars 
 import Walls
@@ -74,9 +76,9 @@ initConf = do
                                       , _gameOverWindowTexture = gameoverwindowpic
                                       , _pressSpacetoJumpTexture = pressspacetojumppic 
                                       , _titleScreenbg = titlebgpic
-                                     , _muteTexture = mutepic
-                                     , _mutedTexture = mutedpic }
-            textures = Textures {_bgTexture = bgpic
+                                      , _muteTexture = mutepic
+                                      , _mutedTexture = mutedpic }
+            textures = Textures { _bgTexture = bgpic
                                 , _playerSpriteSheet = playerpic
                                 , _botWallTexture = botwallpic
                                 , _topWallTexture = topwallpic
@@ -86,9 +88,9 @@ initConf = do
                                     , _playerIdleAnimation = playeridlesrcrects }
             sound = Sound { _bgMusicChannel = bgmusicchannel
                           , _jumpFx = jumpsfx 
-                          , _crashFx = crashfx}
+                          , _crashFx = crashfx }
             fonts = Fonts { _scoreFont = scorefont
-                          , _highScoreFont = highscorefont}
+                          , _highScoreFont = highscorefont }
             resources = Resources { _cFont = fonts
                                   , _cTextures = textures
                                   , _cAnimations = animations
@@ -115,7 +117,7 @@ defaultPlayerVars :: Player
 defaultPlayerVars = Player { _attributes = SDL.Rectangle (SDL.P (V2 0 270)) (V2 60 30)
                            , _yvel = 0
                            , _xvel = 275
-                           , _cJumpHeight = (-700)
+                           , _jumpHeight = (-700)
                            , _isPassingWall = False
                            , _angle = 0}
 
@@ -124,8 +126,8 @@ initPlayVars = do
         wallstream <- initWallStream
         return PlayVars { _player = defaultPlayerVars
                         , _wallStream = wallstream
-                        , _cGrav = 2900
-                        , _cWallConf = initWallConf
+                        , _gravity = 2900
+                        , _wallConf = initWallConf
                         , _score = 0 }
 
 initWallStream :: IO (S.Stream Wall)
@@ -144,5 +146,25 @@ initWallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.44)
 defaultRenderingVars :: RenderingVars 
 defaultRenderingVars = RenderingVars { _playerAnimationHandler = createAnimationHandler (generateSrcRectStream playeridlesrcrects) 0.1
                                      , _cameraPos = SDL.P $ V2 0 0
-                                     , _cameraOffset = (-100)
-                                     , _transitionOpacity = 100 }
+                                     , _cameraOffset = (-100) }
+
+freeResources :: Resources -> IO ()
+freeResources resources = do
+        SDL.destroyTexture $ resources^.cTextures.bgTexture
+        SDL.destroyTexture $ resources^.cTextures.playerSpriteSheet
+        SDL.destroyTexture $ resources^.cTextures.botWallTexture
+        SDL.destroyTexture $ resources^.cTextures.topWallTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.playBtnTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.quitBtnTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.playAgainBtnTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.quitGameOverBtnTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.gameOverWindowTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.pressSpacetoJumpTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.titleScreenbg
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.mutedTexture
+        SDL.destroyTexture $ resources^.cTextures.guiTextures.muteTexture
+
+        Mixer.free $ resources^.cSound.jumpFx
+        Mixer.free $ resources^.cSound.crashFx
+
+

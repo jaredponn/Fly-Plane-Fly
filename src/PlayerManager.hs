@@ -73,7 +73,7 @@ instance PlayerManager FlyPlaneFly where
         isPlayerJumping = (<0) <$> getPlayerYVel 
 
         getPlayerJumpHeight :: MonadState Vars m => m (Float)
-        getPlayerJumpHeight = use $ vPlayVars.player.cJumpHeight
+        getPlayerJumpHeight = use $ vPlayVars.player.jumpHeight
 
         setIsPassingWall :: MonadState Vars m => Bool -> m ()
         setIsPassingWall !n = vPlayVars.player.isPassingWall .= n

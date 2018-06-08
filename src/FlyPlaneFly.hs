@@ -184,7 +184,7 @@ runScene Play = do
                 updateAnimations' = do
                         updatePlayerAnimation
 
-                        -- stops the jump animation if the player is not jumping
+                        -- stops the jump animation if the player velocity is less than 0 (not jumping)
                         playeryvel <- getPlayerYVel
                         if playeryvel > 0
                                 then removePlayerAnimationsUpto AnimationType'Idle
@@ -229,7 +229,7 @@ runScene Play = do
                                    then setHighScore curscore
                                    else return ()
 
-                                getPlayerDeathAnimation >>= replacePlayerAnimation
+                                replacePlayerAnimation =<< getPlayerDeathAnimation 
                                 playCrashFx
                                 setSceneState GameOver
 
@@ -245,7 +245,7 @@ runScene Pause = do
 
         updateCameraPos
 
-        font <- view $ cResources.cFont.scoreFont
+        font <- view $ cResources.cFont.scoreFont -- the "paused" text will use the same font as the score
         bgpic <- view $ cResources.cTextures.bgTexture
 
         drawObjectsWithDt [drawBg bgpic, drawScore, drawWalls, drawPlayer, drawScreenOverlay $ SDL.V4 0 0 0 95, drawTextToScreen font "paused" (SDL.P $ SDL.V2 0 0) (SDL.V4 155 98 0 100) (yCenterRectangle >=> xCenterRectangle), drawBtnToScreen mutebtnattr]

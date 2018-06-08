@@ -17,7 +17,8 @@ import GameVars
 import Logger
 
 class Monad m => WallManager m where
-        -- takes the percent values that the wall has and converts them into the sizes corrosponding to the window size in world coordinateS
+        -- takes the percent values that the wall has and converts them into the sizes corrosponding to the window size in world coordinates
+        -- all walls in the wall manager monadic context will be converted to the corrosponding window size in world coordinates
         transformWallLengthsToWorldVals :: Wall -> m Wall
 
         getFirstUpperWallAabb :: m Aabb
@@ -48,7 +49,7 @@ instance WallManager FlyPlaneFly where
         getWallsInScreen = do
                 window <- asks cWindow 
                 V2 winW _ <- (\(V2 a b)-> V2 (fromIntegral a ) (fromIntegral b)) <$> glGetDrawableSize window
-                wallconf <- use $ vPlayVars.cWallConf
+                wallconf <- use $ vPlayVars.wallConf
                 wallstream <- use $ vPlayVars.wallStream
                 let wallstorender = S.take (ceiling (winW / (allWallWidth wallconf + allWallSpacing wallconf))) wallstream
                 mapM transformWallLengthsToWorldVals wallstorender
@@ -87,13 +88,13 @@ instance WallManager FlyPlaneFly where
 
         resetWalls :: (MonadState Vars m, MonadIO m, Logger m) => m ()
         resetWalls = do
-                wallconf <- use $ vPlayVars.cWallConf
+                wallconf <- use $ vPlayVars.wallConf
                 wallstream <- liftIO . createWallStream $ wallconf
                 vPlayVars.wallStream .= wallstream
 
         changeWallConfStartingPosition :: MonadState Vars m => Float -> m ()
         changeWallConfStartingPosition newstartingpos = do
-                wallconf <- use (vPlayVars.cWallConf) 
+                wallconf <- use (vPlayVars.wallConf) 
                 let nwallconf = wallconf {startingPos = newstartingpos}
-                vPlayVars.cWallConf .= nwallconf
+                vPlayVars.wallConf .= nwallconf
 

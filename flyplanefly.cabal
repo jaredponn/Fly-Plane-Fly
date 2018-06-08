@@ -38,7 +38,7 @@ executable fly-plane-fly
                  , Util
                  , GuiTransforms
                  , Animations
-                 , InitGameVars
+                 , Resources
   build-depends:       base >= 4.7 && < 5
                        , sdl2
                        , sdl2-ttf

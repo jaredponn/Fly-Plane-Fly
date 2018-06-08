@@ -152,7 +152,22 @@ instance Renderer FlyPlaneFly where
                 let lengths' = roundV2 lengths
                 return $ SDL.Rectangle pos' lengths'
 
+getMuteBtnTexture :: (MonadReader Config m, SoundManager m) => m (SDL.Texture)
+getMuteBtnTexture = do
+        arechannelsplaying <- areChannelsPlaying
+        mutebtntexture <- if arechannelsplaying
+                             then view $ cResources.cTextures.guiTextures.muteTexture
+                             else view $ cResources.cTextures.guiTextures.mutedTexture
+        return mutebtntexture
 
+-- draws the score so it is centered in the screen
+drawScore :: (ScoreManager m, Renderer m, GuiTransforms m, MonadReader Config m) => m ()
+drawScore = do
+        curscore <- getScore
+        font <- view $ cResources.cFont.scoreFont
+        drawTextToScreen font (T.pack . show $ curscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) centerRectangle
+
+-- draws the score and the highscore for the gameover scene state
 drawHighScores :: (MonadReader Config m, GuiTransforms m, ScoreManager m, Renderer m) => m ()
 drawHighScores = do 
         highscore <- getHighScore
@@ -162,20 +177,6 @@ drawHighScores = do
         curscore <- getScore
         scorefont <- view $ cResources.cFont.scoreFont
         drawTextToScreen scorefont (T.pack . show $ curscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) ((liftM (GuiTransforms.translate (V2 (140) (-70)))) <$> (yCenterRectangle >=> xCenterRectangle))
-
-getMuteBtnTexture :: (MonadReader Config m, SoundManager m) => m (SDL.Texture)
-getMuteBtnTexture = do
-        arechannelsplaying <- areChannelsPlaying
-        mutebtntexture <- if arechannelsplaying
-                             then view $ cResources.cTextures.guiTextures.muteTexture
-                             else view $ cResources.cTextures.guiTextures.mutedTexture
-        return mutebtntexture
-
-drawScore :: (ScoreManager m, Renderer m, GuiTransforms m, MonadReader Config m) => m ()
-drawScore = do
-        curscore <- getScore
-        font <- view $ cResources.cFont.scoreFont
-        drawTextToScreen font (T.pack . show $ curscore) (SDL.P (V2 0 0)) (SDL.V4 54 55 74 255) centerRectangle
 
 drawPlayer :: (Logger m, Renderer m, MonadReader Config m, PlayerManager m, Renderer m, AnimationsManager m) => m ()
 drawPlayer = do
@@ -191,8 +192,7 @@ drawPlayer = do
 
         copyEx renderer playerspritesheet (Just srcrect) (Just curplayer') ang Nothing (V2 False False)
 
-
-
+-- draws the walls in the screen
 drawWalls :: (Renderer m, WallManager m, MonadReader Config m, PlayerManager m, GuiTransforms m) => m ()
 drawWalls = do
         renderer <- asks cRenderer 

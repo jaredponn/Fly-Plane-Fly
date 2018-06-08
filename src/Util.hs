@@ -1,7 +1,7 @@
 module Util where
 
-import Foreign.C.Types
 import SDL
+import Foreign.C.Types
 import System.Clock
 
 type Time = Float

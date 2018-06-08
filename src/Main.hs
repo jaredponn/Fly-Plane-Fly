@@ -6,12 +6,10 @@ import qualified SDL
 import qualified SDL.Font as TTF
 import qualified SDL.Image as Image
 import qualified SDL.Mixer as Mixer
-import Control.Lens
 
 import FlyPlaneFly
+import Resources
 import GameVars
-
-import InitGameVars
 
 main :: IO ()
 main = do
@@ -25,17 +23,13 @@ main = do
 
         runFlyPlaneFly initconf initvars loop
 
+        freeResources $ _cResources initconf
+
         SDL.destroyRenderer $ cRenderer initconf
         SDL.destroyWindow $ cWindow initconf
-
-        Mixer.free $ view (cResources.cSound.jumpFx) initconf 
         Mixer.closeAudio
-        Mixer.quit
 
+        Mixer.quit
         Image.quit
         TTF.quit
         SDL.quit
-
-        return ()
-
-
