@@ -80,20 +80,21 @@ runScene Menu = do
         -- setting up the play button
         playbtntexture <- view $ cResources.cTextures.guiTextures.playBtnTexture
         playbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 150 (V2 600 300) playbtntexture
-        runReaderT (playbtneffect input) playbtnattr
+        runReaderT (playbtneffect input) playbtnattr -- running the play button effect
 
         -- setting up the quit button
         quitbtntexture <- view $ cResources.cTextures.guiTextures.quitBtnTexture
         quitbtnattr <- translateButtonAttr (V2 (-30) 0 ) <$> createRightEdgeAlignedButtonAttr 500 (V2 600 100) quitbtntexture
-        runReaderT (quitbtneffect input) quitbtnattr
+        runReaderT (quitbtneffect input) quitbtnattr -- running the quit button effect
 
         -- setting up the mute button
         mutebtntexture <- getMuteBtnTexture
         mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> ((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr)
-        runReaderT (mutebtneffect input) mutebtnattr
+        runReaderT (mutebtneffect input) mutebtnattr -- running the mute button effect
 
-        updateCameraPos
-        updatePlayerAnimation
+        -- updates 
+        updateCameraPos -- makes the player not appear at the edge of the screen
+        updatePlayerAnimation 
 
         titlebgpic <- view $ cResources.cTextures.guiTextures.titleScreenbg
         drawObjectsWithDt [drawBg titlebgpic, drawWalls, drawPlayer, drawBtnToScreen playbtnattr, drawBtnToScreen quitbtnattr, drawBtnToScreen mutebtnattr]
@@ -102,7 +103,7 @@ runScene Menu = do
                 playbtneffect ::( SceneStateManager m
                                 , HasInput m
                                 , PlayerManager m ) => Input -> Button m
-                playbtneffect = buttonEffectFromMouse (setSceneState PrePlay)
+                playbtneffect = buttonEffectFromMouse $ setSceneState PrePlay
 
                 quitbtneffect :: ( SceneStateManager m
                                  , HasInput m ) => Input -> Button m
@@ -115,20 +116,24 @@ runScene Menu = do
 
 runScene PrePlay = do
         input <- getInput
+
+        -- setting up the press space to play rectangle
         pressspacetoplay <- view $ cResources.cTextures.guiTextures.pressSpacetoJumpTexture
         pressspacetoplayrect <- (xCenterRectangle >=> yCenterRectangle) $ SDL.Rectangle (SDL.P (V2 0 0)) (V2 550 194)
 
-        updateCameraPos
-        updatePlayerAnimation
-
+        -- getting the bg texture
         bgpic <- view $ cResources.cTextures.bgTexture
 
         drawObjectsWithDt [drawBg bgpic, drawPlayer, drawWalls, drawTextureToScreen pressspacetoplayrect pressspacetoplay]
 
+        -- updates
+        updateCameraPos
+        updatePlayerAnimation
+
+        -- if space is pressed, start the game
         if _isSpace input
            then do
                    jumpPlayer
-                   setGrav 2900
                    setSceneState Play
            else return ()
 
@@ -136,15 +141,18 @@ runScene PrePlay = do
 runScene Play = do
         input <- getInput
 
+        -- getting the bg picture
+        bgpic <- view $ cResources.cTextures.bgTexture
+
+        drawObjectsWithDt [drawBg bgpic, drawScore, drawWalls, drawPlayer]
+
+        -- input response
+        inputHandler input
+
+        -- updates
         updateCameraPos
         updatePlayerAngle
         updateAnimations'
-
-        bgpic <- view $ cResources.cTextures.bgTexture
-        drawObjectsWithDt [drawBg bgpic, drawScore, drawWalls, drawPlayer]
-
-        inputHandler input
-
         updatePhysics
         collisionTest
         updateWalls
@@ -194,11 +202,13 @@ runScene Play = do
                            then popWall_
                            else return ()
 
+                -- increments the score if the player passes the gap
                 updateScore :: (Logger m, PlayerManager m, WallManager m, ScoreManager m) => m ()
                 updateScore = do
                         playerpos <- getPlayerPos 
                         gapaabb <- getFirstWallGapAabb
                         prevpassingwall <- getIsPassingWall
+                        -- increments the score when the last frame was hit-testing with the gap and the current frame is not hit-testing with the gap
                         if not (pointHitTest playerpos gapaabb) && prevpassingwall
                            then incrementScore
                            else return ()
@@ -207,6 +217,8 @@ runScene Play = do
                 collisionTest :: (SoundManager m, AnimationsManager m, WallManager m, PlayerManager m, Logger m, ScoreManager m, SceneStateManager m) => m ()
                 collisionTest = do
                         playerAabb <- getPlayerAabb
+
+                        -- the walls' aabbs are shifted and made smaller so it matches the graphic size
                         upperWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (-15)) <$> floorAabb <$> getFirstUpperWallAabb
                         lowerWallAabb <- addCushiontoAabb (V2 (-10) 0) <$> shiftAabb (V2 0 (15)) <$> ceilingAabb <$> getFirstLowerWallAabb
                         if (hitTestAbove playerAabb upperWallAabb) || (hitTestBelow playerAabb lowerWallAabb)
@@ -236,7 +248,6 @@ runScene Pause = do
         font <- view $ cResources.cFont.scoreFont
         bgpic <- view $ cResources.cTextures.bgTexture
 
-
         drawObjectsWithDt [drawBg bgpic, drawScore, drawWalls, drawPlayer, drawScreenOverlay $ SDL.V4 0 0 0 95, drawTextToScreen font "paused" (SDL.P $ SDL.V2 0 0) (SDL.V4 155 98 0 100) (yCenterRectangle >=> xCenterRectangle), drawBtnToScreen mutebtnattr]
 
         if _isEsc input || _isSpace input
@@ -246,7 +257,7 @@ runScene Pause = do
         where
                 mutebtneffect :: ( SoundManager m
                                  , HasInput m
-                  , Logger m) => Input -> Button m
+                                 , Logger m ) => Input -> Button m
                 mutebtneffect = buttonEffectFromMouse pauseOrPlaySounds
 
 runScene GameOver = do
@@ -255,18 +266,19 @@ runScene GameOver = do
         -- setting up the play again button
         playagainbtntexture <- view $ cResources.cTextures.guiTextures.playAgainBtnTexture
         playagainbtnattr <- translateButtonAttr (V2 (-125) 150) <$> createCenteredButtonAttr (V2 200 50) playagainbtntexture
-        runReaderT (playagainbtneffect input) playagainbtnattr
+        runReaderT (playagainbtneffect input) playagainbtnattr -- running the play again button effect
 
         -- setting up the quit button
         quitbtntexture <- view $ cResources.cTextures.guiTextures.quitGameOverBtnTexture
         quitbtnattr <- translateButtonAttr (V2 (125) 150) <$> createCenteredButtonAttr (V2 200 50) quitbtntexture
-        runReaderT (quitbtneffect input) quitbtnattr
+        runReaderT (quitbtneffect input) quitbtnattr -- running the quit button effect
 
         -- setting up the mute button
         mutebtntexture <- getMuteBtnTexture
         mutebtnattr <- translateButtonAttr (V2 (-10) (-10)) <$> (((createRightEdgeAlignedButtonAttr 0 (V2 20 20) mutebtntexture) >>= alignToBottomEdgeButtonAttr))
-        runReaderT (mutebtneffect input) mutebtnattr
+        runReaderT (mutebtneffect input) mutebtnattr -- running the mute button effect
 
+        -- setting up the game over window
         gameoverwindowtexture <- view $ cResources.cTextures.guiTextures.gameOverWindowTexture
         gameoverwindowrect <- GuiTransforms.translate (V2 0 (-50)) <$> ((xCenterRectangle >=> yCenterRectangle) (SDL.Rectangle (SDL.P (V2 0 0)) (V2 450 300)))
 
@@ -298,7 +310,7 @@ runScene Quit = return ()
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m, AnimationsManager m) => m ()
 resetGame = do
         resetScore
-        changeWallConfStartingPosition 350
+        changeWallConfStartingPosition 350 -- moves the walls to start closer to the player from the start.
         resetWalls
         resetPlayerPos
         resetPlayerAngle

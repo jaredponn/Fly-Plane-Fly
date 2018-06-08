@@ -31,13 +31,13 @@ data Wall = Wall { upperWall :: {-# UNPACK #-} !Float -- percent of the size
                  , wallWidth :: {-# UNPACK #-} !Float } -- actual width
                  deriving Show
 
-data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float, Float)
-                             , startingGapSize :: {-# UNPACK #-} !Float
-                             , gapSizeChangeRate :: {-# UNPACK #-} !Float
-                             , finalGapSize :: {-# UNPACK #-} !Float
-                             , allWallWidth :: {-# UNPACK #-} !Float
-                             , allWallSpacing :: {-# UNPACK #-} !Float 
-                             , startingPos :: {-# UNPACK #-} !Float
+data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float, Float) -- bounds for how big the upper wall is
+                             , startingGapSize :: {-# UNPACK #-} !Float -- the initial gap size
+                             , gapSizeChangeRate :: {-# UNPACK #-} !Float -- the rate of change for the gap size
+                             , finalGapSize :: {-# UNPACK #-} !Float -- the final gap size
+                             , allWallWidth :: {-# UNPACK #-} !Float -- all the walls' widths
+                             , allWallSpacing :: {-# UNPACK #-} !Float  -- the spacing between each wall
+                             , startingPos :: {-# UNPACK #-} !Float -- the starting position of the wall 
                              } deriving Show
 
 -- takes a range of floats and spits out a value between them

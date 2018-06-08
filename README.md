@@ -2,7 +2,7 @@
 This is a spin off of Flappy Bird written in Haskell.
 
 ## Gameplay
-![Alt Text](https://github.com/jaredponn/Fly-Plane-Fly/blob/master/gameplay.gif)
+![gameplay](https://github.com/jaredponn/Fly-Plane-Fly/blob/master/gameplay.gif)
 *just imagine it runs smoother because gifs don't provide the smoothest video experience ;)*
 ## Installation
 
