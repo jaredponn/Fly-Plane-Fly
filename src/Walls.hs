@@ -21,14 +21,12 @@ import Control.Monad.State.Lazy
    |space|
 -}
 
-{- When generating the walls, the wall sizes (upperWall, gap, lowerWall) will be expressed as percents. When put in the WallManager, those sizes will be converted into the real world sizes -}
-
 
 data Wall = Wall { upperWall :: {-# UNPACK #-} !Float -- percent of the size
                  , gap :: {-# UNPACK #-} !Float -- percent of the size
                  , lowerWall ::{-# UNPACK #-} !Float -- percent of the size
-                 , xPos :: {-# UNPACK #-} !Float -- actual position
-                 , wallWidth :: {-# UNPACK #-} !Float } -- actual width
+                 , xPos :: {-# UNPACK #-} !Float -- x position
+  , wallWidth :: {-# UNPACK #-} !Float } -- width
                  deriving Show
 
 data WallConfig = WallConfig { allUppperWallRngBounds :: {-# UNPACK #-} !(Float, Float) -- bounds for how big the upper wall is

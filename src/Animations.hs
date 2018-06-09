@@ -20,7 +20,7 @@ import SDL
 
 {- Animations are modelled as an infinite streams of SDL.Rectangles that corrospond to sprite sheets, with a data describing what the animation is for. -}
 
-data AnimationHandler = AnimationHandler { srcRectStream :: S.Stream AnimationSrcRect -- stream of the default animation
+data AnimationHandler = AnimationHandler { srcRectStream :: S.Stream AnimationSrcRect -- stream of the animation
                                          , frameDuration :: !Float  -- duration of each sprite visual
                                          , accTime :: !Float } -- amount of time the current animation is being shown. 
                                          deriving Show

@@ -55,10 +55,10 @@ loop :: ( Logger m
         , AnimationsManager m) => m ()
 loop = do
         updateInput
-        curgamestate <- viewSceneState
-        runScene curgamestate
+        curscenestate <- viewSceneState
+        runScene curscenestate
 
-        unless (curgamestate == Quit) loop 
+        unless (curscenestate == Quit) loop 
 
 runScene :: ( Logger m
             , MonadReader Config m
@@ -310,7 +310,7 @@ runScene Quit = return ()
 resetGame :: (WallManager m, PlayerManager m, ScoreManager m, AnimationsManager m) => m ()
 resetGame = do
         resetScore
-        changeWallConfStartingPosition 350 -- moves the walls to start closer to the player from the start.
+        changeWallConfStartingPosition 350 -- moves the walls to start closer to the player.
         resetWalls
         resetPlayerPos
         resetPlayerAngle
