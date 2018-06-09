@@ -61,6 +61,7 @@ createWall !conf !startPos !g = let (val, g') = runState (randPercent (allUppper
                                         , wallWidth = allWallWidth conf}
                                 , g' )
 
+-- takes a tuple of a wall and a generator, and returns a tuple of a new wall and a new generator
 createNextWall :: RandomGen g => WallConfig
                -> (Wall, g) -- old wall
                -> (Wall, g)
@@ -75,6 +76,7 @@ createNextWall !conf !(old, g) = let (val, g') = runState (randPercent (allUpppe
                                            , wallWidth = allWallWidth conf}
                                    , g' )
 
+-- creates new wall stream from a WallConfig
 createWallStream :: WallConfig
                  -> IO (Stream Wall)
 createWallStream !conf = do

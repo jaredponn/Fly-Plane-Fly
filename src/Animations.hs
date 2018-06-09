@@ -22,7 +22,7 @@ import SDL
 
 data AnimationHandler = AnimationHandler { srcRectStream :: S.Stream AnimationSrcRect -- stream of the animation
                                          , frameDuration :: !Float  -- duration of each sprite visual
-                                         , accTime :: !Float } -- amount of time the current animation is being shown. 
+                                         , accTime :: !Float } -- amount of time the current animation is being shown.
                                          deriving Show
 
 data AnimationSrcRect = AnimationSrcRect { srcRect :: Rectangle CInt -- Rectangle of where the animation is on the sprite sheet
