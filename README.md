@@ -61,7 +61,9 @@ Please refer to the blog post for an in-depth analysis of the architecture.
 This project was a high-school project for the Pre-Engineering class. Students may choose to work individually or in groups. Some other projects include Rube Goldberg machines, Quad-copters, and Pancake cookers.
 
 ## Issues
-The CPU usage is a ridiculously high. On my computer, it takes up more than 50% CPU while running. If you can find the shortcomings in the system that leads to this issue, I would be happy to hear about it.
+~~The CPU usage is a ridiculously high. On my computer, it takes up more than 50% CPU while running. If you can find the shortcomings in the system that leads to this issue, I would be happy to hear about it.~~
+
+Good news! I reduced it down to 20%-30% usage which is still bad, but much better than it was before. Refer to the blog post for more details
 
 ## Acknowledgments
 All the images came from the following sources and were marked free to share use and modify:
