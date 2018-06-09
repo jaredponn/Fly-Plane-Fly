@@ -12,6 +12,3 @@ roundV2 (V2 a b) = V2 (CInt $ round a) (CInt $ round b)
 roundSDLRect :: Rectangle Float -> Rectangle CInt
 roundSDLRect = (\(Rectangle (P (V2 x y)) (V2 w h)) -> Rectangle (P (V2 (round x) (round y))) (V2 (round w) (round h)))
 
-
-convertToSeconds :: TimeSpec -> Float
-convertToSeconds = (/ 1000000000.0) . fromIntegral . toNanoSecs

@@ -15,7 +15,6 @@ import GHC.Word
 import qualified SDL 
 import qualified SDL.Font as TTF
 import Data.StateVar (($=))
-import System.Clock
 import qualified Data.Text as T
 
 import PlayerManager
@@ -68,7 +67,12 @@ class Monad m => Renderer m where
 instance Renderer FlyPlaneFly where
         drawObjects :: (Logger m, Renderer m, TimeManager m, MonadIO m) => [m ()] -> m ()
         drawObjects drawactions = do
-                threadDelay 2000 -- fixes the weird random speed ups / slow downs and maximum CPU usage
+                curdt <- getdt   
+
+                -- this will delay the program such that it runs at a constant frame rate of no more than 64 frames per second
+                -- it also will reduce the CPU usage of the program.
+                threadDelay $ max (round . secsToMicroSecs $ 1/64 - milliSecsToSecs curdt) 0
+
                 mapM_ id drawactions
                 presentRenderer
 
@@ -77,7 +81,7 @@ instance Renderer FlyPlaneFly where
                 t0 <- getRealTime 
                 drawObjects drawactions
                 t1 <- getRealTime
-                setdt . convertToSeconds $ System.Clock.diffTimeSpec t1 t0
+                setdtFromTimeSpec t1 t0
 
         drawBg :: (Renderer m, MonadIO m, MonadReader Config m, MonadState Vars m) => SDL.Texture -> m ()
         drawBg bgtexture = do

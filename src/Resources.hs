@@ -116,17 +116,17 @@ defaultInput = Input { _isSpace = False
 defaultPlayerVars :: Player
 defaultPlayerVars = Player { _attributes = SDL.Rectangle (SDL.P (V2 0 270)) (V2 60 30)
                            , _yvel = 0
-                           , _xvel = 275
-                           , _jumpHeight = (-700)
+                           , _xvel = 0.30
+                           , _jumpHeight = (-0.8)
                            , _isPassingWall = False
-                           , _angle = 0}
+                           , _angle = 0 }
 
 initPlayVars :: IO PlayVars
 initPlayVars = do
         wallstream <- initWallStream
         return PlayVars { _player = defaultPlayerVars
                         , _wallStream = wallstream
-                        , _gravity = 2900
+                        , _gravity = 0.004
                         , _wallConf = initWallConf
                         , _score = 0 }
 
@@ -144,7 +144,7 @@ initWallConf =  WallConfig { allUppperWallRngBounds = (0.1, 0.44)
 
 
 defaultRenderingVars :: RenderingVars 
-defaultRenderingVars = RenderingVars { _playerAnimationHandler = createAnimationHandler (generateSrcRectStream playeridlesrcrects) 0.1
+defaultRenderingVars = RenderingVars { _playerAnimationHandler = createAnimationHandler (generateSrcRectStream playeridlesrcrects) 100
                                      , _cameraPos = SDL.P $ V2 0 0
                                      , _cameraOffset = (-100) }
 

@@ -17,10 +17,10 @@ class Monad m => Logger m where
 instance Logger FlyPlaneFly where
         logText :: (MonadIO m, TimeManager m) => String -> m ()
         logText str = do
-                t <- convertToSeconds <$> getRealTime
+                t <- getdt
                 liftIO . putStrLn $ (show t) ++ ": " ++ str ++ "\n"
 
         logToFile :: (MonadIO m, TimeManager m) => FilePath -> String -> m ()
         logToFile path str = do
-                t <- convertToSeconds <$> getRealTime
+                t <- getdt
                 liftIO $ appendFile path ((show t) ++ ": " ++ str ++ "\n")
