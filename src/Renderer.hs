@@ -71,7 +71,7 @@ instance Renderer FlyPlaneFly where
 
                 -- this will delay the program such that it runs at a constant frame rate of no more than 64 frames per second
                 -- it also will reduce the CPU usage of the program.
-                threadDelay $ max (round . secsToMicroSecs $ 1/64 - milliSecsToSecs curdt) 0
+                threadDelay $ max (round . secsToMicroSecs $ 1/124 - milliSecsToSecs curdt) 0
 
                 mapM_ id drawactions
                 presentRenderer
