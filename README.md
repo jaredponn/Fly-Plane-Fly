@@ -10,8 +10,6 @@ This is a spin off of Flappy Bird written in Haskell.
 #### Installing Stack
 This project uses Stack. If you have Stack installed already skip to the next section. 
 
-Note: This has only been tested on Un\*x operating systems.
-
 Run:
 ```
 curl -sSL https://get.haskellstack.org/ | sh
@@ -55,7 +53,7 @@ And you should be playing the game.
 ## Implementation details
 Please refer to the blog post for an in-depth analysis of the architecture.
 
-[Read it here](https://jaredponn.github.io/2018/06/07/Write-Me-A-FlappyBird-In-Haskell.html).
+[Read it here](https://jaredponn.github.io/posts/2018-06-07-Write-Me-A-FlappyBird-In-Haskell.html).
 
 ## Project
 This project was a high-school project for the Pre-Engineering class. Students may choose to work individually or in groups. Some other projects include Rube Goldberg machines, Quad-copters, and Pancake cookers.
@@ -63,7 +61,7 @@ This project was a high-school project for the Pre-Engineering class. Students m
 ## Issues
 ~~The CPU usage is a ridiculously high. On my computer, it takes up more than 50% CPU while running. If you can find the shortcomings in the system that leads to this issue, I would be happy to hear about it.~~
 
-Good news! I reduced it down to 20%-30% usage which is still bad, but much better than it was before. Refer to the blog post for more details
+Good news! I reduced it down to 20%-30% usage which is still bad, but much better than it was before. Refer to the blog post for more details.
 
 ## Acknowledgments
 All the images came from the following sources and were marked free to share use and modify:
